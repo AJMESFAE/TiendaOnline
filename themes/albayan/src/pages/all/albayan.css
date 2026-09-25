@@ -1,0 +1,209 @@
+/*
+ * Identidad visual de Instituto Al-Bayān para la tienda.
+ *
+ * TODOS los colores y tipografías de la tienda salen de estas variables.
+ * Para ajustarlos exactamente a institutoalbayan.com, abra la web principal,
+ * inspeccione (F12) el color de la cabecera, los botones y los enlaces, y
+ * sustituya los valores de la sección "Paleta de marca".
+ *
+ * `:root:root` sube la especificidad para imponerse a las variables por
+ * defecto de EverShop (tailwind.css / shadcn.css) sin depender del orden de
+ * carga de las hojas de estilo.
+ */
+:root:root {
+  /* ---------- Paleta de marca (editar aquí) ---------- */
+  --albayan-green-900: #0b3b2e; /* franja superior y pie */
+  --albayan-green-700: #135c47; /* color principal: botones, enlaces */
+  --albayan-green-600: #1b7358; /* hover */
+  --albayan-gold-500: #c9a24a; /* acento dorado */
+  --albayan-gold-100: #f5ecd6; /* fondos suaves */
+  --albayan-cream: #fbf8f2; /* fondo de secciones */
+  --albayan-ink: #1f2a2e; /* texto */
+  --albayan-ink-muted: #5d6b6f; /* texto secundario */
+  --albayan-line: #e6e0d4; /* bordes */
+
+  --albayan-font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
+  --albayan-font-body: 'Lato', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --albayan-font-arabic: 'Amiri', 'Traditional Arabic', serif;
+
+  /* ---------- Mapeo a los tokens de EverShop (shadcn/tailwind) ---------- */
+  --font-sans: var(--albayan-font-body);
+  --background: #ffffff;
+  --foreground: var(--albayan-ink);
+  --card: #ffffff;
+  --card-foreground: var(--albayan-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--albayan-ink);
+  --primary: var(--albayan-green-700);
+  --primary-foreground: #ffffff;
+  --secondary: var(--albayan-gold-100);
+  --secondary-foreground: var(--albayan-green-900);
+  --muted: var(--albayan-cream);
+  --muted-foreground: var(--albayan-ink-muted);
+  --accent: var(--albayan-gold-100);
+  --accent-foreground: var(--albayan-green-900);
+  --border: var(--albayan-line);
+  --divider: var(--albayan-line);
+  --input: var(--albayan-line);
+  --ring: var(--albayan-gold-500);
+  --radius: 0.5rem;
+}
+
+body {
+  font-family: var(--albayan-font-body);
+  color: var(--albayan-ink);
+}
+
+h1,
+h2,
+h3,
+.product-single-name,
+.page-heading,
+.category-name {
+  font-family: var(--albayan-font-heading);
+  color: var(--albayan-green-900);
+  letter-spacing: 0.01em;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+[lang='ar'] {
+  font-family: var(--albayan-font-arabic);
+}
+
+/* ---------- Cabecera ---------- */
+.albayan-topbar {
+  background: var(--albayan-green-900);
+  color: #fff;
+}
+.albayan-topbar__link {
+  color: rgba(255, 255, 255, 0.85);
+}
+.albayan-topbar__link:hover {
+  color: var(--albayan-gold-500);
+}
+.albayan-topbar__arabic {
+  color: var(--albayan-gold-500);
+  font-size: 1.05rem;
+}
+.albayan-header__main {
+  background: #fff;
+  border-bottom: 3px solid var(--albayan-gold-500);
+}
+.albayan-nav {
+  gap: 1.75rem;
+  align-items: center;
+}
+.albayan-nav__link,
+.albayan-nav-mobile__link {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--albayan-green-900);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.albayan-nav__link:hover,
+.albayan-nav-mobile__link:hover {
+  color: var(--albayan-gold-500);
+}
+.albayan-nav-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.albayan-menu-toggle {
+  color: var(--albayan-green-900);
+  padding: 0.25rem;
+}
+.albayan-logo__name {
+  font-family: var(--albayan-font-heading);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--albayan-green-900);
+}
+.albayan-logo__sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--albayan-gold-500);
+}
+
+/* ---------- Botones ---------- */
+button[data-slot='button'],
+.button {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Portada ---------- */
+.albayan-hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(201, 162, 74, 0.25), transparent 45%),
+    linear-gradient(135deg, var(--albayan-green-900), var(--albayan-green-700));
+  color: #fff;
+  border-radius: calc(var(--radius) * 2);
+}
+.albayan-hero h1 {
+  color: #fff;
+}
+.albayan-hero__arabic {
+  color: var(--albayan-gold-500);
+}
+.albayan-hero__cta {
+  display: inline-block;
+  background: var(--albayan-gold-500);
+  color: var(--albayan-green-900);
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius);
+}
+.albayan-hero__cta:hover {
+  background: #d8b566;
+}
+
+/* ---------- Pie ---------- */
+.albayan-footer {
+  background: var(--albayan-green-900);
+  color: #fff;
+  border-top: 4px solid var(--albayan-gold-500);
+}
+.albayan-footer__brand {
+  font-family: var(--albayan-font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.albayan-footer__arabic {
+  color: var(--albayan-gold-500);
+  font-size: 1.2rem;
+}
+.albayan-footer__title {
+  color: var(--albayan-gold-500);
+  font-family: var(--albayan-font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.albayan-footer__link {
+  color: rgba(255, 255, 255, 0.85);
+}
+.albayan-footer__link:hover {
+  color: var(--albayan-gold-500);
+}
+.albayan-footer__muted {
+  color: rgba(255, 255, 255, 0.65);
+}
+.albayan-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.albayan-badge {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}

@@ -1,0 +1,11 @@
+node_modules
+**/node_modules
+.evershop
+**/dist
+.env
+.git
+media
+public
+docs
+infra
+*.log

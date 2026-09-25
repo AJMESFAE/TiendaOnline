@@ -1,0 +1,40 @@
+{
+  "name": "tienda-albayan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tienda online de Instituto Al-Bayān (tienda.institutoalbayan.com) basada en EverShop",
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "extensions/*",
+    "themes/*"
+  ],
+  "scripts": {
+    "setup": "evershop install",
+    "compile": "npm run compile --workspaces --if-present",
+    "build": "npm run compile && evershop build",
+    "start": "evershop start",
+    "dev": "evershop dev",
+    "test": "node --test extensions/redsys/tests/*.test.mjs",
+    "user:create": "evershop user:create",
+    "user:changePassword": "evershop user:changePassword",
+    "seed": "evershop seed"
+  },
+  "dependencies": {
+    "@evershop/evershop": "2.2.1",
+    "concat-stream": "^2.0.0",
+    "nodemailer": "^7.0.13"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.0.0",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5.6.0"
+  }
+}

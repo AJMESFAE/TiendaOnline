@@ -1,0 +1,51 @@
+name: CI / Despliegue en Azure
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run compile
+      - run: npm test
+
+  deploy:
+    # Requiere los secretos AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+    # (federación OIDC) y las variables AZURE_RESOURCE_GROUP, ACR_NAME, WEBAPP_NAME.
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Construir imagen en Azure Container Registry
+        run: |
+          az acr build --registry "${{ vars.ACR_NAME }}" \
+            --image tienda-albayan:${{ github.sha }} \
+            --image tienda-albayan:latest .
+      - name: Desplegar en App Service
+        run: |
+          LOGIN_SERVER=$(az acr show -n "${{ vars.ACR_NAME }}" --query loginServer -o tsv)
+          az webapp config container set \
+            -g "${{ vars.AZURE_RESOURCE_GROUP }}" -n "${{ vars.WEBAPP_NAME }}" \
+            --container-image-name "$LOGIN_SERVER/tienda-albayan:${{ github.sha }}"
+          az webapp restart -g "${{ vars.AZURE_RESOURCE_GROUP }}" -n "${{ vars.WEBAPP_NAME }}"

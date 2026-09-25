@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": ["string", "number"]
+    },
+    "amount": {
+      "type": ["string", "number"],
+      "pattern": "^\\d+(\\.\\d{1,2})?$",
+      "errorMessage": {
+        "pattern": "El importe debe tener como máximo 2 decimales"
+      }
+    }
+  },
+  "required": ["order_id", "amount"],
+  "additionalProperties": true
+}

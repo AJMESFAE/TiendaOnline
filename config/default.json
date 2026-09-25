@@ -1,0 +1,60 @@
+{
+  "shop": {
+    "homeUrl": "http://localhost:3000",
+    "language": "es",
+    "timezone": "Europe/Madrid",
+    "currency": "EUR",
+    "weightUnit": "kg"
+  },
+  "system": {
+    "theme": "albayan",
+    "extensions": [
+      {
+        "name": "redsys",
+        "resolve": "extensions/redsys",
+        "enabled": true,
+        "priority": 10
+      },
+      {
+        "name": "smtp-mail",
+        "resolve": "extensions/smtp-mail",
+        "enabled": true,
+        "priority": 20
+      }
+    ],
+    "redsys": {
+      "consumerLanguage": "001",
+      "abandonedAfterHours": 3,
+      "abandonedSchedule": "*/15 * * * *"
+    },
+    "notification_emails": {
+      "from": "Instituto Al-Bayān <tienda@institutoalbayan.com>"
+    }
+  },
+  "themeConfig": {
+    "copyRight": "© Instituto Al-Bayān · Fundación Método Andalusí. Todos los derechos reservados.",
+    "headTags": {
+      "links": [
+        {
+          "rel": "preconnect",
+          "href": "https://fonts.googleapis.com"
+        },
+        {
+          "rel": "preconnect",
+          "href": "https://fonts.gstatic.com",
+          "crossOrigin": "anonymous"
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap"
+        }
+      ],
+      "metas": [
+        {
+          "name": "theme-color",
+          "content": "#0b3b2e"
+        }
+      ]
+    }
+  }
+}

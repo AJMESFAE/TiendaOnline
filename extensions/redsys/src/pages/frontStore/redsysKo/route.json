@@ -1,0 +1,4 @@
+{
+  "methods": ["GET"],
+  "path": "/redsys/ko/:order_id"
+}

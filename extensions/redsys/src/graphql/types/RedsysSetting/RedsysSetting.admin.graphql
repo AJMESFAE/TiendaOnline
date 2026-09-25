@@ -1,0 +1,11 @@
+extend type Setting {
+  redsysPaymentStatus: Int
+  redsysMerchantCode: String
+  redsysTerminal: String
+  redsysSecretKey: String
+  redsysEnvironment: String
+  redsysCurrency: String
+  redsysMerchantName: String
+  redsysPayMethods: String
+  redsysPinnedFields: [String]
+}

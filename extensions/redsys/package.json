@@ -1,0 +1,11 @@
+{
+  "name": "evershop-redsys",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pasarela de pago Redsys (TPV Virtual, redirección HMAC_SHA256_V1) para EverShop",
+  "license": "GPL-3.0",
+  "scripts": {
+    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && copyfiles -u 1 \"src/**/*.{graphql,json}\" dist"
+  }
+}

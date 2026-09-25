@@ -1,0 +1,59 @@
+/**
+ * Datos de marca de Instituto Al-Bayān usados por la cabecera y el pie.
+ * Edite aquí los enlaces y datos de contacto; los colores y tipografías están
+ * en `src/pages/all/albayan.css`.
+ */
+export const MAIN_SITE_URL = 'https://institutoalbayan.com';
+
+export interface NavLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+/** Menú principal: replica la navegación de la web del instituto. */
+export const mainNav: NavLink[] = [
+  { label: 'Inicio', href: `${MAIN_SITE_URL}/`, external: true },
+  { label: 'Sobre nosotros', href: `${MAIN_SITE_URL}/sobre-nosotros/`, external: true },
+  { label: 'Inscripción', href: `${MAIN_SITE_URL}/inscripcion/`, external: true },
+  { label: 'Tienda', href: '/' }
+];
+
+/** Enlaces del pie de página. Las páginas legales se crean en Admin → CMS → Páginas. */
+export const footerLinks: { title: string; links: NavLink[] }[] = [
+  {
+    title: 'Instituto',
+    links: [
+      { label: 'Web del instituto', href: `${MAIN_SITE_URL}/`, external: true },
+      { label: 'Sobre nosotros', href: `${MAIN_SITE_URL}/sobre-nosotros/`, external: true },
+      { label: 'Inscripción', href: `${MAIN_SITE_URL}/inscripcion/`, external: true }
+    ]
+  },
+  {
+    title: 'Tienda',
+    links: [
+      { label: 'Mi cuenta', href: '/account' },
+      { label: 'Carrito', href: '/cart' },
+      { label: 'Condiciones de venta', href: '/page/condiciones-de-venta' },
+      { label: 'Envíos y devoluciones', href: '/page/envios-y-devoluciones' }
+    ]
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Aviso legal', href: '/page/aviso-legal' },
+      { label: 'Política de privacidad', href: '/page/politica-de-privacidad' },
+      { label: 'Política de cookies', href: '/page/politica-de-cookies' }
+    ]
+  }
+];
+
+/** Datos de contacto. Deje una cadena vacía para ocultar un dato. */
+export const contact = {
+  email: '',
+  phone: '',
+  instagram: 'https://www.instagram.com/institutoalbayan/'
+};
+
+export const tagline =
+  'Academia online de árabe y cultura islámica en español. Un proyecto de la Fundación Método Andalusí.';

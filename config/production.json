@@ -1,0 +1,12 @@
+{
+  "shop": {
+    "homeUrl": "https://tienda.institutoalbayan.com"
+  },
+  "system": {
+    "file_storage": "azure",
+    "azure": {
+      "containerName": "media",
+      "containerAccess": "blob"
+    }
+  }
+}
