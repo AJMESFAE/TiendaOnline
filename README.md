@@ -95,7 +95,9 @@ El script tarda unos 20 minutos la primera vez y hace esto:
 4. Muestra la URL, el usuario y la contraseña del panel, y los registros DNS del dominio.
 
 Las contraseñas se generan solas y se guardan en `infra/.deploy.env`, que no se sube a git.
-Guarde una copia. Volver a ejecutar `./infra/deploy.sh` actualiza la infraestructura y el
+Guarde una copia. Si lo pierde (por ejemplo, porque Cloud Shell se reinició), vuelva a
+clonar el repositorio y ejecute `./infra/restore-state.sh`: lo regenera a partir de la
+configuración de la Web App. Volver a ejecutar `./infra/deploy.sh` actualiza la infraestructura y el
 código, y reutiliza las mismas contraseñas.
 
 Opciones (variables de entorno antes del comando):
