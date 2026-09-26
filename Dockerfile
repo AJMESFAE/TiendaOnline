@@ -21,4 +21,5 @@ RUN mkdir -p media public && chown -R node:node /app
 USER node
 EXPOSE 3000
 # Las migraciones de base de datos se aplican automáticamente al arrancar.
-CMD ["npx", "evershop", "start"]
+# Arranca la tienda y crea el administrador (ADMIN_EMAIL) la primera vez.
+CMD ["node", "scripts/start.mjs"]

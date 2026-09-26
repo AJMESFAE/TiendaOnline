@@ -1,8 +1,6 @@
 // Infraestructura Azure de tienda.institutoalbayan.com
 //
-//   az group create -n rg-tienda-albayan -l westeurope
-//   az deployment group create -g rg-tienda-albayan -f infra/main.bicep \
-//     -p infra/main.parameters.json -p dbAdminPassword=... redsysSecretKey=... smtpPassword=...
+// Normalmente no se usa directamente: lo ejecuta `infra/deploy.sh`.
 //
 // Crea: Container Registry, PostgreSQL Flexible Server, Storage (imágenes),
 // App Service Plan Linux + Web App for Containers con identidad administrada.
@@ -17,11 +15,20 @@ param appServiceSku string = 'B1'
 @description('Dominio público de la tienda')
 param customDomain string = 'tienda.institutoalbayan.com'
 
+@description('true cuando el dominio ya está vinculado (infra/bind-domain.sh). Mientras sea false, la tienda usa <app>.azurewebsites.net')
+param useCustomDomain bool = false
+
+@description('Administrador inicial de la tienda (se crea en el primer arranque)')
+param adminEmail string
+@secure()
+param adminPassword string
+
 param dbAdminUser string = 'albayanadmin'
 @secure()
 param dbAdminPassword string
 
-@description('Datos del TPV Virtual de Redsys (los facilita el banco)')
+@description('Datos del TPV Virtual de Redsys. Por defecto: entorno público de PRUEBAS (comercio 999008881)')
+@allowed(['test', 'live'])
 param redsysEnvironment string = 'test'
 param redsysMerchantCode string = '999008881'
 param redsysTerminal string = '1'
@@ -45,6 +52,7 @@ var storageName = take('${prefix}st${suffix}', 24)
 var planName = '${prefix}-plan'
 var appName = '${prefix}-app-${suffix}'
 var dbName = 'evershop'
+var homeUrl = useCustomDomain ? 'https://${customDomain}' : 'https://${appName}.azurewebsites.net'
 
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
   name: acrName
@@ -134,7 +142,7 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'WEBSITES_CONTAINER_START_TIME_LIMIT', value: '600' }
         { name: 'NODE_ENV', value: 'production' }
         { name: 'TRUST_PROXY_HOPS', value: '1' }
-        { name: 'EVERSHOP_HOME_URL', value: 'https://${customDomain}' }
+        { name: 'EVERSHOP_HOME_URL', value: homeUrl }
         { name: 'DB_HOST', value: pg.properties.fullyQualifiedDomainName }
         { name: 'DB_PORT', value: '5432' }
         { name: 'DB_NAME', value: dbName }
@@ -150,6 +158,9 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'REDSYS_SECRET_KEY', value: redsysSecretKey }
         { name: 'REDSYS_CURRENCY', value: '978' }
         { name: 'REDSYS_MERCHANT_NAME', value: 'Instituto Al-Bayan' }
+        { name: 'ADMIN_EMAIL', value: adminEmail }
+        { name: 'ADMIN_PASSWORD', value: adminPassword }
+        { name: 'ADMIN_FULLNAME', value: 'Administrador' }
         { name: 'SMTP_HOST', value: smtpHost }
         { name: 'SMTP_PORT', value: smtpPort }
         { name: 'SMTP_USER', value: smtpUser }
@@ -176,6 +187,7 @@ resource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
 
 output appName string = app.name
 output appDefaultHostname string = app.properties.defaultHostName
+output homeUrl string = homeUrl
 output customDomainVerificationId string = app.properties.customDomainVerificationId
 output acrLoginServer string = acr.properties.loginServer
 output acrName string = acr.name

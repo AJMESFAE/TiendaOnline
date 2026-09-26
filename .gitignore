@@ -6,3 +6,4 @@ dist/
 /public/
 *.log
 .DS_Store
+infra/.deploy.env

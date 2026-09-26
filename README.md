@@ -54,69 +54,76 @@ por ejemplo con `ngrok http 3000` y `EVERSHOP_HOME_URL=https://xxxx.ngrok.app`.
 
 ---
 
-## 2. Despliegue en Azure
+## 2. Despliegue en Azure (automático)
 
 Arquitectura: **App Service Linux (contenedor)** → **Azure Database for PostgreSQL
-Flexible Server** + **Blob Storage** (imágenes de producto). La imagen se construye en
-**Azure Container Registry**.
+Flexible Server** + **Blob Storage** (imágenes de producto). La imagen se construye en la
+nube con **Azure Container Registry**, así que no hace falta Docker en su equipo.
 
-### 2.1 Crear la infraestructura
+### 2.1 Crear todo con un solo comando
 
-```bash
-az login
-az group create -n rg-tienda-albayan -l westeurope
-az deployment group create -g rg-tienda-albayan \
-  -f infra/main.bicep -p infra/main.parameters.json \
-  -p dbAdminPassword='<contraseña-fuerte>' \
-     redsysSecretKey='<clave SHA-256 del TPV>' \
-     smtpUser='tienda@institutoalbayan.com' smtpPassword='<contraseña SMTP>'
-```
-
-Anote las salidas del despliegue: `appName`, `acrName`, `appDefaultHostname` y
-`customDomainVerificationId`.
-
-### 2.2 Primera imagen y usuario administrador
+La forma más sencilla es usar **Azure Cloud Shell** (portal.azure.com → icono `>_` →
+*Bash*), que ya trae Azure CLI y git:
 
 ```bash
-az acr build -r <acrName> -t tienda-albayan:latest .
-az webapp restart -g rg-tienda-albayan -n <appName>
+git clone https://github.com/ajmesfae/tiendaonline.git
+cd tiendaonline
+git checkout claude/blissful-albattani-zuz5ux   # hasta que se fusione en main
+./infra/deploy.sh
 ```
 
-El primer arranque crea las tablas (puede tardar 1–2 minutos). Después, cree el
-administrador desde su equipo contra la base de datos de Azure. Abra el firewall a su IP
-solo durante la operación:
+Desde su propio equipo (Linux, macOS o WSL) haga antes `az login`.
+
+El script tarda unos 20 minutos la primera vez y hace esto:
+
+1. Registra los proveedores de Azure y crea el grupo `rg-tienda-albayan` en `westeurope`.
+2. Crea PostgreSQL, Storage, Container Registry y App Service (`infra/main.bicep`).
+3. Construye la imagen de la tienda en Azure y la publica.
+4. Espera a que arranque. El primer arranque crea las tablas y el usuario administrador.
+5. Muestra la URL, el usuario y la contraseña del panel, y los registros DNS del dominio.
+
+Las contraseñas se generan solas y se guardan en `infra/.deploy.env`, que no se sube a
+git. Guarde una copia de ese fichero. Para publicar cambios, vuelva a ejecutar
+`./infra/deploy.sh`: reutiliza las mismas contraseñas.
+
+Opciones (variables de entorno antes del comando):
 
 ```bash
-az postgres flexible-server firewall-rule create -g rg-tienda-albayan -n <postgresHost sin dominio> \
-  --rule-name admin-temporal --start-ip-address <su IP> --end-ip-address <su IP>
-DB_HOST=<postgresHost> DB_PORT=5432 DB_NAME=evershop DB_USER=albayanadmin DB_PASSWORD='...' \
-DB_SSLMODE=require npx evershop user:create --name "Admin" \
-  --email admin@institutoalbayan.com --password "..."
-az postgres flexible-server firewall-rule delete -g rg-tienda-albayan -n <postgresHost sin dominio> \
-  --rule-name admin-temporal --yes
+LOCATION=spaincentral ADMIN_EMAIL=tienda@institutoalbayan.com ./infra/deploy.sh
 ```
 
-### 2.3 Dominio tienda.institutoalbayan.com y HTTPS
+| Variable | Por defecto |
+|---|---|
+| `RESOURCE_GROUP` | `rg-tienda-albayan` |
+| `LOCATION` | `westeurope` (si la suscripción no admite PostgreSQL allí, pruebe `spaincentral` o `northeurope`) |
+| `APP_SKU` | `B1` |
+| `ADMIN_EMAIL` | `admin@institutoalbayan.com` |
+| `REDSYS_ENVIRONMENT`, `REDSYS_MERCHANT_CODE`, `REDSYS_TERMINAL`, `REDSYS_SECRET_KEY` | Entorno **público de pruebas** de Redsys (`test`, `999008881`, `1`, clave pública) |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM` | Sin email hasta que se rellenen |
 
-En el DNS de institutoalbayan.com cree estos registros:
+La tienda queda disponible primero en `https://<app>.azurewebsites.net` con Redsys de
+pruebas funcionando.
 
-| Tipo  | Nombre        | Valor                                   |
-|-------|---------------|-----------------------------------------|
-| CNAME | `tienda`      | `<appDefaultHostname>` (…azurewebsites.net) |
-| TXT   | `asuid.tienda`| `<customDomainVerificationId>`          |
+### 2.2 Dominio tienda.institutoalbayan.com y HTTPS
 
-Después, vincule el dominio y el certificado gestionado gratuito:
+1. En el DNS de institutoalbayan.com cree los dos registros que muestra `deploy.sh` al
+   terminar:
 
-```bash
-az webapp config hostname add -g rg-tienda-albayan --webapp-name <appName> \
-  --hostname tienda.institutoalbayan.com
-az webapp config ssl create -g rg-tienda-albayan -n <appName> \
-  --hostname tienda.institutoalbayan.com
-az webapp config ssl bind -g rg-tienda-albayan -n <appName> \
-  --certificate-thumbprint <thumbprint> --ssl-type SNI
-```
+   | Tipo  | Nombre         | Valor |
+   |-------|----------------|-------|
+   | CNAME | `tienda`       | `<app>.azurewebsites.net` |
+   | TXT   | `asuid.tienda` | id de verificación |
 
-### 2.4 Despliegue continuo (GitHub Actions)
+2. Cuando el DNS se haya propagado, ejecute `./infra/bind-domain.sh`. Añade el dominio,
+   crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que también
+   usa Redsys para las URL de retorno y notificación.
+
+### 2.3 Borrar todo
+
+`./infra/destroy.sh` elimina el grupo de recursos completo, base de datos incluida.
+Pide confirmación.
+
+### 2.4 Despliegue continuo con GitHub Actions (opcional)
 
 `.github/workflows/deploy.yml` ejecuta las pruebas en cada PR y, en `main`, construye la
 imagen en el ACR y la despliega. Configure en el repositorio:
