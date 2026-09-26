@@ -2,8 +2,9 @@
 //
 // Normalmente no se usa directamente: lo ejecuta `infra/deploy.sh`.
 //
-// Crea: Container Registry, PostgreSQL Flexible Server, Storage (imágenes),
-// App Service Plan Linux + Web App for Containers con identidad administrada.
+// Mismo esquema que VillaDelCasar: Web App Linux con runtime Node 22 (sin
+// contenedor), arrancada con `startup.sh`. Además: PostgreSQL Flexible Server
+// (EverShop solo funciona con PostgreSQL) y Storage para las imágenes.
 
 @description('Prefijo corto para los nombres de recursos (minúsculas, sin guiones)')
 param prefix string = 'albayantienda'
@@ -11,6 +12,9 @@ param location string = resourceGroup().location
 
 @description('Plan de App Service. B1 basta para empezar; P0v3 para más tráfico.')
 param appServiceSku string = 'B1'
+
+@description('ID de un plan de App Service Linux ya existente para compartirlo (p. ej. el de VillaDelCasar). Vacío = crear uno nuevo. Debe estar en la misma región.')
+param existingPlanId string = ''
 
 @description('Dominio público de la tienda')
 param customDomain string = 'tienda.institutoalbayan.com'
@@ -42,24 +46,13 @@ param smtpUser string = ''
 param smtpPassword string = ''
 param mailFrom string = 'Instituto Al-Bayān <tienda@institutoalbayan.com>'
 
-@description('Etiqueta de la imagen a desplegar')
-param imageTag string = 'latest'
-
 var suffix = uniqueString(resourceGroup().id)
-var acrName = take('${prefix}acr${suffix}', 50)
 var pgName = '${prefix}-pg-${suffix}'
 var storageName = take('${prefix}st${suffix}', 24)
 var planName = '${prefix}-plan'
 var appName = '${prefix}-app-${suffix}'
 var dbName = 'evershop'
 var homeUrl = useCustomDomain ? 'https://${customDomain}' : 'https://${appName}.azurewebsites.net'
-
-resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
-  name: acrName
-  location: location
-  sku: { name: 'Basic' }
-  properties: { adminUserEnabled: false }
-}
 
 resource pg 'Microsoft.DBforPostgreSQL/flexibleServers@2023-06-01-preview' = {
   name: pgName
@@ -112,7 +105,7 @@ resource mediaContainer 'Microsoft.Storage/storageAccounts/blobServices/containe
   properties: { publicAccess: 'Blob' }
 }
 
-resource plan 'Microsoft.Web/serverfarms@2023-01-01' = {
+resource plan 'Microsoft.Web/serverfarms@2023-01-01' = if (empty(existingPlanId)) {
   name: planName
   location: location
   kind: 'linux'
@@ -125,21 +118,21 @@ var storageConnection = 'DefaultEndpointsProtocol=https;AccountName=${storage.na
 resource app 'Microsoft.Web/sites@2023-01-01' = {
   name: appName
   location: location
-  kind: 'app,linux,container'
-  identity: { type: 'SystemAssigned' }
+  kind: 'app,linux'
   properties: {
-    serverFarmId: plan.id
+    serverFarmId: empty(existingPlanId) ? plan.id : existingPlanId
     httpsOnly: true
     siteConfig: {
-      linuxFxVersion: 'DOCKER|${acr.properties.loginServer}/tienda-albayan:${imageTag}'
-      acrUseManagedIdentityCreds: true
+      linuxFxVersion: 'NODE|22-lts'
+      appCommandLine: 'bash startup.sh'
       alwaysOn: true
       ftpsState: 'Disabled'
       minTlsVersion: '1.2'
       healthCheckPath: '/'
       appSettings: [
-        { name: 'WEBSITES_PORT', value: '3000' }
-        { name: 'WEBSITES_CONTAINER_START_TIME_LIMIT', value: '600' }
+        // El paquete llega ya compilado (deploy.sh o GitHub Actions): Azure no recompila.
+        { name: 'SCM_DO_BUILD_DURING_DEPLOYMENT', value: 'false' }
+        { name: 'WEBSITES_CONTAINER_START_TIME_LIMIT', value: '900' }
         { name: 'NODE_ENV', value: 'production' }
         { name: 'TRUST_PROXY_HOPS', value: '1' }
         { name: 'EVERSHOP_HOME_URL', value: homeUrl }
@@ -171,24 +164,8 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
   }
 }
 
-// La Web App descarga la imagen del ACR con su identidad administrada (AcrPull).
-resource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(acr.id, app.id, 'acrpull')
-  scope: acr
-  properties: {
-    principalId: app.identity.principalId
-    principalType: 'ServicePrincipal'
-    roleDefinitionId: subscriptionResourceId(
-      'Microsoft.Authorization/roleDefinitions',
-      '7f951dda-4ed3-4680-a7ca-43fe172d538d'
-    )
-  }
-}
-
 output appName string = app.name
 output appDefaultHostname string = app.properties.defaultHostName
 output homeUrl string = homeUrl
 output customDomainVerificationId string = app.properties.customDomainVerificationId
-output acrLoginServer string = acr.properties.loginServer
-output acrName string = acr.name
 output postgresHost string = pg.properties.fullyQualifiedDomainName

@@ -2,20 +2,24 @@
 # =============================================================================
 #  Despliegue completo de tienda.institutoalbayan.com en Azure
 #
-#  Crea (o actualiza) todo lo necesario y publica la tienda:
-#    grupo de recursos · PostgreSQL · Blob Storage · Container Registry ·
-#    App Service · imagen de la tienda · administrador inicial
+#  Crea (o actualiza) todo lo necesario y publica la tienda, con el mismo
+#  esquema que VillaDelCasar (Web App Linux Node 22 + startup.sh):
+#    grupo de recursos · PostgreSQL · Blob Storage · App Service ·
+#    código compilado · administrador inicial
 #
-#  Uso (Azure Cloud Shell en modo Bash, o Linux/macOS/WSL con Azure CLI):
+#  Uso (Azure Cloud Shell en modo Bash, o Linux/macOS/WSL con Azure CLI,
+#  Node.js 20+ y zip):
 #      az login                       # no hace falta en Cloud Shell
 #      ./infra/deploy.sh
 #
 #  Se puede volver a ejecutar cuando se quiera: actualiza la infraestructura y
-#  publica una imagen nueva con el código actual.
+#  publica el código actual.
 #
 #  Opciones por variable de entorno (todas opcionales):
 #      RESOURCE_GROUP   (rg-tienda-albayan)   LOCATION (westeurope)
 #      PREFIX           (albayantienda)       APP_SKU  (B1)
+#      SHARE_PLAN_WITH_APP  nombre de otra Web App (p. ej. villadelcasar) cuyo
+#                       plan se reutiliza en vez de crear uno nuevo
 #      ADMIN_EMAIL      (admin@institutoalbayan.com)
 #      REDSYS_ENVIRONMENT/REDSYS_MERCHANT_CODE/REDSYS_TERMINAL/REDSYS_SECRET_KEY
 #                       (por defecto: entorno PÚBLICO DE PRUEBAS de Redsys)
@@ -45,6 +49,7 @@ APP_SKU="${APP_SKU:-B1}"
 CUSTOM_DOMAIN="${CUSTOM_DOMAIN:-tienda.institutoalbayan.com}"
 USE_CUSTOM_DOMAIN="${USE_CUSTOM_DOMAIN:-false}"
 ADMIN_EMAIL="${ADMIN_EMAIL:-admin@institutoalbayan.com}"
+SHARE_PLAN_WITH_APP="${SHARE_PLAN_WITH_APP:-}"
 
 # Redsys: entorno público de pruebas (datos publicados por Redsys para integración)
 REDSYS_ENVIRONMENT="${REDSYS_ENVIRONMENT:-test}"
@@ -71,6 +76,8 @@ fail() { printf '\n\033[1;31mERROR: %s\033[0m\n' "$*" >&2; exit 1; }
 step "Comprobando Azure CLI"
 command -v az >/dev/null || fail "Instale Azure CLI (https://aka.ms/azcli) o use Azure Cloud Shell."
 az account show >/dev/null 2>&1 || fail "Inicie sesión con: az login"
+command -v node >/dev/null || fail "Hace falta Node.js 20 o superior (Cloud Shell ya lo trae)."
+command -v zip >/dev/null || fail "Hace falta el comando zip."
 az bicep install >/dev/null 2>&1 || true
 echo "Suscripción: $(az account show --query name -o tsv)"
 
@@ -84,6 +91,7 @@ APP_SKU='$APP_SKU'
 CUSTOM_DOMAIN='$CUSTOM_DOMAIN'
 USE_CUSTOM_DOMAIN='$USE_CUSTOM_DOMAIN'
 ADMIN_EMAIL='$ADMIN_EMAIL'
+SHARE_PLAN_WITH_APP='$SHARE_PLAN_WITH_APP'
 ADMIN_PASSWORD='$ADMIN_PASSWORD'
 DB_PASSWORD='$DB_PASSWORD'
 REDSYS_ENVIRONMENT='$REDSYS_ENVIRONMENT'
@@ -98,18 +106,34 @@ MAIL_FROM='$MAIL_FROM'
 EOF
 
 step "Registrando los proveedores de recursos de Azure (solo tarda la primera vez)"
-for ns in Microsoft.Web Microsoft.DBforPostgreSQL Microsoft.ContainerRegistry Microsoft.Storage; do
+for ns in Microsoft.Web Microsoft.DBforPostgreSQL Microsoft.Storage; do
   az provider register --namespace "$ns" --wait >/dev/null
 done
 
-step "Creando el grupo de recursos $RESOURCE_GROUP ($LOCATION)"
-az group create -n "$RESOURCE_GROUP" -l "$LOCATION" -o none
+EXISTING_PLAN_ID=""
+if [[ -n "$SHARE_PLAN_WITH_APP" ]]; then
+  step "Buscando el plan de App Service de '$SHARE_PLAN_WITH_APP' para compartirlo"
+  EXISTING_PLAN_ID="$(az webapp list --query "[?name=='$SHARE_PLAN_WITH_APP'].serverFarmId | [0]" -o tsv)"
+  [[ -n "$EXISTING_PLAN_ID" ]] || fail "No encuentro la Web App '$SHARE_PLAN_WITH_APP' en esta suscripción."
+  LOCATION="$(az appservice plan show --ids "$EXISTING_PLAN_ID" --query location -o tsv)"
+  # Azure exige que la Web App esté en el mismo grupo de recursos que su plan.
+  RESOURCE_GROUP="$(az appservice plan show --ids "$EXISTING_PLAN_ID" --query resourceGroup -o tsv)"
+  sed -i.bak "s|^RESOURCE_GROUP=.*|RESOURCE_GROUP='$RESOURCE_GROUP'|; s|^LOCATION=.*|LOCATION='$LOCATION'|" "$STATE_FILE"
+  rm -f "$STATE_FILE.bak"
+  echo "Plan: $EXISTING_PLAN_ID ($LOCATION). La tienda se crea en el grupo $RESOURCE_GROUP."
+  echo "Aviso: un plan B1 tiene 1,75 GB de RAM para las dos webs; si va justo, suba a B2."
+fi
+
+if [[ -z "$SHARE_PLAN_WITH_APP" ]]; then
+  step "Creando el grupo de recursos $RESOURCE_GROUP ($LOCATION)"
+  az group create -n "$RESOURCE_GROUP" -l "$LOCATION" -o none
+fi
 
 step "Creando la infraestructura (5-10 minutos la primera vez)"
 DEPLOYMENT="tienda-$(date +%Y%m%d%H%M%S)"
 az deployment group create -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" \
   -f infra/main.bicep \
-  -p prefix="$PREFIX" appServiceSku="$APP_SKU" \
+  -p prefix="$PREFIX" appServiceSku="$APP_SKU" existingPlanId="$EXISTING_PLAN_ID" \
      customDomain="$CUSTOM_DOMAIN" useCustomDomain="$USE_CUSTOM_DOMAIN" \
      adminEmail="$ADMIN_EMAIL" adminPassword="$ADMIN_PASSWORD" \
      dbAdminPassword="$DB_PASSWORD" \
@@ -121,20 +145,18 @@ az deployment group create -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" \
 
 out() { az deployment group show -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" --query "properties.outputs.$1.value" -o tsv; }
 APP_NAME="$(out appName)"
-ACR_NAME="$(out acrName)"
-ACR_SERVER="$(out acrLoginServer)"
 APP_HOST="$(out appDefaultHostname)"
 HOME_URL="$(out homeUrl)"
 VERIFICATION_ID="$(out customDomainVerificationId)"
 
-TAG="$(git rev-parse --short HEAD 2>/dev/null || date +%Y%m%d%H%M%S)"
-step "Construyendo la imagen de la tienda en Azure ($ACR_NAME, etiqueta $TAG, ~10 min)"
-az acr build -r "$ACR_NAME" -t "tienda-albayan:$TAG" -t "tienda-albayan:latest" -f Dockerfile . -o none
+step "Compilando la tienda y generando el paquete (5-10 minutos)"
+PACKAGE="$(mktemp -d)/tienda.zip"
+scripts/build-package.sh "$PACKAGE"
 
-step "Publicando la imagen en el App Service $APP_NAME"
-az webapp config set -g "$RESOURCE_GROUP" -n "$APP_NAME" \
-  --linux-fx-version "DOCKER|$ACR_SERVER/tienda-albayan:$TAG" -o none
-az webapp restart -g "$RESOURCE_GROUP" -n "$APP_NAME"
+step "Subiendo el código al App Service $APP_NAME"
+az webapp deploy -g "$RESOURCE_GROUP" -n "$APP_NAME" --src-path "$PACKAGE" \
+  --type zip --clean true --restart true --timeout 1800000 -o none
+rm -f "$PACKAGE"
 
 step "Esperando a que la tienda arranque (el primer arranque crea las tablas)"
 for i in $(seq 1 60); do

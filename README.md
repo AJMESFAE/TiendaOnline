@@ -54,57 +54,78 @@ por ejemplo con `ngrok http 3000` y `EVERSHOP_HOME_URL=https://xxxx.ngrok.app`.
 
 ---
 
-## 2. Despliegue en Azure (automático)
+## 2. Despliegue en Azure
 
-Arquitectura: **App Service Linux (contenedor)** → **Azure Database for PostgreSQL
-Flexible Server** + **Blob Storage** (imágenes de producto). La imagen se construye en la
-nube con **Azure Container Registry**, así que no hace falta Docker en su equipo.
+Mismo esquema que **VillaDelCasar**: una **Web App de Azure App Service (Linux, Node 22)**
+que arranca con `startup.sh`, sin contenedores. Cada `git push` a `main` la actualiza
+mediante GitHub Actions. Además, EverShop necesita **Azure Database for PostgreSQL**
+(no funciona con SQLite) y guarda las imágenes de producto en **Blob Storage**.
 
 ### 2.1 Crear todo con un solo comando
 
-La forma más sencilla es usar **Azure Cloud Shell** (portal.azure.com → icono `>_` →
-*Bash*), que ya trae Azure CLI y git:
+Lo más sencillo es **Azure Cloud Shell** (portal.azure.com → icono `>_` → *Bash*), que ya
+trae Azure CLI, Node.js, git y zip:
 
 ```bash
-git clone https://github.com/ajmesfae/tiendaonline.git
-cd tiendaonline
+git clone https://github.com/AJMESFAE/TiendaOnline.git
+cd TiendaOnline
 git checkout claude/blissful-albattani-zuz5ux   # hasta que se fusione en main
 ./infra/deploy.sh
 ```
 
-Desde su propio equipo (Linux, macOS o WSL) haga antes `az login`.
+Desde su equipo (Linux, macOS o WSL) haga antes `az login`. Necesita Node.js 20+ y `zip`.
+
+Para **compartir el plan B1 de VillaDelCasar** y no pagar un segundo plan:
+
+```bash
+SHARE_PLAN_WITH_APP=villadelcasar ./infra/deploy.sh
+```
+
+En ese caso la tienda se crea en el mismo grupo de recursos que VillaDelCasar, porque
+Azure lo exige. Un B1 tiene 1,75 GB de RAM para las dos webs: si va justo, suba el plan a
+B2.
 
 El script tarda unos 20 minutos la primera vez y hace esto:
 
-1. Registra los proveedores de Azure y crea el grupo `rg-tienda-albayan` en `westeurope`.
-2. Crea PostgreSQL, Storage, Container Registry y App Service (`infra/main.bicep`).
-3. Construye la imagen de la tienda en Azure y la publica.
-4. Espera a que arranque. El primer arranque crea las tablas y el usuario administrador.
-5. Muestra la URL, el usuario y la contraseña del panel, y los registros DNS del dominio.
+1. Crea PostgreSQL, Storage y la Web App (`infra/main.bicep`), con todas las variables
+   de entorno ya puestas.
+2. Compila la tienda (`scripts/build-package.sh`), la sube con `az webapp deploy` y
+   espera a que arranque.
+3. En el primer arranque se crean las tablas y el usuario administrador.
+4. Muestra la URL, el usuario y la contraseña del panel, y los registros DNS del dominio.
 
-Las contraseñas se generan solas y se guardan en `infra/.deploy.env`, que no se sube a
-git. Guarde una copia de ese fichero. Para publicar cambios, vuelva a ejecutar
-`./infra/deploy.sh`: reutiliza las mismas contraseñas.
+Las contraseñas se generan solas y se guardan en `infra/.deploy.env`, que no se sube a git.
+Guarde una copia. Volver a ejecutar `./infra/deploy.sh` actualiza la infraestructura y el
+código, y reutiliza las mismas contraseñas.
 
 Opciones (variables de entorno antes del comando):
 
-```bash
-LOCATION=spaincentral ADMIN_EMAIL=tienda@institutoalbayan.com ./infra/deploy.sh
-```
-
 | Variable | Por defecto |
 |---|---|
+| `SHARE_PLAN_WITH_APP` | vacío: crea un plan propio |
 | `RESOURCE_GROUP` | `rg-tienda-albayan` |
 | `LOCATION` | `westeurope` (si la suscripción no admite PostgreSQL allí, pruebe `spaincentral` o `northeurope`) |
 | `APP_SKU` | `B1` |
 | `ADMIN_EMAIL` | `admin@institutoalbayan.com` |
-| `REDSYS_ENVIRONMENT`, `REDSYS_MERCHANT_CODE`, `REDSYS_TERMINAL`, `REDSYS_SECRET_KEY` | Entorno **público de pruebas** de Redsys (`test`, `999008881`, `1`, clave pública) |
+| `REDSYS_ENVIRONMENT`, `REDSYS_MERCHANT_CODE`, `REDSYS_TERMINAL`, `REDSYS_SECRET_KEY` | Entorno **público de pruebas** de Redsys: `test`, `999008881`, `1` y la clave pública |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM` | Sin email hasta que se rellenen |
 
-La tienda queda disponible primero en `https://<app>.azurewebsites.net` con Redsys de
-pruebas funcionando.
+La tienda queda disponible primero en `https://<app>.azurewebsites.net`, con el pago de
+pruebas de Redsys funcionando.
 
-### 2.2 Dominio tienda.institutoalbayan.com y HTTPS
+### 2.2 Despliegue automático con cada push (GitHub Actions)
+
+```bash
+./infra/setup-github.sh
+```
+
+Crea una identidad de Entra ID con permiso solo sobre la Web App de la tienda y la conecta
+con este repositorio por OIDC, sin contraseñas. Si tiene `gh` con sesión iniciada, guarda
+los secretos en GitHub; si no, le dice cuáles copiar en *Settings → Secrets and variables →
+Actions*. Desde entonces, cada push a `main` ejecuta
+`.github/workflows/main_tienda-albayan.yml`: compila, prueba y despliega.
+
+### 2.3 Dominio tienda.institutoalbayan.com y HTTPS
 
 1. En el DNS de institutoalbayan.com cree los dos registros que muestra `deploy.sh` al
    terminar:
@@ -115,40 +136,34 @@ pruebas funcionando.
    | TXT   | `asuid.tienda` | id de verificación |
 
 2. Cuando el DNS se haya propagado, ejecute `./infra/bind-domain.sh`. Añade el dominio,
-   crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que también
-   usa Redsys para las URL de retorno y notificación.
+   crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que Redsys
+   usa para las URL de retorno y de notificación.
 
-### 2.3 Borrar todo
+### 2.4 Variables de entorno (App Settings)
 
-`./infra/destroy.sh` elimina el grupo de recursos completo, base de datos incluida.
-Pide confirmación.
-
-### 2.4 Despliegue continuo con GitHub Actions (opcional)
-
-`.github/workflows/deploy.yml` ejecuta las pruebas en cada PR y, en `main`, construye la
-imagen en el ACR y la despliega. Configure en el repositorio:
-
-- **Secretos**: `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`, de una
-  aplicación de Entra ID con credencial federada para este repositorio y rol *Contributor*
-  sobre el grupo de recursos y *AcrPush* sobre el registro.
-- **Variables**: `AZURE_RESOURCE_GROUP`, `ACR_NAME`, `WEBAPP_NAME`.
-
-### 2.5 Variables de entorno (App Settings)
-
-Las fija el Bicep; se pueden cambiar en *App Service → Configuración*:
+Las pone `deploy.sh`. Se pueden revisar en *Web App → Configuración → Variables de
+entorno*; al guardar, Azure reinicia la app.
 
 | Variable | Uso |
 |---|---|
 | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_SSLMODE=require` | PostgreSQL |
-| `EVERSHOP_HOME_URL` | `https://tienda.institutoalbayan.com` (URLs absolutas y de retorno de Redsys) |
+| `EVERSHOP_HOME_URL` | URL pública (`azurewebsites.net` y, tras `bind-domain.sh`, el dominio) |
 | `AZURE_STORAGE_CONNECTION_STRING`, `AZURE_STORAGE_CONTAINER_NAME` | Imágenes en Blob Storage |
-| `REDSYS_*` | Datos del TPV (ver §3). Si están definidas, prevalecen sobre el panel de administración |
+| `REDSYS_*` | Datos del TPV (ver §3). Prevalecen sobre el panel de administración |
 | `SMTP_*`, `MAIL_FROM` | Envío de emails |
+| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
 
-Para los secretos se recomienda usar referencias a **Key Vault**
-(`@Microsoft.KeyVault(SecretUri=...)`) en lugar de valores en claro.
+*Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
 
----
+### 2.5 Borrar
+
+`./infra/destroy.sh` borra la tienda y pide confirmación. Si comparte plan con
+VillaDelCasar, borra **solo** la Web App, la base de datos y el Storage de la tienda; no
+toca VillaDelCasar ni el plan.
+
+### 2.6 Otras opciones
+
+El `Dockerfile` sigue disponible por si en el futuro se prefiere desplegar como contenedor.
 
 ## 3. Redsys
 
