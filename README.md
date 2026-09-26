@@ -150,6 +150,13 @@ forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
    crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que Redsys
    usa para las URL de retorno y de notificación.
 
+**Si el dominio se vinculó a mano** (por ejemplo `devtienda.institutoalbayan.com` desde el
+portal), ejecute `./infra/set-url.sh devtienda.institutoalbayan.com`. EverShop construye
+todos los enlaces absolutos con `EVERSHOP_HOME_URL`: el acceso al panel, las llamadas a la
+API y las URL de Redsys. Si no coincide con el dominio por el que se entra, el panel
+muestra *«Something went wrong! Please try again.»* al iniciar sesión y los pagos no
+vuelven a la tienda.
+
 ### 2.4 Importar los productos de la tienda actual (Shopify)
 
 ```bash
