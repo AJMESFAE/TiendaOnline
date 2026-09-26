@@ -190,7 +190,13 @@ SHIPPING_PREP_DAYS="24-48 horas laborables" \
 ./infra/create-pages.sh
 ```
 
-Crea o actualiza cinco páginas: `/aviso-legal`, `/politica-de-privacidad`,
+**La tienda crea automáticamente las páginas que falten cada vez que arranca**, con los
+datos disponibles; las que ya existen no se tocan. Si define en Azure (*Configuración →
+Variables de entorno*) `CONTACT_EMAIL`, `FOUNDATION_REGISTRY`, `SHIPPING_COST`,
+`SHIPPING_DAYS` y `SHIPPING_PREP_DAYS`, se usarán en las páginas nuevas. Para
+**actualizar** páginas ya creadas con datos nuevos, use el script de arriba.
+
+El script crea o actualiza cinco páginas: `/aviso-legal`, `/politica-de-privacidad`,
 `/politica-de-cookies`, `/condiciones-de-venta` y `/envios-y-devoluciones`. Las
 direcciones `/page/...` redirigen a ellas. El texto está en `scripts/legal-pages.mjs`
 y sigue la LSSI-CE, el RGPD y la LOPDGDD, y la ley de consumidores (TRLGDCU): titular,

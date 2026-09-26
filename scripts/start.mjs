@@ -3,6 +3,8 @@
 //   2. Cuando la tienda responde, crea el administrador ADMIN_EMAIL /
 //      ADMIN_PASSWORD si todavía no existe (solo la primera vez: después se
 //      gestiona desde el panel y no se vuelve a tocar).
+//   3. Crea las páginas legales que falten (scripts/create-pages.mjs
+//      --only-missing). Las que ya existen no se modifican.
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -87,15 +89,41 @@ async function ensureAdmin() {
     await client.end().catch(() => {});
   }
   console.log(`[start] Creando el administrador ${email}`);
-  run([
-    'user:create',
-    '--name',
-    process.env.ADMIN_FULLNAME || 'Administrador',
-    '--email',
-    email,
-    '--password',
-    password
-  ]);
+  await new Promise((resolve) =>
+    run([
+      'user:create',
+      '--name',
+      process.env.ADMIN_FULLNAME || 'Administrador',
+      '--email',
+      email,
+      '--password',
+      password
+    ]).on('exit', resolve)
+  );
 }
 
-ensureAdmin();
+// Páginas legales: se crean las que falten, con la API local de la tienda.
+async function ensureLegalPages() {
+  const { ADMIN_EMAIL: email, ADMIN_PASSWORD: password } = process.env;
+  if (!email || !password || process.env.SKIP_LEGAL_PAGES === 'true') return;
+  const script = path.join(path.dirname(new URL(import.meta.url).pathname), 'create-pages.mjs');
+  await new Promise((resolve) =>
+    spawn(
+      process.execPath,
+      [script, '--to', `http://127.0.0.1:${port}`, '--email', email, '--password', password, '--only-missing'],
+      { stdio: 'inherit', env: process.env }
+    )
+      .on('exit', (code) => {
+        if (code !== 0) {
+          console.error('[start] No se pudieron crear las páginas legales (¿cambió la contraseña del administrador?). Use infra/create-pages.sh.');
+        }
+        resolve();
+      })
+      .on('error', resolve)
+  );
+}
+
+(async () => {
+  await ensureAdmin();
+  if (await waitForServer()) await ensureLegalPages();
+})();

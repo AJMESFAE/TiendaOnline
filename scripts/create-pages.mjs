@@ -6,6 +6,8 @@
 //     [--contact-email tienda@…] [--phone …] [--registry "Registro de Fundaciones…, n.º …"]
 //     [--shipping-cost "4,95 € IVA incluido"] [--shipping-days "2 a 5 días laborables"]
 //     [--prep-days "24-48 horas laborables"] [--free-shipping-from "50 €"] [--dry-run]
+//     [--only-missing]   crea solo las páginas que no existan (no toca las demás;
+//                        lo usa scripts/start.mjs en cada arranque)
 import { buildLegalPages } from './legal-pages.mjs';
 
 const args = Object.fromEntries(
@@ -29,8 +31,9 @@ const pages = buildLegalPages({
   shippingDays: args['shipping-days'] || process.env.SHIPPING_DAYS,
   prepDays: args['prep-days'] || process.env.SHIPPING_PREP_DAYS,
   freeShippingFrom: args['free-shipping-from'] || process.env.FREE_SHIPPING_FROM,
-  storeUrl: args['store-url'] || process.env.STORE_PUBLIC_URL || TO
+  storeUrl: args['store-url'] || process.env.STORE_PUBLIC_URL || 'https://tienda.institutoalbayan.com'
 });
+const ONLY_MISSING = Boolean(args['only-missing']);
 
 const pending = [...new Set(JSON.stringify(pages).match(/\[COMPLETAR: [^\]]+\]/g) || [])];
 
@@ -70,6 +73,9 @@ const existing = new Map(data.cmsPages.items.map((p) => [p.urlKey, p.uuid]));
 
 for (const page of pages) {
   const uuid = existing.get(page.url_key);
+  if (uuid && ONLY_MISSING) {
+    continue;
+  }
   if (uuid) {
     await api(`/api/pages/${uuid}`, 'PATCH', page);
     console.log(`✓ actualizada: ${page.name}  →  ${TO}/${page.url_key}`);
