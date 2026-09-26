@@ -132,6 +132,12 @@ forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
 
 ### 2.3 Dominio tienda.institutoalbayan.com y HTTPS
 
+> **Atención:** `tienda.institutoalbayan.com` apunta hoy a la tienda de **Shopify** en
+> funcionamiento. Cambiar el CNAME deja de mostrar la tienda de Shopify. Hágalo solo
+> cuando la tienda nueva esté probada (productos importados, pago con Redsys real y
+> páginas legales) y se decida el cambio. Hasta entonces, trabaje con la dirección
+> `https://<app>.azurewebsites.net`.
+
 1. En el DNS de institutoalbayan.com cree los dos registros que muestra `deploy.sh` al
    terminar:
 
@@ -144,7 +150,30 @@ forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
    crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que Redsys
    usa para las URL de retorno y de notificación.
 
-### 2.4 Variables de entorno (App Settings)
+### 2.4 Importar los productos de la tienda actual (Shopify)
+
+```bash
+./infra/import-products.sh --dry-run   # solo lista lo que va a importar
+./infra/import-products.sh             # los crea en la tienda nueva
+```
+
+El script (`scripts/import-shopify.mjs`) lee el catálogo público de Shopify
+(`/products.json`) y, por cada producto:
+
+- descarga las imágenes y las sube a la tienda nueva (a Blob Storage);
+- crea la categoría a partir del «tipo de producto» de Shopify;
+- crea el producto con nombre, SKU, precio, peso, descripción e imágenes;
+- respeta los productos marcados en Shopify como «sin envío».
+
+Se puede repetir sin duplicar nada: un SKU que ya existe se omite. Guarda una copia de
+los datos originales en `productos-shopify.json`.
+
+Después, revise en el panel:
+- el **stock**: se pone 100 si el producto está disponible, porque Shopify no publica la
+  cantidad real;
+- los **precios tachados**: el script avisa si había alguno.
+
+### 2.5 Variables de entorno (App Settings)
 
 Las pone `deploy.sh`. Se pueden revisar en *Web App → Configuración → Variables de
 entorno*; al guardar, Azure reinicia la app.
@@ -160,13 +189,13 @@ entorno*; al guardar, Azure reinicia la app.
 
 *Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
 
-### 2.5 Borrar
+### 2.6 Borrar
 
 `./infra/destroy.sh` borra la tienda y pide confirmación. Si comparte plan con
 VillaDelCasar, borra **solo** la Web App, la base de datos y el Storage de la tienda; no
 toca VillaDelCasar ni el plan.
 
-### 2.6 Otras opciones
+### 2.7 Otras opciones
 
 El `Dockerfile` sigue disponible por si en el futuro se prefiere desplegar como contenedor.
 

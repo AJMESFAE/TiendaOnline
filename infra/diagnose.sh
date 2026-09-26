@@ -37,8 +37,11 @@ echo "== Descargando registros"
 TMP="$(mktemp -d)"
 if az webapp log download -g "$RESOURCE_GROUP" -n "$APP_NAME" --log-file "$TMP/logs.zip" -o none 2>/dev/null; then
   (cd "$TMP" && unzip -qo logs.zip)
-  # Los dos registros de consola más recientes (salida de startup.sh y EverShop)
-  find "$TMP" -name '*docker.log' -printf '%T@ %p\n' | sort -rn | head -2 | cut -d' ' -f2- |
+  # Salida de la tienda (startup.sh y EverShop: *_default_docker.log) y de la
+  # plataforma (*_docker.log), los más recientes de cada tipo.
+  { find "$TMP" -name '*default_docker.log' -printf '%T@ %p\n' | sort -rn | head -1
+    find "$TMP" -name '*docker.log' ! -name '*default_docker.log' -printf '%T@ %p\n' | sort -rn | head -1
+  } | cut -d' ' -f2- |
     while read -r f; do
       echo "---- $(basename "$f") (últimas 80 líneas)"
       tail -n 80 "$f"
