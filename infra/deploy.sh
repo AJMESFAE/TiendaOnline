@@ -25,6 +25,8 @@
 #      REDSYS_ENVIRONMENT/REDSYS_MERCHANT_CODE/REDSYS_TERMINAL/REDSYS_SECRET_KEY
 #                       (por defecto: entorno PÚBLICO DE PRUEBAS de Redsys)
 #      SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASSWORD MAIL_FROM
+#      DEPLOY_CODE      true/false: subir el código desde aquí (por defecto,
+#                       false si ya hay un workflow de GitHub para la Web App)
 # =============================================================================
 set -euo pipefail
 
@@ -186,14 +188,26 @@ APP_HOST="$(out appDefaultHostname)"
 HOME_URL="$(out homeUrl)"
 VERIFICATION_ID="$(out customDomainVerificationId)"
 
-step "Compilando la tienda y generando el paquete (5-10 minutos)"
-PACKAGE="$(mktemp -d)/tienda.zip"
-scripts/build-package.sh "$PACKAGE"
+# Si GitHub Actions ya despliega esta Web App (workflow del Deployment Center),
+# no se sube el código desde aquí: dos despliegues simultáneos hacen que Kudu
+# rechace uno (error 400/409). Forzar con DEPLOY_CODE=true.
+if [[ -z "${DEPLOY_CODE:-}" ]]; then
+  if grep -rqs -- "$APP_NAME" .github/workflows; then DEPLOY_CODE=false; else DEPLOY_CODE=true; fi
+fi
 
-step "Subiendo el código al App Service $APP_NAME"
-az webapp deploy -g "$RESOURCE_GROUP" -n "$APP_NAME" --src-path "$PACKAGE" \
-  --type zip --clean true --restart true --timeout 1800000 -o none
-rm -f "$PACKAGE"
+if [[ "$DEPLOY_CODE" == "true" ]]; then
+  step "Compilando la tienda y generando el paquete (5-10 minutos)"
+  PACKAGE="$(mktemp -d)/tienda.zip"
+  scripts/build-package.sh "$PACKAGE"
+
+  step "Subiendo el código al App Service $APP_NAME"
+  az webapp deploy -g "$RESOURCE_GROUP" -n "$APP_NAME" --src-path "$PACKAGE" \
+    --type zip --clean true --restart true --timeout 1800000 -o none
+  rm -f "$PACKAGE"
+else
+  step "El código lo publica GitHub Actions (workflow de .github/workflows para $APP_NAME)"
+  echo "Haga push a la rama del workflow, o lance el workflow a mano en GitHub → Actions."
+fi
 
 step "Esperando a que la tienda arranque (el primer arranque crea las tablas)"
 for i in $(seq 1 60); do

@@ -115,15 +115,20 @@ pruebas de Redsys funcionando.
 
 ### 2.2 Despliegue automático con cada push (GitHub Actions)
 
-```bash
-./infra/setup-github.sh
-```
+Igual que en VillaDelCasar: *Portal de Azure → Web App → Deployment Center → Source:
+GitHub*, con el repositorio y la rama. Azure añade al repositorio un workflow
+(`.github/workflows/<rama>_<app>.yml`) y el secreto `AZUREAPPSERVICE_PUBLISHPROFILE_…`.
 
-Crea una identidad de Entra ID con permiso solo sobre la Web App de la tienda y la conecta
-con este repositorio por OIDC, sin contraseñas. Si tiene `gh` con sesión iniciada, guarda
-los secretos en GitHub; si no, le dice cuáles copiar en *Settings → Secrets and variables →
-Actions*. Desde entonces, cada push a `main` ejecuta
-`.github/workflows/main_tienda-albayan.yml`: compila, prueba y despliega.
+**El workflow que genera Azure hay que adaptarlo**, porque sube el código fuente sin
+compilar. En este repositorio ya está adaptado para `albayantienda-app-vtcunta6scoqq`:
+compila con `scripts/build-package.sh`, sube el ZIP ya listo y nunca lanza dos despliegues
+a la vez. Si algún día se vuelve a conectar desde el Deployment Center y Azure regenera el
+fichero, repita esos cambios (los pasos *Compilar, probar y empaquetar* y
+`package: tienda.zip`).
+
+Con el workflow activo, `deploy.sh` ya no sube el código: detecta el workflow y solo
+crea o actualiza la infraestructura, para no chocar con el despliegue de GitHub. Para
+forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
 
 ### 2.3 Dominio tienda.institutoalbayan.com y HTTPS
 
