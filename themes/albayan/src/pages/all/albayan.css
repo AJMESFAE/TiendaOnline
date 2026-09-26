@@ -207,3 +207,79 @@ button[data-slot='button'],
   font-weight: 700;
   letter-spacing: 0.05em;
 }
+
+/* ---------- Páginas de contenido (aviso legal, condiciones…) ---------- */
+.albayan-page__hero {
+  border-bottom: 4px solid var(--albayan-gold-500);
+}
+.albayan-page__eyebrow {
+  color: var(--albayan-gold-500);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.albayan-page__nav {
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
+  border-left: 3px solid var(--albayan-gold-500);
+  padding-left: 1rem;
+}
+.albayan-page__nav-title {
+  color: var(--albayan-green-900);
+  font-family: var(--albayan-font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.albayan-page__nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.albayan-page__nav-link {
+  color: var(--albayan-ink-muted);
+  font-size: 0.95rem;
+}
+.albayan-page__nav-link:hover,
+.albayan-page__nav-link[aria-current='page'] {
+  color: var(--albayan-green-700);
+  font-weight: 700;
+}
+.albayan-page__content {
+  max-width: 48rem;
+}
+.albayan-page__content .prose {
+  --tw-prose-body: var(--albayan-ink);
+  --tw-prose-headings: var(--albayan-green-900);
+  --tw-prose-links: var(--albayan-green-700);
+  --tw-prose-bold: var(--albayan-green-900);
+  --tw-prose-bullets: var(--albayan-gold-500);
+  --tw-prose-counters: var(--albayan-gold-500);
+  --tw-prose-quotes: var(--albayan-green-900);
+  --tw-prose-quote-borders: var(--albayan-gold-500);
+  line-height: 1.75;
+}
+.albayan-page__content h2 {
+  font-family: var(--albayan-font-heading);
+  font-size: 1.6rem;
+  margin-top: 2.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--albayan-line);
+}
+.albayan-page__content h3 {
+  font-family: var(--albayan-font-heading);
+  font-size: 1.25rem;
+}
+.albayan-page__content blockquote {
+  background: var(--albayan-cream);
+  border-radius: var(--radius);
+  font-style: normal;
+  padding: 1rem 1.25rem;
+}
+@media (max-width: 767px) {
+  .albayan-page__nav {
+    position: static;
+  }
+}

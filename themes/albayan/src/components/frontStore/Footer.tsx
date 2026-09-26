@@ -1,6 +1,6 @@
 import Area from '@components/common/Area.js';
 import React from 'react';
-import { contact, footerLinks, tagline } from './brand.js';
+import { contact, footerLinks, owner, tagline } from './brand.js';
 
 interface FooterProps {
   copyRight: string;
@@ -30,6 +30,13 @@ export function Footer({ copyRight }: FooterProps) {
             </span>
           </div>
           <p className="albayan-footer__muted mt-3 text-sm leading-relaxed">{tagline}</p>
+          <address className="albayan-footer__muted mt-3 text-xs not-italic leading-relaxed">
+            {owner.name}
+            <br />
+            {owner.address}
+            <br />
+            CIF {owner.taxId}
+          </address>
           <div className="mt-4 flex flex-col gap-1 text-sm">
             {contact.email && (
               <a href={`mailto:${contact.email}`} className="albayan-footer__link">

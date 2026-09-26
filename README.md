@@ -173,7 +173,31 @@ Después, revise en el panel:
   cantidad real;
 - los **precios tachados**: el script avisa si había alguno.
 
-### 2.5 Variables de entorno (App Settings)
+### 2.5 Páginas legales
+
+```bash
+CONTACT_EMAIL=tienda@institutoalbayan.com \
+FOUNDATION_REGISTRY="Registro de Fundaciones de competencia estatal, n.º ..." \
+SHIPPING_COST="4,95 € IVA incluido" SHIPPING_DAYS="2 a 5 días laborables" \
+SHIPPING_PREP_DAYS="24-48 horas laborables" \
+./infra/create-pages.sh
+```
+
+Crea o actualiza cinco páginas: `/aviso-legal`, `/politica-de-privacidad`,
+`/politica-de-cookies`, `/condiciones-de-venta` y `/envios-y-devoluciones`. Las
+direcciones `/page/...` redirigen a ellas. El texto está en `scripts/legal-pages.mjs`
+y sigue la LSSI-CE, el RGPD y la LOPDGDD, y la ley de consumidores (TRLGDCU): titular,
+desistimiento de 14 días con formulario modelo, garantía de 3 años, cookies solo
+técnicas, etc.
+
+Los datos que no se indiquen aparecen como **[COMPLETAR: …]**, y el script los lista al
+terminar. Vuelva a ejecutarlo con esos datos para actualizar las páginas. Es un modelo:
+conviene que lo revise quien lleve los temas legales de la Fundación.
+
+Las páginas usan el diseño del tema (`themes/albayan/src/pages/cmsPageView`): cabecera
+verde y dorada e índice lateral de páginas legales.
+
+### 2.6 Variables de entorno (App Settings)
 
 Las pone `deploy.sh`. Se pueden revisar en *Web App → Configuración → Variables de
 entorno*; al guardar, Azure reinicia la app.
@@ -189,13 +213,13 @@ entorno*; al guardar, Azure reinicia la app.
 
 *Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
 
-### 2.6 Borrar
+### 2.7 Borrar
 
 `./infra/destroy.sh` borra la tienda y pide confirmación. Si comparte plan con
 VillaDelCasar, borra **solo** la Web App, la base de datos y el Storage de la tienda; no
 toca VillaDelCasar ni el plan.
 
-### 2.7 Otras opciones
+### 2.8 Otras opciones
 
 El `Dockerfile` sigue disponible por si en el futuro se prefiere desplegar como contenedor.
 
@@ -261,10 +285,8 @@ Después de cualquier cambio: `npm run build` (o `npm run dev` mientras desarrol
 - [ ] Ajustar los colores y fuentes exactos de institutoalbayan.com en `albayan.css` (ver nota).
 - [ ] Subir el logo oficial y el favicon (*Admin → Configuración → Tienda*).
 - [ ] Rellenar el email y el teléfono de contacto en `brand.ts`.
-- [ ] Crear en *Admin → CMS → Páginas* las páginas legales enlazadas en el pie
-      (`aviso-legal`, `politica-de-privacidad`, `politica-de-cookies`,
-      `condiciones-de-venta`, `envios-y-devoluciones`), obligatorias según la LSSI y la
-      normativa de consumo (derecho de desistimiento de 14 días).
+- [ ] Crear las páginas legales con `./infra/create-pages.sh` (ver §2.5), completar
+      los datos pendientes y revisar el texto.
 - [ ] Configurar zonas y tarifas de envío (*Admin → Configuración → Envíos*) e impuestos
       (IVA; los libros tienen IVA superreducido del 4 %).
 - [ ] Datos del comercio real de Redsys y `REDSYS_ENVIRONMENT=live`.
