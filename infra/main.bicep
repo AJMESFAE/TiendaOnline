@@ -164,6 +164,19 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
   }
 }
 
+// Guarda la salida de la aplicación (consola de EverShop) en /home/LogFiles,
+// para poder verla con `az webapp log tail` o `infra/diagnose.sh`.
+resource appLogs 'Microsoft.Web/sites/config@2023-01-01' = {
+  parent: app
+  name: 'logs'
+  properties: {
+    applicationLogs: { fileSystem: { level: 'Information' } }
+    httpLogs: { fileSystem: { enabled: true, retentionInDays: 7, retentionInMb: 35 } }
+    detailedErrorMessages: { enabled: true }
+    failedRequestsTracing: { enabled: false }
+  }
+}
+
 output appName string = app.name
 output appDefaultHostname string = app.properties.defaultHostName
 output homeUrl string = homeUrl
