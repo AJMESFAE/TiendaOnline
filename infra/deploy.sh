@@ -16,7 +16,8 @@
 #  publica el código actual.
 #
 #  Opciones por variable de entorno (todas opcionales):
-#      RESOURCE_GROUP   (rg-tienda-albayan)   LOCATION (westeurope)
+#      RESOURCE_GROUP   (rg-tienda-albayan)   LOCATION (spaincentral; si no
+#                       admite clientes nuevos se prueban otras regiones)
 #      PREFIX           (albayantienda)       APP_SKU  (B1)
 #      SHARE_PLAN_WITH_APP  nombre de otra Web App (p. ej. villadelcasar) cuyo
 #                       plan se reutiliza en vez de crear uno nuevo
@@ -43,7 +44,7 @@ if [[ -f "$STATE_FILE" ]]; then
 fi
 
 RESOURCE_GROUP="${RESOURCE_GROUP:-rg-tienda-albayan}"
-LOCATION="${LOCATION:-westeurope}"
+LOCATION="${LOCATION:-spaincentral}"
 PREFIX="${PREFIX:-albayantienda}"
 APP_SKU="${APP_SKU:-B1}"
 CUSTOM_DOMAIN="${CUSTOM_DOMAIN:-tienda.institutoalbayan.com}"
@@ -124,24 +125,60 @@ if [[ -n "$SHARE_PLAN_WITH_APP" ]]; then
   echo "Aviso: un plan B1 tiene 1,75 GB de RAM para las dos webs; si va justo, suba a B2."
 fi
 
-if [[ -z "$SHARE_PLAN_WITH_APP" ]]; then
+# El grupo solo guarda metadatos: si ya existe (aunque sea en otra región) se
+# reutiliza; los recursos se crean en la región elegida más abajo.
+if [[ -z "$SHARE_PLAN_WITH_APP" && "$(az group exists -n "$RESOURCE_GROUP")" != "true" ]]; then
   step "Creando el grupo de recursos $RESOURCE_GROUP ($LOCATION)"
   az group create -n "$RESOURCE_GROUP" -l "$LOCATION" -o none
 fi
 
 step "Creando la infraestructura (5-10 minutos la primera vez)"
-DEPLOYMENT="tienda-$(date +%Y%m%d%H%M%S)"
-az deployment group create -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" \
-  -f infra/main.bicep \
-  -p prefix="$PREFIX" appServiceSku="$APP_SKU" existingPlanId="$EXISTING_PLAN_ID" \
-     customDomain="$CUSTOM_DOMAIN" useCustomDomain="$USE_CUSTOM_DOMAIN" \
-     adminEmail="$ADMIN_EMAIL" adminPassword="$ADMIN_PASSWORD" \
-     dbAdminPassword="$DB_PASSWORD" \
-     redsysEnvironment="$REDSYS_ENVIRONMENT" redsysMerchantCode="$REDSYS_MERCHANT_CODE" \
-     redsysTerminal="$REDSYS_TERMINAL" redsysSecretKey="$REDSYS_SECRET_KEY" \
-     smtpHost="$SMTP_HOST" smtpPort="$SMTP_PORT" smtpUser="$SMTP_USER" \
-     smtpPassword="$SMTP_PASSWORD" mailFrom="$MAIL_FROM" \
-  -o none
+# Algunas regiones no admiten clientes nuevos en ciertas suscripciones
+# ("not accepting new customers"). Si pasa, se prueba la siguiente región.
+# Con plan compartido la región es la del plan y no se puede cambiar.
+if [[ -n "$SHARE_PLAN_WITH_APP" ]]; then
+  REGIONS=("$LOCATION")
+else
+  REGIONS=("$LOCATION")
+  for r in ${FALLBACK_LOCATIONS:-spaincentral francecentral northeurope swedencentral germanywestcentral italynorth uksouth}; do
+    [[ "$r" == "$LOCATION" ]] || REGIONS+=("$r")
+  done
+fi
+
+DEPLOYED=""
+ERR_FILE="$(mktemp)"
+for REGION in "${REGIONS[@]}"; do
+  echo "Región: $REGION"
+  DEPLOYMENT="tienda-$(date +%Y%m%d%H%M%S)"
+  if az deployment group create -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" \
+    -f infra/main.bicep \
+    -p location="$REGION" prefix="$PREFIX" appServiceSku="$APP_SKU" existingPlanId="$EXISTING_PLAN_ID" \
+       customDomain="$CUSTOM_DOMAIN" useCustomDomain="$USE_CUSTOM_DOMAIN" \
+       adminEmail="$ADMIN_EMAIL" adminPassword="$ADMIN_PASSWORD" \
+       dbAdminPassword="$DB_PASSWORD" \
+       redsysEnvironment="$REDSYS_ENVIRONMENT" redsysMerchantCode="$REDSYS_MERCHANT_CODE" \
+       redsysTerminal="$REDSYS_TERMINAL" redsysSecretKey="$REDSYS_SECRET_KEY" \
+       smtpHost="$SMTP_HOST" smtpPort="$SMTP_PORT" smtpUser="$SMTP_USER" \
+       smtpPassword="$SMTP_PASSWORD" mailFrom="$MAIL_FROM" \
+    -o none 2>"$ERR_FILE"; then
+    DEPLOYED="$REGION"
+    break
+  fi
+  if grep -qiE "not accepting new customers|RequestDisallowedByAzure|LocationIsOfferRestricted|locationineligible|SkuNotAvailable|NoRegisteredProviderFound|not available in (the )?(location|region)" "$ERR_FILE"; then
+    echo "  La región $REGION no está disponible para esta suscripción; pruebo otra."
+    continue
+  fi
+  cat "$ERR_FILE" >&2
+  fail "El despliegue ha fallado (ver el error de arriba)."
+done
+if [[ -z "$DEPLOYED" ]]; then
+  cat "$ERR_FILE" >&2
+  fail "Ninguna región admite los recursos. Pruebe con FALLBACK_LOCATIONS=\"<regiones>\" o revise las restricciones de la suscripción."
+fi
+rm -f "$ERR_FILE"
+LOCATION="$DEPLOYED"
+sed -i.bak "s|^LOCATION=.*|LOCATION='$LOCATION'|" "$STATE_FILE" && rm -f "$STATE_FILE.bak"
+echo "Infraestructura creada en $LOCATION"
 
 out() { az deployment group show -g "$RESOURCE_GROUP" -n "$DEPLOYMENT" --query "properties.outputs.$1.value" -o tsv; }
 APP_NAME="$(out appName)"

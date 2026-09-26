@@ -104,7 +104,7 @@ Opciones (variables de entorno antes del comando):
 |---|---|
 | `SHARE_PLAN_WITH_APP` | vacío: crea un plan propio |
 | `RESOURCE_GROUP` | `rg-tienda-albayan` |
-| `LOCATION` | `westeurope` (si la suscripción no admite PostgreSQL allí, pruebe `spaincentral` o `northeurope`) |
+| `LOCATION` | `spaincentral`. Si Azure responde que la región «no acepta clientes nuevos», el script prueba solo otras regiones europeas (`FALLBACK_LOCATIONS` para cambiar la lista) |
 | `APP_SKU` | `B1` |
 | `ADMIN_EMAIL` | `admin@institutoalbayan.com` |
 | `REDSYS_ENVIRONMENT`, `REDSYS_MERCHANT_CODE`, `REDSYS_TERMINAL`, `REDSYS_SECRET_KEY` | Entorno **público de pruebas** de Redsys: `test`, `999008881`, `1` y la clave pública |
