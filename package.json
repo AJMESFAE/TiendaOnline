@@ -18,7 +18,7 @@
     "build": "npm run compile && evershop build",
     "start": "evershop start",
     "dev": "evershop dev",
-    "test": "node --test extensions/redsys/tests/*.test.mjs",
+    "test": "node --test extensions/redsys/tests/*.test.mjs extensions/mobile-app/tests/*.test.mjs",
     "user:create": "evershop user:create",
     "user:changePassword": "evershop user:changePassword",
     "seed": "evershop seed"

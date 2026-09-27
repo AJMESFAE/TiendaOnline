@@ -38,7 +38,15 @@
           "cameraPermission": "La app necesita la cámara para fotografiar los artículos."
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#009240",
+          "defaultChannel": "pedidos"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
