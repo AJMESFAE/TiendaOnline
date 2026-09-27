@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Cambia la URL pública de la tienda (EVERSHOP_HOME_URL) a un dominio ya
-# vinculado al App Service, p. ej. devtienda.institutoalbayan.com.
+# vinculado al App Service, p. ej. devtienda.fundacionandalusi.org.
 #
 # EverShop construye con esa URL todos los enlaces absolutos: el formulario de
 # acceso al panel, las llamadas del navegador a la API y las URL de retorno y
@@ -8,10 +8,10 @@
 # el navegador bloquea esas peticiones (p. ej. "Something went wrong" al
 # iniciar sesión en /admin).
 #
-# Uso:  ./infra/set-url.sh devtienda.institutoalbayan.com
+# Uso:  ./infra/set-url.sh devtienda.fundacionandalusi.org
 set -euo pipefail
 cd "$(dirname "$0")/.."
-DOMAIN="${1:?Indique el dominio, p. ej. ./infra/set-url.sh devtienda.institutoalbayan.com}"
+DOMAIN="${1:?Indique el dominio, p. ej. ./infra/set-url.sh devtienda.fundacionandalusi.org}"
 DOMAIN="${DOMAIN#https://}"; DOMAIN="${DOMAIN#http://}"; DOMAIN="${DOMAIN%%/*}"
 STATE_FILE="infra/.deploy.env"
 # shellcheck disable=SC1090

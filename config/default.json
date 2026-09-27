@@ -34,7 +34,7 @@
       "abandonedSchedule": "*/15 * * * *"
     },
     "notification_emails": {
-      "from": "Fundación Andalusí <tienda@institutoalbayan.com>"
+      "from": "Fundación Andalusí <tienda@fundacionandalusi.org>"
     }
   },
   "themeConfig": {

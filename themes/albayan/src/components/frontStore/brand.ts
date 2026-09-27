@@ -13,12 +13,22 @@ export interface NavLink {
   label: string;
   href: string;
   external?: boolean;
+  children?: NavLink[];
 }
 
 /** Menú principal: el mismo que fundacionandalusi.org, con la tienda en local. */
 export const mainNav: NavLink[] = [
   { label: 'Conócenos', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
-  { label: 'Proyectos', href: `${MAIN_SITE_URL}/fundacion-proyectos/`, external: true },
+  {
+    label: 'Proyectos',
+    href: `${MAIN_SITE_URL}/fundacion-proyectos/`,
+    external: true,
+    children: [
+      { label: 'Método Andalusí', href: `${MAIN_SITE_URL}/proyectos/metodo-andalusi/`, external: true },
+      { label: 'Proyecto Al-Waqf', href: `${MAIN_SITE_URL}/proyectos/proyecto-al-waqf/`, external: true },
+      { label: 'Editorial', href: `${MAIN_SITE_URL}/proyectos/editorial/`, external: true }
+    ]
+  },
   { label: 'Actividad', href: `${MAIN_SITE_URL}/actividad/`, external: true },
   { label: 'Blog', href: `${MAIN_SITE_URL}/blogs/`, external: true },
   { label: 'Tienda online', href: '/#productos' },
@@ -59,7 +69,7 @@ export const owner = {
 
 /** Datos de contacto de la tienda. */
 export const contact = {
-  email: 'tienda@institutoalbayan.com',
+  email: 'tienda@fundacionandalusi.org',
   phone: '',
   instagram: 'https://www.instagram.com/fundacion.andalusi/'
 };

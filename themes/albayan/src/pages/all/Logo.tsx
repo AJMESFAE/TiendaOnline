@@ -29,7 +29,7 @@ export default function Logo({ setting }: LogoProps) {
           alt="Fundación Andalusí de España"
           width={custom ? width : 151}
           height={custom ? height : 56}
-          className="h-11 w-auto md:h-14"
+          className="h-auto"
         />
       </a>
     </div>

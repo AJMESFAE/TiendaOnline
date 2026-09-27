@@ -155,54 +155,189 @@ button[data-slot='button'],
   line-height: 1.2;
 }
 
-/* ---------- Cabecera ---------- */
+/* ---------- Cabecera (copiada de fundacionandalusi.org) ---------- */
 .albayan-header {
   background: #fff;
-  box-shadow: 0 1px 0 var(--albayan-line);
+  border-bottom: 1px solid var(--albayan-smoke);
   position: sticky;
   top: 0;
   z-index: 40;
+  font-family: var(--albayan-font);
+}
+.albayan-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1272px;
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.albayan-header .logo img {
+  width: 141px;
+  height: auto;
 }
 .albayan-nav {
-  gap: 1.5rem;
+  display: none;
+  margin-left: auto;
+}
+.albayan-nav__list {
+  display: flex;
   align-items: center;
 }
+.albayan-nav__item {
+  position: relative;
+  margin: 0 10px;
+}
 .albayan-nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 13px 1px;
   color: var(--albayan-ink);
-  font-size: 0.8rem;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  line-height: 20px;
   text-transform: uppercase;
-  transition: color 0.15s;
+  transition: color 0.3s;
 }
-.albayan-nav-mobile__link {
-  color: var(--albayan-ink);
-  font-size: 0.95rem;
-  font-weight: 500;
+/* Subrayado verde de 1 px al pasar el ratón (e--pointer-underline, fade) */
+.albayan-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--albayan-brand);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
-.albayan-nav__link:hover,
-.albayan-nav-mobile__link:hover {
+.albayan-nav__item:hover > .albayan-nav__link,
+.albayan-nav__link:focus-visible {
   color: var(--albayan-brand);
 }
-.albayan-nav-mobile {
+.albayan-nav__item:hover > .albayan-nav__link::after {
+  opacity: 1;
+}
+.albayan-nav__caret {
+  width: 0.72em;
+  height: 1em;
+  fill: currentColor;
+}
+.albayan-nav__sub {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 13rem;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 50;
+}
+.albayan-nav__item.has-children:hover .albayan-nav__sub,
+.albayan-nav__item.has-children:focus-within .albayan-nav__sub {
+  opacity: 1;
+  visibility: visible;
+}
+.albayan-nav__sublink {
+  display: block;
+  padding: 13px 20px;
+  color: var(--albayan-ink);
+  font-size: 15px;
+  line-height: 20px;
+}
+.albayan-nav__sublink:hover,
+.albayan-nav__sublink:focus {
+  background: var(--albayan-brand);
+  color: #fff;
+}
+.albayan-header__actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+/* Botón «DONAR»: Inter 500, 16 px de radio, 16 × 25 px, icono de flecha */
+.albayan-donar {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  background: var(--albayan-brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 16px 25px;
+  transition: background 0.3s;
+}
+.albayan-donar:hover,
+.albayan-donar:focus {
+  background: #037836;
+  color: #fff;
+}
+.albayan-donar__icon {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
 }
 .albayan-menu-toggle {
   color: var(--albayan-ink);
   padding: 0.25rem;
 }
-.albayan-header__donar {
-  display: none;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.7rem 1.2rem;
+.albayan-nav-mobile {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--albayan-smoke);
+  padding-bottom: 0.5rem;
+}
+.albayan-nav-mobile__link {
+  padding: 13px 20px;
+  color: var(--albayan-ink);
+  font-size: 15px;
+  font-weight: 500;
+}
+.albayan-nav-mobile__link--sub {
+  padding-left: 40px;
+  font-weight: 400;
+}
+.albayan-nav-mobile__link:hover {
+  background: var(--albayan-brand);
+  color: #fff;
 }
 @media (min-width: 768px) {
-  .albayan-header__donar {
+  .albayan-donar {
     display: inline-flex;
+  }
+  .albayan-header .logo img {
+    width: 148px;
+  }
+}
+@media (min-width: 1025px) {
+  .albayan-header__inner {
+    min-height: 88px;
+    gap: 1.25rem;
+  }
+  .albayan-nav {
+    display: block;
+  }
+  .albayan-header__inner {
+    padding: 10px 16px;
+  }
+  .albayan-header__actions {
+    margin-left: 0;
+  }
+  .albayan-donar {
+    margin-right: 10px;
+  }
+  .albayan-menu-toggle,
+  .albayan-nav-mobile {
+    display: none;
   }
 }
 

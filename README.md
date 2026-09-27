@@ -155,8 +155,8 @@ forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
    crea el certificado HTTPS gratuito de Azure y cambia la URL de la tienda, que Redsys
    usa para las URL de retorno y de notificación.
 
-**Si el dominio se vinculó a mano** (por ejemplo `devtienda.institutoalbayan.com` desde el
-portal), ejecute `./infra/set-url.sh devtienda.institutoalbayan.com`. EverShop construye
+**Si el dominio se vinculó a mano** (por ejemplo `devtienda.fundacionandalusi.org` desde el
+portal), ejecute `./infra/set-url.sh devtienda.fundacionandalusi.org`. EverShop construye
 todos los enlaces absolutos con `EVERSHOP_HOME_URL`: el acceso al panel, las llamadas a la
 API y las URL de Redsys. Si no coincide con el dominio por el que se entra, el panel
 muestra *«Something went wrong! Please try again.»* al iniciar sesión y los pagos no
@@ -194,7 +194,7 @@ Después, revise en el panel:
 ### 2.5 Páginas legales
 
 ```bash
-CONTACT_EMAIL=tienda@institutoalbayan.com \
+CONTACT_EMAIL=tienda@fundacionandalusi.org \
 FOUNDATION_REGISTRY="Registro de Fundaciones de competencia estatal, n.º ..." \
 SHIPPING_COST="4,95 € IVA incluido" SHIPPING_DAYS="2 a 5 días laborables" \
 SHIPPING_PREP_DAYS="24-48 horas laborables" \

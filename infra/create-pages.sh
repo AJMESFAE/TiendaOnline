@@ -4,7 +4,7 @@
 # Condiciones de venta y Envíos y devoluciones (scripts/legal-pages.mjs).
 #
 # Uso (los datos pendientes se pueden pasar como variables):
-#   CONTACT_EMAIL=tienda@institutoalbayan.com \
+#   CONTACT_EMAIL=tienda@fundacionandalusi.org \
 #   FOUNDATION_REGISTRY="Registro de Fundaciones ..., n.º ..." \
 #   SHIPPING_COST="4,95 € IVA incluido" SHIPPING_DAYS="2 a 5 días laborables" \
 #   SHIPPING_PREP_DAYS="24-48 horas laborables" \

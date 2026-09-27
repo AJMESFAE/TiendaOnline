@@ -44,7 +44,7 @@ param smtpPort string = '587'
 param smtpUser string = ''
 @secure()
 param smtpPassword string = ''
-param mailFrom string = 'Fundación Andalusí <tienda@institutoalbayan.com>'
+param mailFrom string = 'Fundación Andalusí <tienda@fundacionandalusi.org>'
 
 var suffix = uniqueString(resourceGroup().id)
 var pgName = '${prefix}-pg-${suffix}'

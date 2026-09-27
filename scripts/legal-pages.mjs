@@ -21,7 +21,7 @@ export function buildLegalPages(opts = {}) {
     owner: 'Fundación Método Andalusí de España',
     taxId: 'G42979898',
     address: 'Calle Anastasio Herrero 5, 28020 Madrid',
-    email: opts.email || 'tienda@institutoalbayan.com',
+    email: opts.email || 'tienda@fundacionandalusi.org',
     phone: opts.phone || '',
     registry:
       opts.registry ||
