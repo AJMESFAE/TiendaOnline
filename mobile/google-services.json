@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840576424258",
+    "project_id": "tienda-92498",
+    "storage_bucket": "tienda-92498.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840576424258:android:db77f64fb172a52094d0db",
+        "android_client_info": {
+          "package_name": "org.fundacionandalusi.tienda.gestion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHECIlDMzvKSDkK-4WtdwqIj6RxLDC_-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
