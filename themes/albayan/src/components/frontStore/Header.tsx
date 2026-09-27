@@ -17,9 +17,10 @@ const Arrow = () => (
 /**
  * Cabecera copiada de fundacionandalusi.org: fondo blanco con línea inferior,
  * logotipo a la izquierda y, a la derecha, el menú en mayúsculas (Inter 14px)
- * con el desplegable de «Proyectos» y el botón verde «DONAR». La tienda añade
- * búsqueda, cuenta y carrito (áreas de EverShop). En móvil, como en la web de
- * la Fundación, el botón de menú va a la derecha y «DONAR» se oculta.
+ * con el desplegable de «Proyectos» y el botón verde «DONAR». En móvil, como
+ * en la web de la Fundación, el botón de menú va a la derecha y «DONAR» se
+ * oculta. Búsqueda, cuenta y carrito van en una barra flotante (abajo a la
+ * derecha) para no añadir nada a la cabecera.
  */
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -63,12 +64,6 @@ export function Header() {
           editableInPageBuilder
         />
         <div className="albayan-header__actions">
-          <Area
-            id="headerMiddleRight"
-            className="header__middle__right flex items-center gap-1"
-            isGlobal
-            editableInPageBuilder
-          />
           <a href={DONATE_URL} className="albayan-donar">
             <span>DONAR</span>
             <Arrow />
@@ -106,6 +101,14 @@ export function Header() {
         </nav>
       )}
       <Area id="headerBottom" className="header__bottom" isGlobal editableInPageBuilder />
+      {/* Búsqueda, cuenta y carrito de EverShop: fuera de la cabecera, en una
+          barra flotante, para que la cabecera sea idéntica a la de la Fundación. */}
+      <Area
+        id="headerMiddleRight"
+        className="header__middle__right albayan-shopbar"
+        isGlobal
+        editableInPageBuilder
+      />
     </header>
   );
 }
