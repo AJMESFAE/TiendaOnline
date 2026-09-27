@@ -1,0 +1,11 @@
+{
+  "name": "evershop-mobile-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ajustes de la API de administración para la app móvil de gestión (mobile/)",
+  "license": "GPL-3.0",
+  "scripts": {
+    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc"
+  }
+}

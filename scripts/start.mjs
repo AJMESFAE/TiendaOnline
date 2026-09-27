@@ -9,11 +9,25 @@
 //      Shopify actual (scripts/import-shopify.mjs). Desactivar con
 //      SHOPIFY_IMPORT=false.
 import { spawn } from 'node:child_process';
+import { createHmac } from 'node:crypto';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import pg from 'pg';
 
 const port = process.env.PORT || '3000';
+
+// Secretos JWT del panel: la app móvil (mobile/) inicia sesión con
+// POST /api/user/tokens, que los necesita. Si no están definidos en las App
+// Settings, se derivan de DB_PASSWORD: son estables entre reinicios y no hay
+// que guardar otro secreto.
+for (const [name, label] of [
+  ['JWT_ADMIN_SECRET', 'jwt-admin'],
+  ['JWT_ADMIN_REFRESH_SECRET', 'jwt-admin-refresh']
+]) {
+  if (!process.env[name] && process.env.DB_PASSWORD) {
+    process.env[name] = createHmac('sha256', process.env.DB_PASSWORD).update(label).digest('hex');
+  }
+}
 // Se lanza el CLI con `node` directamente (no con npx): npx no reenvía SIGTERM
 // y, al reiniciar el App Service, dejaría procesos huérfanos.
 const require = createRequire(import.meta.url);
