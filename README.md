@@ -312,10 +312,16 @@ enviar el email de confirmación:
 
 Los pedidos de **0 €** no se facturan: se envía el email de confirmación sin adjunto.
 
+Con el pago de Redsys confirmado, el **cobro se registra en Odoo** en el diario *Tarjeta*
+(asistente «Registrar pago»), y el PDF adjunto es el oficial con el informe *PDF without
+Payment* (dice «Factura», no «Factura proforma»); se genera como «Enviar e imprimir» de Odoo,
+sin que Odoo envíe ningún correo. Si una factura se borra en Odoo, al reenviar la confirmación
+se emite una nueva.
+
 Si Odoo no responde, el email se envía igualmente sin factura y el error queda en el log;
 la factura se puede crear después a mano en Odoo. En una **devolución** desde el panel
 (botón Redsys) se crea la factura rectificativa (`out_refund`) por el importe devuelto.
-El cobro no se registra en Odoo (lo hace Redsys); concílielo desde el extracto bancario.
+La devolución también se registra como pago de la rectificativa en el diario *Tarjeta*.
 
 **Configuración** (App Settings de la Web App, *Configuración → Variables de entorno*):
 
@@ -326,8 +332,9 @@ El cobro no se registra en Odoo (lo hace Redsys); concílielo desde el extracto 
 | `ODOO_PRODUCT_ID` | ID del producto de Odoo con el que se facturan las ventas (p. ej. «Venta tienda online», con el impuesto *IVA 4 % incluido en el precio* para libros) |
 | `ODOO_SHIPPING_PRODUCT_ID` | Opcional: producto para la línea de envío (por defecto, `ODOO_PRODUCT_ID`) |
 | `ODOO_JOURNAL_ID` | Opcional: diario de ventas (por defecto, el de Odoo) |
+| `ODOO_PAYMENT_JOURNAL_ID` | Diario donde se registra el cobro con tarjeta de Redsys (`16`, *Tarjeta*). Por defecto se busca el diario llamado «Tarjeta»; `ODOO_PAYMENT=false` no registra cobros |
 | `ODOO_DB` | Opcional: base de datos de Odoo (`fundacionandalusi`); se envía en la cabecera `X-Odoo-Database`. `ODOO_USERNAME` no hace falta: la clave de API ya identifica al usuario |
-| `ODOO_TAX_IDS` | Impuesto de Odoo para cada tipo de IVA de la tienda, p. ej. `4:12,21:1` (IVA 4 % → impuesto con id 12; IVA 21 % → id 1). Los ids se ven en *Contabilidad → Configuración → Impuestos* (abra el impuesto: el número está en la URL). Deben ser impuestos «incluidos en el precio». Con esta variable cada línea lleva su IVA y el envío se reparte por tipo; sin ella, todas las líneas usan el impuesto del producto de Odoo |
+| `ODOO_TAX_IDS` | Impuesto de Odoo para cada tipo de IVA de la tienda, p. ej. `4:12,21:1` (IVA 4 % → impuesto con id 12; IVA 21 % → id 1). Los ids se ven en *Contabilidad → Configuración → Impuestos* (abra el impuesto: el número está en la URL). Deben ser impuestos «incluidos en el precio». Con esta variable cada línea lleva su IVA (el envío, el 21 %); sin ella, todas las líneas usan el impuesto del producto de Odoo |
 
 Los precios de la tienda llevan el IVA incluido, así que los impuestos de Odoo deben estar
 marcados como *Incluido en el precio*. Como la tienda vende con dos tipos de IVA (4 % y 21 %),
@@ -350,7 +357,11 @@ El IVA depende de cada producto:
 | IVA general 21 % (juguetes y otros) | 21 % | Juguetes, láminas y el resto (*Alifato*) |
 
 - Los precios publicados y el envío **llevan el IVA incluido**.
-- El envío tributa en proporción al IVA de los productos del carrito (4 % si solo hay libros).
+- El envío tributa siempre al **21 %**.
+- **Envío**: 4,95 € y **gratis a partir de 30 €** (importe con IVA de los productos). Lo
+  configura `scripts/shipping-settings.mjs` (mismos argumentos que `tax-settings.mjs`); se
+  edita en *Admin → Configuración → Envíos*. La extensión `extensions/tienda` hace que la tabla
+  por importe se compare con el subtotal con IVA, que es el que ve el cliente.
 - Se calcula con la dirección de envío. Canarias, Ceuta y Melilla no llevan IVA.
 - Los productos nuevos se crean con el 21 %: al dar de alta un **libro**, elija
   *IVA superreducido 4 % (libros)* en *Clase de impuestos* de su ficha.
@@ -364,7 +375,15 @@ node scripts/tax-settings.mjs --to https://devtienda.fundacionandalusi.org \
 
 Se revisa en *Admin → Configuración → Impuestos*.
 
-### 4.2 Correos
+### 4.2 Pago no completado
+
+Si el cliente cancela en el TPV, el pago se deniega o vuelve a la tienda sin pagar (botón
+«atrás», pestaña cerrada), el pedido se **cancela** (se repone el stock y no se factura) y el
+cliente **vuelve al carrito** con sus productos y un aviso de que no se ha hecho ningún cargo.
+Los pedidos que se quedan a medias sin que el cliente vuelva los cancela el cron cada 15 minutos
+pasadas 3 horas.
+
+### 4.3 Correos
 
 Los correos a los clientes (confirmación del pedido, bienvenida, cambio de contraseña, pedido
 enviado y entregado) están en español y con la imagen de la Fundación: plantillas

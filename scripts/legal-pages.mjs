@@ -30,7 +30,7 @@ export function buildLegalPages(opts = {}) {
     shippingDays: opts.shippingDays || '2 a 5 días laborables',
     prepDays: opts.prepDays || '24-48 horas laborables',
     shippingCost: opts.shippingCost || '4,95 € (IVA incluido)',
-    freeShippingFrom: opts.freeShippingFrom || '',
+    freeShippingFrom: opts.freeShippingFrom || '30 € (IVA incluido)',
     updated: opts.updated || new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
   };
   const emailLink = o.email.startsWith('<b>') ? o.email : `<a href="mailto:${o.email}">${o.email}</a>`;

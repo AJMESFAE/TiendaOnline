@@ -78,11 +78,15 @@
     <td style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;color:#5b6573;">Descuento</td>
     <td align="right" style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:500;color:#3c3c3b;">−{{currency order.discount_amount}}</td>
   </tr>{{/if}}
-  
+  {{#if order.shipping_fee_incl_tax}}
   <tr>
     <td style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;color:#5b6573;">Envío</td>
     <td align="right" style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:500;color:#3c3c3b;">{{currency order.shipping_fee_incl_tax}}</td>
-  </tr>
+  </tr>{{else}}
+  <tr>
+    <td style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;color:#5b6573;">Envío</td>
+    <td align="right" style="padding:4px 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:500;color:#3c3c3b;">Gratis</td>
+  </tr>{{/if}}
   
   <tr>
     <td style="padding:12px 0 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:17px;font-weight:700;color:#3c3c3b;border-top:1px solid #e2e2e2;">Total</td>

@@ -192,7 +192,7 @@ ${itemsTable('order.items', true)}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
   ${totalRow('Subtotal', '{{currency order.sub_total_incl_tax}}')}
   {{#if order.discount_amount}}${totalRow('Descuento', '−{{currency order.discount_amount}}')}{{/if}}
-  ${totalRow('Envío', '{{currency order.shipping_fee_incl_tax}}')}
+  {{#if order.shipping_fee_incl_tax}}${totalRow('Envío', '{{currency order.shipping_fee_incl_tax}}')}{{else}}${totalRow('Envío', 'Gratis')}{{/if}}
   ${totalRow('Total', '{{currency order.grand_total}}', true)}
   <tr><td colspan="2" align="right" style="padding-top:6px;font-family:${FONT};font-size:12px;color:${C.soft};">IVA incluido: {{currency order.total_tax_amount}}</td></tr>
 </table>

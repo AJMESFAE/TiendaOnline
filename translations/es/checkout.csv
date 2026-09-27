@@ -52,3 +52,4 @@ No payment required,No se requiere pago
 Your order total is 0 — no payment is needed to place this order.,El total de tu pedido es 0 — no se necesita ningún pago para realizarlo.
 Thank you for your order!,¡Gracias por tu pedido!
 Order #${orderNumber} is confirmed. We’ve emailed a receipt to ${email}.,El pedido n.º ${orderNumber} está confirmado. Hemos enviado un recibo a ${email}.
+is confirmed. We’ve emailed a receipt to ${email}.,está confirmado. Te hemos enviado la confirmación a ${email}.

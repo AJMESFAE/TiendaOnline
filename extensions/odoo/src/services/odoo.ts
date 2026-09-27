@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { insert, select } from '@evershop/postgres-query-builder';
+import { del, insert, select } from '@evershop/postgres-query-builder';
 import { error, info, warning } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
 import { addOrderActivityLog } from '@evershop/evershop/oms/services';
@@ -37,6 +37,9 @@ import { addOrderActivityLog } from '@evershop/evershop/oms/services';
  *                            por defecto, el mismo ODOO_PRODUCT_ID)
  *   ODOO_JOURNAL_ID          diario de ventas (opcional; por defecto el de Odoo)
  *   ODOO_DB                  base de datos de Odoo (opcional; cabecera X-Odoo-Database)
+ *   ODOO_PAYMENT_JOURNAL_ID  diario donde se registra el cobro con tarjeta de Redsys
+ *                            (opcional; por defecto, el diario llamado «Tarjeta»).
+ *                            ODOO_PAYMENT=false no registra cobros.
  *   ODOO_TAX_IDS             impuesto de Odoo para cada tipo de IVA de la tienda,
  *                            p. ej. "4:12,21:1" (IVA 4 % → impuesto 12, IVA 21 %
  *                            → impuesto 1). Deben ser impuestos «incluidos en el
@@ -50,6 +53,8 @@ type OdooConfig = {
   productId: number;
   shippingProductId: number;
   journalId: number | null;
+  /** Diario del cobro con tarjeta (Redsys); null = buscar el diario «Tarjeta». */
+  paymentJournalId: number | null;
   db: string | null;
   /** Tipo de IVA de la tienda (4, 21…) → id del impuesto en Odoo. */
   taxIds: Map<number, number>;
@@ -87,6 +92,7 @@ export function getOdooConfig(): OdooConfig | null {
     productId,
     shippingProductId: num(process.env.ODOO_SHIPPING_PRODUCT_ID) ?? productId,
     journalId: num(process.env.ODOO_JOURNAL_ID),
+    paymentJournalId: num(process.env.ODOO_PAYMENT_JOURNAL_ID),
     db: process.env.ODOO_DB?.trim() || null,
     taxIds: parseTaxIds(process.env.ODOO_TAX_IDS)
   };
@@ -202,9 +208,20 @@ function taxFields(config: OdooConfig, rate: number): Record<string, unknown> {
 }
 
 /**
- * Líneas de la factura: artículos (cada uno con su IVA), envío repartido por tipo
- * de IVA en la misma proporción que la tienda (base imponible de los artículos) y
- * un ajuste final para cuadrar con lo cobrado.
+ * IVA del envío tal como lo cobró la tienda (21 %; 0 % en Canarias, Ceuta y
+ * Melilla), redondeado al tipo más cercano de los habituales en España.
+ */
+function shippingRate(order: any): number {
+  const base = Number(order.shipping_fee_excl_tax || 0);
+  const tax = Number(order.shipping_tax_amount || 0);
+  if (!(base > 0)) return 0;
+  const rate = (tax / base) * 100;
+  return [0, 4, 10, 21].reduce((best, r) => (Math.abs(r - rate) < Math.abs(best - rate) ? r : best), 0);
+}
+
+/**
+ * Líneas de la factura: artículos (cada uno con su IVA), envío (con el IVA que
+ * cobró la tienda, el 21 %) y un ajuste final para cuadrar con lo cobrado.
  */
 export function buildInvoiceLines(order: any, items: any[], config: OdooConfig) {
   const lines: Array<Record<string, unknown>> = [];
@@ -229,38 +246,13 @@ export function buildInvoiceLines(order: any, items: any[], config: OdooConfig) 
   const shipping = round2(Number(order.shipping_fee_incl_tax || 0));
   if (shipping > 0) {
     sum += shipping;
-    const rates = [...baseByRate.keys()].sort((x, y) => y - x);
-    const totalBase = [...baseByRate.values()].reduce((x, y) => x + y, 0);
-    if (config.taxIds.size === 0 || rates.length <= 1 || !(totalBase > 0)) {
-      lines.push({
-        product_id: config.shippingProductId,
-        name: 'Gastos de envío',
-        quantity: 1,
-        price_unit: shipping,
-        ...taxFields(config, rates[0] ?? 0)
-      });
-    } else {
-      // Envío con varios tipos de IVA: la base del envío (sin IVA, como la calcula la
-      // tienda) se reparte en proporción a la base de los artículos y cada parte
-      // lleva su IVA; la última línea se lleva el redondeo.
-      const shippingBase = Number(order.shipping_fee_excl_tax ?? shipping / (1 + Number(order.shipping_tax_amount || 0) / shipping));
-      let assigned = 0;
-      rates.forEach((rate, i) => {
-        const part =
-          i === rates.length - 1
-            ? round2(shipping - assigned)
-            : round2(((shippingBase * baseByRate.get(rate)!) / totalBase) * (1 + rate / 100));
-        assigned = round2(assigned + part);
-        if (part === 0) return;
-        lines.push({
-          product_id: config.shippingProductId,
-          name: `Gastos de envío (IVA ${rate} %)`,
-          quantity: 1,
-          price_unit: part,
-          ...taxFields(config, rate)
-        });
-      });
-    }
+    lines.push({
+      product_id: config.shippingProductId,
+      name: 'Gastos de envío',
+      quantity: 1,
+      price_unit: shipping,
+      ...taxFields(config, shippingRate(order))
+    });
   }
   // Descuentos de pedido o redondeos: la factura debe sumar lo cobrado.
   const diff = round2(Number(order.grand_total) - sum);
@@ -301,7 +293,74 @@ function buildRefundLines(order: any, items: any[], config: OdooConfig, amount: 
   return lines;
 }
 
+/** Informe de Odoo «PDF without Payment» (factura sin pagos): el que se adjunta. */
+const INVOICE_REPORT = 'account.report_invoice';
+
+/**
+ * PDF oficial de la factura, como «Enviar e imprimir» de Odoo con el informe
+ * «PDF without Payment»: el asistente account.move.send.wizard lo genera y lo
+ * guarda en la factura (invoice_pdf_report_id), sin enviar ningún correo desde
+ * Odoo. Así el PDF dice «Factura» y no «Factura proforma» (la vista previa del
+ * portal, que Odoo usa mientras no existe el PDF oficial). Si el asistente falla,
+ * se descarga la vista previa del portal para no dejar el correo sin factura.
+ */
 async function fetchInvoicePdf(config: OdooConfig, invoiceId: number): Promise<Buffer> {
+  try {
+    const official = await officialInvoicePdf(config, invoiceId);
+    if (official) return official;
+  } catch (e) {
+    warning(`[odoo] No se pudo generar el PDF oficial de la factura ${invoiceId}: ${e.message}. Se adjunta la vista previa.`);
+  }
+  return portalInvoicePdf(config, invoiceId);
+}
+
+async function readAttachment(config: OdooConfig, attachmentId: number): Promise<Buffer | null> {
+  const [att] = await callOdoo<{ datas?: string }[]>(config, 'ir.attachment', 'read', {
+    ids: [attachmentId],
+    fields: ['datas']
+  });
+  return att?.datas ? Buffer.from(att.datas, 'base64') : null;
+}
+
+async function officialInvoicePdf(config: OdooConfig, invoiceId: number): Promise<Buffer | null> {
+  const pdfField = async () =>
+    (
+      await callOdoo<{ invoice_pdf_report_id: [number, string] | false }[]>(config, 'account.move', 'read', {
+        ids: [invoiceId],
+        fields: ['invoice_pdf_report_id']
+      })
+    )[0]?.invoice_pdf_report_id;
+  // Ya generado (p. ej. al reenviar el correo): se reutiliza.
+  const existing = await pdfField();
+  if (existing) return readAttachment(config, existing[0]);
+
+  const [report] = await callOdoo<{ id: number }[]>(config, 'ir.actions.report', 'search_read', {
+    domain: [['report_name', '=', INVOICE_REPORT], ['model', '=', 'account.move']],
+    fields: ['id'],
+    limit: 1
+  });
+  const context = { active_model: 'account.move', active_ids: [invoiceId], active_id: invoiceId };
+  const [wizardId] = await callOdoo<number[]>(config, 'account.move.send.wizard', 'create', {
+    vals_list: [{ move_id: invoiceId, sending_methods: [], ...(report ? { pdf_report_id: report.id } : {}) }],
+    context
+  });
+  // Seguridad: el asistente no debe enviar el correo de Odoo al cliente (lo envía la tienda).
+  const [wizard] = await callOdoo<{ sending_methods: unknown }[]>(config, 'account.move.send.wizard', 'read', {
+    ids: [wizardId],
+    fields: ['sending_methods'],
+    context
+  });
+  const methods = Array.isArray(wizard?.sending_methods) ? wizard.sending_methods : [];
+  if (methods.length > 0) {
+    await callOdoo(config, 'account.move.send.wizard', 'unlink', { ids: [wizardId] }).catch(() => {});
+    throw new Error(`el asistente de envío quería enviar por ${methods.join(', ')}`);
+  }
+  await callOdoo(config, 'account.move.send.wizard', 'action_send_and_print', { ids: [wizardId], context });
+  const generated = await pdfField();
+  return generated ? readAttachment(config, generated[0]) : null;
+}
+
+async function portalInvoicePdf(config: OdooConfig, invoiceId: number): Promise<Buffer> {
   const accessToken = randomUUID();
   await callOdoo(config, 'account.move', 'write', { ids: [invoiceId], vals: { access_token: accessToken } });
   const res = await fetch(
@@ -337,6 +396,66 @@ const pdfName = (name: string | null, fallback: string | number) =>
  * Factura de un pedido pagado. Idempotente: si el pedido ya tiene factura
  * (tabla odoo_invoice) solo vuelve a descargar su PDF. Nunca lanza.
  */
+/** Pedido cobrado por Redsys (el pago ya está confirmado cuando se factura). */
+function isPaidByCard(order: any): boolean {
+  return order.payment_method === 'redsys' && /captured|paid/.test(String(order.payment_status || ''));
+}
+
+async function paymentJournal(config: OdooConfig): Promise<number | null> {
+  if (config.paymentJournalId) return config.paymentJournalId;
+  const [journal] = await callOdoo<{ id: number }[]>(config, 'account.journal', 'search_read', {
+    domain: [['name', '=ilike', 'tarjeta'], ['type', 'in', ['bank', 'cash', 'credit']]],
+    fields: ['id'],
+    limit: 1
+  });
+  return journal?.id ?? null;
+}
+
+/**
+ * Registra en Odoo el cobro (o la devolución) con tarjeta de una factura o
+ * rectificativa, con el asistente «Registrar pago» en el diario de Tarjeta.
+ * No hace nada si ya está pagada. Nunca lanza error: lo deja en el historial.
+ */
+async function registerCardPayment(config: OdooConfig, orderId: number, moveId: number, reference: string) {
+  if (process.env.ODOO_PAYMENT === 'false') return;
+  try {
+    const [move] = await callOdoo<{ payment_state: string; amount_residual: number; name: string }[]>(
+      config,
+      'account.move',
+      'read',
+      { ids: [moveId], fields: ['payment_state', 'amount_residual', 'name'] }
+    );
+    if (!move || !(move.amount_residual > 0) || ['paid', 'in_payment', 'reversed'].includes(move.payment_state)) return;
+    const journalId = await paymentJournal(config);
+    if (!journalId) {
+      warning('[odoo] No hay diario «Tarjeta» (ni ODOO_PAYMENT_JOURNAL_ID): no se registra el cobro');
+      return;
+    }
+    const context = { active_model: 'account.move', active_ids: [moveId], active_id: moveId };
+    const [wizardId] = await callOdoo<number[]>(config, 'account.payment.register', 'create', {
+      vals_list: [
+        {
+          journal_id: journalId,
+          payment_date: new Date().toISOString().slice(0, 10),
+          amount: move.amount_residual,
+          communication: reference
+        }
+      ],
+      context
+    });
+    await callOdoo(config, 'account.payment.register', 'action_create_payments', { ids: [wizardId], context });
+    await addOrderActivityLog(orderId, `Cobro con tarjeta de ${move.name} registrado en Odoo`, false, pool as any);
+    info(`[odoo] Cobro registrado en el diario ${journalId} para ${move.name}`);
+  } catch (e) {
+    error(`[odoo] No se pudo registrar el cobro de la factura ${moveId}: ${e.message}`);
+    try {
+      await addOrderActivityLog(orderId, `No se pudo registrar el cobro en Odoo: ${e.message}`.slice(0, 500), false, pool as any);
+    } catch {
+      // sin historial
+    }
+  }
+}
+
 export async function getOrCreateOrderInvoice(orderId: number): Promise<InvoicePdf | null> {
   const config = getOdooConfig();
   if (!config) return null;
@@ -354,7 +473,15 @@ export async function getOrCreateOrderInvoice(orderId: number): Promise<InvoiceP
       .where('order_id', '=', orderId)
       .and('move_type', '=', 'out_invoice')
       .load(pool);
-    if (existing) {
+    // Si la factura se borró en Odoo, se olvida y se emite una nueva.
+    const alive =
+      existing &&
+      (await callOdoo<number>(config, 'account.move', 'search_count', { domain: [['id', '=', existing.invoice_id]] })) > 0;
+    if (existing && !alive) {
+      warning(`[odoo] La factura ${existing.invoice_name ?? existing.invoice_id} del pedido ${order.order_number} ya no existe en Odoo: se emite una nueva`);
+      await del('odoo_invoice').where('odoo_invoice_id', '=', existing.odoo_invoice_id).execute(pool);
+    }
+    if (existing && alive) {
       const content = await fetchInvoicePdf(config, existing.invoice_id);
       return {
         filename: pdfName(existing.invoice_name, order.order_number),
@@ -397,6 +524,9 @@ export async function getOrCreateOrderInvoice(orderId: number): Promise<InvoiceP
       .execute(pool);
     await addOrderActivityLog(orderId, `Factura ${name ?? invoiceId} generada en Odoo`, false, pool as any);
     info(`[odoo] Factura ${name ?? invoiceId} creada para el pedido ${order.order_number}`);
+    if (isPaidByCard(order)) {
+      await registerCardPayment(config, orderId, invoiceId, `Redsys · pedido ${order.order_number}`);
+    }
 
     const content = await fetchInvoicePdf(config, invoiceId);
     return { filename: pdfName(name, order.order_number), content, invoiceId, invoiceName: name };
@@ -452,6 +582,10 @@ export async function createRectifyingInvoice(orderId: number, amount: number): 
       .given({ order_id: orderId, move_type: 'out_refund', invoice_id: refundId, invoice_name: name, amount })
       .execute(pool);
     await addOrderActivityLog(orderId, `Factura rectificativa ${name ?? refundId} generada en Odoo (${amount.toFixed(2)} €)`, false, pool as any);
+    // La devolución se hizo por Redsys a la misma tarjeta: se registra el pago de la rectificativa.
+    if (order?.payment_method === 'redsys') {
+      await registerCardPayment(config, orderId, refundId, `Devolución Redsys · pedido ${order.order_number}`);
+    }
     return refundId;
   } catch (e) {
     error(`[odoo] No se pudo generar la factura rectificativa del pedido ${orderId}: ${e.message}`);

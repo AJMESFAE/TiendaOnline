@@ -1,14 +1,14 @@
-import { select, update } from '@evershop/postgres-query-builder';
+import { select } from '@evershop/postgres-query-builder';
 import { error } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
 import { buildUrl } from '@evershop/evershop/lib/router';
-import { cancelOrder } from '@evershop/evershop/oms/services';
 import { processRedsysResponse } from '../../../services/processRedsysResponse.js';
+import { cancelAndRestoreCart } from '../../../services/restorePendingCart.js';
 
 /**
  * URL KO: el pago se ha denegado o el cliente lo ha cancelado en el TPV.
- * Se cancela el pedido (reponiendo stock) y se reactiva el carrito para que el
- * cliente pueda volver a intentarlo desde el checkout.
+ * Se cancela el pedido (reponiendo stock, sin factura) y se reactiva el carrito:
+ * el cliente vuelve al carrito con sus productos para intentarlo de nuevo.
  */
 export default async (request, response, next) => {
   const { order_id } = request.params;
@@ -40,17 +40,6 @@ export default async (request, response, next) => {
     response.redirect(302, `${buildUrl('checkoutSuccess')}/${order_id}`);
     return;
   }
-  if (['pending', 'redsys_failed'].includes(order.payment_status)) {
-    try {
-      await cancelOrder(order.uuid, 'Pago no completado en Redsys');
-    } catch (e) {
-      // El cron de pedidos abandonados lo reintentará.
-      error(e);
-    }
-    await update('cart')
-      .given({ status: 1 })
-      .where('cart_id', '=', order.cart_id)
-      .execute(pool);
-  }
-  response.redirect(302, `${buildUrl('checkout')}?payment=failed`);
+  await cancelAndRestoreCart(order, 'Pago no completado en Redsys');
+  response.redirect(302, `${buildUrl('cart')}?payment=failed`);
 };

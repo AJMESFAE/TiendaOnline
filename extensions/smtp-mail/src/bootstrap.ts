@@ -1,6 +1,5 @@
 import { registerEmailService } from '@evershop/evershop/lib/mail/emailHelper';
 import { info, warning } from '@evershop/evershop/lib/log';
-import { addProcessor } from '@evershop/evershop/lib/util/registry';
 import nodemailer from 'nodemailer';
 
 /**
@@ -13,13 +12,6 @@ import nodemailer from 'nodemailer';
  * Sin SMTP_HOST no se registra ningún servicio y EverShop omite los emails.
  */
 export default () => {
-  // Plantilla emails/order-confirmation.html: el descuento llega como texto
-  // ("0.0000"), que Handlebars da por verdadero en {{#if}}; como número, 0 oculta la línea.
-  addProcessor('orderConfirmationEmailData', (data: any) => {
-    if (data?.order) data.order.discount_amount = Number(data.order.discount_amount) || 0;
-    return data;
-  });
-
   const host = process.env.SMTP_HOST;
   if (!host) {
     warning('SMTP_HOST no definido: los emails de la tienda no se enviarán.');

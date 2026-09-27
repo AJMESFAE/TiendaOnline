@@ -4,8 +4,7 @@
 //   · «IVA general 21 % (juguetes y otros)» → juguetes, láminas y resto de productos
 //
 // Los precios publicados y el envío ya llevan el IVA incluido
-// (priceIncludingTax = 1). El envío tributa en proporción al IVA de los
-// productos del carrito (4 % si solo hay libros; mezcla si hay de los dos).
+// (priceIncludingTax = 1). El envío tributa siempre al 21 % (clase general).
 // El IVA se calcula con la dirección de envío. Canarias, Ceuta y Melilla no
 // llevan IVA (no se les aplica ninguna tasa).
 //
@@ -100,10 +99,10 @@ const idOf = (name) => classes.find((c) => c.name === name)?.taxClassId;
 
 // 2. Ajustes: precios con IVA incluido, envío proporcional, dirección de envío
 if (idOf(OTHERS_CLASS)) {
-  await write('Ajustes de IVA (precios y envío con IVA incluido)', () =>
+  await write('Ajustes de IVA (precios y envío con IVA incluido; envío al 21 %)', () =>
     api('/api/settings', 'POST', {
       priceIncludingTax: 1,
-      defaultShippingTaxClassId: -1,
+      defaultShippingTaxClassId: idOf(OTHERS_CLASS),
       defaultProductTaxClassId: idOf(OTHERS_CLASS),
       baseCalculationAddress: 'shippingAddress'
     })
