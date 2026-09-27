@@ -322,11 +322,18 @@ El cobro no se registra en Odoo (lo hace Redsys); concílielo desde el extracto 
 | `ODOO_PRODUCT_ID` | ID del producto de Odoo con el que se facturan las ventas (p. ej. «Venta tienda online», con el impuesto *IVA 4 % incluido en el precio* para libros) |
 | `ODOO_SHIPPING_PRODUCT_ID` | Opcional: producto para la línea de envío (por defecto, `ODOO_PRODUCT_ID`) |
 | `ODOO_JOURNAL_ID` | Opcional: diario de ventas (por defecto, el de Odoo) |
+| `ODOO_DB` | Opcional: base de datos de Odoo (`fundacionandalusi`); se envía en la cabecera `X-Odoo-Database`. `ODOO_USERNAME` no hace falta: la clave de API ya identifica al usuario |
 | `ODOO_TAX_IDS` | Impuesto de Odoo para cada tipo de IVA de la tienda, p. ej. `4:12,21:1` (IVA 4 % → impuesto con id 12; IVA 21 % → id 1). Los ids se ven en *Contabilidad → Configuración → Impuestos* (abra el impuesto: el número está en la URL). Deben ser impuestos «incluidos en el precio». Con esta variable cada línea lleva su IVA y el envío se reparte por tipo; sin ella, todas las líneas usan el impuesto del producto de Odoo |
 
 Los precios de la tienda llevan el IVA incluido, así que los impuestos de Odoo deben estar
 marcados como *Incluido en el precio*. Como la tienda vende con dos tipos de IVA (4 % y 21 %),
-configure `ODOO_TAX_IDS` para que cada línea de la factura lleve el suyo. Sin `ODOO_URL`, `ODOO_API_KEY` y
+configure `ODOO_TAX_IDS` para que cada línea de la factura lleve el suyo.
+
+Configuración actual (Odoo 19, fundacionandalusi.odoo.com): producto *Venta tienda online*
+(`ODOO_PRODUCT_ID=17`), producto *Gastos de envío (tienda online)* (`ODOO_SHIPPING_PRODUCT_ID=18`)
+e impuestos *4% G (IVA incluido)* y *21% G (IVA incluido)*, copias de los de la empresa con las
+mismas cuentas y casillas del modelo 303 (`ODOO_TAX_IDS=4:172,21:173,0:119`; el 0 % es la
+exportación exenta *0% EX G*, para Canarias, Ceuta y Melilla). Sin `ODOO_URL`, `ODOO_API_KEY` y
 `ODOO_PRODUCT_ID` la extensión no hace nada.
 
 ### 4.1 IVA

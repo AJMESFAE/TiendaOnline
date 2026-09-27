@@ -36,6 +36,7 @@ import { addOrderActivityLog } from '@evershop/evershop/oms/services';
  *   ODOO_SHIPPING_PRODUCT_ID producto para los gastos de envío (opcional;
  *                            por defecto, el mismo ODOO_PRODUCT_ID)
  *   ODOO_JOURNAL_ID          diario de ventas (opcional; por defecto el de Odoo)
+ *   ODOO_DB                  base de datos de Odoo (opcional; cabecera X-Odoo-Database)
  *   ODOO_TAX_IDS             impuesto de Odoo para cada tipo de IVA de la tienda,
  *                            p. ej. "4:12,21:1" (IVA 4 % → impuesto 12, IVA 21 %
  *                            → impuesto 1). Deben ser impuestos «incluidos en el
@@ -49,6 +50,7 @@ type OdooConfig = {
   productId: number;
   shippingProductId: number;
   journalId: number | null;
+  db: string | null;
   /** Tipo de IVA de la tienda (4, 21…) → id del impuesto en Odoo. */
   taxIds: Map<number, number>;
 };
@@ -85,6 +87,7 @@ export function getOdooConfig(): OdooConfig | null {
     productId,
     shippingProductId: num(process.env.ODOO_SHIPPING_PRODUCT_ID) ?? productId,
     journalId: num(process.env.ODOO_JOURNAL_ID),
+    db: process.env.ODOO_DB?.trim() || null,
     taxIds: parseTaxIds(process.env.ODOO_TAX_IDS)
   };
 }
@@ -97,7 +100,12 @@ async function callOdoo<T>(
 ): Promise<T> {
   const res = await fetch(`${config.url}/json/2/${model}/${method}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `bearer ${config.apiKey}` },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `bearer ${config.apiKey}`,
+      // Base de datos de Odoo (necesaria si el servidor aloja varias).
+      ...(config.db ? { 'X-Odoo-Database': config.db } : {})
+    },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30000)
   });
