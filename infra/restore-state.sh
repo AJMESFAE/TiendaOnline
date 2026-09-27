@@ -20,7 +20,7 @@ get() { printf '%s' "$SETTINGS" | python3 -c "import json,sys; d={s['name']:s['v
 HOME_URL="$(get EVERSHOP_HOME_URL)"
 DOMAIN="${HOME_URL#https://}"
 if [[ "$DOMAIN" == *.azurewebsites.net || -z "$DOMAIN" ]]; then
-  USE_CUSTOM_DOMAIN=false; DOMAIN=tienda.institutoalbayan.com
+  USE_CUSTOM_DOMAIN=false; DOMAIN=tienda.fundacionandalusi.org
 else
   USE_CUSTOM_DOMAIN=true
 fi

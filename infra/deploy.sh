@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-#  Despliegue completo de tienda.institutoalbayan.com en Azure
+#  Despliegue completo de tienda.fundacionandalusi.org en Azure
 #
 #  Crea (o actualiza) todo lo necesario y publica la tienda, con el mismo
 #  esquema que VillaDelCasar (Web App Linux Node 22 + startup.sh):
@@ -49,7 +49,7 @@ RESOURCE_GROUP="${RESOURCE_GROUP:-rg-tienda-albayan}"
 LOCATION="${LOCATION:-spaincentral}"
 PREFIX="${PREFIX:-albayantienda}"
 APP_SKU="${APP_SKU:-B1}"
-CUSTOM_DOMAIN="${CUSTOM_DOMAIN:-tienda.institutoalbayan.com}"
+CUSTOM_DOMAIN="${CUSTOM_DOMAIN:-tienda.fundacionandalusi.org}"
 USE_CUSTOM_DOMAIN="${USE_CUSTOM_DOMAIN:-false}"
 ADMIN_EMAIL="${ADMIN_EMAIL:-admin@institutoalbayan.com}"
 SHARE_PLAN_WITH_APP="${SHARE_PLAN_WITH_APP:-}"
@@ -234,7 +234,7 @@ cat <<EOF
    Tarjeta de prueba: 4548 8100 0000 0003 · caducidad 12/49 · CVV 123
 
  DOMINIO $CUSTOM_DOMAIN
-   1. En el DNS de institutoalbayan.com cree:
+   1. En el DNS de fundacionandalusi.org cree:
         CNAME  tienda         ->  $APP_HOST
         TXT    asuid.tienda   ->  $VERIFICATION_ID
    2. Cuando el DNS esté propagado, ejecute:  ./infra/bind-domain.sh

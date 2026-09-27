@@ -29,5 +29,5 @@ URL="${URL:-https://$(az webapp show -g "$RESOURCE_GROUP" -n "$APP_NAME" --query
 
 echo "Tienda: $URL"
 # En el aviso legal se cita el dominio definitivo de la tienda.
-STORE_PUBLIC_URL="${STORE_PUBLIC_URL:-https://tienda.institutoalbayan.com}" \
+STORE_PUBLIC_URL="${STORE_PUBLIC_URL:-https://tienda.fundacionandalusi.org}" \
   node scripts/create-pages.mjs --to "$URL" --email "$ADMIN_EMAIL" --password "$ADMIN_PASSWORD" "$@"

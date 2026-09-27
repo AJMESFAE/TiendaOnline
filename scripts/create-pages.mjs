@@ -31,7 +31,7 @@ const pages = buildLegalPages({
   shippingDays: args['shipping-days'] || process.env.SHIPPING_DAYS,
   prepDays: args['prep-days'] || process.env.SHIPPING_PREP_DAYS,
   freeShippingFrom: args['free-shipping-from'] || process.env.FREE_SHIPPING_FROM,
-  storeUrl: args['store-url'] || process.env.STORE_PUBLIC_URL || 'https://tienda.institutoalbayan.com'
+  storeUrl: args['store-url'] || process.env.STORE_PUBLIC_URL || 'https://tienda.fundacionandalusi.org'
 });
 const ONLY_MISSING = Boolean(args['only-missing']);
 

@@ -26,7 +26,7 @@ export function buildLegalPages(opts = {}) {
     registry:
       opts.registry ||
       'inscrita en el Registro de Fundaciones de competencia estatal con el número 2469',
-    storeUrl: opts.storeUrl || 'https://tienda.institutoalbayan.com',
+    storeUrl: opts.storeUrl || 'https://tienda.fundacionandalusi.org',
     shippingDays: opts.shippingDays || todo('plazo de entrega, p. ej. 2 a 5 días laborables'),
     prepDays: opts.prepDays || todo('plazo de preparación, p. ej. 24-48 horas laborables'),
     shippingCost: opts.shippingCost || todo('coste de envío, p. ej. 4,95 € IVA incluido'),

@@ -1,4 +1,4 @@
-// Infraestructura Azure de tienda.institutoalbayan.com
+// Infraestructura Azure de tienda.fundacionandalusi.org
 //
 // Normalmente no se usa directamente: lo ejecuta `infra/deploy.sh`.
 //
@@ -17,7 +17,7 @@ param appServiceSku string = 'B1'
 param existingPlanId string = ''
 
 @description('Dominio público de la tienda')
-param customDomain string = 'tienda.institutoalbayan.com'
+param customDomain string = 'tienda.fundacionandalusi.org'
 
 @description('true cuando el dominio ya está vinculado (infra/bind-domain.sh). Mientras sea false, la tienda usa <app>.azurewebsites.net')
 param useCustomDomain bool = false

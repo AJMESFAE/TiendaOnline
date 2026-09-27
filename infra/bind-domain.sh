@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-#  Vincula tienda.institutoalbayan.com al App Service con certificado HTTPS
+#  Vincula tienda.fundacionandalusi.org al App Service con certificado HTTPS
 #  gratuito (gestionado por Azure) y cambia la URL pública de la tienda.
 #
 #  Requisito: haber creado en el DNS los registros que indica deploy.sh:

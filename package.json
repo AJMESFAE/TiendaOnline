@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Tienda online de la Fundación Andalusí de España (tienda.institutoalbayan.com) basada en EverShop",
+  "description": "Tienda online de la Fundación Andalusí de España (tienda.fundacionandalusi.org) basada en EverShop",
   "license": "GPL-3.0",
   "engines": {
     "node": ">=20"

@@ -1,6 +1,6 @@
 # Tienda online · Fundación Andalusí de España
 
-Tienda de la **Fundación Andalusí de España** (tienda.institutoalbayan.com), construida sobre [EverShop](https://evershop.io) 2.2.1
+Tienda de la **Fundación Andalusí de España** (tienda.fundacionandalusi.org), construida sobre [EverShop](https://evershop.io) 2.2.1
 (Node.js + React + PostgreSQL), con:
 
 - **Tema `albayan`** (`themes/albayan`): cabecera, pie, logo, portada y paleta de colores
@@ -135,15 +135,15 @@ Con el workflow activo, `deploy.sh` ya no sube el código: detecta el workflow y
 crea o actualiza la infraestructura, para no chocar con el despliegue de GitHub. Para
 forzar la subida desde el script: `DEPLOY_CODE=true ./infra/deploy.sh`.
 
-### 2.3 Dominio tienda.institutoalbayan.com y HTTPS
+### 2.3 Dominio tienda.fundacionandalusi.org y HTTPS
 
-> **Atención:** `tienda.institutoalbayan.com` apunta hoy a la tienda de **Shopify** en
-> funcionamiento. Cambiar el CNAME deja de mostrar la tienda de Shopify. Hágalo solo
-> cuando la tienda nueva esté probada (productos importados, pago con Redsys real y
-> páginas legales) y se decida el cambio. Hasta entonces, trabaje con la dirección
-> `https://<app>.azurewebsites.net`.
+> La tienda de **Shopify** sigue en `tienda.institutoalbayan.com`, un dominio distinto: vincular
+> `tienda.fundacionandalusi.org` no la afecta. Mientras se prueba, la tienda nueva está en
+> `https://devtienda.fundacionandalusi.org`. Cuando se abra en el dominio definitivo, conviene
+> redirigir `tienda.institutoalbayan.com` a `tienda.fundacionandalusi.org` y cambiar el enlace
+> «Tienda online» de fundacionandalusi.org.
 
-1. En el DNS de institutoalbayan.com cree los dos registros que muestra `deploy.sh` al
+1. En el DNS de fundacionandalusi.org (Cloudflare) cree los dos registros que muestra `deploy.sh` al
    terminar:
 
    | Tipo  | Nombre         | Valor |
@@ -255,7 +255,7 @@ El `Dockerfile` sigue disponible por si en el futuro se prefiere desplegar como 
 1. El cliente elige **Tarjeta (Redsys)** y pulsa *Pagar ahora*. Se crea el pedido en estado
    *Pendiente* y el navegador envía un formulario firmado a Redsys.
 2. Redsys envía la **notificación online** (servidor a servidor) a
-   `https://tienda.institutoalbayan.com/api/redsys/notification`. Se verifican la firma,
+   `https://tienda.fundacionandalusi.org/api/redsys/notification`. Se verifican la firma,
    el importe, la moneda y el comercio, y el pedido pasa a **Pagado**. En ese momento se
    envía el email de confirmación.
 3. El cliente vuelve a `/redsys/ok/<pedido>` (página de pedido completado) o a
