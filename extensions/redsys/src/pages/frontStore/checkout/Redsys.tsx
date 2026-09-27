@@ -1,3 +1,4 @@
+import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import { Button } from '@components/common/ui/Button.js';
 import { toast } from '@components/common/ui/Sonner.js';
 import {
@@ -76,7 +77,7 @@ export default function RedsysMethod({
       new URLSearchParams(window.location.search).get('payment') === 'failed'
     ) {
       toast.error(
-        'El pago no se ha completado. Puede intentarlo de nuevo o elegir otro método de pago.'
+        _('The payment was not completed. You can try again or choose another payment method.')
       );
     }
   }, []);
@@ -96,7 +97,7 @@ export default function RedsysMethod({
         submitToRedsys(json.data as RedsysPaymentForm);
       } catch (e) {
         toast.error(
-          e?.message || 'No se ha podido conectar con la pasarela de pago.'
+          e?.message || _('Could not connect to the payment gateway.')
         );
         setTimeout(() => window.location.reload(), 2500);
       }
@@ -110,15 +111,14 @@ export default function RedsysMethod({
     registerPaymentComponent('redsys', {
       nameRenderer: () => (
         <div className="flex items-center justify-between w-full">
-          <span>{redsysDisplayName}</span>
+          <span>{_(redsysDisplayName)}</span>
           <CardIcons />
         </div>
       ),
       formRenderer: () => (
         <div className="flex justify-center text-muted-foreground">
           <div className="w-full md:w-2/3 text-center py-3 text-sm">
-            Será redirigido a la pasarela segura de Redsys para completar el
-            pago con tarjeta o Bizum.
+            {_('You will be redirected to the secure Redsys gateway to pay by card or Bizum.')}
           </div>
         </div>
       ),
@@ -133,7 +133,7 @@ export default function RedsysMethod({
           } catch (error) {
             toast.error(
               error?.message ||
-                'No se ha podido realizar el pedido. Inténtelo de nuevo.'
+                _('The order could not be placed. Please try again.')
             );
           }
         };
@@ -146,7 +146,7 @@ export default function RedsysMethod({
             disabled={isDisabled}
             className="w-full py-4 px-6 font-semibold text-lg"
           >
-            {isDisabled ? 'Redirigiendo a la pasarela de pago…' : 'Pagar ahora'}
+            {isDisabled ? _('Redirecting to the payment gateway…') : _('Pay now')}
           </Button>
         );
       }

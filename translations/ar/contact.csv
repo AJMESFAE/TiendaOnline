@@ -1,0 +1,50 @@
+Add a store email,أضف بريدًا إلكترونيًا للمتجر
+Consent,الموافقة
+Consent text,نص الموافقة
+Contact messages,رسائل التواصل
+Customer,العميل
+Delete ${count} messages,حذف ${count} رسائل
+Fields,الحقول
+From,من
+How can we help?,كيف يمكننا مساعدتك؟
+I agree that my details may be used to respond to my enquiry.,أوافق على استخدام بياناتي للرد على استفساري.
+Inbox,صندوق الوارد
+Mark read,وضع علامة كمقروءة
+Mark unread,وضع علامة كغير مقروءة
+Message,الرسالة
+Message is required,الرسالة مطلوبة
+Messages are sent to ${email} and saved under CMS → Contact messages.,تُرسل الرسائل إلى ${email} وتُحفظ في CMS ← رسائل التواصل.
+"Messages will still be saved and visible under CMS → Contact messages, but no notification email will be sent.",ستظل الرسائل محفوظة وظاهرة في CMS ← رسائل التواصل، ولكن لن يُرسل أي بريد إشعار.
+New contact form message,رسالة جديدة من نموذج التواصل
+New contact form message from ${name},رسالة جديدة من نموذج التواصل من ${name}
+New message from ${name} via your contact form.,رسالة جديدة من ${name} عبر نموذج التواصل الخاص بك.
+Not emailed,لم تُرسل بالبريد
+Optional supporting copy.,نص داعم اختياري.
+Please accept before sending,يرجى الموافقة قبل الإرسال
+Read,مقروءة
+Reply directly to this email to respond to ${name}.,ردّ مباشرة على هذا البريد للرد على ${name}.
+Send message,إرسال الرسالة
+Show consent checkbox,إظهار خانة الموافقة
+Show phone field,إظهار حقل الهاتف
+Show subject field,إظهار حقل الموضوع
+Shown after the message is sent.,يظهر بعد إرسال الرسالة.
+Someone sent a message through the contact form on your store.,أرسل أحدهم رسالة عبر نموذج التواصل في متجرك.
+Store email is not set,لم يُضبط البريد الإلكتروني للمتجر
+Subheading,عنوان فرعي
+Subject,الموضوع
+Submit,إرسال
+Success message,رسالة النجاح
+Thanks! Your message has been sent.,شكرًا لك! تم إرسال رسالتك.
+There is no message to display,لا توجد رسائل لعرضها
+Titles,العناوين
+Unread,غير مقروءة
+View customer account,عرض حساب العميل
+What is this about?,ما موضوع رسالتك؟
+Your name,اسمك
+Your phone number,رقم هاتفك
+e.g. Get in touch,مثال: تواصل معنا
+e.g. I agree that my details may be used to respond to my enquiry.,مثال: أوافق على استخدام بياناتي للرد على استفساري.
+e.g. Send message,مثال: إرسال الرسالة
+e.g. Thanks! Your message has been sent.,مثال: شكرًا لك! تم إرسال رسالتك.
+e.g. We usually reply within one business day.,مثال: نرد عادةً خلال يوم عمل واحد.
+you@example.com,you@example.com

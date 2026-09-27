@@ -8,7 +8,7 @@
 //     [--prep-days "24-48 horas laborables"] [--free-shipping-from "50 €"] [--dry-run]
 //     [--only-missing]   crea solo las páginas que no existan (no toca las demás;
 //                        lo usa scripts/start.mjs en cada arranque)
-import { buildLegalPages } from './legal-pages.mjs';
+import { buildLegalPages, buildTranslatedLegalPages } from './legal-pages.mjs';
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => {
@@ -34,6 +34,8 @@ const pages = buildLegalPages({
   storeUrl: args['store-url'] || process.env.STORE_PUBLIC_URL || 'https://tienda.fundacionandalusi.org'
 });
 const ONLY_MISSING = Boolean(args['only-missing']);
+// Traducciones al inglés y al árabe (claves «<url_key>-en», «<url_key>-ar»).
+pages.push(...buildTranslatedLegalPages(pages));
 
 const pending = [...new Set(JSON.stringify(pages).match(/\[COMPLETAR: [^\]]+\]/g) || [])];
 

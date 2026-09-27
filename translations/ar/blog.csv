@@ -1,0 +1,100 @@
+A short description shown on the category page,وصف موجز يظهر في صفحة الفئة
+A short summary shown in listings,ملخص موجز يظهر في القوائم
+Add a meta description to control the text shown here.,أضف وصفًا تعريفيًا (meta) للتحكم في النص المعروض هنا.
+All,الكل
+All categories,جميع الفئات
+Applies to posts in this category.,ينطبق على المقالات في هذه الفئة.
+Approve,موافقة
+Approved,تمت الموافقة
+Author,الكاتب
+Blog,المدونة
+Blog Categories,فئات المدونة
+Blog Comments,تعليقات المدونة
+Blog Posts,مقالات المدونة
+Blog Tags,وسوم المدونة
+By,بقلم
+Cancel reply,إلغاء الرد
+"Category, author, tags and thumbnail.",الفئة والكاتب والوسوم والصورة المصغّرة.
+Closed — no new comments,مغلق — لا تعليقات جديدة
+Columns (1-4),الأعمدة (1-4)
+Comment,تعليق
+Comment Policy,سياسة التعليقات
+Comments,التعليقات
+Configure URL key and meta information for this blog category.,اضبط مفتاح URL والمعلومات التعريفية لفئة المدونة هذه.
+Copied!,تم النسخ!
+Copy link,نسخ الرابط
+Create a new post,إنشاء مقال جديد
+Create a new tag,إنشاء وسم جديد
+Delete ${count} comments,حذف ${count} تعليقات
+Delete ${count} posts,حذف ${count} مقالات
+Delete ${count} tags,حذف ${count} وسوم
+Disable ${count} categories,تعطيل ${count} فئات
+Email (not published),البريد الإلكتروني (لن يُنشر)
+Enable ${count} categories,تفعيل ${count} فئات
+Enter category name,أدخل اسم الفئة
+Enter post title,أدخل عنوان المقال
+Enter tag name,أدخل اسم الوسم
+Excerpt,مقتطف
+Featured posts,مقالات مميزة
+Leave a comment,اترك تعليقًا
+Leave blank to auto-generate,اتركه فارغًا ليُنشأ تلقائيًا
+Mark spam,وضع علامة كرسالة مزعجة
+Max posts,الحد الأقصى للمقالات
+Moderated — hold for review,خاضع للإشراف — بانتظار المراجعة
+Name and status for this blog category.,اسم فئة المدونة هذه وحالتها.
+New post,مقال جديد
+New tag,وسم جديد
+No comments yet. Be the first!,لا توجد تعليقات بعد. كن أول من يعلّق!
+No posts in this category yet.,لا توجد مقالات في هذه الفئة بعد.
+No posts match,لا توجد مقالات مطابقة
+No posts published yet.,لم تُنشر أي مقالات بعد.
+No posts with this tag yet.,لا توجد مقالات بهذا الوسم بعد.
+No posts yet,لا توجد مقالات بعد
+Open page in a new tab,فتح الصفحة في علامة تبويب جديدة
+Open — auto-approve,مفتوح — موافقة تلقائية
+Organize,التنظيم
+Pending,قيد الانتظار
+Post Title,عنوان المقال
+Post comment,نشر التعليق
+Post created successfully!,تم إنشاء المقال بنجاح!
+Post title is required,عنوان المقال مطلوب
+Posts,المقالات
+Publish ${count} posts,نشر ${count} مقالات
+Published,منشور
+Published posts are visible on the storefront.,المقالات المنشورة تظهر في المتجر.
+React,تفاعل
+Related posts,مقالات ذات صلة
+Reply,رد
+Reply to ${name},الرد على ${name}
+Search Engine Optimization,تحسين محركات البحث
+Search posts to feature,ابحث عن مقالات لتمييزها
+Search result preview,معاينة نتيجة البحث
+Select a category,اختر فئة
+Select an author,اختر كاتبًا
+Select tags,اختر وسومًا
+Short Description,وصف مختصر
+Something went wrong. Please try again.,حدث خطأ ما. يرجى المحاولة مرة أخرى.
+Spam,رسائل مزعجة
+Submitting…,جارٍ الإرسال…
+Tag,وسم
+Tag Name,اسم الوسم
+Tag created successfully!,تم إنشاء الوسم بنجاح!
+Tag name is required,اسم الوسم مطلوب
+Tags,الوسوم
+Thanks! Your comment is awaiting moderation.,شكرًا لك! تعليقك بانتظار المراجعة.
+The URL path segment under /blog/.,جزء مسار URL ضمن /blog/.
+The URL path segment under /blog/category/.,جزء مسار URL ضمن /blog/category/.
+The URL path segment under /blog/tag/.,جزء مسار URL ضمن /blog/tag/.
+"The post title, status and content.",عنوان المقال وحالته ومحتواه.
+The tag name.,اسم الوسم.
+There is no comment to display,لا توجد تعليقات لعرضها
+There is no post to display,لا توجد مقالات لعرضها
+There is no tag to display,لا توجد وسوم لعرضها
+URL key is auto-generated from the name if left blank.,يُنشأ مفتاح URL تلقائيًا من الاسم إذا تُرك فارغًا.
+URL key is auto-generated from the title if left blank.,يُنشأ مفتاح URL تلقائيًا من العنوان إذا تُرك فارغًا.
+Unpublish,إلغاء النشر
+Unpublish ${count} posts,إلغاء نشر ${count} مقالات
+Untitled page,صفحة بلا عنوان
+Your comment,تعليقك
+min read,دقائق للقراءة
+Back to blog,العودة إلى المدونة

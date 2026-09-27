@@ -1,6 +1,8 @@
 import Area from '@components/common/Area.js';
+import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import React, { useState } from 'react';
 import { DONATE_URL, mainNav } from './brand.js';
+import { useLocale } from './i18n.js';
 
 const Caret = () => (
   <svg className="albayan-nav__caret" viewBox="0 0 320 512" aria-hidden="true">
@@ -24,6 +26,7 @@ const Arrow = () => (
  */
 export function Header() {
   const [open, setOpen] = useState(false);
+  const loc = useLocale();
   return (
     <header className="header albayan-header">
       <Area id="headerTop" className="header__top" isGlobal editableInPageBuilder />
@@ -34,20 +37,20 @@ export function Header() {
           isGlobal
           editableInPageBuilder
         />
-        <nav className="albayan-nav" aria-label="Menú principal">
+        <nav className="albayan-nav" aria-label={_('Main menu')}>
           <ul className="albayan-nav__list">
             {mainNav.map((link) => (
               <li key={link.href} className={link.children ? 'albayan-nav__item has-children' : 'albayan-nav__item'}>
-                <a href={link.href} className="albayan-nav__link">
-                  {link.label}
+                <a href={loc.href(link.href)} className="albayan-nav__link">
+                  {_(link.label)}
                   {link.children && <Caret />}
                 </a>
                 {link.children && (
                   <ul className="albayan-nav__sub">
                     {link.children.map((child) => (
                       <li key={child.href}>
-                        <a href={child.href} className="albayan-nav__sublink">
-                          {child.label}
+                        <a href={loc.href(child.href)} className="albayan-nav__sublink">
+                          {_(child.label)}
                         </a>
                       </li>
                     ))}
@@ -65,13 +68,13 @@ export function Header() {
         />
         <div className="albayan-header__actions">
           <a href={DONATE_URL} className="albayan-donar">
-            <span>DONAR</span>
+            <span>{_('DONATE')}</span>
             <Arrow />
           </a>
           <button
             type="button"
             className="albayan-menu-toggle"
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={open ? _('Close menu') : _('Open menu')}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
           >
@@ -82,21 +85,21 @@ export function Header() {
         </div>
       </div>
       {open && (
-        <nav className="albayan-nav-mobile" aria-label="Menú principal">
+        <nav className="albayan-nav-mobile" aria-label={_('Main menu')}>
           {mainNav.map((link) => (
             <React.Fragment key={link.href}>
-              <a href={link.href} className="albayan-nav-mobile__link">
-                {link.label}
+              <a href={loc.href(link.href)} className="albayan-nav-mobile__link">
+                {_(link.label)}
               </a>
               {link.children?.map((child) => (
-                <a key={child.href} href={child.href} className="albayan-nav-mobile__link albayan-nav-mobile__link--sub">
-                  {child.label}
+                <a key={child.href} href={loc.href(child.href)} className="albayan-nav-mobile__link albayan-nav-mobile__link--sub">
+                  {_(child.label)}
                 </a>
               ))}
             </React.Fragment>
           ))}
           <a href={DONATE_URL} className="albayan-nav-mobile__link">
-            Donar
+            {_('Donate')}
           </a>
         </nav>
       )}

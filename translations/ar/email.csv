@@ -1,0 +1,35 @@
+Your order is confirmed,تم تأكيد طلبك
+Your order #${number} is confirmed.,تم تأكيد طلبك رقم ${number}.
+Order #${number},الطلب رقم ${number}
+Shipping to,الشحن إلى
+View your order,عرض طلبك
+Start shopping,ابدأ التسوق
+Your order is on the way,طلبك في الطريق
+Your order #${number} is on the way.,طلبك رقم ${number} في الطريق.
+Items in this shipment,المنتجات في هذه الشحنة
+We'll send tracking details as soon as the carrier scans the package.,سنرسل إليك تفاصيل التتبع فور قيام شركة الشحن بمسح الطرد.
+Tracking,التتبع
+Track shipment,تتبّع الشحنة
+Your order was delivered,تم توصيل طلبك
+Your order #${number} has been delivered.,تم توصيل طلبك رقم ${number}.
+Delivered items,المنتجات المُسلَّمة
+"We hope it's everything you expected. If anything's not right, just reply to this email.",نأمل أن يكون كل شيء كما توقعت. إن كان هناك أي خلل، فما عليك سوى الرد على هذا البريد.
+Your order has been refunded,تم استرداد مبلغ طلبك
+A refund has been issued,تم إصدار استرداد
+A refund has been issued for your order,تم إصدار استرداد لطلبك
+A refund of ${amount} was issued for order #${number}.,تم إصدار استرداد بقيمة ${amount} للطلب رقم ${number}.
+"We've refunded ${amount} to your original payment method. Depending on your bank, it may take a few business days to appear on your statement.",لقد أعدنا ${amount} إلى وسيلة الدفع الأصلية. قد يستغرق ظهوره في كشف حسابك بضعة أيام عمل حسب مصرفك.
+Your order has been canceled,تم إلغاء طلبك
+Order #${number} has been canceled.,تم إلغاء الطلب رقم ${number}.
+"This order has been canceled. If a payment was authorized, it has been released and you will not be charged.",تم إلغاء هذا الطلب. إذا كانت هناك عملية دفع مُصرّح بها، فقد تم تحريرها ولن يُخصم منك أي مبلغ.
+Reason: ${reason}.,السبب: ${reason}.
+Order total,إجمالي الطلب
+Order number,رقم الطلب
+"Welcome, ${name}.",مرحبًا، ${name}.
+Welcome to ${store}.,مرحبًا بك في ${store}.
+"Thanks for creating an account with ${store}. Your cart, orders, and saved addresses now live in one place.",شكرًا لإنشائك حسابًا في ${store}. أصبحت سلتك وطلباتك وعناوينك المحفوظة في مكان واحد.
+Reset your ${store} password.,أعد تعيين كلمة مرور ${store}.
+We received a request to reset the password for your ${store} account. Choose a new one below.,تلقّينا طلبًا لإعادة تعيين كلمة مرور حسابك في ${store}. اختر كلمة مرور جديدة أدناه.
+"If you didn't request this, you can safely ignore this email — your password won't change.",إذا لم تطلب ذلك، يمكنك تجاهل هذا البريد بأمان — لن تتغير كلمة مرورك.
+Visit store,زيارة المتجر
+Help,المساعدة

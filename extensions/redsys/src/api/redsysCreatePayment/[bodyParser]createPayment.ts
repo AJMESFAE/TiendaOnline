@@ -66,7 +66,9 @@ export default async (request, response, next) => {
       DS_MERCHANT_URLOK: buildAbsoluteUrl('redsysOk', { order_id }),
       DS_MERCHANT_URLKO: buildAbsoluteUrl('redsysKo', { order_id }),
       DS_MERCHANT_MERCHANTNAME: plain(redsys.merchantName, 25),
-      DS_MERCHANT_CONSUMERLANGUAGE: redsys.consumerLanguage,
+      // Idioma del TPV según el de la tienda: español 001, inglés 002 (Redsys no tiene árabe).
+      DS_MERCHANT_CONSUMERLANGUAGE:
+        request.locale && request.locale !== 'es' ? '002' : redsys.consumerLanguage,
       DS_MERCHANT_PRODUCTDESCRIPTION: plain(`Pedido ${order.order_number}`, 125),
       DS_MERCHANT_MERCHANTDATA: order.uuid
     };

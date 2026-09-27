@@ -1,7 +1,14 @@
 import { select } from '@evershop/postgres-query-builder';
 import { error } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
-import { addFinalProcessor } from '@evershop/evershop/lib/util/registry';
+import { addFinalProcessor, addProcessor } from '@evershop/evershop/lib/util/registry';
+import { registerEmailCurrency } from './services/emailCurrency.js';
+import {
+  orderConfirmationArgs,
+  resetPasswordArgs,
+  shipmentArgs,
+  welcomeArgs
+} from './services/emailLocale.js';
 
 /**
  * Ajustes propios de la tienda de la Fundación Andalusí.
@@ -68,6 +75,23 @@ export function fixThumbnail(url: unknown): unknown {
 }
 
 export default () => {
+  registerEmailCurrency();
+  // Correos en el idioma del cliente (ver services/emailLocale).
+  const safe = (fn: (args: any, ctx: any) => Promise<any>) =>
+    async function (this: any, args: any) {
+      try {
+        return await fn(args, this || {});
+      } catch (e) {
+        error(`[tienda] Idioma del correo: ${e.message}`);
+        return args;
+      }
+    };
+  addProcessor('orderConfirmationEmailArguments', safe((args, ctx) => orderConfirmationArgs(args, ctx.order)), 5);
+  addProcessor('shipmentCreatedEmailArguments', safe((args, ctx) => shipmentArgs(args, ctx.order, 'created')), 5);
+  addProcessor('shipmentDeliveredEmailArguments', safe((args, ctx) => shipmentArgs(args, ctx.order, 'delivered')), 5);
+  addProcessor('customerWelcomeEmailArguments', safe((args) => welcomeArgs(args)), 5);
+  addProcessor('resetPasswordEmailArguments', safe((args) => resetPasswordArgs(args)), 5);
+
   addFinalProcessor('orderConfirmationEmailData', (data: any) => {
     const order = data?.order;
     if (order) {

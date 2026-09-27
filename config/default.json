@@ -55,28 +55,28 @@
       "from": "Fundación Andalusí <tienda@fundacionandalusi.org>",
       "order_confirmation": {
         "enabled": true,
-        "templatePath": "emails/order-confirmation.html"
+        "templatePath": "emails/es/order-confirmation.html"
       },
       "customer_welcome": {
         "enabled": true,
-        "templatePath": "emails/customer-welcome.html"
+        "templatePath": "emails/es/customer-welcome.html"
       },
       "reset_password": {
         "enabled": true,
-        "templatePath": "emails/reset-password.html"
+        "templatePath": "emails/es/reset-password.html"
       },
       "shipment_created": {
         "enabled": true,
-        "templatePath": "emails/shipment-created.html"
+        "templatePath": "emails/es/shipment-created.html"
       },
       "shipment_delivered": {
         "enabled": true,
-        "templatePath": "emails/shipment-delivered.html"
+        "templatePath": "emails/es/shipment-delivered.html"
       }
     }
   },
   "themeConfig": {
-    "copyRight": "Todos los derechos reservados.",
+    "copyRight": "All rights reserved.",
     "headTags": {
       "links": [
         {

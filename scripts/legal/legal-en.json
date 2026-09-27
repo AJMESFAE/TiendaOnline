@@ -1,0 +1,809 @@
+[
+ {
+  "url_key": "aviso-legal",
+  "name": "Legal notice",
+  "meta_title": "Legal notice",
+  "meta_description": "Identification details of the owner of the Fundación Andalusí online shop, Fundación Método Andalusí de España.",
+  "blocks": [
+   {
+    "id": "aviso-legal_translation_note",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>This is an English translation provided for information. In the event of any discrepancy, the Spanish version shall prevail.</i>"
+    }
+   },
+   {
+    "id": "aviso_legal_0",
+    "type": "paragraph",
+    "data": {
+     "text": "In compliance with Article 10 of Law 34/2002 of 11 July on Information Society Services and Electronic Commerce (LSSI-CE), the details of the owner of this website, <a href=\"https://tienda.fundacionandalusi.org\">tienda.fundacionandalusi.org</a> (hereinafter, “the Shop”), are set out below."
+    }
+   },
+   {
+    "id": "aviso_legal_1",
+    "type": "header",
+    "data": {
+     "text": "1. Identification details",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_2",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Owner:</b> Fundación Método Andalusí de España",
+      "<b>CIF (Tax ID):</b> G42979898",
+      "<b>Registered address:</b> Calle Anastasio Herrero 5, 28020 Madrid",
+      "<b>Contact:</b> <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>",
+      "<b>Registration details:</b> registered in the State Registry of Foundations (Registro de Fundaciones de competencia estatal) under number 2469"
+     ]
+    }
+   },
+   {
+    "id": "aviso_legal_3",
+    "type": "paragraph",
+    "data": {
+     "text": "The Shop is the online sales channel of the <b>Fundación Andalusí de España</b>, which is dedicated to teaching Arabic and Islamic culture in Spanish through the Andalusí Method (Método Andalusí) and to preserving the Islamic heritage of Spain."
+    }
+   },
+   {
+    "id": "aviso_legal_4",
+    "type": "header",
+    "data": {
+     "text": "2. Purpose and acceptance",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_5",
+    "type": "paragraph",
+    "data": {
+     "text": "This legal notice governs access to and use of the Shop. Browsing the Shop makes you a user and implies acceptance of these terms. Purchases are also governed by the <a href=\"/condiciones-de-venta\">Terms of sale</a>, and the processing of personal data by the <a href=\"/politica-de-privacidad\">Privacy policy</a>."
+    }
+   },
+   {
+    "id": "aviso_legal_6",
+    "type": "header",
+    "data": {
+     "text": "3. Use of the Shop",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_7",
+    "type": "paragraph",
+    "data": {
+     "text": "Users undertake to make appropriate and lawful use of the Shop and its content, in accordance with the law, good faith and public order, and not to use them for unlawful activities or activities that could harm the Foundation or third parties."
+    }
+   },
+   {
+    "id": "aviso_legal_8",
+    "type": "header",
+    "data": {
+     "text": "4. Intellectual and industrial property",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_9",
+    "type": "paragraph",
+    "data": {
+     "text": "The content of the Shop (texts, images, logos, design, teaching materials and the Andalusí Method itself) belongs to the Foundation or to third parties who have authorised its use, and is protected by intellectual and industrial property legislation. Its reproduction, distribution, public communication or transformation without express authorisation is prohibited, except for personal and private use."
+    }
+   },
+   {
+    "id": "aviso_legal_10",
+    "type": "header",
+    "data": {
+     "text": "5. Liability",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_11",
+    "type": "paragraph",
+    "data": {
+     "text": "The Foundation endeavours to ensure that the information in the Shop is accurate and up to date, and corrects it as soon as it becomes aware of an error. It accepts no liability for damage arising from technical interruptions beyond its control, nor for the content of third-party websites linked from the Shop, which are provided for information purposes only."
+    }
+   },
+   {
+    "id": "aviso_legal_12",
+    "type": "header",
+    "data": {
+     "text": "6. Applicable law and jurisdiction",
+     "level": 2
+    }
+   },
+   {
+    "id": "aviso_legal_13",
+    "type": "paragraph",
+    "data": {
+     "text": "These terms are governed by Spanish law. For any dispute, where the user is a consumer, the courts and tribunals of the user’s place of residence shall have jurisdiction; in all other cases, those of Madrid."
+    }
+   },
+   {
+    "id": "aviso_legal_14",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>Last updated: 27 September 2026.</i>"
+    }
+   }
+  ]
+ },
+ {
+  "url_key": "politica-de-privacidad",
+  "name": "Privacy policy",
+  "meta_title": "Privacy policy",
+  "meta_description": "How we process your personal data in the Fundación Andalusí online shop.",
+  "blocks": [
+   {
+    "id": "politica-de-privacidad_translation_note",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>This is an English translation provided for information. In the event of any discrepancy, the Spanish version shall prevail.</i>"
+    }
+   },
+   {
+    "id": "politica_de_privacidad_0",
+    "type": "paragraph",
+    "data": {
+     "text": "This policy explains how we process the personal data of those who make purchases or register in the Shop, in accordance with Regulation (EU) 2016/679, the General Data Protection Regulation (GDPR; RGPD in Spanish), and Organic Law 3/2018 on the Protection of Personal Data and the Guarantee of Digital Rights (LOPDGDD)."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_1",
+    "type": "header",
+    "data": {
+     "text": "1. Data controller",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_2",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Owner:</b> Fundación Método Andalusí de España",
+      "<b>CIF (Tax ID):</b> G42979898",
+      "<b>Registered address:</b> Calle Anastasio Herrero 5, 28020 Madrid",
+      "<b>Contact:</b> <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>"
+     ]
+    }
+   },
+   {
+    "id": "politica_de_privacidad_3",
+    "type": "header",
+    "data": {
+     "text": "2. What data we process",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_4",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Identification and contact details:</b> first name and surname, email address and telephone number.",
+      "<b>Addresses</b> for delivery and billing.",
+      "<b>Order details:</b> products, amounts, purchase history and related communications.",
+      "<b>Customer account</b>, if you choose to create one: email address and password (stored encrypted).",
+      "<b>Payment details:</b> we do not see or store your card details. Payment is made directly on the secure payment gateway of Redsys and your bank; we only receive confirmation of the outcome and an authorisation code."
+     ]
+    }
+   },
+   {
+    "id": "politica_de_privacidad_5",
+    "type": "header",
+    "data": {
+     "text": "3. What we use it for and on what legal basis",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_6",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Managing your order</b> (payment, preparation, shipping, customer service and returns). Legal basis: performance of the sales contract (Art. 6(1)(b) GDPR).",
+      "<b>Managing your customer account</b>, if you create one. Legal basis: performance of the contract.",
+      "<b>Complying with legal obligations</b> relating to accounting, tax and consumer law (invoicing, retention of documents, handling of complaints). Legal basis: legal obligation (Art. 6(1)(c) GDPR).",
+      "<b>Answering your enquiries.</b> Legal basis: your request and our legitimate interest in responding to it (Art. 6(1)(f) GDPR).",
+      "<b>Sending you information about courses, activities or news</b> only if you expressly agree. Legal basis: consent (Art. 6(1)(a) GDPR), which you may withdraw at any time."
+     ]
+    }
+   },
+   {
+    "id": "politica_de_privacidad_7",
+    "type": "paragraph",
+    "data": {
+     "text": "We do not carry out profiling or take automated decisions that produce legal effects concerning you."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_8",
+    "type": "header",
+    "data": {
+     "text": "4. How long we keep it",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_9",
+    "type": "paragraph",
+    "data": {
+     "text": "For as long as necessary for the purpose for which it was collected. Order and invoice data are kept for the legally required periods: six years for accounting records (Article 30 of the Spanish Commercial Code, Código de Comercio) and the limitation period for tax obligations. Your account data are kept until you ask for the account to be closed."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_10",
+    "type": "header",
+    "data": {
+     "text": "5. Who we share it with",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_11",
+    "type": "paragraph",
+    "data": {
+     "text": "We do not sell or transfer your data. Only the following recipients have access to it, to the extent necessary:"
+    }
+   },
+   {
+    "id": "politica_de_privacidad_12",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Your bank and Redsys</b> (Servicios de Pago, S.L.), to process the payment.",
+      "<b>Transport and courier companies</b>, to deliver your order.",
+      "<b>Technology providers</b> acting as data processors under a contract in accordance with Art. 28 GDPR: hosting of the Shop on Microsoft Azure (data centre in Spain) and the email service we use to send you confirmations.",
+      "<b>Public authorities and courts</b>, where there is a legal obligation to do so."
+     ]
+    }
+   },
+   {
+    "id": "politica_de_privacidad_13",
+    "type": "paragraph",
+    "data": {
+     "text": "Our providers process data within the European Economic Area. Should any of them transfer data outside it, this would be done with the safeguards set out in Chapter V of the GDPR (an adequacy decision, such as the EU-US Data Privacy Framework, or standard contractual clauses)."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_14",
+    "type": "header",
+    "data": {
+     "text": "6. Your rights",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_15",
+    "type": "paragraph",
+    "data": {
+     "text": "You may at any time exercise your rights of <b>access, rectification, erasure, objection, restriction of processing and portability</b>, and withdraw your consent, by writing to <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a> or by post to Calle Anastasio Herrero 5, 28020 Madrid, stating the right you are exercising and providing proof of your identity."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_16",
+    "type": "paragraph",
+    "data": {
+     "text": "If you consider that we have not handled your request properly, you may lodge a complaint with the <a href=\"https://www.aepd.es\" target=\"_blank\" rel=\"noopener\">Spanish Data Protection Agency (Agencia Española de Protección de Datos, AEPD)</a>."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_17",
+    "type": "header",
+    "data": {
+     "text": "7. Security",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_18",
+    "type": "paragraph",
+    "data": {
+     "text": "We apply appropriate technical and organisational measures to protect your data: encrypted connection (HTTPS), encrypted passwords, restricted access to the management panel, and backups."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_19",
+    "type": "header",
+    "data": {
+     "text": "8. Minors",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_privacidad_20",
+    "type": "paragraph",
+    "data": {
+     "text": "You must be of legal age to make purchases in the Shop. Persons over the age of 14 may provide their data for other purposes (Art. 7 LOPDGDD); below that age, the consent of their parents or guardians is required."
+    }
+   },
+   {
+    "id": "politica_de_privacidad_21",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>Last updated: 27 September 2026.</i>"
+    }
+   }
+  ]
+ },
+ {
+  "url_key": "politica-de-cookies",
+  "name": "Cookie policy",
+  "meta_title": "Cookie policy",
+  "meta_description": "Which cookies the Fundación Andalusí online shop uses.",
+  "blocks": [
+   {
+    "id": "politica-de-cookies_translation_note",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>This is an English translation provided for information. In the event of any discrepancy, the Spanish version shall prevail.</i>"
+    }
+   },
+   {
+    "id": "politica_de_cookies_0",
+    "type": "paragraph",
+    "data": {
+     "text": "A cookie is a small file that a website stores in your browser to remember information between visits or between pages. This policy explains which cookies the Shop uses, in accordance with Article 22.2 of Law 34/2002 of 11 July on Information Society Services and Electronic Commerce (LSSI-CE) and the guidance of the Spanish Data Protection Agency (AEPD)."
+    }
+   },
+   {
+    "id": "politica_de_cookies_1",
+    "type": "header",
+    "data": {
+     "text": "1. Cookies we use",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_cookies_2",
+    "type": "paragraph",
+    "data": {
+     "text": "The Shop <b>only uses technical cookies</b>, which are essential for it to work. We do not use analytics, advertising or social media cookies. That is why we do not ask for your consent: technical cookies are exempt (Art. 22.2 LSSI-CE)."
+    }
+   },
+   {
+    "id": "politica_de_cookies_3",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>sid</b> (first-party, technical): keeps your shopping session, that is, your basket, the checkout process and access to your account. It expires after 24 hours or when you log out.",
+      "<b>asid</b> (first-party, technical): keeps the session of Foundation staff in the management panel. It is only set for those who access that panel."
+     ]
+    }
+   },
+   {
+    "id": "politica_de_cookies_4",
+    "type": "header",
+    "data": {
+     "text": "2. Third-party services",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_cookies_5",
+    "type": "paragraph",
+    "data": {
+     "text": "To display the website’s typefaces, fonts are loaded from Google Fonts. This service does not set cookies, but your browser connects to Google’s servers, which receive your IP address. During payment you are redirected to the Redsys payment gateway, which applies its own cookie policy."
+    }
+   },
+   {
+    "id": "politica_de_cookies_6",
+    "type": "header",
+    "data": {
+     "text": "3. How to manage or delete cookies",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_cookies_7",
+    "type": "paragraph",
+    "data": {
+     "text": "You can view, block or delete cookies in your browser settings (<a href=\"https://support.google.com/chrome/answer/95647\" target=\"_blank\" rel=\"noopener\">Chrome</a>, <a href=\"https://support.mozilla.org/es/kb/Borrar%20cookies\" target=\"_blank\" rel=\"noopener\">Firefox</a>, <a href=\"https://support.apple.com/es-es/guide/safari/sfri11471/mac\" target=\"_blank\" rel=\"noopener\">Safari</a>, <a href=\"https://support.microsoft.com/es-es/microsoft-edge\" target=\"_blank\" rel=\"noopener\">Edge</a>). If you block technical cookies, you will not be able to use the basket or complete purchases."
+    }
+   },
+   {
+    "id": "politica_de_cookies_8",
+    "type": "header",
+    "data": {
+     "text": "4. Changes",
+     "level": 2
+    }
+   },
+   {
+    "id": "politica_de_cookies_9",
+    "type": "paragraph",
+    "data": {
+     "text": "If in the future we introduce cookies that require your consent, such as analytics cookies, we will state this on this page and ask for your consent before setting them."
+    }
+   },
+   {
+    "id": "politica_de_cookies_10",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>Last updated: 27 September 2026.</i>"
+    }
+   }
+  ]
+ },
+ {
+  "url_key": "condiciones-de-venta",
+  "name": "Terms of sale",
+  "meta_title": "Terms of sale",
+  "meta_description": "General terms of purchase of the Fundación Andalusí online shop: prices, payment, delivery, withdrawal and guarantees.",
+  "blocks": [
+   {
+    "id": "condiciones-de-venta_translation_note",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>This is an English translation provided for information. In the event of any discrepancy, the Spanish version shall prevail.</i>"
+    }
+   },
+   {
+    "id": "condiciones_de_venta_0",
+    "type": "paragraph",
+    "data": {
+     "text": "These general terms govern the purchase of products in the Shop. They are governed by Royal Legislative Decree 1/2007 approving the consolidated text of the General Law for the Protection of Consumers and Users (TRLGDCU), by Law 34/2002 of 11 July on Information Society Services and Electronic Commerce (LSSI-CE) and by all other applicable legislation. By placing an order you declare that you have read and accepted them."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_1",
+    "type": "header",
+    "data": {
+     "text": "1. Seller",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_2",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Owner:</b> Fundación Método Andalusí de España",
+      "<b>CIF (Tax ID):</b> G42979898",
+      "<b>Registered address:</b> Calle Anastasio Herrero 5, 28020 Madrid",
+      "<b>Contact:</b> <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>",
+      "<b>Registration details:</b> registered in the State Registry of Foundations (Registro de Fundaciones de competencia estatal) under number 2469"
+     ]
+    }
+   },
+   {
+    "id": "condiciones_de_venta_3",
+    "type": "header",
+    "data": {
+     "text": "2. Products",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_4",
+    "type": "paragraph",
+    "data": {
+     "text": "The Shop offers books, prints and teaching materials of the Andalusí Method and of the Foundation’s publishing house. Each product page describes the essential characteristics of the product. Images are for illustration only."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_5",
+    "type": "header",
+    "data": {
+     "text": "3. Prices",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_6",
+    "type": "paragraph",
+    "data": {
+     "text": "Prices are shown in euros and <b>include the applicable VAT</b>: 4% on books and 21% on all other products (toys, prints and other materials). Shipping costs are shown separately before you confirm the order and are added to the total, which you will always see before paying. The applicable price is the one in force at the time the order is placed."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_7",
+    "type": "header",
+    "data": {
+     "text": "4. How to buy",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_8",
+    "type": "list",
+    "data": {
+     "style": "ordered",
+     "items": [
+      "Add the products to your basket and click <i>Checkout</i>.",
+      "Enter your email address and your delivery and billing addresses, and choose the shipping method.",
+      "Review the order summary (products, shipping costs and total) and click <i>Pagar ahora</i> (Pay now).",
+      "Complete the payment on the secure Redsys payment gateway.",
+      "You will receive an email confirming your order, which serves as proof of purchase."
+     ]
+    }
+   },
+   {
+    "id": "condiciones_de_venta_9",
+    "type": "paragraph",
+    "data": {
+     "text": "The contract is concluded in Spanish. The Foundation keeps the electronic order document on file, which you can access from your customer account or request by email. Before paying, you can correct any details by going back to the previous steps."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_10",
+    "type": "header",
+    "data": {
+     "text": "5. Payment",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_11",
+    "type": "paragraph",
+    "data": {
+     "text": "We accept <b>debit and credit cards</b> (Visa, Mastercard) and <b>Bizum</b>, through the secure Redsys payment gateway. The charge is made at the time of purchase. The Foundation has no access to your card details. The order is considered confirmed when the bank authorises the payment."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_12",
+    "type": "header",
+    "data": {
+     "text": "6. Shipping and delivery",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_13",
+    "type": "paragraph",
+    "data": {
+     "text": "Delivery times, areas and shipping costs are set out in <a href=\"/envios-y-devoluciones\">Shipping and returns</a>. Unless another period is stated, delivery will take place within a maximum of 30 calendar days from confirmation of the order (Art. 66 bis TRLGDCU)."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_14",
+    "type": "header",
+    "data": {
+     "text": "7. Right of withdrawal",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_15",
+    "type": "paragraph",
+    "data": {
+     "text": "If you are a consumer, you may <b>withdraw from the purchase within 14 calendar days</b> without giving any reason. The period begins on the day on which you, or a third party indicated by you other than the carrier, receive the product."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_16",
+    "type": "paragraph",
+    "data": {
+     "text": "To exercise this right, you must inform us before the period expires by means of an unequivocal statement: an email to <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>, a letter to Calle Anastasio Herrero 5, 28020 Madrid, or the model form at the end of these terms (its use is not compulsory)."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_17",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Returning the product:</b> send it to the address above without undue delay and, at the latest, within 14 calendar days of informing us of your decision. You bear the direct cost of returning the product, unless it is defective or does not match what you ordered.",
+      "<b>Refund:</b> we will refund all payments received, including the cost of the initial standard delivery, within a maximum of 14 calendar days of your informing us of your withdrawal, using the same means of payment you used. We may withhold the refund until we have received the product or until you have provided evidence of having sent it back.",
+      "<b>Condition of the product:</b> you are only liable for any diminished value resulting from handling other than what is necessary to establish its nature and characteristics."
+     ]
+    }
+   },
+   {
+    "id": "condiciones_de_venta_18",
+    "type": "paragraph",
+    "data": {
+     "text": "There is no right of withdrawal in the cases set out in Article 103 TRLGDCU, for example: products made to your specifications or personalised; sealed audio or video recordings that have been unsealed after delivery; and digital content not supplied on a tangible medium where performance has begun with your express consent and your acknowledgement that you thereby lose this right."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_19",
+    "type": "header",
+    "data": {
+     "text": "8. Legal guarantee",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_20",
+    "type": "paragraph",
+    "data": {
+     "text": "All products are covered by the legal guarantee of conformity: the Foundation is liable for any lack of conformity that becomes apparent within <b>three years</b> of delivery (Art. 120 TRLGDCU). If you receive a defective or damaged product, write to us and we will repair or replace it or, if that is not possible, refund its price, at no cost to you."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_21",
+    "type": "header",
+    "data": {
+     "text": "9. Customer service and complaints",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_22",
+    "type": "paragraph",
+    "data": {
+     "text": "For any enquiry, issue or complaint, write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>. We reply as quickly as possible and, in any case, within one month at most. Official complaint forms (hojas oficiales de reclamación) are available to you. You may also use the consumer arbitration system through the Consumer Arbitration Board (Junta Arbitral de Consumo) of your autonomous community."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_23",
+    "type": "header",
+    "data": {
+     "text": "10. Applicable law",
+     "level": 2
+    }
+   },
+   {
+    "id": "condiciones_de_venta_24",
+    "type": "paragraph",
+    "data": {
+     "text": "These terms are governed by Spanish law. Disputes with consumers shall be submitted to the courts and tribunals of the consumer’s place of residence."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_25",
+    "type": "header",
+    "data": {
+     "text": "Withdrawal form",
+     "level": 3
+    }
+   },
+   {
+    "id": "condiciones_de_venta_26",
+    "type": "paragraph",
+    "data": {
+     "text": "Complete and return this form only if you wish to withdraw from the contract:"
+    }
+   },
+   {
+    "id": "condiciones_de_venta_27",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "To: Fundación Método Andalusí de España, Calle Anastasio Herrero 5, 28020 Madrid, tienda@fundacionandalusi.org.",
+      "I hereby give notice that I withdraw from my contract of sale of the following goods: …………………",
+      "Order number: ……… · Ordered on: ……… · Received on: ………",
+      "Name of consumer: …………………",
+      "Address of consumer: …………………",
+      "Signature (only if this form is submitted on paper) and date: ………"
+     ]
+    }
+   },
+   {
+    "id": "condiciones_de_venta_28",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>Last updated: 27 September 2026.</i>"
+    }
+   }
+  ]
+ },
+ {
+  "url_key": "envios-y-devoluciones",
+  "name": "Shipping and returns",
+  "meta_title": "Shipping and returns",
+  "meta_description": "Delivery times, shipping costs and how to return an order in the Fundación Andalusí online shop.",
+  "blocks": [
+   {
+    "id": "envios-y-devoluciones_translation_note",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>This is an English translation provided for information. In the event of any discrepancy, the Spanish version shall prevail.</i>"
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_0",
+    "type": "header",
+    "data": {
+     "text": "Shipping",
+     "level": 2
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_1",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Delivery area:</b> Spain. If you need delivery to another destination, write to us before placing your order.",
+      "<b>Preparation:</b> 24–48 working hours from confirmation of payment.",
+      "<b>Delivery:</b> 2 to 5 working days from dispatch.",
+      "<b>Cost:</b> €4.95 (VAT included). The exact amount is shown in the basket before you pay. <b>Free shipping</b> on orders of €30 or more (VAT included).",
+      "<b>Tracking:</b> when we dispatch your order you will receive an email, including the tracking number once the carrier provides it. You can also check the status in your account."
+     ]
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_2",
+    "type": "paragraph",
+    "data": {
+     "text": "Delivery times are approximate and may be longer during periods of high demand, on public holidays or for reasons beyond our control. If an order is delayed, we will let you know. In any case, the maximum delivery period is 30 calendar days."
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_3",
+    "type": "header",
+    "data": {
+     "text": "When you receive your order",
+     "level": 2
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_4",
+    "type": "paragraph",
+    "data": {
+     "text": "Check the parcel when you receive it. If it arrives damaged or something is missing, note it on the carrier’s delivery note and write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a> with your order number and, if possible, a photo. We will sort it out at no cost to you."
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_5",
+    "type": "header",
+    "data": {
+     "text": "Returns",
+     "level": 2
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_6",
+    "type": "paragraph",
+    "data": {
+     "text": "You have <b>14 calendar days</b> from receipt to return any product without giving a reason, under the right of withdrawal (see <a href=\"/condiciones-de-venta\">Terms of sale</a>, section 7)."
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_7",
+    "type": "list",
+    "data": {
+     "style": "ordered",
+     "items": [
+      "Write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a> stating your order number and the products you are returning, or use the withdrawal form.",
+      "Send the product, well protected, to: <b>Fundación Método Andalusí de España · Calle Anastasio Herrero 5, 28020 Madrid</b>.",
+      "Once we receive it, or once you provide evidence that you have sent it, we will refund the amount using the same means of payment within a maximum of 14 calendar days."
+     ]
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_8",
+    "type": "paragraph",
+    "data": {
+     "text": "Return costs are borne by you, unless the product is defective, arrives damaged or does not match what you ordered. In those cases we cover all costs."
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_9",
+    "type": "header",
+    "data": {
+     "text": "Defective products",
+     "level": 2
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_10",
+    "type": "paragraph",
+    "data": {
+     "text": "All products carry a three-year legal guarantee. If you find a defect, write to us and we will offer you a repair, replacement or refund, at no cost to you."
+    }
+   },
+   {
+    "id": "envios_y_devoluciones_11",
+    "type": "paragraph",
+    "data": {
+     "text": "<i>Last updated: 27 September 2026.</i>"
+    }
+   }
+  ]
+ }
+]

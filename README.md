@@ -428,10 +428,27 @@ avisos por cuenta: la registra la última tienda que arranca (devtienda o la def
 ### 4.5 Correos
 
 Los correos a los clientes (confirmación del pedido, bienvenida, cambio de contraseña, pedido
-enviado y entregado) están en español y con la imagen de la Fundación: plantillas
-`emails/*.html`, activadas en `config/default.json` (`system.notification_emails`). Se generan
-con `node scripts/build-emails.mjs`; para cambiar un texto, edite ese script y vuelva a
-ejecutarlo. La confirmación incluye la factura de Odoo en PDF cuando está configurado.
+enviado y entregado) llevan la imagen de la Fundación y se envían en el idioma con que el
+cliente compró o se registró (español, inglés o árabe; ver 4.6). Plantillas
+`emails/<idioma>/*.html`, generadas con `node scripts/build-emails.mjs`: para cambiar un texto,
+edite ese script (textos en español y su traducción en `TRANSLATIONS`) y vuelva a ejecutarlo.
+La confirmación incluye la factura de Odoo en PDF cuando está configurado.
+
+### 4.6 Idiomas (español, inglés y árabe)
+
+- La tienda se abre en el idioma del dispositivo (cabecera `Accept-Language` del navegador):
+  árabe → `/ar/…` (de derecha a izquierda); español, catalán, gallego o euskera → sin prefijo
+  (español); cualquier otro → `/en/…` (inglés). La elección se recuerda en la cookie
+  `tienda_lang` y se puede cambiar desde el pie (*Español · العربية · English*).
+- El idioma del carrito se guarda al pagar y decide el idioma del correo de confirmación y de
+  los de envío y entrega. Redsys se muestra en inglés si el cliente no compra en español.
+- Textos de la interfaz: `translations/<idioma>/*.csv`. Nombres de producto en inglés y árabe:
+  `extensions/tienda/content/products.json` (por SKU; sin traducción se muestra el español).
+  Métodos de envío y pago: claves en `translations/<idioma>/tienda.csv`.
+- Páginas legales: `scripts/create-pages.mjs` crea también sus versiones en inglés y árabe
+  (`scripts/legal/legal-en.json`, `legal-ar.json`), con la clave `<clave>-en` / `<clave>-ar`.
+- Los idiomas se activan con `node scripts/store-settings.mjs` (`STORE_LANGUAGES`, por
+  defecto `ar,en`). El panel de administración sigue en español.
 
 ---
 

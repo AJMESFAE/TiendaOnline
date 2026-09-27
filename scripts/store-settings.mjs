@@ -4,6 +4,7 @@
 // Si ya se cambiaron desde el panel, no se tocan (salvo con --force).
 //
 //   node scripts/store-settings.mjs --to <url> --email <admin> --password '...' [--force]
+// También activa los idiomas (STORE_LANGUAGES, por defecto «ar,en»).
 // Nombre: STORE_NAME (por defecto «Tienda de la Fundación Andalusí»).
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => {
@@ -37,6 +38,17 @@ async function api(path, method, json) {
 
 await api('/admin/user/login', 'POST', { email: args.email, password: args.password });
 const { data } = await api('/api/graphql', 'POST', { query: '{ setting { storeName storeDescription } }' });
+// Idiomas de la tienda: español (por defecto, sin prefijo), árabe (/ar) e inglés (/en).
+// El panel de administración no cambia de idioma.
+const langs = await api('/api/admin/graphql', 'POST', { query: '{ setting { storeLanguage storeLanguages } }' }).catch(() => null);
+const wanted = (process.env.STORE_LANGUAGES || 'ar,en').split(',').map((l) => l.trim()).filter(Boolean);
+const currentLangs = langs?.data?.setting || {};
+if (currentLangs.storeLanguage !== 'es' || wanted.some((l) => !(currentLangs.storeLanguages || []).includes(l))) {
+  await api('/api/settings', 'POST', { storeLanguage: 'es', storeLanguages: wanted });
+  console.log(`✓ Idiomas de la tienda: es (por defecto), ${wanted.join(', ')}`);
+} else {
+  console.log(`Idiomas de la tienda: es, ${wanted.join(', ')} (sin cambios)`);
+}
 const current = data?.setting || {};
 const update = {};
 if (args.force || FACTORY_NAMES.includes(String(current.storeName || '').trim().toLowerCase())) {

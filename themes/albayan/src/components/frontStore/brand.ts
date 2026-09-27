@@ -7,7 +7,7 @@ export const MAIN_SITE_URL = 'https://fundacionandalusi.org';
 export const DONATE_URL = `${MAIN_SITE_URL}/donaciones/`;
 export const LOGO_SRC = '/brand/logo-fundacion.png';
 export const LOGO_WHITE_SRC = '/brand/logo-fundacion-blanco.png';
-export const STORE_NAME = 'Tienda de la Fundación Andalusí';
+export const STORE_NAME = 'Fundación Andalusí Shop';
 
 export interface NavLink {
   label: string;
@@ -16,45 +16,48 @@ export interface NavLink {
   children?: NavLink[];
 }
 
-/** Menú principal: el mismo que fundacionandalusi.org, con la tienda en local. */
+/**
+ * Menú principal: el mismo que fundacionandalusi.org, con la tienda en local.
+ * Los textos son claves en inglés: se traducen con _() (translations/es|ar/tienda.csv).
+ */
 export const mainNav: NavLink[] = [
-  { label: 'Conócenos', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
+  { label: 'About us', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
   {
-    label: 'Proyectos',
+    label: 'Projects',
     href: `${MAIN_SITE_URL}/fundacion-proyectos/`,
     external: true,
     children: [
-      { label: 'Método Andalusí', href: `${MAIN_SITE_URL}/proyectos/metodo-andalusi/`, external: true },
-      { label: 'Proyecto Al-Waqf', href: `${MAIN_SITE_URL}/proyectos/proyecto-al-waqf/`, external: true },
-      { label: 'Editorial', href: `${MAIN_SITE_URL}/proyectos/editorial/`, external: true }
+      { label: 'Andalusi Method', href: `${MAIN_SITE_URL}/proyectos/metodo-andalusi/`, external: true },
+      { label: 'Al-Waqf Project', href: `${MAIN_SITE_URL}/proyectos/proyecto-al-waqf/`, external: true },
+      { label: 'Publishing house', href: `${MAIN_SITE_URL}/proyectos/editorial/`, external: true }
     ]
   },
-  { label: 'Actividad', href: `${MAIN_SITE_URL}/actividad/`, external: true },
+  { label: 'Activity', href: `${MAIN_SITE_URL}/actividad/`, external: true },
   { label: 'Blog', href: `${MAIN_SITE_URL}/blogs/`, external: true },
-  { label: 'Tienda online', href: '/#productos' },
-  { label: 'Contáctanos', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
+  { label: 'Online shop', href: '/#productos' },
+  { label: 'Contact us', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
 ];
 
 /** Columnas del pie (mismo esquema que el pie de fundacionandalusi.org). */
 export const footerLinks: { title: string; links: NavLink[] }[] = [
   {
-    title: 'Accesos rápidos',
+    title: 'Quick links',
     links: [
-      { label: 'Conócenos', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
-      { label: 'Proyectos', href: `${MAIN_SITE_URL}/fundacion-proyectos/`, external: true },
-      { label: 'Actividad', href: `${MAIN_SITE_URL}/actividad/`, external: true },
+      { label: 'About us', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
+      { label: 'Projects', href: `${MAIN_SITE_URL}/fundacion-proyectos/`, external: true },
+      { label: 'Activity', href: `${MAIN_SITE_URL}/actividad/`, external: true },
       { label: 'Blog', href: `${MAIN_SITE_URL}/blogs/`, external: true },
-      { label: 'Contáctanos', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
+      { label: 'Contact us', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
     ]
   },
   {
-    title: 'Tienda',
+    title: 'Shop',
     links: [
-      { label: 'Productos', href: '/#productos' },
-      { label: 'Mi cuenta', href: '/account' },
-      { label: 'Carrito', href: '/cart' },
-      { label: 'Condiciones de venta', href: '/condiciones-de-venta' },
-      { label: 'Envíos y devoluciones', href: '/envios-y-devoluciones' }
+      { label: 'Products', href: '/#productos' },
+      { label: 'My account', href: '/account' },
+      { label: 'Cart', href: '/cart' },
+      { label: 'Terms of sale', href: '/condiciones-de-venta' },
+      { label: 'Shipping and returns', href: '/envios-y-devoluciones' }
     ]
   }
 ];
@@ -76,12 +79,12 @@ export const contact = {
 
 /** Páginas legales de la tienda (se crean solas al arrancar). */
 export const legalPages = [
-  { urlKey: 'aviso-legal', label: 'Aviso legal' },
-  { urlKey: 'politica-de-privacidad', label: 'Política de privacidad' },
-  { urlKey: 'politica-de-cookies', label: 'Política de cookies' },
-  { urlKey: 'condiciones-de-venta', label: 'Condiciones de venta' },
-  { urlKey: 'envios-y-devoluciones', label: 'Envíos y devoluciones' }
+  { urlKey: 'aviso-legal', label: 'Legal notice' },
+  { urlKey: 'politica-de-privacidad', label: 'Privacy policy' },
+  { urlKey: 'politica-de-cookies', label: 'Cookie policy' },
+  { urlKey: 'condiciones-de-venta', label: 'Terms of sale' },
+  { urlKey: 'envios-y-devoluciones', label: 'Shipping and returns' }
 ];
 
 export const tagline =
-  'La misión de la Fundación es promover la enseñanza del árabe y preservar el patrimonio islámico en España.';
+  'The Foundation’s mission is to promote the teaching of Arabic and to preserve the Islamic heritage of Spain.';

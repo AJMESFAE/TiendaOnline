@@ -1,3 +1,4 @@
+import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import { ProductData } from '@components/frontStore/catalog/ProductContext.js';
 import { ProductList } from '@components/frontStore/catalog/ProductList.js';
 import React from 'react';
@@ -15,14 +16,14 @@ export default function AlbayanProducts({ products }: AlbayanProductsProps) {
     <section id="productos" className="albayan-products my-16 scroll-mt-24">
       <div className="mb-10 flex items-end justify-between gap-4">
         <div>
-          <h2 className="albayan-section-title">Nuestros productos</h2>
+          <h2 className="albayan-section-title">{_('Our products')}</h2>
           <p className="mt-3 max-w-xl text-muted-foreground">
-            Libros, láminas y material didáctico para aprender árabe y conocer la cultura islámica.
+            {_('Books, posters and teaching materials to learn Arabic and discover Islamic culture.')}
           </p>
         </div>
         {items.length > 0 && (
           <span className="hidden shrink-0 text-sm text-muted-foreground sm:inline">
-            {items.length} {items.length === 1 ? 'producto' : 'productos'}
+            {items.length === 1 ? _('1 product') : _('${count} products', { count: String(items.length) })}
           </span>
         )}
       </div>
@@ -30,7 +31,7 @@ export default function AlbayanProducts({ products }: AlbayanProductsProps) {
         products={items}
         gridColumns={3}
         showAddToCart
-        emptyMessage="Muy pronto encontrarás aquí los libros y materiales de la Fundación."
+        emptyMessage={_('Soon you will find the Foundation’s books and materials here.')}
       />
     </section>
   );

@@ -1,6 +1,9 @@
 import Area from '@components/common/Area.js';
+import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import React from 'react';
 import { contact, footerLinks, legalPages, LOGO_WHITE_SRC, owner, STORE_NAME, tagline } from './brand.js';
+import { useLocale } from './i18n.js';
+import { LanguageLinks } from './LanguageLinks.js';
 
 interface FooterProps {
   copyRight: string;
@@ -9,30 +12,31 @@ interface FooterProps {
 /** Pie con el mismo esquema que fundacionandalusi.org (fondo verde, logotipo en blanco, 4 columnas). */
 export function Footer({ copyRight }: FooterProps) {
   const year = new Date().getFullYear();
+  const loc = useLocale();
   return (
     <footer className="footer albayan-footer mt-24">
       <Area id="footerTop" className="footer__top" isGlobal editableInPageBuilder />
       <div className="page-width grid gap-12 pb-10 pt-16 md:grid-cols-2 md:pt-20 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <a href="/" aria-label={`${STORE_NAME} – inicio`}>
+          <a href={loc.href('/')} aria-label={`${_(STORE_NAME)} – ${_('Home')}`}>
             <img
               src={LOGO_WHITE_SRC}
-              alt="Fundación Andalusí de España"
+              alt={_('Fundación Andalusí de España')}
               className="h-16 w-auto"
               width={172}
               height={64}
             />
           </a>
-          <p className="albayan-footer__lead mt-5 max-w-xs">{tagline}</p>
+          <p className="albayan-footer__lead mt-5 max-w-xs">{_(tagline)}</p>
         </div>
         {footerLinks.map((column) => (
           <div key={column.title}>
-            <h3 className="albayan-footer__title mb-4">{column.title}</h3>
+            <h3 className="albayan-footer__title mb-4">{_(column.title)}</h3>
             <ul className="space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="albayan-footer__link inline-block py-1">
-                    {link.label}
+                  <a href={loc.href(link.href)} className="albayan-footer__link inline-block py-1">
+                    {_(link.label)}
                   </a>
                 </li>
               ))}
@@ -40,7 +44,7 @@ export function Footer({ copyRight }: FooterProps) {
           </div>
         ))}
         <div>
-          <h3 className="albayan-footer__title mb-4">Info contacto</h3>
+          <h3 className="albayan-footer__title mb-4">{_('Contact info')}</h3>
           <ul className="albayan-footer__contact space-y-3">
             {contact.email && (
               <li>
@@ -88,7 +92,7 @@ export function Footer({ copyRight }: FooterProps) {
               className="albayan-footer__social mt-5"
               rel="noopener"
               target="_blank"
-              aria-label="Instagram de la Fundación Andalusí"
+              aria-label={_('Fundación Andalusí on Instagram')}
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
@@ -115,15 +119,16 @@ export function Footer({ copyRight }: FooterProps) {
               default: (
                 <div className="page-width flex flex-col gap-4 py-6 text-xs md:flex-row md:items-center md:justify-between">
                   <div>
-                    © {year} Fundación Andalusí de España · {copyRight}
+                    © {year} {_('Fundación Andalusí de España')} · {_(copyRight)}
                   </div>
                   <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                     {legalPages.slice(0, 3).map((l) => (
-                      <a key={l.urlKey} href={`/${l.urlKey}`} className="albayan-footer__link text-xs">
-                        {l.label}
+                      <a key={l.urlKey} href={loc.href(`/${l.urlKey}`)} className="albayan-footer__link text-xs">
+                        {_(l.label)}
                       </a>
                     ))}
-                    <span className="flex items-center gap-1.5" aria-label="Pago seguro con Redsys">
+                    <LanguageLinks />
+                    <span className="flex items-center gap-1.5" aria-label={_('Secure payment with Redsys')}>
                       <span className="albayan-badge">VISA</span>
                       <span className="albayan-badge">Mastercard</span>
                       <span className="albayan-badge">Bizum</span>

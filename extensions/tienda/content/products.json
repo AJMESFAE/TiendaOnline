@@ -1,0 +1,19 @@
+{
+  "_comentario": "Nombre de cada producto en inglés y árabe, por SKU. El español es el de la ficha del producto en el panel.",
+  "SHOP-ALIFATO": {
+    "en": "Alifato – The Arabic Alphabet",
+    "ar": "الأبجدية العربية (ألف باء)"
+  },
+  "SHOP-EL-METODO-ANDALUSI-NIVEL-BASICO": {
+    "en": "The Andalusi Method: Basic Level",
+    "ar": "المنهج الأندلسي: المستوى الأساسي"
+  },
+  "SHOP-LUCES-SOBRE-EL-ESTUDIO-DE-LA-SIRAH": {
+    "en": "Insights into the Study of the Sirah",
+    "ar": "أضواء على دراسة السيرة النبوية"
+  },
+  "MA-BASICO": {
+    "en": "The Andalusi Method: Basic Level",
+    "ar": "المنهج الأندلسي: المستوى الأساسي"
+  }
+}

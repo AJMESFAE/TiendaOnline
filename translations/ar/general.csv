@@ -1,0 +1,20 @@
+Discount ${discount} For All Orders Over ${price},خصم ${discount} على جميع الطلبات التي تزيد على ${price}
+Please select,يرجى الاختيار
+The page you requested does not exist.,الصفحة التي طلبتها غير موجودة.
+404 Page Not Found,404 الصفحة غير موجودة
+Home,الرئيسية
+Not found,غير موجود
+Search options,خيارات البحث
+Show less,عرض أقل
+Sort by,ترتيب حسب
+Search products…,ابحث عن المنتجات…
+Order Note,ملاحظة الطلب
+Add a note to your order,أضف ملاحظة إلى طلبك
+My account,حسابي
+Log out,تسجيل الخروج
+Your profile has been updated,تم تحديث ملفك الشخصي
+Update profile API not available,واجهة API لتحديث الملف الشخصي غير متاحة
+Failed to update profile,تعذّر تحديث الملف الشخصي
+Something went wrong. Please refresh the page.,حدث خطأ ما. يرجى تحديث الصفحة.
+${count} result for “${keyword}”,${count} نتيجة لـ «${keyword}»
+${count} results for “${keyword}”,${count} نتائج لـ «${keyword}»

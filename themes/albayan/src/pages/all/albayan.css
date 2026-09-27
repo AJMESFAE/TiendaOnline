@@ -580,3 +580,92 @@ html,
 body {
   overflow-x: clip;
 }
+
+/* ---------- Idiomas ---------- */
+/* Selector «Español · العربية · English» del pie */
+.albayan-langs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.albayan-langs__link {
+  color: rgb(255 255 255 / 0.85);
+  font-size: 0.78rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+.albayan-langs__link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.albayan-langs__link[aria-current='true'] {
+  background: rgb(255 255 255 / 0.18);
+  color: #fff;
+  font-weight: 600;
+}
+/* Selector de EverShop dentro de la barra flotante */
+.albayan-shopbar .language-switcher {
+  border: 0;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--albayan-ink);
+  padding: 0 0.25rem;
+  cursor: pointer;
+}
+
+/* ---------- Árabe: de derecha a izquierda ---------- */
+/* EverShop pinta <html lang="ar"> en el servidor: con `direction` desde el CSS la
+   página nace ya en RTL (sin parpadeo); RtlDirection.tsx añade además dir="rtl". */
+html[lang='ar'] {
+  direction: rtl;
+}
+html[lang='ar'] body,
+html[lang='ar'] h1,
+html[lang='ar'] h2,
+html[lang='ar'] h3,
+html[lang='ar'] .albayan-nav__link,
+html[lang='ar'] .albayan-btn,
+html[lang='ar'] .albayan-donar {
+  font-family: 'Tajawal', 'Noto Naskh Arabic', system-ui, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[lang='ar'] .albayan-nav__link {
+  font-size: 15px;
+}
+/* Flechas «→» e iconos de flecha apuntan hacia la izquierda */
+html[lang='ar'] .arrow,
+html[lang='ar'] .albayan-donar__icon {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+html[lang='ar'] .albayan-btn:hover .arrow {
+  transform: scaleX(-1) translateX(3px);
+}
+html[lang='ar'] .albayan-nav__sub {
+  left: auto;
+  right: 0;
+}
+html[lang='ar'] .albayan-shopbar {
+  right: auto;
+  left: 16px;
+}
+@media (min-width: 768px) {
+  html[lang='ar'] .albayan-shopbar {
+    left: 24px;
+  }
+}
+html[lang='ar'] .albayan-page__nav {
+  border-left: 0;
+}
+html[lang='ar'] .albayan-nav-mobile__link--sub {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+/* Teléfonos, correos y referencias se leen de izquierda a derecha */
+html[lang='ar'] input[type='tel'],
+html[lang='ar'] input[type='email'],
+html[lang='ar'] .albayan-phone-prefix {
+  direction: ltr;
+}

@@ -1,0 +1,1691 @@
+Welcome Back!,مرحبًا بعودتك!
+Please sign in to your account ,يرجى تسجيل الدخول إلى حسابك 
+Join us for exclusive offers and order tracking,انضم إلينا للحصول على عروض حصرية وتتبع طلباتك
+Sign Up,إنشاء حساب
+Signing Up...,جارٍ التسجيل...
+Signing In...,جارٍ تسجيل الدخول...
+Recent Orders,الطلبات الأخيرة
+Address Book,دفتر العناوين
+You have no addresses saved,لا توجد لديك عناوين محفوظة
+Add new address,إضافة عنوان جديد
+Address 2,العنوان 2
+Set as default,تعيين كافتراضي
+Save,حفظ
+Edit,تعديل
+Delete,حذف
+Edit Address,تعديل العنوان
+Product Filters,عوامل تصفية المنتجات
+No products found,لم يتم العثور على منتجات
+${count} Products,${count} منتجات
+Default,افتراضي
+Name,الاسم
+Discount(${coupon}),الخصم(${coupon})
+${count} items,${count} منتجات
+Thank you ${name}!,شكرًا لك يا ${name}!
+Contact Information,معلومات الاتصال
+VIEW CART (${count}),عرض السلة (${count})
+Your Cart,سلتك
+Your cart is empty,سلتك فارغة
+Subtotal,المجموع الفرعي
+View Cart (${totalQty}),عرض السلة (${totalQty})
+Shopping Cart,سلة التسوق
+Logged in as,مسجّل الدخول باسم
+Payment Information,معلومات الدفع
+Same as shipping address,نفس عنوان الشحن
+Use a different billing address,استخدام عنوان فوترة مختلف
+Pick a payment method,اختر طريقة الدفع
+Select a payment method,اختر طريقة الدفع
+Complete Order,إتمام الطلب
+Add to Cart,أضف إلى السلة
+Search,بحث
+${count} orders,${count} طلبات
+${field} is required,${field} مطلوب
+${pct}% of orders cancelled,${pct}% من الطلبات ملغاة
+${pct}% of orders completed,${pct}% من الطلبات مكتملة
+${qty} sold,تم بيع ${qty}
+${total} lifetime sale,${total} إجمالي المبيعات
+(Guest Checkout),(الشراء كضيف)
+(list),(قائمة)
+(optional),(اختياري)
+A coupon is already applied,تم تطبيق قسيمة بالفعل
+A group needs at least one sub-field,تحتاج المجموعة إلى حقل فرعي واحد على الأقل
+A list of best selling products,قائمة بالمنتجات الأكثر مبيعًا
+A list of customers who have placed the most orders,قائمة بالعملاء الذين قدّموا أكبر عدد من الطلبات
+A regular expression the value must match.,تعبير نمطي يجب أن تطابقه القيمة.
+Accepted values,القيم المقبولة
+Active,نشط
+Active Filters,عوامل التصفية النشطة
+Add address API not available,واجهة API لإضافة العنوان غير متاحة
+Add custom field,إضافة حقل مخصص
+Add field,إضافة حقل
+Add item,إضافة عنصر
+Add option,إضافة خيار
+Add product,إضافة منتج
+Add some items to get started,أضف بعض المنتجات للبدء
+Add sub-field,إضافة حقل فرعي
+Adding...,جارٍ الإضافة...
+Address has been deleted successfully!,تم حذف العنوان بنجاح!
+Address has been saved successfully!,تم حفظ العنوان بنجاح!
+Address has been updated successfully!,تم تحديث العنوان بنجاح!
+Adds target=_blank rel=noopener noreferrer.,يضيف target=_blank rel=noopener noreferrer.
+All items fulfilled,تم تجهيز جميع المنتجات
+All orders,جميع الطلبات
+All your past orders,جميع طلباتك السابقة
+Allow multiple,السماح بالتعدد
+An unexpected error occurred. Please try again.,حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.
+Apply Filters,تطبيق عوامل التصفية
+Are you sure you want to mark the selected orders as shipped?,"هل أنت متأكد من أنك تريد وضع علامة ""تم الشحن"" على الطلبات المحددة؟"
+Are you sure?,هل أنت متأكد؟
+Attribute Group,مجموعة السمات
+Attribute code is used in API and must be unique,يُستخدم رمز السمة في API ويجب أن يكون فريدًا
+Attribute options,خيارات السمة
+Attributes,السمات
+Available shipping methods will appear once you provide your address details,ستظهر طرق الشحن المتاحة بعد إدخال بيانات عنوانك
+Best Sellers,الأكثر مبيعًا
+Best customers,أفضل العملاء
+Billing address,عنوان الفواتير
+Black,أسود
+Buy qty,كمية الشراء
+Buy qty is required,كمية الشراء مطلوبة
+Can not process payment. Please try again later.,تعذّرت معالجة الدفع. يُرجى المحاولة لاحقًا.
+Can't be undone,لا يمكن التراجع عن ذلك
+Cancel Order,إلغاء الطلب
+Cancel shipment,إلغاء الشحنة
+Cancel this shipment?,هل تريد إلغاء هذه الشحنة؟
+Canceled,ملغى
+Cancelled,ملغى
+Cannot add billing address: cart not initialized,تعذّرت إضافة عنوان الفواتير: لم تتم تهيئة السلة
+Cannot add contact info: cart not initialized,تعذّرت إضافة بيانات الاتصال: لم تتم تهيئة السلة
+Cannot add payment method: cart not initialized,تعذّرت إضافة طريقة الدفع: لم تتم تهيئة السلة
+Cannot add shipping address: cart not initialized,تعذّرت إضافة عنوان الشحن: لم تتم تهيئة السلة
+Cannot add shipping method: cart not initialized,تعذّرت إضافة طريقة الشحن: لم تتم تهيئة السلة
+Cannot add shipping method: providerCode is required,تعذّرت إضافة طريقة الشحن: providerCode مطلوب
+Cannot apply coupon: cart not initialized,تعذّر تطبيق القسيمة: لم تتم تهيئة السلة
+Cannot remove coupon: cart not initialized,تعذّرت إزالة القسيمة: لم تتم تهيئة السلة
+Carrier,شركة الشحن
+Carrier is required,شركة الشحن مطلوبة
+Cart ID is required to checkout,معرّف السلة مطلوب لإتمام الشراء
+Cart is not initialized,لم تتم تهيئة السلة
+Catalog,الكتالوج
+Categories,الفئات
+Category,الفئة
+Charcoal,فحمي
+Checkout success,تم الشراء بنجاح
+Choose Product SKU,اختر SKU المنتج
+Choose SKU,اختر SKU
+Clear All,مسح الكل
+Clear Filters,مسح عوامل التصفية
+Clear all,مسح الكل
+Clear categories,مسح الفئات
+Close fullscreen view,إغلاق عرض ملء الشاشة
+Code,الرمز
+Collections,المجموعات
+Comma-separated; renders the value as a dropdown.,مفصولة بفواصل؛ تعرض القيمة كقائمة منسدلة.
+Completed,مكتمل
+Configurable,قابل للتهيئة
+Configure tax classes and tax rates,إعداد فئات الضرائب ونسبها
+Confirm,تأكيد
+Contact for pricing,تواصل معنا لمعرفة السعر
+Conveniently pay with cash at your doorstep when your order is delivered.,ادفع نقدًا بكل سهولة عند باب منزلك عند تسليم طلبك.
+Coupon applied successfully!,تم تطبيق القسيمة بنجاح!
+Coupon code is required,رمز القسيمة مطلوب
+Coupon does not match,القسيمة غير مطابقة
+Coupon removed successfully!,تمت إزالة القسيمة بنجاح!
+Cream,كريمي
+Create,إنشاء
+Create a new attribute,إنشاء سمة جديدة
+Create a new group,إنشاء مجموعة جديدة
+Create a new package,إنشاء طرد جديد
+Create shipment,إنشاء شحنة
+Created,تاريخ الإنشاء
+Custom URL,URL مخصص
+Custom field created,تم إنشاء الحقل المخصص
+Custom field updated,تم تحديث الحقل المخصص
+Custom fields,الحقول المخصصة
+Custom fields (JSON),الحقول المخصصة (JSON)
+Custom fields saved,تم حفظ الحقول المخصصة
+Customer Information,معلومات العميل
+Customer does not have any order yet.,لا توجد طلبات لهذا العميل بعد.
+Customer notes,ملاحظات العميل
+Daily,يومي
+Date and time must be after ${min},يجب أن يكون التاريخ والوقت بعد ${min}
+Date and time must be before ${max},يجب أن يكون التاريخ والوقت قبل ${max}
+Date must be after ${min},يجب أن يكون التاريخ بعد ${min}
+Date must be before ${max},يجب أن يكون التاريخ قبل ${max}
+Delete ${count} coupons,حذف ${count} قسائم
+Delete ${count} products,حذف ${count} منتجات
+Delete address API not available,واجهة API لحذف العنوان غير متاحة
+Delivered,تم التسليم
+Description,الوصف
+Disable,تعطيل
+Disable ${count} coupons,تعطيل ${count} قسائم
+Disable ${count} customers,تعطيل ${count} عملاء
+Disable ${count} products,تعطيل ${count} منتجات
+Disabled,معطّل
+Discount percent,نسبة الخصم
+Discount percent is required,نسبة الخصم مطلوبة
+Display on Frontend?,هل يُعرض في واجهة المتجر؟
+Displays the mobile sidebar.,يعرض الشريط الجانبي على الجوال.
+Done,تم
+Drag to reorder,اسحب لإعادة الترتيب
+Duplicate,تكرار
+Edit custom field,تعديل الحقل المخصص
+Edit field settings,تعديل إعدادات الحقل
+Edit package,تعديل الطرد
+Edit tracking info,تعديل معلومات التتبع
+Editing ${name},جارٍ تعديل ${name}
+Email a shipment confirmation,إرسال تأكيد الشحن بالبريد الإلكتروني
+Email a shipment confirmation with tracking details,إرسال تأكيد الشحن مع تفاصيل التتبع بالبريد الإلكتروني
+Email is required,البريد الإلكتروني مطلوب
+Enable,تفعيل
+Enable ${count} coupons,تفعيل ${count} قسائم
+Enable ${count} customers,تفعيل ${count} عملاء
+Enable ${count} products,تفعيل ${count} منتجات
+Enabled,مفعّل
+Enter attribute code,أدخل رمز السمة
+Enter attribute name,أدخل اسم السمة
+Enter text,أدخل النص
+Enter value for ${attribute},أدخل قيمة ${attribute}
+Enter your email,أدخل بريدك الإلكتروني
+Enter your new password,أدخل كلمة المرور الجديدة
+Enter your password,أدخل كلمة المرور
+Error,خطأ
+Failed to add address,تعذّرت إضافة العنوان
+Failed to add billing address,تعذّرت إضافة عنوان الفواتير
+Failed to add billing address.,تعذّرت إضافة عنوان الفواتير.
+Failed to add contact info,تعذّرت إضافة بيانات الاتصال
+Failed to add contact info.,تعذّرت إضافة بيانات الاتصال.
+Failed to add item to cart,تعذّرت إضافة العنصر إلى السلة
+Failed to add payment method,تعذّرت إضافة طريقة الدفع
+Failed to add payment method.,تعذّرت إضافة طريقة الدفع.
+Failed to add product to cart,تعذّرت إضافة المنتج إلى السلة
+Failed to add shipping address,تعذّرت إضافة عنوان الشحن
+Failed to add shipping address.,تعذّرت إضافة عنوان الشحن.
+Failed to add shipping method,تعذّرت إضافة طريقة الشحن
+Failed to add shipping method.,تعذّرت إضافة طريقة الشحن.
+Failed to apply coupon,تعذّر تطبيق القسيمة
+Failed to cancel shipment,تعذّر إلغاء الشحنة
+Failed to checkout,تعذّر إتمام الشراء
+Failed to create field,تعذّر إنشاء الحقل
+Failed to create shipment,تعذّر إنشاء الشحنة
+Failed to delete address,تعذّر حذف العنوان
+Failed to load custom fields,تعذّر تحميل الحقول المخصصة
+Failed to mark delivered,تعذّر وضع علامة «تم التسليم»
+Failed to place order,تعذّر تقديم الطلب
+Failed to place order. Please try again.,تعذّر تقديم الطلب. يُرجى المحاولة مرة أخرى.
+Failed to remove coupon,تعذّرت إزالة القسيمة
+Failed to remove coupon.,تعذّرت إزالة القسيمة.
+Failed to save custom fields,تعذّر حفظ الحقول المخصصة
+Failed to set shipping method,تعذّر تعيين طريقة الشحن
+Failed to set shipping note,تعذّر تعيين ملاحظة الشحن
+Failed to update address,تعذّر تحديث العنوان
+Failed to update field,تعذّر تحديث الحقل
+Failed to update shipment,تعذّر تحديث الشحنة
+Failed to update tracking info,تعذّر تحديث معلومات التتبع
+Failed to void label,تعذّر إلغاء الملصق
+Failed!,فشلت العملية!
+Fields applicable to this entity type. Adding a field applies it to all entities of this type.,الحقول المطبقة على هذا النوع من الكيانات. تؤدي إضافة حقل إلى تطبيقه على جميع الكيانات من هذا النوع.
+File size must be less than ${maxSize},يجب أن يكون حجم الملف أقل من ${maxSize}
+Filter Products,تصفية المنتجات
+Filters,عوامل التصفية
+First,الأولى
+Free,مجاني
+Free shipping,شحن مجاني
+Free shipping ?,شحن مجاني؟
+Fulfill ${count} orders,تنفيذ ${count} طلبات
+Full Name is required,الاسم الكامل مطلوب
+Fully shipped,تم الشحن بالكامل
+General,عام
+Get qty,الكمية المستلمة
+Get qty is required,الكمية المستلمة مطلوبة
+Ghost,شفاف
+Go,انتقال
+Go to Login,الانتقال إلى تسجيل الدخول
+Go to next page,الانتقال إلى الصفحة التالية
+Go to previous page,الانتقال إلى الصفحة السابقة
+Hello,مرحبًا
+Hide from storefront,إخفاء من واجهة المتجر
+ID,ID
+In Stock,متوفر
+Inactive,غير نشط
+Inclusive of tax ${totalTaxAmount},شامل الضريبة ${totalTaxAmount}
+Insert,إدراج
+Invalid address,عنوان غير صالح
+Invalid cart,سلة غير صالحة
+Invalid cart id,معرّف سلة غير صالح
+Invalid coupon,قسيمة غير صالحة
+Invalid customer,عميل غير صالح
+Invalid customer id,معرّف عميل غير صالح
+Invalid email or password,البريد الإلكتروني أو كلمة المرور غير صحيحة
+Invalid format,تنسيق غير صالح
+Invalid quantity,كمية غير صالحة
+Is Filterable?,قابل للتصفية؟
+Is Required?,مطلوب؟
+Item,العنصر
+Items,العناصر
+Items in this shipment will return to the order's unshipped pool. This action cannot be undone.,ستعود العناصر في هذه الشحنة إلى العناصر غير المشحونة في الطلب. لا يمكن التراجع عن هذا الإجراء.
+Key,المفتاح
+Key is required,المفتاح مطلوب
+Label,التسمية
+Label voided,تم إلغاء الملصق
+Language,اللغة
+Last,الأخيرة
+Lifetime Sales,إجمالي المبيعات
+Light gray,رمادي فاتح
+Limit,الحد
+Link,رابط
+Loading,جارٍ التحميل
+Log in,تسجيل الدخول
+Logging in...,جارٍ تسجيل الدخول...
+Logging out...,جارٍ تسجيل الخروج...
+Login failed,فشل تسجيل الدخول
+Logout failed,فشل تسجيل الخروج
+Look like you just started. No bestsellers yet.,يبدو أنك بدأت للتو. لا توجد منتجات أكثر مبيعًا بعد.
+"Lowercase letters, digits, underscore. Immutable.",أحرف صغيرة وأرقام وشرطة سفلية. غير قابل للتغيير.
+Manage the general information of the attribute.,إدارة المعلومات العامة للسمة.
+Manage the setting of the attribute.,إدارة إعدادات السمة.
+Mark as shipped,وضع علامة «تم الشحن»
+Mark delivered,وضع علامة «تم التسليم»
+Mark shipment as delivered?,هل تريد وضع علامة «تم التسليم» على الشحنة؟
+Max length,الحد الأقصى للطول
+Max of Y,الحد الأقصى لـ Y
+Max of Y is required,الحد الأقصى لـ Y مطلوب
+Max value,القيمة القصوى
+Min length,الحد الأدنى للطول
+Min value,القيمة الدنيا
+Minimum quantity,الحد الأدنى للكمية
+Mint,نعناعي
+Monthly,شهري
+More,المزيد
+More pages,صفحات أخرى
+Move down,نقل للأسفل
+Move up,نقل للأعلى
+Multiselect,اختيار متعدد
+Must be at least ${n},يجب أن تكون ${n} على الأقل
+Must be at least ${n} characters,يجب ألا يقل عن ${n} أحرف
+Must be at most ${n},يجب أن تكون ${n} على الأكثر
+Must be at most ${n} characters,يجب ألا يزيد على ${n} أحرف
+"Must start with a letter; lowercase letters, digits, underscore only",يجب أن يبدأ بحرف؛ أحرف صغيرة وأرقام وشرطة سفلية فقط
+Name is required,الاسم مطلوب
+New Product,منتج جديد
+New Widget,عنصر واجهة جديد
+New folder,مجلد جديد
+Next,التالي
+Next slide,الشريحة التالية
+No,لا
+No address data received,لم يتم استلام بيانات العنوان
+"No attribute groups found for query ""${query}""","لم يتم العثور على مجموعات سمات للاستعلام ""${query}"""
+No carriers registered,لا توجد شركات شحن مسجلة
+"No categories found for ""${term}""","لم يتم العثور على فئات لـ ""${term}"""
+"No categories found for query ""${query}""","لم يتم العثور على فئات للاستعلام ""${query}"""
+"No collections found for query ""${query}""","لم يتم العثور على مجموعات للاستعلام ""${query}"""
+No coupon to remove,لا توجد قسيمة لإزالتها
+No custom fields yet.,لا توجد حقول مخصصة بعد.
+No data available,لا توجد بيانات متاحة
+No free shipping,بدون شحن مجاني
+No limit,بلا حد
+No maximum,بلا حد أقصى
+No minimum,بلا حد أدنى
+No notes from customer,لا توجد ملاحظات من العميل
+"No options found for ""${code}""","لم يتم العثور على خيارات لـ ""${code}"""
+"No products found for query ""${query}""","لم يتم العثور على منتجات للاستعلام ""${query}"""
+No shipments yet — your order is being prepared.,لا توجد شحنات بعد — جارٍ تجهيز طلبك.
+No shipping is required for this order,لا يتطلب هذا الطلب شحنًا
+No shipping methods available,لا توجد طرق شحن متاحة
+No shipping options are available for your location,لا توجد خيارات شحن متاحة لموقعك
+No shipping required,لا يلزم الشحن
+No widgets match your search.,لا توجد عناصر واجهة تطابق بحثك.
+None,لا شيء
+Not set,غير محدد
+Not visible to customers,غير مرئي للعملاء
+Notify customer,إشعار العميل
+Open in new tab,فتح في علامة تبويب جديدة
+Operator,عامل المقارنة
+Option text,نص الخيار
+Optional help text shown to admins.,نص مساعدة اختياري يظهر للمسؤولين.
+Order Placed,تم تقديم الطلب
+Order detail,تفاصيل الطلب
+Order must contain products matching all conditions below,يجب أن يحتوي الطلب على منتجات تستوفي جميع الشروط أدناه
+Order not found,الطلب غير موجود
+Orders,الطلبات
+Others,أخرى
+Out of Stock,نفد من المخزون
+Outline,محدد
+Overview of sales data over selected periods,نظرة عامة على بيانات المبيعات خلال الفترات المحددة
+Overview of total sales and order status over the lifetime of your store,نظرة عامة على إجمالي المبيعات وحالة الطلبات منذ إنشاء متجرك
+Page,الصفحة
+Page ${currentPage} of ${totalPages},الصفحة ${currentPage} من ${totalPages}
+Page not found,الصفحة غير موجودة
+Password is required,كلمة المرور مطلوبة
+Password must be at least ${minLength} characters long,يجب ألا تقل كلمة المرور عن ${minLength} أحرف
+Pattern (regex),النمط (regex)
+Pay with PayPal,الدفع عبر PayPal
+Pay with Stripe,الدفع عبر Stripe
+Payment Status,حالة الدفع
+Placing Order...,جارٍ تقديم الطلب...
+Please enter a coupon code,يُرجى إدخال رمز القسيمة
+Please enter a valid URL,يُرجى إدخال URL صالح
+Please enter a valid email address,يُرجى إدخال عنوان بريد إلكتروني صالح
+Please enter your email to receive a reset link,يُرجى إدخال بريدك الإلكتروني لتلقي رابط إعادة التعيين
+Please provide billing address to proceed,يُرجى تقديم عنوان الفواتير للمتابعة
+Please select a payment method,يُرجى اختيار طريقة الدفع
+Please select a shipping method,يُرجى اختيار طريقة الشحن
+Please sign in to your account,يُرجى تسجيل الدخول إلى حسابك
+Position,الموضع
+Previous,السابق
+Previous slide,الشريحة السابقة
+Price: ${value},السعر: ${value}
+Primary,أساسي
+Print Label,طباعة الملصق
+Processing Payment...,جارٍ معالجة الدفع...
+Product Description,وصف المنتج
+Product is out of stock,المنتج غير متوفر في المخزون
+Product name is required,اسم المنتج مطلوب
+Product not found,المنتج غير موجود
+Product type,نوع المنتج
+Products,المنتجات
+Reason for cancellation,سبب الإلغاء
+Reason is required,السبب مطلوب
+Recently placed orders by this customer,الطلبات الأخيرة لهذا العميل
+Redirecting to PayPal...,جارٍ التحويل إلى PayPal...
+Reference type,نوع المرجع
+Registration failed,فشل التسجيل
+Remove item,إزالة العنصر
+Remove sub-field,إزالة الحقل الفرعي
+Required,مطلوب
+Requires at least one item to create a cart,يلزم وجود عنصر واحد على الأقل لإنشاء سلة
+Reset Password,إعادة تعيين كلمة المرور
+Reset Your Password,أعد تعيين كلمة المرور
+Reset password,إعادة تعيين كلمة المرور
+Reset your password,أعد تعيين كلمة المرور
+Root,الجذر
+SKU,SKU
+SKU ${sku},SKU ${sku}
+SKU must be unique,يجب أن يكون SKU فريدًا
+SKU: ${sku},SKU: ${sku}
+Sale Statistics,إحصائيات المبيعات
+Save custom fields,حفظ الحقول المخصصة
+Save field,حفظ الحقل
+Saved successfully!,تم الحفظ بنجاح!
+Search attribute groups,البحث في مجموعات السمات
+Search categories,البحث في الفئات
+Search collections,البحث في المجموعات
+"Search for products, orders, and other resources",ابحث عن المنتجات والطلبات والموارد الأخرى
+Search products,البحث في المنتجات
+Search results for: ${keyword},نتائج البحث عن: ${keyword}
+Search widgets…,البحث في عناصر الواجهة…
+Searching...,جارٍ البحث...
+Search…,بحث…
+See all orders →,عرض جميع الطلبات ←
+Select,اختيار
+Select a carrier,اختر شركة الشحن
+Select at least one item to ship,اختر عنصرًا واحدًا على الأقل لشحنه
+Select groups the attribute belongs to,اختر المجموعات التي تنتمي إليها السمة
+Select shipping method,اختر طريقة الشحن
+Select sort,اختر الترتيب
+"Select the items going in this shipment, then add the carrier & tracking.",اختر العناصر المضمنة في هذه الشحنة، ثم أضف شركة الشحن ورقم التتبع.
+Setting,الإعداد
+Settings,الإعدادات
+Shipment Status,حالة الشحن
+Shipment canceled,تم إلغاء الشحنة
+Shipment created,تم إنشاء الشحنة
+Shipment marked delivered,تم وضع علامة «تم التسليم» على الشحنة
+Shipments,الشحنات
+Shipped,تم الشحن
+Shipping (${method}),الشحن (${method})
+Shipping Setting,إعدادات الشحن
+Show,عرض
+Show all ${count} options,عرض جميع الخيارات (${count})
+Show on storefront,عرض في واجهة المتجر
+Showing ${showing} of ${total},عرض ${showing} من ${total}
+Showing ${start}-${end} of ${total} results,عرض ${start}-${end} من ${total} نتيجة
+Sidebar,الشريط الجانبي
+Sign in to view your orders,سجّل الدخول لعرض طلباتك
+Simple,بسيط
+Sky,سماوي
+Sold out,نفدت الكمية
+Some error occurred. Please try again later.,حدث خطأ ما. يُرجى المحاولة لاحقًا.
+Some products are not available,بعض المنتجات غير متوفرة
+Something went wrong! Please try again.,حدث خطأ ما! يُرجى المحاولة مرة أخرى.
+Something went wrong. Please try again later.,حدث خطأ ما. يُرجى المحاولة لاحقًا.
+Something wrong. Please try again,حدث خطأ ما. يُرجى المحاولة مرة أخرى
+Sort Order,ترتيب الفرز
+Sort order,ترتيب الفرز
+Status,الحالة
+Stock,المخزون
+Stripe is not loaded. Please try again.,لم يتم تحميل Stripe. يُرجى المحاولة مرة أخرى.
+Style,النمط
+Sub-fields,الحقول الفرعية
+Submit Cancellation,إرسال الإلغاء
+Successfully logged in,تم تسجيل الدخول بنجاح
+Successfully logged out,تم تسجيل الخروج بنجاح
+Tax Setting,إعدادات الضرائب
+Test failure,فشل الاختبار
+Test failure:,فشل الاختبار:
+Test success,نجح الاختبار
+Test success:,نجح الاختبار:
+Text,نص
+Textarea,مربع نص
+The carrier will mark the tracking number as invalid. You will need to purchase a new label if you still intend to ship.,ستضع شركة الشحن علامة على رقم التتبع بأنه غير صالح. ستحتاج إلى شراء ملصق جديد إذا كنت لا تزال تنوي الشحن.
+The customer will receive a delivery confirmation email.,سيتلقى العميل رسالة تأكيد التسليم عبر البريد الإلكتروني.
+There is no category,لا توجد فئة
+There is no file to display.,لا يوجد ملف لعرضه.
+There is no sub folder.,لا يوجد مجلد فرعي.
+There was an error:,حدث خطأ:
+This tracking link has expired,انتهت صلاحية رابط التتبع هذا
+This tracking link is no longer valid,رابط التتبع هذا لم يعد صالحًا
+Thumbnail,صورة مصغرة
+Time must be after ${min},يجب أن يكون الوقت بعد ${min}
+Time must be before ${max},يجب أن يكون الوقت قبل ${max}
+Toggle Sidebar,إظهار/إخفاء الشريط الجانبي
+Token is invalid or expired,الرمز المميز غير صالح أو منتهي الصلاحية
+Too many items requested,تم طلب عدد كبير جدًا من العناصر
+Track,تتبع
+Track shipment →,تتبع الشحنة ←
+Track your order,تتبّع طلبك
+Tracking info updated,تم تحديث معلومات التتبع
+Tracking link,رابط التتبع
+Tracking links are good for a limited time. Sign in to your account to see the current status of your order.,روابط التتبع صالحة لفترة محدودة. سجّل الدخول إلى حسابك للاطلاع على الحالة الحالية لطلبك.
+Tracking number,رقم التتبع
+Type,النوع
+Type / to see the available blocks,اكتب / لعرض الكتل المتاحة
+UPDATE PASSWORD,تحديث كلمة المرور
+Update address API not available,واجهة API لتحديث العنوان غير متاحة
+Update field,تحديث الحقل
+Upload,رفع
+Validation,التحقق
+Value,القيمة
+Value must be a whole number,يجب أن تكون القيمة عددًا صحيحًا
+Value must be at least ${min},يجب ألا تقل القيمة عن ${min}
+Value must be at most ${max},يجب ألا تزيد القيمة عن ${max}
+View All Products,عرض جميع المنتجات
+View JSON,عرض JSON
+View all customers,عرض جميع العملاء
+Visible to customer,مرئي للعميل
+Void Label,إلغاء الملصق
+Void label,إلغاء الملصق
+Void this shipping label?,هل تريد إلغاء ملصق الشحن هذا؟
+"We could not find this order. It may have been removed, or it may belong to a different account.",لم نتمكن من العثور على هذا الطلب. ربما تمت إزالته أو أنه يخص حسابًا آخر.
+"We could not verify this link. If you received it in an email from us, please try again from the most recent message, or sign in to your account.",لم نتمكن من التحقق من هذا الرابط. إذا وصلك في رسالة بريد إلكتروني منا، يُرجى المحاولة مجددًا من أحدث رسالة، أو تسجيل الدخول إلى حسابك.
+We have sent you an email with a link to reset your password. Please check your inbox.,أرسلنا إليك رسالة بريد إلكتروني تتضمن رابطًا لإعادة تعيين كلمة المرور. يُرجى التحقق من صندوق الوارد.
+Weekly,أسبوعي
+Welcome to our store!,مرحبًا بك في متجرنا!
+"Where you ship, shipping methods and delivery fee",مناطق الشحن، وطرق الشحن، ورسوم التوصيل
+White,أبيض
+Yes,نعم
+You are already logged in,لقد سجّلت الدخول بالفعل
+You are here:,أنت هنا:
+You have no attribute groups to display,لا توجد مجموعات سمات لعرضها
+You have no categories to display,لا توجد فئات لعرضها
+You have no collections to display,لا توجد مجموعات لعرضها
+You have no products to display,لا توجد منتجات لعرضها
+You have not placed any orders yet.,لم تقم بأي طلب بعد.
+You paid for,لقد دفعت مقابل
+You will be redirected to PayPal for payment processing.,ستتم إعادة توجيهك إلى PayPal لإتمام عملية الدفع.
+Your Orders,طلباتك
+Your order #${number} has been delivered,تم توصيل طلبك رقم ${number}
+Your order #${number} is on the way,طلبك رقم ${number} في الطريق إليك
+Your order has been confirmed!,تم تأكيد طلبك!
+Your password has been updated successfully.,تم تحديث كلمة المرور بنجاح.
+across,عبر
+available to ship,متاح للشحن
+breadcrumb,مسار التنقل
+e.g. Care instructions,مثال: تعليمات العناية
+"e.g. New, Sale, Limited",مثال: جديد، تخفيضات، محدود
+e.g. Question,مثال: سؤال
+e.g. care_instructions,مثال: care_instructions
+e.g. question,مثال: question
+item,منتج
+items,منتجات
+left to ship,متبقٍ للشحن
+of,من
+of ${count},من ${count}
+unit,وحدة
+units,وحدات
+${count} changes published.,تم نشر ${count} تغييرات.
+${count} child widgets,${count} عناصر واجهة فرعية
+${count} countries,${count} دول
+${count} on ${route},${count} على ${route}
+${count} ops total,${count} عمليات إجمالًا
+${count} pending ops,${count} عمليات معلّقة
+${count} pending ops on,${count} عمليات معلّقة على
+${count} routes,${count} مسارات
+${direction} failed,فشل ${direction}
+${method} — ${zone} rate,سعر ${method} — ${zone}
+${method} — new rate,${method} — سعر جديد
+${name} attached to ${zone},تم ربط ${name} بـ ${zone}
+${name} configuration for ${zone},إعدادات ${name} لـ ${zone}
+${name} configuration for this zone,إعدادات ${name} لهذه المنطقة
+${name} configuration saved for ${zone},تم حفظ إعدادات ${name} لـ ${zone}
+${name} detached,تم فصل ${name}
+${name} is required,${name} مطلوب
+${title} settings,إعدادات ${title}
+${total} changes will go live immediately.,سيتم تطبيق ${total} تغييرات فورًا.
+${total} items,${total} منتجات
+(envelope),(ظرف)
++ Add Line,+ إضافة سطر
++ Add Method,+ إضافة طريقة
++ Add Rate,+ إضافة سعر
++ Add placement,+ إضافة موضع
++ Attach Provider,+ ربط مزوّد
++ New package,+ طرد جديد
++${count} more,+${count} أخرى
+", +${count} more",، +${count} أخرى
+", last updated",، آخر تحديث
+0 for flat envelopes,0 للظروف المسطحة
+1 change published.,تم نشر تغيير واحد.
+1 change will go live immediately.,سيتم تطبيق تغيير واحد فورًا.
+1 child widget,عنصر واجهة فرعي واحد
+1 op total,عملية واحدة إجمالًا
+1 pending op,عملية معلّقة واحدة
+1 pending op on,عملية معلّقة واحدة على
+A package is required for shippable products,الطرد مطلوب للمنتجات القابلة للشحن
+A rollout plan saves your current edits as a snapshot and applies them automatically during a scheduled window.,تحفظ خطة الطرح تعديلاتك الحالية كلقطة وتطبّقها تلقائيًا خلال نافذة زمنية مجدولة.
+Action,إجراء
+Actions,الإجراءات
+Add,إضافة
+Add Products,إضافة منتجات
+Add Rate,إضافة سعر
+Add Shipping Method,إضافة طريقة شحن
+Add Tax Rate,إضافة نسبة ضريبة
+Add Variant,إضافة متغير
+Add products to this category by selecting them from the list below.,أضف منتجات إلى هذه الفئة باختيارها من القائمة أدناه.
+Add rate,إضافة سعر
+Added,تمت الإضافة
+Adding to Column ${number},الإضافة إلى العمود ${number}
+Additional languages,لغات إضافية
+Admin panel language,لغة لوحة الإدارة
+Affects ${count} pages,يؤثر في ${count} صفحات
+Affects 1 page,يؤثر في صفحة واحدة
+All pages,جميع الصفحات
+All registered providers are already attached to this zone.,جميع المزوّدين المسجّلين مرتبطون بهذه المنطقة بالفعل.
+All routes,جميع المسارات
+Also shown on ${routes},يظهر أيضًا في ${routes}
+Also shown on ${routes} +${count},يظهر أيضًا في ${routes} +${count}
+Amount must be greater than or equal to 0,يجب أن يكون المبلغ أكبر من 0 أو مساويًا له
+Amount must be less than or equal to ${value} ${currency},يجب أن يكون المبلغ أقل من ${value} ${currency} أو مساويًا له
+Apply a condition?,تطبيق شرط؟
+Area,المنطقة
+Area is required,المنطقة مطلوبة
+At least one country is required,يلزم اختيار دولة واحدة على الأقل
+Attach,ربط
+Attach Provider to ${zone},ربط مزوّد بـ ${zone}
+Attached Providers,المزوّدون المرتبطون
+Attribute Name,اسم السمة
+Attribute code is required,رمز السمة مطلوب
+Attribute created successfully!,تم إنشاء السمة بنجاح!
+Attribute group,مجموعة السمات
+Attribute name is required,اسم السمة مطلوب
+Authorize only,تفويض فقط
+Auto-saves while you edit,يُحفظ تلقائيًا أثناء التعديل
+Back To Dashboard,العودة إلى لوحة التحكم
+Base calculation address,عنوان الحساب الأساسي
+Based on cart subtotal,بناءً على المجموع الفرعي للسلة
+Based on cart weight,بناءً على وزن السلة
+Basic configuration,الإعدادات الأساسية
+Boolean,منطقي
+Built-in shipping methods with per-zone rates. Attach Core to a zone first under Settings → Shipping; then add methods here and configure their rates per zone.,طرق شحن مدمجة بأسعار لكل منطقة. اربط Core بمنطقة أولًا من الإعدادات ← الشحن، ثم أضف الطرق هنا واضبط أسعارها لكل منطقة.
+Buy X get Y,اشترِ X واحصل على Y
+CMS,CMS
+Calculation type,نوع الحساب
+Can not change the attribute group of a product that is already in a variant group.,لا يمكن تغيير مجموعة السمات لمنتج ينتمي بالفعل إلى مجموعة متغيرات.
+Cancel rollout,إلغاء الطرح
+Cancel rollout plan?,هل تريد إلغاء خطة الطرح؟
+Canvas device width,عرض الجهاز في مساحة العمل
+Capture,تحصيل
+Capture Payment,تحصيل الدفعة
+Carrier hint for fulfillment — never shown at checkout. NewShipmentDialog uses this to pre-select the carrier.,تلميح لشركة الشحن لأغراض التجهيز — لا يظهر أبدًا عند إتمام الشراء. يستخدمه NewShipmentDialog لاختيار شركة الشحن مسبقًا.
+Carrier-specific service code used when buying a label (CreateLabelInput.serviceCode). Free-form — verify the exact token in the carrier's API docs. Leave blank to let the carrier pick its default service.,رمز خدمة خاص بشركة الشحن يُستخدم عند شراء ملصق (CreateLabelInput.serviceCode). نص حر — تحقّق من الرمز الدقيق في وثائق API الخاصة بشركة الشحن. اتركه فارغًا لتختار شركة الشحن خدمتها الافتراضية.
+Cash On Delivery Payment,الدفع عند الاستلام
+"Catalog, Search",الكتالوج، البحث
+Category Image,صورة الفئة
+Category Name,اسم الفئة
+Category created successfully!,تم إنشاء الفئة بنجاح!
+Category name is required,اسم الفئة مطلوب
+Choose Attribute Groups,اختيار مجموعات السمات
+Choose Categories,اختيار الفئات
+Choose Collections,اختيار المجموعات
+Choose SKUs,اختيار SKU
+Choose how much of your unpublished work to discard. The published storefront is not affected.,اختر مقدار العمل غير المنشور الذي تريد تجاهله. لن يتأثر المتجر المنشور.
+Choose where you ship and how much you charge for shipping.,اختر المناطق التي تشحن إليها ومقدار رسوم الشحن.
+Clear filter,مسح الفلتر
+Clear filters,مسح الفلاتر
+Client ID,معرّف العميل (Client ID)
+Client Secret,المفتاح السري للعميل (Client Secret)
+Close settings,إغلاق الإعدادات
+Close — continue draft,إغلاق — متابعة المسودة
+Cms Pages,صفحات CMS
+Collapse left rail,طي الشريط الأيسر
+Collapse panel,طي اللوحة
+Collection Code,رمز المجموعة
+Collection Name,اسم المجموعة
+Collection code is required,رمز المجموعة مطلوب
+Collection code must be alphanumeric and can include underscores or dashes.,يجب أن يتكون رمز المجموعة من أحرف وأرقام، ويمكن أن يتضمن شرطات سفلية أو شرطات.
+Collection created successfully!,تم إنشاء المجموعة بنجاح!
+Color,اللون
+Commerce,التجارة
+Compound,مركّب
+Condition,الشرط
+Configure,ضبط
+Configure cost and conditions per zone. Zones without a rate don't offer this method.,اضبط التكلفة والشروط لكل منطقة. المناطق التي ليس لها سعر لا تقدّم هذه الطريقة.
+Configure rate,ضبط السعر
+Configure the available payment methods,اضبط طرق الدفع المتاحة
+Configure the settings for the ${name} widget.,اضبط إعدادات عنصر الواجهة ${name}.
+Configure the tax classes that will be available to your customers at checkout.,اضبط فئات الضرائب التي ستكون متاحة لعملائك عند إتمام الشراء.
+Configure your Cash On Delivery payment gateway settings,اضبط إعدادات بوابة الدفع عند الاستلام
+Configure your Paypal payment gateway settings,اضبط إعدادات بوابة الدفع PayPal
+Configure your Stripe payment gateway settings,اضبط إعدادات بوابة الدفع Stripe
+Configure your store information,اضبط معلومات متجرك
+"Conflicts with ${plan1}, ${plan2}",يتعارض مع ${plan1}، ${plan2}
+Conflicts with ${plan},يتعارض مع ${plan}
+Conflicts with ${plan} +${count},يتعارض مع ${plan} +${count}
+Conflicts with:,يتعارض مع:
+Content,المحتوى
+Continue a saved rollout plan,متابعة خطة طرح محفوظة
+Continue your draft,متابعة المسودة
+Core Shipping,شحن Core
+Core isn't attached to any zone yet. Attach it under Settings → Shipping first.,لم يتم ربط Core بأي منطقة بعد. اربطه أولًا من الإعدادات ← الشحن.
+Cost,التكلفة
+Cost is required,التكلفة مطلوبة
+Could not start fresh,تعذّر البدء من جديد
+Countries,الدول
+"Country code (e.g., ""US""). Use ""*"" for all countries.","رمز الدولة (مثال: ""US""). استخدم ""*"" لجميع الدول."
+Coupon Code,رمز القسيمة
+"Coupon code can only contain letters, numbers, underscores, and hyphens",يمكن أن يحتوي رمز القسيمة على أحرف وأرقام وشرطات سفلية وشرطات فقط
+Coupon created successfully!,تم إنشاء القسيمة بنجاح!
+Coupons,القسائم
+Create A New Customer,إنشاء عميل جديد
+Create New Package,إنشاء طرد جديد
+Create New Tax Class,إنشاء فئة ضريبية جديدة
+Create New Zone,إنشاء منطقة جديدة
+Create a new category,إنشاء فئة جديدة
+Create a new collection,إنشاء مجموعة جديدة
+Create a new coupon,إنشاء قسيمة جديدة
+Create a new page,إنشاء صفحة جديدة
+Create a new product,إنشاء منتج جديد
+Create a new variant for this product.,إنشاء متغير جديد لهذا المنتج.
+Create a new widget,إنشاء عنصر واجهة جديد
+Create a variant group,إنشاء مجموعة متغيرات
+Create method,إنشاء طريقة
+Create new tax class,إنشاء فئة ضريبية جديدة
+Create rollout plan,إنشاء خطة طرح
+Created At,تاريخ الإنشاء
+Current,الحالي
+Customer,العميل
+Customer Email,البريد الإلكتروني للعميل
+Customer conditions,شروط العميل
+Customer emails,عناوين البريد الإلكتروني للعملاء
+Customer groups,مجموعات العملاء
+Customer's purchase,مشتريات العميل
+Customers,العملاء
+Customers (${count}),العملاء (${count})
+Customers in ${zone} will no longer see ${name}'s methods at checkout. You can re-attach it later.,لن يرى العملاء في ${zone} طرق ${name} عند إتمام الشراء بعد الآن. يمكنك إعادة ربطه لاحقًا.
+Dashboard,لوحة التحكم
+Date,التاريخ
+Decrease,إنقاص
+Default carrier,شركة الشحن الافتراضية
+Default language,اللغة الافتراضية
+Default package,الطرد الافتراضي
+Default service code,رمز الخدمة الافتراضي
+"Delete ""${name}""?","حذف ""${name}""؟"
+Delete ${count} attributes,حذف ${count} سمات
+Delete ${count} categories,حذف ${count} فئات
+Delete ${count} collections,حذف ${count} مجموعات
+Delete ${count} pages,حذف ${count} صفحات
+Delete ${count} widgets,حذف ${count} عناصر واجهة
+Delete container widget?,حذف عنصر الواجهة الحاوي؟
+Delete image,حذف الصورة
+"Delete package ""${name}""?","حذف الطرد ""${name}""؟"
+Delete this,حذف هذا
+Delete this widget? This will be saved as a pending change you can publish or discard.,حذف عنصر الواجهة هذا؟ سيُحفظ كتغيير معلّق يمكنك نشره أو تجاهله.
+Delete widget?,حذف عنصر الواجهة؟
+Delete zone,حذف المنطقة
+"Delete zone ""${name}""?","حذف المنطقة ""${name}""؟"
+Deleted ${name},تم حذف ${name}
+Deleting this,حذف هذا
+Description is required,الوصف مطلوب
+Desktop,سطح المكتب
+Detach,فصل
+Detach ${name}?,فصل ${name}؟
+Disable ${count} pages,تعطيل ${count} صفحات
+Disable ${count} widgets,تعطيل ${count} عناصر واجهة
+Disabled products will not be visible in the store and cannot be purchased.,لن تظهر المنتجات المعطّلة في المتجر ولا يمكن شراؤها.
+Discard changes on this page only,تجاهل التغييرات في هذه الصفحة فقط
+Discard everything,تجاهل كل شيء
+Discard everything in this draft,تجاهل كل شيء في هذه المسودة
+Discard failed,فشل التجاهل
+Discard pending changes?,تجاهل التغييرات المعلّقة؟
+Discard this page,تجاهل هذه الصفحة
+Discarding…,جارٍ التجاهل…
+Discount Type,نوع الخصم
+Discount amount,مبلغ الخصم
+Discount amount is required,مبلغ الخصم مطلوب
+Discount type is required,نوع الخصم مطلوب
+Dislay Name,الاسم المعروض
+Display Name,الاسم المعروض
+Draft,مسودة
+Draft — not scheduled,مسودة — غير مجدولة
+Drag to resize,اسحب لتغيير الحجم
+"Each row places this widget on one page, in one area, with its own sort order. Lower numbers appear first.",يضع كل صف عنصر الواجهة هذا في صفحة واحدة، وفي منطقة واحدة، بترتيب فرز خاص به. تظهر الأرقام الأصغر أولًا.
+Edit ${name},تعديل ${name}
+Edit Shipping Zone,تعديل منطقة الشحن
+Edit Tax Rate,تعديل نسبة الضريبة
+Edit Variant,تعديل المتغير
+Edit Zone,تعديل المنطقة
+Edit against the live storefront. Publish immediately or save as a rollout plan.,عدّل مباشرة على المتجر الفعلي. انشر فورًا أو احفظ كخطة طرح.
+Edit rollout schedule,تعديل جدول الطرح
+Editable routes,المسارات القابلة للتعديل
+Editing ${coupon},تعديل ${coupon}
+Editing ${fullName},تعديل ${fullName}
+Editing widget ${name},تعديل عنصر الواجهة ${name}
+Edits to a shared widget update every route it appears on.,تعديلات عنصر الواجهة المشترك تُحدّث كل المسارات التي يظهر فيها.
+Empty package weight,وزن الطرد فارغًا
+Empty weight,الوزن فارغًا
+Enable ${count} pages,تفعيل ${count} صفحات
+Enable ${count} widgets,تفعيل ${count} عناصر واجهة
+Enable this page to make it visible on the frontend.,فعّل هذه الصفحة لتظهر في واجهة المتجر.
+Enable?,تفعيل؟
+End,النهاية
+End Date,تاريخ الانتهاء
+End date,تاريخ الانتهاء
+End time is invalid.,وقت الانتهاء غير صالح.
+End time must be after start time.,يجب أن يكون وقت الانتهاء بعد وقت البدء.
+Enter Category Name,أدخل اسم الفئة
+Enter Collection Name,أدخل اسم المجموعة
+Enter Meta Description,أدخل الوصف التعريفي (Meta)
+Enter Meta Title,أدخل العنوان التعريفي (Meta)
+Enter Meta description,أدخل الوصف التعريفي (Meta)
+Enter Meta title,أدخل العنوان التعريفي (Meta)
+Enter SKU,أدخل SKU
+Enter URL Key,أدخل مفتاح URL
+Enter URL key,أدخل مفتاح URL
+Enter customer emails,أدخل عناوين البريد الإلكتروني للعملاء
+Enter description,أدخل الوصف
+Enter group name,أدخل اسم المجموعة
+Enter meta description,أدخل الوصف التعريفي
+Enter meta title,أدخل العنوان التعريفي
+Enter page name,أدخل اسم الصفحة
+Enter price,أدخل السعر
+Enter product name,أدخل اسم المنتج
+Enter purchased amount,أدخل المبلغ المشترى
+Enter quantity,أدخل الكمية
+Enter tax class name,أدخل اسم الفئة الضريبية
+Enter the quantity,أدخل الكمية
+Enter weight,أدخل الوزن
+Environment,البيئة
+Error loading countries,خطأ في تحميل الدول
+Error loading methods,خطأ في تحميل الطرق
+Error loading packages,خطأ في تحميل الطرود
+Error loading providers,خطأ في تحميل المزوّدين
+Error loading zones,خطأ في تحميل المناطق
+EverShop · Back to page builder,EverShop · العودة إلى منشئ الصفحات
+Every page rolls back to the rollout’s saved state.,تعود كل صفحة إلى الحالة المحفوظة في الطرح.
+Every page rolls back to what the rollout had saved.,تعود كل صفحة إلى ما حفظه الطرح.
+Existing rollout plan: ${plan},خطة طرح موجودة: ${plan}
+Expand,توسيع
+Expand left rail,توسيع الشريط الأيسر
+"Extra languages shoppers can switch to, on top of the default. The default language is always available — you don't add it here.",لغات إضافية يمكن للمتسوقين التبديل إليها، بالإضافة إلى اللغة الافتراضية. اللغة الافتراضية متاحة دائمًا — لا حاجة لإضافتها هنا.
+Failed to attach provider,فشل ربط المزوّد
+Failed to delete ${name},فشل حذف ${name}
+Failed to detach ${name},فشل فصل ${name}
+Failed to remove rate,فشل حذف السعر
+Failed to remove zone,فشل حذف المنطقة
+Failed to save change,فشل حفظ التغيير
+Failed to save rate,فشل حفظ السعر
+Failed to save zone,فشل حفظ المنطقة
+Failed to update rollout schedule,فشل تحديث جدول الطرح
+Fixed discount to entire order,خصم ثابت على الطلب بالكامل
+Fixed discount to specific products,خصم ثابت على منتجات محددة
+Flat rate,سعر ثابت
+"Flat rate in cart currency, tax-exclusive.",سعر ثابت بعملة السلة، غير شامل الضريبة.
+Free shipping?,شحن مجاني؟
+General Information,معلومات عامة
+Give Feedback,إرسال ملاحظات
+Global,عام
+Globals,العناصر العامة
+Group,المجموعة
+Group Name,اسم المجموعة
+Group name is required,اسم المجموعة مطلوب
+Groups,المجموعات
+Half-open interval — a cart at exactly Max is excluded (the next tier's Min owns that point).,فترة نصف مفتوحة — تُستثنى السلة التي تساوي الحد الأقصى تمامًا (تلك النقطة تتبع الحد الأدنى للشريحة التالية).
+Has conflicts,يحتوي على تعارضات
+Heads up — ,تنبيه — 
+Height,الارتفاع
+Height is required (0 for envelopes),الارتفاع مطلوب (0 للظروف)
+Height must be 0 or greater,يجب أن يكون الارتفاع 0 أو أكثر
+Hide global areas,إخفاء المناطق العامة
+Higest tax rate based on cart items,أعلى نسبة ضريبة بناءً على منتجات السلة
+Highlight global areas on canvas,إبراز المناطق العامة في مساحة العمل
+Image,الصورة
+Include In Menu,تضمين في القائمة
+Include in Store Menu?,تضمين في قائمة المتجر؟
+Increase,زيادة
+Insert image,إدراج صورة
+Integer,عدد صحيح
+Invalid folder name,اسم مجلد غير صالح
+Invalid start,بداية غير صالحة
+Invalid window,نافذة زمنية غير صالحة
+Inventory,المخزون
+Is compound,مركّب
+Its rates will be removed too. This cannot be undone.,ستُحذف أسعارها أيضًا. لا يمكن التراجع عن هذا الإجراء.
+Languages,اللغات
+Layers,الطبقات
+Layout,التخطيط
+Leave,مغادرة
+Leave a country's list empty to cover the whole country. Add provinces to restrict shipping to specific regions.,اترك قائمة الدولة فارغة لتشمل الدولة بأكملها. أضف مقاطعات لحصر الشحن في مناطق محددة.
+Leaving now may drop the most recent edits that haven’t reached the server yet.,قد تؤدي المغادرة الآن إلى فقدان أحدث التعديلات التي لم تصل إلى الخادم بعد.
+Length,الطول
+Length is required,الطول مطلوب
+Length must be greater than 0,يجب أن يكون الطول أكبر من 0
+Live,مباشر
+Loading...,جارٍ التحميل...
+Long text,نص طويل
+Lower values appear first.,تظهر القيم الأصغر أولًا.
+Manage Stock,إدارة المخزون
+Manage general information about the collection.,إدارة المعلومات العامة للمجموعة.
+Manage product images and gallery. Drag and drop to reorder images.,إدارة صور المنتج ومعرضها. اسحب وأفلت لإعادة ترتيب الصور.
+"Manage shipping integrations and their methods (Core, USPS, FedEx, …)",إدارة تكاملات الشحن وطرقها (Core وUSPS وFedEx و…)
+Manage tax classes and tax rates for different regions.,إدارة فئات الضرائب ونسبها للمناطق المختلفة.
+Manage the SEO settings of the category.,إدارة إعدادات SEO للتصنيف.
+Manage the SEO settings.,إدارة إعدادات SEO.
+Manage the attributes.,إدارة السمات.
+Manage the collections associated with this product.,إدارة المجموعات المرتبطة بهذا المنتج.
+Manage the general information of the category.,إدارة المعلومات العامة للتصنيف.
+Manage the general information of the product.,إدارة المعلومات العامة للمنتج.
+Manage the inventory settings of the product.,إدارة إعدادات المخزون للمنتج.
+Manage the products assigned to this category.,إدارة المنتجات المعيّنة لهذا التصنيف.
+Manage the products assigned to this collection.,إدارة المنتجات المعيّنة لهذه المجموعة.
+Manage the shipping settings of the product.,إدارة إعدادات الشحن للمنتج.
+Manage the status settings of the category.,إدارة إعدادات حالة التصنيف.
+Manage the variant group of the product.,إدارة مجموعة المتغيرات للمنتج.
+Marketing,التسويق
+Max ${unit},الحد الأقصى ${unit}
+Max is required,الحد الأقصى مطلوب
+Maximum,الحد الأقصى
+Maximum amount is ${value} ${currency},الحد الأقصى للمبلغ هو ${value} ${currency}
+Maximum quantity is required,الكمية القصوى مطلوبة
+Maximum quantity must be greater than or equal to 0,يجب أن تكون الكمية القصوى أكبر من 0 أو مساوية له
+Media,الوسائط
+Meta Description,الوصف التعريفي
+Meta Title,العنوان التعريفي
+Meta Title is required,العنوان التعريفي مطلوب
+Meta description,الوصف التعريفي
+Meta description is required,الوصف التعريفي مطلوب
+Meta title,العنوان التعريفي
+Meta title is required,العنوان التعريفي مطلوب
+Method,الطريقة
+Method created,تم إنشاء الطريقة
+Method name,اسم الطريقة
+Method name is required,اسم الطريقة مطلوب
+Method updated,تم تحديث الطريقة
+Methods →,الطرق ←
+Min ${unit},الحد الأدنى ${unit}
+Min Price,أدنى سعر
+Min Weight,أدنى وزن
+Min is required,الحد الأدنى مطلوب
+Min price is required,أدنى سعر مطلوب
+Min weight is required,أدنى وزن مطلوب
+Minimum purchase amount,الحد الأدنى لمبلغ الشراء
+Minimum purchase qty,الحد الأدنى لكمية الشراء
+Minimum purchase quantity,الحد الأدنى لكمية الشراء
+Minimum purchased amount. This only applies to registered customers.,الحد الأدنى لمبلغ الشراء. ينطبق هذا على العملاء المسجلين فقط.
+Minimum quantity is required,الكمية الدنيا مطلوبة
+Missing name,الاسم مفقود
+Money,المال
+Name is required.,الاسم مطلوب.
+Navigation,التنقل
+New Attribute,سمة جديدة
+New Category,تصنيف جديد
+New Collection,مجموعة جديدة
+New Coupon,قسيمة جديدة
+New Page,صفحة جديدة
+New Variant,متغير جديد
+New coupon,قسيمة جديدة
+New rate,سعر جديد
+No collections,لا توجد مجموعات
+No editable routes.,لا توجد مسارات قابلة للتحرير.
+No file selected,لم يتم اختيار أي ملف
+No methods yet — add one to start offering Core shipping.,لا توجد طرق بعد — أضف طريقة لبدء تقديم شحن Core.
+No packages yet. Create one — shippable products require a package.,لا توجد طرود بعد. أنشئ طردًا — المنتجات القابلة للشحن تتطلب طردًا.
+No product to display.,لا توجد منتجات لعرضها.
+"No providers attached. Click ""Attach Provider"" to add one.","لا يوجد مزودون مرفقون. انقر على ""إرفاق مزود"" لإضافة واحد."
+"No rates yet — click ""Add Rate"" to offer this method in a zone.","لا توجد أسعار بعد — انقر على ""إضافة سعر"" لتقديم هذه الطريقة في منطقة."
+"No results for ""${keyword}""","لا توجد نتائج لـ ""${keyword}"""
+No routes have opted into page-builder editing yet.,لم يتم تفعيل تحرير منشئ الصفحات لأي مسار بعد.
+No shipping required?,لا يتطلب شحنًا؟
+No subdivisions available — whole country is covered.,لا توجد تقسيمات فرعية متاحة — البلد بأكمله مشمول.
+No widgets available.,لا توجد أدوات متاحة.
+"No widgets match ""${query}"".","لا توجد أدوات تطابق ""${query}""."
+No widgets on this route yet.,لا توجد أدوات في هذا المسار بعد.
+No zones,لا توجد مناطق
+No zones found,لم يتم العثور على مناطق
+Not visible individually,غير مرئي بشكل منفرد
+Nothing to publish,لا يوجد ما يُنشر
+Nothing to redo on this page,لا يوجد ما يُعاد في هذه الصفحة
+Nothing to undo on this page,لا يوجد ما يُتراجع عنه في هذه الصفحة
+Number,رقم
+Option text is required,نص الخيار مطلوب
+Optional. Added to the shipping weight for quotes and labels.,اختياري. يُضاف إلى وزن الشحن لعروض الأسعار والملصقات.
+Order Number,رقم الطلب
+Order conditions,شروط الطلب
+Orders (${count}),الطلبات (${count})
+Other,أخرى
+Other pages keep their pending changes.,تحتفظ الصفحات الأخرى بتغييراتها المعلّقة.
+Overlaps with existing rollout: ${plans}.,يتداخل مع خطة نشر قائمة: ${plans}.
+Overlaps with existing rollouts: ${plans}.,يتداخل مع خطط نشر قائمة: ${plans}.
+Package,الطرد
+Package created,تم إنشاء الطرد
+Package deleted,تم حذف الطرد
+Package saved,تم حفظ الطرد
+Packages,الطرود
+Page Name,اسم الصفحة
+Page Not Found,الصفحة غير موجودة
+Page builder,منشئ الصفحات
+Page builder canvas,لوحة منشئ الصفحات
+Page created successfully!,تم إنشاء الصفحة بنجاح!
+Page is required,الصفحة مطلوبة
+Page name is required,اسم الصفحة مطلوب
+Pages,الصفحات
+Parent category,التصنيف الأب
+Payment Setting,إعدادات الدفع
+Payment mode,وضع الدفع
+Payment setting saved,تم حفظ إعدادات الدفع
+Paypal Payment,الدفع عبر PayPal
+Pending start time,وقت البدء معلّق
+Percentage discount to entire order,خصم بنسبة مئوية على الطلب بأكمله
+Percentage discount to specific products,خصم بنسبة مئوية على منتجات محددة
+Phone,الهاتف
+Pick a start time to schedule this rollout.,اختر وقت بدء لجدولة خطة النشر هذه.
+Pick a widget below to insert as a child.,اختر أداة أدناه لإدراجها كعنصر فرعي.
+Pick up where you left off — ${count} pending changes,تابع من حيث توقفت — ${count} تغييرات معلّقة
+Pick up where you left off — 1 pending change,تابع من حيث توقفت — تغيير واحد معلّق
+Pin drawer open,تثبيت اللوحة مفتوحة
+Pin — keep drawer open across canvas clicks,تثبيت — إبقاء اللوحة مفتوحة عند النقر على مساحة العمل
+Placed on: ${routes},موضوع في: ${routes}
+Placements,المواضع
+Postal Code,الرمز البريدي
+"Postcode (e.g., ""90210""). Empty for all postcodes.","الرمز البريدي (مثل ""90210""). اتركه فارغًا لجميع الرموز البريدية."
+Preselected for new products. Exactly one package is the default.,محدد مسبقًا للمنتجات الجديدة. طرد واحد فقط هو الافتراضي.
+Preview,معاينة
+Price-based tiers,شرائح حسب السعر
+Priority,الأولوية
+Priority is required,الأولوية مطلوبة
+Product Name,اسم المنتج
+Product Status,حالة المنتج
+Product created successfully,تم إنشاء المنتج بنجاح
+Product updated successfully,تم تحديث المنتج بنجاح
+Products (${count}),المنتجات (${count})
+Promotion,العروض الترويجية
+Proportional allocation based on cart items,توزيع تناسبي حسب عناصر السلة
+Provide the SEO details for the CMS page.,أدخل تفاصيل SEO لصفحة المحتوى.
+Provide the basic information for the CMS page.,أدخل المعلومات الأساسية لصفحة المحتوى.
+Provider,المزود
+Province Restrictions,قيود المقاطعات
+"Province code (e.g., ""CA""). Use ""*"" for all provinces.","رمز المقاطعة (مثل ""CA""). استخدم ""*"" لجميع المقاطعات."
+Provinces,المقاطعات
+Provinces is required,المقاطعات مطلوبة
+Provinces:,المقاطعات:
+Publish failed,فشل النشر
+Publish now,انشر الآن
+Publish to the live storefront,النشر على المتجر المباشر
+Publishable Key,المفتاح القابل للنشر
+Publishing…,جارٍ النشر…
+Qty is required,الكمية مطلوبة
+Quick links,روابط سريعة
+Rate,السعر
+Rate added,تمت إضافة السعر
+Rate is required,السعر مطلوب
+Rate removed,تمت إزالة السعر
+Rate status,حالة السعر
+Rate updated,تم تحديث السعر
+Redo (⇧⌘Z) — re-applies the last undone edit on this page,إعادة (⇧⌘Z) — يعيد تطبيق آخر تعديل تم التراجع عنه في هذه الصفحة
+Redo last undone change on this page,إعادة آخر تغيير تم التراجع عنه في هذه الصفحة
+Reference,المرجع
+Refund,استرداد
+Refund amount,مبلغ الاسترداد
+Remove Zone,إزالة المنطقة
+Remove placement,إزالة الموضع
+Remove rate,إزالة السعر
+Remove this rate?,هل تريد إزالة هذا السعر؟
+Removed,تمت الإزالة
+Resize settings drawer,تغيير حجم لوحة الإعدادات
+"Results for ""${keyword}""","نتائج البحث عن ""${keyword}"""
+Revert all pages to saved state,إعادة جميع الصفحات إلى الحالة المحفوظة
+Revert everything,التراجع عن كل شيء
+Revert this page,التراجع عن تغييرات هذه الصفحة
+Revert this page only,التراجع عن تغييرات هذه الصفحة فقط
+Revert to saved state?,هل تريد الرجوع إلى الحالة المحفوظة؟
+Reverting…,جارٍ التراجع…
+Rich text,نص منسق
+Roll back the changes you have made since this rollout was last saved. The live storefront is unaffected — it already reflects the saved state.,تراجع عن التغييرات التي أجريتها منذ آخر حفظ لخطة النشر هذه. لن يتأثر المتجر المباشر — فهو يعكس الحالة المحفوظة بالفعل.
+SEO,SEO
+SEO Information,معلومات SEO
+SKU is required,SKU مطلوب
+Sale,تخفيض
+Sandbox,Sandbox
+Save Settings,حفظ الإعدادات
+Save as rollout plan,حفظ كخطة نشر
+Save as rollout plan and leave,حفظ كخطة نشر والمغادرة
+Save changes,حفظ التغييرات
+Save failed,فشل الحفظ
+Save method,حفظ الطريقة
+Save rate,حفظ السعر
+Saving…,جارٍ الحفظ…
+Schedule failed,فشلت الجدولة
+Scheduled,مجدول
+Search engine optimize,تحسين محركات البحث
+Search widgets,البحث في الأدوات
+Secret Key,المفتاح السري
+Select Category,اختر التصنيف
+Select Parent Category,اختر التصنيف الأب
+Select Products by SKU,اختيار المنتجات حسب SKU
+Select a provider first,اختر مزودًا أولًا
+Select a provider…,اختر مزودًا…
+Select an option,اختر خيارًا
+Select category,اختر التصنيف
+Select countries,اختر الدول
+Select operator,اختر العامل
+Select options,اختر الخيارات
+Select page,اختر الصفحة
+Select products to add to this collection.,اختر المنتجات لإضافتها إلى هذه المجموعة.
+Select the list of attribute,اختر قائمة السمات
+Select this option if the product is a digital product or service that does not require shipping.,اختر هذا الخيار إذا كان المنتج منتجًا رقميًا أو خدمة لا تتطلب شحنًا.
+Set a start time to schedule.,حدد وقت بدء للجدولة.
+Set the status and visibility of the product.,حدد حالة المنتج ومدى ظهوره.
+Share,مشاركة
+Shipping Cost,تكلفة الشحن
+Shipping Providers,مزودو الشحن
+Shipping address,عنوان الشحن
+Shipping cost is required,تكلفة الشحن مطلوبة
+Shipping provider setting saved,تم حفظ إعدادات مزود الشحن
+Shipping tax class,فئة ضريبة الشحن
+Short text,نص قصير
+Show global areas,إظهار المناطق العامة
+Show on routes,إظهار في المسارات
+Show products?,إظهار المنتجات؟
+Show this widget on every page,إظهار هذه الأداة في كل صفحة
+Size (L × W × H),الحجم (الطول × العرض × الارتفاع)
+Sort,ترتيب
+Sort order is required,ترتيب الفرز مطلوب
+Sort order must be a positive number,يجب أن يكون ترتيب الفرز رقمًا موجبًا
+Start,بدء
+Start a page-builder session,بدء جلسة منشئ الصفحات
+Start date,تاريخ البدء
+Start new changeset,بدء مجموعة تغييرات جديدة
+Start time is invalid.,وقت البدء غير صالح.
+State Date,تاريخ البدء
+Status is required,الحالة مطلوبة
+Stay,البقاء
+Stay on this page,البقاء في هذه الصفحة
+Stock Availability,توفر المخزون
+Stop highlighting global areas,إيقاف إبراز المناطق العامة
+Store Address,عنوان المتجر
+Store Description,وصف المتجر
+Store Email,البريد الإلكتروني للمتجر
+Store Name,اسم المتجر
+Store Phone Number,رقم هاتف المتجر
+Store Setting,إعداد المتجر
+Store Settings,إعدادات المتجر
+Store address,عنوان المتجر
+Storefront,واجهة المتجر
+Stripe Payment,الدفع عبر Stripe
+Tablet,جهاز لوحي
+Take our survey,شارك في استطلاعنا
+Target Products,المنتجات المستهدفة
+Tax Class,فئة الضريبة
+Tax calculation configuration,إعدادات حساب الضريبة
+Tax class name,اسم فئة الضريبة
+Tax class name is required,اسم فئة الضريبة مطلوب
+Tax classes,فئات الضريبة
+Tax rate has been saved successfully!,تم حفظ نسبة الضريبة بنجاح!
+Tax setting has been saved successfully!,تم حفظ إعدادات الضريبة بنجاح!
+The box or envelope this product ships in. Applies to all variants of this product.,الصندوق أو المغلف الذي يُشحن فيه هذا المنتج. ينطبق على جميع متغيرات هذا المنتج.
+The boxes and envelopes you ship with. Every shippable product references one — its dimensions and empty weight drive shipping quotes and labels.,الصناديق والمغلفات التي تشحن بها. يشير كل منتج قابل للشحن إلى واحد منها — وتحدد أبعاده ووزنه فارغًا عروض أسعار الشحن وملصقاته.
+The conditions related to the customer for the coupon to be applied.,الشروط المتعلقة بالعميل لتطبيق القسيمة.
+The conditions related to the order for the coupon to be applied.,الشروط المتعلقة بالطلب لتطبيق القسيمة.
+The default package cannot be deleted,لا يمكن حذف الطرد الافتراضي
+The draft holds ${count} saved changes you can publish later.,تحتوي المسودة على ${count} تغييرات محفوظة يمكنك نشرها لاحقًا.
+The draft holds 1 saved change you can publish later.,تحتوي المسودة على تغيير واحد محفوظ يمكنك نشره لاحقًا.
+The draft is deleted.,تم حذف المسودة.
+The draft itself is deleted.,تم حذف المسودة نفسها.
+The general information about the coupon.,المعلومات العامة عن القسيمة.
+"The language of the admin panel, independent of the storefront.",لغة لوحة الإدارة، مستقلة عن لغة المتجر.
+The method will no longer apply to this zone.,لن تنطبق الطريقة على هذه المنطقة بعد الآن.
+The minimum quantity of items required in the order to qualify for this coupon.,الحد الأدنى لعدد العناصر المطلوبة في الطلب للاستفادة من هذه القسيمة.
+The minimum total amount required for the order to qualify for this coupon.,الحد الأدنى للمبلغ الإجمالي المطلوب في الطلب للاستفادة من هذه القسيمة.
+The rollout plan,خطة النشر
+The storefront's primary language. Pages in this language have no URL prefix.,اللغة الأساسية للمتجر. لا تحتوي الصفحات بهذه اللغة على بادئة في URL.
+The type of discount applied by the coupon.,نوع الخصم الذي تطبقه القسيمة.
+The zone this rate applies to.,المنطقة التي ينطبق عليها هذا السعر.
+"There is no ""Select"" attribute available.","لا توجد سمة من نوع ""Select"" متاحة."
+There is no attribute to display,لا توجد سمات لعرضها
+There is no category to display,لا توجد تصنيفات لعرضها
+There is no collections to display,لا توجد مجموعات لعرضها
+There is no coupon to display,لا توجد قسائم لعرضها
+There is no customer to display,لا يوجد عملاء لعرضهم
+There is no order to display,لا توجد طلبات لعرضها
+There is no page to display,لا توجد صفحات لعرضها
+There is no widget to display,لا توجد أدوات لعرضها
+There was an error fetching attribute groups.,حدث خطأ أثناء جلب مجموعات السمات.
+There was an error fetching categories.,حدث خطأ أثناء جلب التصنيفات.
+There was an error fetching collections.,حدث خطأ أثناء جلب المجموعات.
+There was an error fetching file browser APIs.,حدث خطأ أثناء جلب واجهات API لمستعرض الملفات.
+There was an error fetching products.,حدث خطأ أثناء جلب المنتجات.
+This cannot be undone. Packages still assigned to products can't be removed.,لا يمكن التراجع عن هذا الإجراء. لا يمكن حذف الطرود التي لا تزال معيّنة لمنتجات.
+This changeset has no operations yet.,لا تحتوي مجموعة التغييرات هذه على أي عمليات بعد.
+This field is required,هذا الحقل مطلوب
+This is the URL path for the CMS page.,هذا هو مسار URL لصفحة المحتوى.
+This is the address used to calculate tax rates.,هذا هو العنوان المستخدم لحساب نسب الضريبة.
+This is the meta title for the CMS page.,هذا هو العنوان التعريفي لصفحة المحتوى.
+This is the name of the CMS page that will be displayed in the admin panel.,هذا هو اسم صفحة المحتوى الذي سيظهر في لوحة الإدارة.
+This is the tax class applied to shipping costs.,هذه هي فئة الضريبة المطبقة على تكاليف الشحن.
+This product has some variants like color or size?,هل لهذا المنتج متغيرات مثل اللون أو المقاس؟
+This provider has no per-zone configuration. Methods and per-zone rates are managed in the provider's own admin area.,لا يحتوي هذا المزود على إعدادات لكل منطقة. تتم إدارة الطرق والأسعار لكل منطقة في منطقة الإدارة الخاصة بالمزود.
+This removes the zone along with its provider attachments and rates. This cannot be undone.,سيؤدي هذا إلى إزالة المنطقة مع ارتباطات المزودين والأسعار الخاصة بها. لا يمكن التراجع عن هذا الإجراء.
+This route has unpublished changes in your draft,يحتوي هذا المسار على تغييرات غير منشورة في مسودتك
+This will be saved as a pending change you can publish or discard.,سيُحفظ هذا كتغيير معلّق يمكنك نشره أو تجاهله.
+Tiered,متدرج
+Type is required,النوع مطلوب
+URL Key,مفتاح URL
+URL Key is required,مفتاح URL مطلوب
+"URL Key must be lowercase and can only contain letters, numbers, and hyphens",يجب أن يكون مفتاح URL بأحرف صغيرة ولا يحتوي إلا على أحرف وأرقام وشرطات
+URL key,مفتاح URL
+URL key is required,مفتاح URL مطلوب
+URL key must be lowercase and can only contain alphanumeric characters and hyphens,يجب أن يكون مفتاح URL بأحرف صغيرة ولا يحتوي إلا على أحرف أبجدية رقمية وشرطات
+Unassign,إلغاء التعيين
+Undo (⌘Z) — undoes your last edit on this page,تراجع (⌘Z) — يتراجع عن آخر تعديل لك في هذه الصفحة
+Undo / Redo,تراجع / إعادة
+Undo last change on this page,التراجع عن آخر تغيير في هذه الصفحة
+Unknown,غير معروف
+Unlink,إلغاء الربط
+Unpin drawer,إلغاء تثبيت اللوحة
+Unpin — drawer will close when you click empty canvas,إلغاء التثبيت — ستُغلق اللوحة عند النقر على مساحة فارغة من مساحة العمل
+Unpublished changes,تغييرات غير منشورة
+Unsaved changes,تغييرات غير محفوظة
+Update the name and active window for this rollout plan. Content edits are managed separately in the editor.,حدّث الاسم والفترة النشطة لخطة النشر هذه. تتم إدارة تعديلات المحتوى بشكل منفصل في المحرر.
+Update the variant details and attributes here.,حدّث تفاصيل المتغير وسماته هنا.
+Updated,تم التحديث
+Upload an image for the category.,ارفع صورة للتصنيف.
+Used Times,عدد مرات الاستخدام
+Value is required,القيمة مطلوبة
+Variant Group,مجموعة المتغيرات
+Variant created successfully,تم إنشاء المتغير بنجاح
+Variant updated successfully,تم تحديث المتغير بنجاح
+Version ${version},الإصدار ${version}
+Visibility,الظهور
+Visibility determines where the product appears in the store. It does not affect the saleability of the product.,يحدد الظهور أماكن ظهور المنتج في المتجر، ولا يؤثر على إمكانية بيعه.
+Visitors will see the new layout on their next page load.,سيرى الزوار التصميم الجديد عند تحميل الصفحة التالي.
+Webhook Secret Key,المفتاح السري لـ Webhook
+Weight,الوزن
+Weight must be 0 or greater,يجب أن يكون الوزن 0 أو أكثر
+Weight must be a positive number,يجب أن يكون الوزن رقمًا موجبًا
+Weight-based tiers,شرائح حسب الوزن
+Widget Settings,إعدادات الأداة
+Widget created successfully!,تم إنشاء الأداة بنجاح!
+Widgets,الأدوات
+Width,العرض
+Width is required,العرض مطلوب
+Width must be greater than 0,يجب أن يكون العرض أكبر من 0
+Will roll out automatically: ${range},سيُنشر تلقائيًا: ${range}
+Working…,جارٍ المعالجة…
+Worldwide,جميع أنحاء العالم
+X,X
+Y,Y
+You have ${count} changes in this draft that haven’t been published yet.,لديك ${count} تغييرات في هذه المسودة لم تُنشر بعد.
+You have ${count} changes still saving.,لديك ${count} تغييرات لا يزال حفظها جاريًا.
+You have 1 change in this draft that hasn’t been published yet.,لديك تغيير واحد في هذه المسودة لم يُنشر بعد.
+You have 1 change still saving.,لديك تغيير واحد لا يزال حفظه جاريًا.
+Your draft is safe on the server — you can come back and publish it any time.,مسودتك محفوظة بأمان على الخادم — يمكنك العودة ونشرها في أي وقت.
+Your edits on other pages stay in the draft.,تبقى تعديلاتك على الصفحات الأخرى في المسودة.
+Your webhook url should be: https://yourdomain.com/api/stripe/webhook,يجب أن يكون عنوان URL الخاص بـ webhook: https://yourdomain.com/api/stripe/webhook
+Zone,المنطقة
+Zone Name,اسم المنطقة
+Zone Rates,أسعار المنطقة
+Zone created,تم إنشاء المنطقة
+Zone is required,المنطقة مطلوبة
+Zone name is required,اسم المنطقة مطلوب
+Zone removed,تمت إزالة المنطقة
+Zone updated,تم تحديث المنطقة
+Zones served,المناطق المخدومة
+and ${count} more,و${count} أخرى
+container will also hide,ستُخفى الحاوية أيضًا
+current page,الصفحة الحالية
+e.g. Small Box,مثال: صندوق صغير
+e.g. Summer Sale 2026,مثال: تخفيضات الصيف 2026
+e.g. content,مثال: content
+"e.g., 10.00",مثال: 10.00
+"e.g., EU, US-West",مثال: EU، US-West
+"e.g., Express",مثال: Express
+"e.g., FEDEX_GROUND, usps_priority",مثال: FEDEX_GROUND، usps_priority
+every page,كل الصفحات
+indefinite,غير محدد
+open,فتح
+"publishing is immediate and can’t be undone from this screen. To stage instead, cancel and choose “Schedule a rollout”.",النشر فوري ولا يمكن التراجع عنه من هذه الشاشة. للتجهيز بدلًا من ذلك، ألغِ واختر «جدولة خطة نشر».
+quantity of products are matched bellow conditions(All),كمية المنتجات المطابقة للشروط التالية (جميعها)
+subtotal,المجموع الفرعي
+to a storefront route's,إلى مسار في واجهة المتجر
+to make it appear here.,لتظهر هنا.
+weight,الوزن
+widget? This will be saved as a pending change you can publish or discard.,الأداة؟ سيُحفظ هذا كتغيير معلّق يمكنك نشره أو تجاهله.
+will be removed and the live storefront will stop applying its edits. The underlying changeset and its pending content edits are preserved.,ستُزال وسيتوقف المتجر المباشر عن تطبيق تعديلاتها. تُحفظ مجموعة التغييرات الأساسية وتعديلات المحتوى المعلّقة الخاصة بها.
+— None —,— لا شيء —
+Cash On Delivery,الدفع عند الاستلام
+Please select a valid payment method,يُرجى اختيار طريقة دفع صالحة
+Show ${label} width,إظهار عرض ${label}
+Column ${index},العمود ${index}
+Switch page,تبديل الصفحة
+Search pages…,ابحث في الصفحات…
+Search pages,البحث في الصفحات
+Save your pending edits — the live storefront will catch up,احفظ تعديلاتك المعلّقة — وسيتم تحديث المتجر المباشر
+No changes to save — the rollout matches the editor,لا توجد تغييرات لحفظها — خطة النشر مطابقة للمحرر
+More rollout actions,المزيد من إجراءات خطة النشر
+Revert to saved state…,الرجوع إلى الحالة المحفوظة…
+Roll back the editor to what the rollout currently shows on the storefront,إرجاع المحرر إلى ما تعرضه خطة النشر حاليًا في المتجر
+Nothing to revert — the editor matches the saved state,لا يوجد ما يُتراجع عنه — المحرر مطابق للحالة المحفوظة
+Cancel rollout plan…,إلغاء خطة النشر…
+Remove the schedule — the changeset is preserved,إزالة الجدولة — مع الاحتفاظ بمجموعة التغييرات
+Publish,نشر
+More publish options,المزيد من خيارات النشر
+Apply all edits to the live storefront immediately,تطبيق جميع التعديلات على المتجر المباشر فورًا
+Save as rollout plan…,حفظ كخطة نشر…
+Schedule these edits to roll out at a future time,جدولة هذه التعديلات لتطبيقها في وقت لاحق
+Discard pending changes…,تجاهل التغييرات المعلقة…
+Choose between discarding the whole draft or just this page,اختر بين تجاهل المسودة بالكامل أو هذه الصفحة فقط
+Switch session,تبديل الجلسة
+New changeset,مجموعة تغييرات جديدة
+Rollout: ${name},التطبيق: ${name}
+Click or drag to add,انقر أو اسحب للإضافة
+Background color,لون الخلفية
+Text color,لون النص
+Dwell time,مدة العرض
+Time each announcement stays visible (in addition to the 400ms slide transition).,المدة التي يبقى فيها كل إعلان ظاهرًا (بالإضافة إلى انتقال الانزلاق البالغ 400ms).
+Announcements,الإعلانات
+Add announcement,إضافة إعلان
+Untitled,بدون عنوان
+Free shipping on orders over $50,شحن مجاني للطلبات التي تتجاوز $50
+Optional. Makes the entire row a clickable link.,اختياري. يجعل الصف بأكمله رابطًا قابلًا للنقر.
+Link label,تسمية الرابط
+Optional. Displayed after the content; defaults to the content itself.,اختياري. يُعرض بعد المحتوى؛ والقيمة الافتراضية هي المحتوى نفسه.
+Shop now,تسوّق الآن
+Dark,داكن
+Light,فاتح
+Gradient,متدرّج
+Left,يسار
+Center,وسط
+Right,يمين
+Selected image,الصورة المحددة
+No image selected,لم يتم تحديد أي صورة
+Replace,استبدال
+Clear,مسح
+Reflects the alignment below.,يعكس المحاذاة أدناه.
+Banner Image,صورة البانر
+Mobile image,صورة الجوال
+Optional. Swapped in below the 768px breakpoint. Falls back to the image above when empty — typical use is a portrait crop of the same scene.,اختياري. تُستبدل بها الصورة تحت نقطة التوقف 768px. تُستخدم الصورة أعلاه عند تركها فارغة — والاستخدام المعتاد هو قصّ عمودي للمشهد نفسه.
+Alignment,المحاذاة
+Overlay copy,النص المتراكب
+Eyebrow,العنوان التمهيدي
+"Small all-caps label above the heading. E.g. ""LIMITED EDITION"".","تسمية صغيرة بأحرف كبيرة فوق العنوان. مثال: ""LIMITED EDITION""."
+LIMITED EDITION,إصدار محدود
+Heading,العنوان
+The Summer Edit,مختارات الصيف
+Sub-text,النص الثانوي
+One short supporting sentence.,جملة داعمة قصيرة واحدة.
+Overlay placement,موضع التراكب
+Content position,موضع المحتوى
+Where the overlay text sits on the image.,مكان ظهور النص المتراكب على الصورة.
+Tint,التظليل
+A scrim behind the overlay text for legibility. Dark / gradient flip the text to white automatically.,طبقة شبه شفافة خلف النص المتراكب لتحسين المقروئية. الخياران داكن / متدرّج يحوّلان النص إلى الأبيض تلقائيًا.
+Tint opacity,شفافية التظليل
+Call to actions,دعوات إلى الإجراء
+Remove primary CTA,إزالة زر CTA الرئيسي
++ Add a primary CTA,+ إضافة زر CTA رئيسي
+Secondary,ثانوي
+Remove secondary CTA,إزالة زر CTA الثانوي
+Learn more,اعرف المزيد
++ Add a secondary CTA,+ إضافة زر CTA ثانوي
+Details,التفاصيل
+Alt text,النص البديل
+Describes the banner for screen readers and SEO.,يصف البانر لقارئات الشاشة ولتحسين SEO.
+"e.g. ""Summer sale promotional banner""","مثال: ""بانر ترويجي لتخفيضات الصيف"""
+Banner link,رابط البانر
+Optional. Clicking the banner navigates here.,اختياري. النقر على البانر ينقل إلى هنا.
+Display name,الاسم المعروض
+Shop,المتجر
+Target,الوجهة
+"Page, category, product, or a custom URL.",صفحة أو فئة أو منتج أو URL مخصص.
+Nofollow,Nofollow
+SEO: don't pass ranking credit to this link (rel=nofollow).,SEO: لا تمرّر رصيد الترتيب إلى هذا الرابط (rel=nofollow).
+No referrer,بدون مُحيل
+Privacy: drop the referring URL (rel=noreferrer). New-tab links always include this.,الخصوصية: حذف URL المُحيل (rel=noreferrer). روابط علامة التبويب الجديدة تتضمن ذلك دائمًا.
+Menu items,عناصر القائمة
+Add menu item,إضافة عنصر قائمة
+Sub-items,العناصر الفرعية
+Optional dropdown links (1 level).,روابط منسدلة اختيارية (مستوى واحد).
+Add sub-item,إضافة عنصر فرعي
+Options,الخيارات
+Use as main menu,استخدام كقائمة رئيسية
+"Primary navigation — on mobile it collapses into a hamburger menu. Turn off for a simple link list (e.g. a footer), which stays inline on mobile.",التنقل الرئيسي — على الجوال يُطوى في قائمة همبرغر. أوقفه للحصول على قائمة روابط بسيطة (مثل تذييل الصفحة) تبقى في سطر واحد على الجوال.
+Custom CSS classes,فئات CSS مخصصة
+Applied to the rendered menu element.,تُطبَّق على عنصر القائمة المعروض.
+e.g. main-nav font-semibold,مثال: main-nav font-semibold
+S,S
+M,M
+L,L
+Tiles,البلاطات
+Add tile,إضافة بلاطة
+Hero · ,رئيسي · 
+Used when no image is set.,تُستخدم عند عدم تعيين صورة.
+Small label above the heading.,تسمية صغيرة فوق العنوان.
+THE SUMMER EDIT,مختارات الصيف
+New Arrivals,وصل حديثًا
+Body,النص
+Big card — the headline of the grid.,بطاقة كبيرة — العنوان الرئيسي للشبكة.
+Link URL,URL الرابط
+Gap,المسافة
+Minimum block height,الحد الأدنى لارتفاع الكتلة
+Image left,الصورة على اليسار
+Image right,الصورة على اليمين
+Centered,في المنتصف
+Pull quote,اقتباس بارز
+Variant,النمط
+Image column size,حجم عمود الصورة
+Describe the image,صِف الصورة
+Copy,النص
+"Small all-caps label. E.g. ""OUR STORY"".","تسمية صغيرة بأحرف كبيرة. مثال: ""قصتنا""."
+Our story,قصتنا
+"Made by hand, in small batches",مصنوع يدويًا، بكميات صغيرة
+"Required for the pull-quote variant. Displayed large, styled as a blockquote.",مطلوب لنمط الاقتباس البارز. يُعرض بحجم كبير بتنسيق اقتباس.
+"A short, quotable line.",سطر قصير قابل للاقتباس.
+Three or four sentences of brand narrative.,ثلاث أو أربع جمل عن قصة العلامة.
+Second body paragraph (optional),فقرة نص ثانية (اختيارية)
+A second short paragraph if the story needs it.,فقرة قصيرة ثانية إذا احتاجت القصة إليها.
+Read more link,"رابط ""اقرأ المزيد"""
+Read more,اقرأ المزيد
+URL,URL
+Remove read-more link,"إزالة رابط ""اقرأ المزيد"""
++ Add a read-more link,"+ إضافة رابط ""اقرأ المزيد"""
+Square,مربع
+Landscape,أفقي
+Portrait,عمودي
+Overlay,متراكب
+Below,أسفل
+New category,فئة جديدة
+Section heading,عنوان القسم
+Optional. Shown above the grid.,اختياري. يُعرض فوق الشبكة.
+Shop by category,تسوّق حسب الفئة
+Women,نساء
+Columns,الأعمدة
+Auto,تلقائي
+Asymmetric makes the first tile span 2 columns.,الخيار غير المتماثل يجعل البلاطة الأولى تمتد على عمودين.
+Uniform,متماثل
+Asymmetric,غير متماثل
+Image aspect,نسبة الصورة
+Label position,موضع التسمية
+Blush,وردي فاتح
+XL,XL
+Position ${c},الموضع ${c}
+Column layout,تخطيط الأعمدة
+Drag widgets into each column. Children re-flow when you change the ratio.,اسحب الأدوات إلى كل عمود. يُعاد ترتيب العناصر الفرعية عند تغيير النسبة.
+Space between columns.,المسافة بين الأعمدة.
+Where content sits within each column. Applied uniformly to every column.,مكان المحتوى داخل كل عمود. يُطبَّق بالتساوي على جميع الأعمدة.
+Row appearance,مظهر الصف
+Background,الخلفية
+Custom color,لون مخصص
+"Any CSS color (e.g. ""#0a0a0a"" or ""rgb(10,10,10)""). Leave empty to use the swatch above.","أي لون CSS (مثل ""#0a0a0a"" أو ""rgb(10,10,10)""). اتركه فارغًا لاستخدام العيّنة أعلاه."
+Padding,الحشو
+Outer spacing around the row. Scales down on mobile.,المسافة الخارجية حول الصف. تتقلص على الجوال.
+Solid,متصل
+Dashed,متقطع
+Already expired,منتهي الصلاحية بالفعل
+Expires in ${days}d ${hours}h,ينتهي خلال ${days}d ${hours}h
+Expires in ${hours}h ${minutes}m,ينتهي خلال ${hours}h ${minutes}m
+Offer,العرض
+"Urgency line. Optional. E.g. ""Limited · Ends Sunday"".","سطر الاستعجال. اختياري. مثال: ""محدود · ينتهي يوم الأحد""."
+Limited · Ends Sunday,محدود · ينتهي يوم الأحد
+Headline,العنوان الرئيسي
+Take 20% off your order,احصل على خصم 20% على طلبك
+Optional. One short instructional line.,اختياري. سطر إرشادي قصير واحد.
+Use code at checkout,استخدم الرمز عند إتمام الشراء
+Promo code,رمز الترويج
+Displayed in uppercase to shoppers.,يُعرض للمتسوقين بأحرف كبيرة.
+Expires,ينتهي في
+Optional. The block auto-hides after this time for live visitors.,اختياري. تختفي الكتلة تلقائيًا بعد هذا الوقت للزوار الحاليين.
+Call to action,دعوة إلى الإجراء
+Button label,نص الزر
+Shop now →,تسوّق الآن ←
+Button link,رابط الزر
+Appearance,المظهر
+Border,الحدّ
+Narrow,ضيق
+Normal,عادي
+Wide,عريض
+Shown above all content. Optional.,يُعرض فوق كل المحتوى. اختياري.
+e.g. Frequently asked,مثال: الأسئلة الشائعة
+Prose,نص
+FAQ group · ${count} items,مجموعة أسئلة شائعة · ${count} عناصر
+Group heading,عنوان المجموعة
+Optional sub-heading.,عنوان فرعي اختياري.
+e.g. Shipping,مثال: الشحن
+Add question,إضافة سؤال
+Question,السؤال
+e.g. How long does shipping take?,مثال: كم يستغرق الشحن؟
+Answer,الإجابة
+"Supports **bold**, _italic_, and line breaks.",يدعم **الغامق** و_المائل_ وفواصل الأسطر.
+e.g. Orders ship within 24 hours…,مثال: تُشحن الطلبات خلال 24 ساعة…
+Add prose,إضافة نص
+Add FAQ group,إضافة مجموعة أسئلة شائعة
+Max width,أقصى عرض
+Content column width.,عرض عمود المحتوى.
+Allow multiple open,السماح بفتح عدة عناصر
+"When off, opening one FAQ item closes the others in the same group.",عند إيقافه، يؤدي فتح عنصر من الأسئلة الشائعة إلى إغلاق العناصر الأخرى في المجموعة نفسها.
+New link,رابط جديد
+New column,عمود جديد
+Add column,إضافة عمود
+${title} · ${count} links,${title} · ${count} روابط
+Column title,عنوان العمود
+Links,الروابط
+"Min 1, max 12.",الحد الأدنى 1، الحد الأقصى 12.
+Add link,إضافة رابط
+New arrivals,وصل حديثًا
+Boxed,ضمن إطار
+Wide (full bleed),عريض (بعرض كامل)
+Boxed stays inside the page's container (theme decides the max-width). Wide breaks out edge-to-edge.,"الخيار ""ضمن إطار"" يبقى داخل حاوية الصفحة (يحدد القالب أقصى عرض). الخيار ""عريض"" يمتد من الحافة إلى الحافة."
+Scales down on mobile.,تتقلص على الجوال.
+Optional. Painted behind content. Combine with a tint below for legibility.,اختياري. تُرسم خلف المحتوى. اجمعها مع تظليل أدناه لتحسين المقروئية.
+XS,XS
+Spacing,التباعد
+Size,الحجم
+Mobile scales down ~⅔ automatically.,يتقلص على الجوال بنحو ⅔ تلقائيًا.
+Divider line,خط فاصل
+Show divider line,إظهار خط فاصل
+A horizontal rule centred in the spacing band.,خط أفقي في منتصف مساحة التباعد.
+Line color,لون الخط
+Default uses the theme's divider color.,الافتراضي يستخدم لون الفاصل في القالب.
+Sides,الجانبان
+Bottom,الأسفل
+Dots,نقاط
+Bars,أشرطة
+Mobile image (optional),صورة الجوال (اختيارية)
+Used at ≤ 767 px. Falls back to the main image.,تُستخدم عند ≤ 767 px. تُستخدم الصورة الرئيسية بدلًا منها عند عدم توفرها.
+e.g. New collection,مثال: مجموعة جديدة
+e.g. Summer Sale,مثال: تخفيضات الصيف
+Sub text,النص الثانوي
+Check out our latest products with special discounts.,اكتشف أحدث منتجاتنا بخصومات خاصة.
+Primary button,الزر الرئيسي
+Secondary button,الزر الثانوي
++ Add secondary button,+ إضافة زر ثانوي
+Overrides,التجاوزات
+Leaves slide-specific anchor; falls back to the slideshow's default.,يحتفظ بالموضع الخاص بالشريحة؛ ويعود إلى القيمة الافتراضية لعرض الشرائح.
+Overlay tint,تظليل التراكب
+Overlay opacity,شفافية التراكب
+Make whole slide clickable,جعل الشريحة بأكملها قابلة للنقر
+Behavior,السلوك
+Transition,الانتقال
+Slide,انزلاق
+Fade,تلاشٍ
+Transition speed,سرعة الانتقال
+Autoplay,تشغيل تلقائي
+Autoplay delay,مهلة التشغيل التلقائي
+${seconds} s between slides,${seconds} ث بين الشرائح
+Pause on hover,إيقاف مؤقت عند مرور المؤشر
+Pause for 20 s after user nav,إيقاف مؤقت 20 ث بعد تنقّل المستخدم
+Arrows,الأسهم
+Aspect ratio,نسبة العرض إلى الارتفاع
+`Auto` matches the natural image height (jumps between slides).,`Auto` يطابق الارتفاع الطبيعي للصورة (يتغير بين الشرائح).
+Default content position,موضع المحتوى الافتراضي
+Per-slide overrides win.,تجاوزات كل شريحة لها الأولوية.
+Default overlay tint,تظليل التراكب الافتراضي
+Default overlay opacity,شفافية التراكب الافتراضية
+Slides (${count}),الشرائح (${count})
+No slides yet.,لا توجد شرائح بعد.
+Add your first slide,أضف شريحتك الأولى
+Slide ${number},الشريحة ${number}
+Image only,صورة فقط
+Empty,فارغ
+Show slide,إظهار الشريحة
+Hide slide,إخفاء الشريحة
+Move slide up,نقل الشريحة لأعلى
+Move slide down,نقل الشريحة لأسفل
+Delete slide,حذف الشريحة
+Top,الأعلى
+Cover,تغطية
+Contain,احتواء
+Required for accessibility.,مطلوب لإمكانية الوصول.
+Image fit,ملاءمة الصورة
+"Small all-caps label. E.g. ""LIMITED EDITION"".","تسمية صغيرة بأحرف كبيرة. مثال: ""إصدار محدود""."
+Limited edition,إصدار محدود
+One strong line,سطر واحد قوي
+Two lines of supporting copy.,سطران من النص الداعم.
+Image position,موضع الصورة
+Vertical alignment,المحاذاة الرأسية
+Aligns the copy panel content.,يحاذي محتوى لوحة النص.
+Remove call to action,إزالة الدعوة إلى الإجراء
+Add a call to action,إضافة دعوة إلى الإجراء
+Custom CSS classes for the text block,فئات CSS مخصصة لكتلة النص
+Add group,إضافة مجموعة
+${label} · ${count} subs,${label} · ${count} فئات فرعية
+Parent label,تسمية الفئة الرئيسية
+Parent link,رابط الفئة الرئيسية
+Image alt text,النص البديل للصورة
+Sub-categories,الفئات الفرعية
+"Min 1, max 8.",الحد الأدنى 1، الحد الأقصى 8.
+Add sub-category,إضافة فئة فرعية
+Dresses,فساتين
+Columns (desktop),الأعمدة (سطح المكتب)
+On tablets the layout is always 2 columns.,على الأجهزة اللوحية يكون التخطيط دائمًا بعمودين.
+Make parent image a link,جعل صورة الفئة الرئيسية رابطًا
+"When off, only the sub-chips and parent label are interactive.",عند إيقافه، تكون الوسوم الفرعية وتسمية الفئة الرئيسية فقط قابلة للتفاعل.
+Title,العنوان
+e.g. Free shipping,مثال: شحن مجاني
+Optional supporting line below the title.,سطر داعم اختياري أسفل العنوان.
+Icon,الأيقونة
+Optional. SVG or raster image. Hidden when icons are turned off globally.,اختياري. صورة SVG أو نقطية. تُخفى عند إيقاف الأيقونات بشكل عام.
+Optional. Makes the whole cell clickable.,اختياري. يجعل الخلية بأكملها قابلة للنقر.
+"Auto matches the item count, capped at 4.",الخيار التلقائي يطابق عدد العناصر، بحد أقصى 4.
+3,3
+4,4
+Icon size,حجم الأيقونة
+Show icons,إظهار الأيقونات
+Master switch. Items without an icon URL are unaffected.,مفتاح رئيسي. العناصر التي لا تحتوي على URL أيقونة لا تتأثر.
+Show divider,إظهار الفاصل
+Vertical line between cells.,خط رأسي بين الخلايا.
+Collection,المجموعة
+Search collections…,البحث في المجموعات…
+No collections match “${value}”.,لا توجد مجموعات مطابقة لـ “${value}”.
+You have no collections yet.,ليس لديك أي مجموعات بعد.
+Please select a collection,يُرجى اختيار مجموعة
+"Defaults to ""${name}"" (the collection's name).","القيمة الافتراضية هي ""${name}"" (اسم المجموعة)."
+Defaults to the picked collection's name.,القيمة الافتراضية هي اسم المجموعة المختارة.
+Collection name,اسم المجموعة
+Defaults to the collection's description. Setting this replaces the rich-text description with plain text.,القيمة الافتراضية هي وصف المجموعة. تعيين هذا الحقل يستبدل الوصف المنسّق بنص عادي.
+e.g. Hand-picked styles for the season.,مثال: أنماط مختارة بعناية لهذا الموسم.
+View all link,"رابط ""عرض الكل"""
+"Optional. Hidden when empty. Pick a category, product, page, or paste a custom URL.",اختياري. يُخفى عندما يكون فارغًا. اختر فئة أو منتجًا أو صفحة، أو الصق URL مخصصًا.
+"Optional. Defaults to ""View all →"".","اختياري. القيمة الافتراضية هي ""عرض الكل ←""."
+View all →,عرض الكل ←
+Total products,إجمالي المنتجات
+Number of products to display.,عدد المنتجات المراد عرضها.
+Products per row,المنتجات في كل صف
+Grid columns (1–6 typical).,أعمدة الشبكة (1–6 عادةً).
+Count is required,العدد مطلوب
+e.g. 8,مثال: 8
+Count per row is required,العدد في كل صف مطلوب
+e.g. 4,مثال: 4
+Cover image,صورة الغلاف
+COLLECTION,مجموعة
+"Defaults to ""${pickedName}"".","القيمة الافتراضية هي ""${pickedName}""."
+Defaults to the picked collection name.,القيمة الافتراضية هي اسم المجموعة المختارة.
+Optional. One or two sentences of editorial copy.,اختياري. جملة أو جملتان من النص التحريري.
+"Linen, cotton, easy stuff.",كتان، قطن، قطع مريحة.
+Preview product count,عدد المنتجات في المعاينة
+2 (1×2),2 (1×2)
+4 (2×2),4 (2×2)
+Please pick a collection,يُرجى اختيار مجموعة
+Add collection,إضافة مجموعة
+Row heading,عنوان الصف
+The Linen Edit,مختارات الكتان
+Optional. Hidden when empty.,اختياري. يُخفى عندما يكون فارغًا.
+View all label,"تسمية ""عرض الكل"""
+Show price,إظهار السعر
+Show divider between rows,إظهار فاصل بين الصفوف
+Selected:,المحدد:
+Image override,تجاوز الصورة
+Override image,صورة بديلة
+Override image (optional),صورة بديلة (اختيارية)
+Leave empty to use the product's primary image.,اتركه فارغًا لاستخدام الصورة الرئيسية للمنتج.
+Small label above the product name. Optional.,تسمية صغيرة فوق اسم المنتج. اختياري.
+FEATURED,مميز
+Editorial copy,النص التحريري
+Overrides the product's own description in this context. Leave blank to hide.,يحل محل وصف المنتج الأصلي في هذا السياق. اتركه فارغًا لإخفائه.
+Two lines of copy explaining why this product is being spotlighted right now.,سطران من النص يوضحان سبب تسليط الضوء على هذا المنتج الآن.
+Please pick a product,يُرجى اختيار منتج
+e.g. On orders over $50,مثال: للطلبات التي تتجاوز $50
+Text block,كتلة نصية
+Menu,القائمة
+Footer menu,قائمة التذييل
+Banner,بانر
+Simple Slideshow,عرض شرائح بسيط
+Brand story,قصة العلامة
+Category mosaic,فسيفساء الفئات
+Tiered categories,فئات متعددة المستويات
+Bento grid,شبكة Bento
+Separator,فاصل
+Section,قسم
+Split feature,ميزة مقسّمة
+Announcement bar,شريط الإعلانات
+Coupon block,كتلة القسيمة
+FAQ block,كتلة الأسئلة الشائعة
+Trust strip,شريط الثقة
+Collection products,منتجات المجموعة
+Collection stack,مجموعات متراصة
+Collection spotlight,مجموعة مميزة
+Product hero,منتج مميز
+Layout container with 1–4 columns for nesting widgets.,حاوية تخطيط من 1–4 أعمدة لتضمين الأدوات.
+Add rich text content,إضافة محتوى نصي منسّق
+Navigation links,روابط التنقل
+Multi-column list of footer links — a titled column of navigation links per group.,قائمة متعددة الأعمدة لروابط التذييل — عمود معنون من روابط التنقل لكل مجموعة.
+A single hero image with optional overlay copy and CTAs.,صورة رئيسية واحدة مع نص متراكب وأزرار CTA اختيارية.
+Rotating image carousel,عرض دوّار للصور
+Editorial block combining an image and long-form brand narrative. Four layout variants.,كتلة تحريرية تجمع بين صورة وسرد مطوّل لقصة العلامة. أربعة أنماط تخطيط.
+"A grid of 3–6 category tiles for the primary ""Shop by category"" entry point.","شبكة من 3–6 بلاطات فئات لنقطة الدخول الرئيسية ""تسوّق حسب الفئة""."
+A two-level nav block: parent category image plus a row of sub-category chips.,كتلة تنقل بمستويين: صورة الفئة الرئيسية مع صف من وسوم الفئات الفرعية.
+An asymmetric mosaic of CTA tiles — one large hero plus 1–4 supporting tiles.,فسيفساء غير متماثلة من بلاطات CTA — بلاطة رئيسية كبيرة مع 1–4 بلاطات داعمة.
+"Vertical spacing between widgets, with an optional divider line. Mobile scales down automatically.",تباعد رأسي بين الأدوات، مع خط فاصل اختياري. يتقلص تلقائيًا على الجوال.
+Styled droppable band that wraps other widgets. Toggle between wide (edge-to-edge) and boxed (theme container).,شريط منسّق قابل للإفلات يحيط بأدوات أخرى. بدّل بين عريض (من الحافة إلى الحافة) وضمن إطار (حاوية القالب).
+A 50/50 image + copy promo block with optional CTA. The canonical promo moment widget.,كتلة ترويجية 50/50 من صورة + نص مع CTA اختياري. الأداة الترويجية الأساسية.
+A thin top-of-page bar with one or more rotating announcements.,شريط رفيع أعلى الصفحة يعرض إعلانًا واحدًا أو أكثر بالتناوب.
+A promo panel with a copyable discount code and CTA.,لوحة ترويجية مع رمز خصم قابل للنسخ وCTA.
+Flexible content block mixing prose sections and accordion FAQ groups.,كتلة محتوى مرنة تجمع بين أقسام نصية ومجموعات أسئلة شائعة قابلة للطي.
+"A row of value-prop items (free shipping, easy returns, etc.) for below-the-hero or above-the-footer reinforcement.",صف من عناصر القيمة المقدمة (شحن مجاني، إرجاع سهل، إلخ) لتعزيز الثقة أسفل الواجهة الرئيسية أو أعلى التذييل.
+A list of products from a collection,قائمة منتجات من مجموعة
+"Stacked rows of collections, each with a heading, view-all link, and a strip of products.","صفوف متراصة من المجموعات، لكل منها عنوان ورابط ""عرض الكل"" وشريط من المنتجات."
+"A featured collection with cover image, editorial copy, and a small product preview grid.",مجموعة مميزة مع صورة غلاف ونص تحريري وشبكة صغيرة لمعاينة المنتجات.
+"A single-product spotlight — image, name, price, and a link to the full product page.",تسليط الضوء على منتج واحد — صورة واسم وسعر ورابط إلى صفحة المنتج الكاملة.
+Deleting this container will also hide,حذف هذه الحاوية سيؤدي أيضًا إلى إخفاء
+The page you're looking for doesn't exist or may have moved.,الصفحة التي تبحث عنها غير موجودة أو ربما نُقلت.
+Back to home,العودة إلى الرئيسية
+Main menu,القائمة الرئيسية
+Close menu,إغلاق القائمة
+Open menu,فتح القائمة
+Footer,التذييل
+Go to slide ${n},الانتقال إلى الشريحة ${n}

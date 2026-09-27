@@ -1,3 +1,4 @@
+import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import React from 'react';
 import { LOGO_SRC, STORE_NAME } from '../../components/frontStore/brand.js';
 
@@ -23,10 +24,10 @@ export default function Logo({ setting }: LogoProps) {
     : LOGO_SRC;
   return (
     <div className="logo flex items-center">
-      <a href="/" className="logo-icon flex items-center" aria-label={`${STORE_NAME} – inicio`}>
+      <a href="/" className="logo-icon flex items-center" aria-label={`${_(STORE_NAME)} – ${_('Home')}`}>
         <img
           src={src}
-          alt="Fundación Andalusí de España"
+          alt={_('Fundación Andalusí de España')}
           width={custom ? width : 151}
           height={custom ? height : 56}
           className="h-auto"

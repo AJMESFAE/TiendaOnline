@@ -174,7 +174,7 @@ export function AddressAutocompleteField({ getFieldName, defaultValue, allowCoun
               </li>
             ))}
             <li aria-hidden="true" className="border-t border-border px-3 py-1.5 text-right text-[11px] text-muted-foreground">
-              Sugerencias de Google
+              {_('Suggestions by Google')}
             </li>
           </ul>
         )}

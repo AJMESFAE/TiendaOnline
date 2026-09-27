@@ -258,3 +258,39 @@ export function buildLegalPages(opts = {}) {
     ]
   }));
 }
+
+// Traducciones al inglés y al árabe (scripts/legal/legal-<idioma>.json). Cada una es
+// otra página con la clave «<url_key>-<idioma>» que la extensión tienda muestra en
+// /en/<url_key> y /ar/<url_key>. La versión española es la que prevalece.
+import { readFileSync } from 'fs';
+
+const LOCALES = ['en', 'ar'];
+
+/** Enlaces internos de la página al idioma de la traducción (/condiciones-de-venta → /en/condiciones-de-venta). */
+const localizeLinks = (html, locale) => html.replace(/href="\/(?!\/)/g, `href="/${locale}/`);
+
+export function buildTranslatedLegalPages(spanishPages) {
+  const out = [];
+  for (const locale of LOCALES) {
+    let translated;
+    try {
+      translated = JSON.parse(readFileSync(new URL(`./legal/legal-${locale}.json`, import.meta.url), 'utf8'));
+    } catch {
+      continue;
+    }
+    for (const t of translated) {
+      const es = spanishPages.find((p) => p.url_key === t.url_key);
+      if (!es) continue;
+      const blocks = t.blocks.map((b) => {
+        const data = { ...b.data };
+        if (typeof data.text === 'string') data.text = localizeLinks(data.text, locale);
+        if (Array.isArray(data.items)) data.items = data.items.map((i) => (typeof i === 'string' ? localizeLinks(i, locale) : i));
+        return { ...b, data };
+      });
+      const content = JSON.parse(JSON.stringify(es.content));
+      content[0].columns[0].data.blocks = blocks;
+      out.push({ ...es, url_key: `${t.url_key}-${locale}`, name: t.name, meta_title: t.meta_title, meta_description: t.meta_description, content });
+    }
+  }
+  return out;
+}

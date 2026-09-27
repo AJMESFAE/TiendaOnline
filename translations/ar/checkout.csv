@@ -1,0 +1,55 @@
+Total,الإجمالي
+Order,الطلب
+Sku,SKU
+Continue to shipping,المتابعة إلى الشحن
+Continue shopping,متابعة التسوق
+Continue Shopping,متابعة التسوق
+Shopping cart,سلة التسوق
+Product,المنتج
+Price,السعر
+Quantity,الكمية
+Remove,إزالة
+Qty,الكمية
+Sub total,المجموع الفرعي
+Discount($coupon),الخصم($coupon)
+Order summary,ملخص الطلب
+Taxes and shipping calculated at checkout,تُحتسب الضرائب والشحن عند إتمام الشراء
+Checkout,إتمام الشراء
+Change,تغيير
+Payment Method,طريقة الدفع
+Shipping Method,طريقة الشحن
+No payment methods available,لا تتوفر طرق دفع
+Place Order,تأكيد الطلب
+My billing address is same as shipping address,عنوان الفوترة هو نفسه عنوان الشحن
+$count items,$count منتجات
+Discount,الخصم
+Shipping,الشحن
+No tax,بدون ضريبة
+Tax,الضريبة
+"Sorry, there is no available method for your address",عذرًا، لا تتوفر طريقة شحن لعنوانك
+Please enter a shipping address in order to see shipping quotes,يرجى إدخال عنوان الشحن للاطلاع على أسعار الشحن
+Continue to payment,المتابعة إلى الدفع
+No payment method available,لا تتوفر طريقة دفع
+Ship to,الشحن إلى
+Shipment,الشحنة
+Thank you $name!,شكرًا لك يا $name!
+Order #$orderNumber,الطلب رقم $orderNumber
+Add to cart,أضف إلى السلة
+Please select variant options,يرجى اختيار خيارات المنتج
+VIEW CART ($count),عرض السلة ($count)
+JUST ADDED TO YOUR CART,تمت الإضافة إلى سلتك للتو
+Promotion code?,هل لديك رمز ترويجي؟
+Enter coupon code,أدخل رمز القسيمة
+Apply,تطبيق
+Your cart is empty!,سلتك فارغة!
+Inclusive of tax,شامل الضريبة
+Address is required,العنوان مطلوب
+City is required,المدينة مطلوبة
+Proceed to checkout,المتابعة لإتمام الشراء
+Your cart,سلتك
+${count} items in your cart,${count} منتجات في سلتك
+No payment required,لا يلزم الدفع
+Your order total is 0 — no payment is needed to place this order.,إجمالي طلبك 0 — لا يلزم أي دفع لإتمام هذا الطلب.
+Thank you for your order!,شكرًا لك على طلبك!
+Order #${orderNumber} is confirmed. We’ve emailed a receipt to ${email}.,تم تأكيد الطلب رقم ${orderNumber}. أرسلنا إيصالًا إلى ${email}.
+is confirmed. We’ve emailed a receipt to ${email}.,تم تأكيده. أرسلنا إيصالًا إلى ${email}.

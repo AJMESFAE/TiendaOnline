@@ -80,8 +80,8 @@ export function PhoneField({ name, defaultValue, countryField }: Props) {
   const validate = (value: string) => {
     const { code: c, number } = splitPhone(value);
     if (!number) return _('Telephone is required');
-    if (c === '+34' && !/^[6789]\d{8}$/.test(number)) return 'Introduce un teléfono español de 9 cifras';
-    if (number.length < 6 || number.length > 14) return 'Introduce un número de teléfono válido';
+    if (c === '+34' && !/^[6789]\d{8}$/.test(number)) return _('Enter a 9-digit Spanish phone number');
+    if (number.length < 6 || number.length > 14) return _('Enter a valid phone number');
     return true;
   };
 
@@ -104,7 +104,7 @@ export function PhoneField({ name, defaultValue, countryField }: Props) {
           return (
             <div className="flex gap-2">
               <select
-                aria-label="Prefijo del país"
+                aria-label={_('Country calling code')}
                 className="albayan-phone-prefix h-9 rounded-md border border-input bg-transparent px-2 text-sm"
                 value={code}
                 onChange={(e) => {
