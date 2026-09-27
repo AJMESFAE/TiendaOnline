@@ -12,6 +12,8 @@ Tienda de la **Fundación Andalusí de España** (tienda.fundacionandalusi.org),
   Azure Communication Services o cualquier SMTP.
 - **Facturas Odoo** (`extensions/odoo`): cada pedido pagado genera su factura en Odoo, que
   se adjunta en PDF al email de confirmación; las devoluciones generan la factura rectificativa.
+- **App móvil de gestión** (`mobile/`, Android e iOS): pedidos, envíos, devoluciones Redsys y
+  alta de artículos con fotos desde el teléfono. Ver [`mobile/README.md`](mobile/README.md).
 - **Infraestructura Azure** (`infra/main.bicep`) y despliegue continuo con GitHub Actions.
 - Traducciones al español (`translations/es`).
 
@@ -26,6 +28,7 @@ extensions/smtp-mail  Servicio de email SMTP
 extensions/odoo    Facturación en Odoo
 themes/albayan     Tema visual de la Fundación
 translations/es    Textos en español
+mobile/            App de gestión para Android e iOS (Expo)
 infra/             Bicep de Azure
 Dockerfile         Imagen de producción
 ```
@@ -235,6 +238,7 @@ entorno*; al guardar, Azure reinicia la app.
 | `SMTP_*`, `MAIL_FROM` | Envío de emails |
 | `ODOO_*` | Facturación en Odoo (ver §4) |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
+| `JWT_ADMIN_SECRET`, `JWT_ADMIN_REFRESH_SECRET` | Opcionales. Firman los tokens de la app móvil; si no están, `scripts/start.mjs` los deriva de `DB_PASSWORD` |
 
 *Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
 
@@ -356,6 +360,15 @@ Después de cualquier cambio: `npm run build` (o `npm run dev` mientras desarrol
 - [ ] Datos del comercio real de Redsys y `REDSYS_ENVIRONMENT=live`.
 - [ ] Buzón SMTP para los emails (`SMTP_*`).
 - [ ] Variables `ODOO_*` para las facturas (ver §4).
+
+## 7. App móvil
+
+La carpeta `mobile/` contiene una app para Android e iOS con la que se gestionan los
+pedidos (enviar, entregar, cancelar, devolver por Redsys) y los artículos (crear, editar,
+stock y fotos con la cámara). Entra con el mismo usuario que el panel web. Instrucciones
+para probarla con Expo Go y para compilarla con EAS en [`mobile/README.md`](mobile/README.md).
+
+No forma parte del paquete que se despliega en Azure (`scripts/build-package.sh` la excluye).
 
 ## Licencia
 

@@ -26,6 +26,12 @@
         "resolve": "extensions/odoo",
         "enabled": true,
         "priority": 30
+      },
+      {
+        "name": "mobile-app",
+        "resolve": "extensions/mobile-app",
+        "enabled": true,
+        "priority": 40
       }
     ],
     "redsys": {

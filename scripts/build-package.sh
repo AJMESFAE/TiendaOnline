@@ -21,7 +21,7 @@ tar -C "$ROOT" \
   --exclude=./node_modules --exclude='./*/*/node_modules' --exclude=./.git \
   --exclude=./.evershop --exclude='./*/*/dist' --exclude=./.env \
   --exclude=./infra/.deploy.env --exclude=./media --exclude=./public \
-  --exclude='./*.zip' -cf - . | tar -C "$WORK" -xf -
+  --exclude='./*.zip' --exclude=./mobile -cf - . | tar -C "$WORK" -xf -
 
 cd "$WORK"
 echo "== Instalando dependencias"
