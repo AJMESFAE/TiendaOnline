@@ -19,12 +19,15 @@ interface CmsPageViewProps {
 export default function CmsPageView({ page }: CmsPageViewProps) {
   const isLegal = legalPages.some((l) => l.urlKey === page.urlKey);
   return (
-    <div className="albayan-page my-8">
-      <header className="albayan-hero albayan-page__hero px-6 py-10 md:px-14 md:py-14">
-        <p className="albayan-page__eyebrow">
-          {isLegal ? 'Información legal' : 'Instituto Al-Bayān'}
-        </p>
-        <h1 className="mt-2 text-3xl font-bold leading-tight md:text-4xl">{page.name}</h1>
+    <div className="albayan-page mb-8">
+      <header className="albayan-page__hero">
+        <div className="albayan-trama" aria-hidden="true" />
+        <div className="page-width py-14 md:py-20">
+          <p className="albayan-badge-pill">
+            {isLegal ? 'Información legal' : 'Instituto Al-Bayān'}
+          </p>
+          <h1 className="albayan-hero-title mt-5 !text-4xl md:!text-5xl">{page.name}</h1>
+        </div>
       </header>
       <div className="mt-10 grid gap-10 md:grid-cols-[220px_1fr]">
         {isLegal && (

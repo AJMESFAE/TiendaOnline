@@ -1,43 +1,31 @@
 import Area from '@components/common/Area.js';
 import React from 'react';
-import { contact, footerLinks, owner, tagline } from './brand.js';
+import { AULA_URL, contact, footerLinks, legalPages, LOGO_SRC, owner, tagline } from './brand.js';
 
 interface FooterProps {
   copyRight: string;
 }
 
-function PaymentBadges() {
-  return (
-    <div className="flex items-center gap-2" aria-label="Pago seguro">
-      <span className="albayan-badge">VISA</span>
-      <span className="albayan-badge">Mastercard</span>
-      <span className="albayan-badge">Bizum</span>
-      <span className="albayan-footer__muted text-xs">Pago seguro con Redsys</span>
-    </div>
-  );
-}
-
+/** Pie con el mismo esquema que www.institutoalbayan.com (fondo gris claro, 4 columnas). */
 export function Footer({ copyRight }: FooterProps) {
+  const year = new Date().getFullYear();
   return (
-    <footer className="footer albayan-footer mt-20">
+    <footer className="footer albayan-footer mt-24">
       <Area id="footerTop" className="footer__top" isGlobal editableInPageBuilder />
-      <div className="page-width grid grid-cols-1 gap-10 py-14 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <div className="albayan-footer__brand">
-            Instituto Al-Bayān
-            <span className="block text-left albayan-footer__arabic" lang="ar" dir="rtl">
-              معهد البيان
-            </span>
-          </div>
-          <p className="albayan-footer__muted mt-3 text-sm leading-relaxed">{tagline}</p>
-          <address className="albayan-footer__muted mt-3 text-xs not-italic leading-relaxed">
-            {owner.name}
+      <div className="page-width grid gap-12 pb-10 pt-16 md:grid-cols-2 md:pt-20 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
+        <div>
+          <a href="/" aria-label="Tienda de Instituto Al-Bayān – inicio">
+            <img src={LOGO_SRC} alt="Instituto Al-Bayān" className="h-20 w-auto" width={158} height={80} />
+          </a>
+          <p className="albayan-footer__muted mt-5 max-w-xs text-sm leading-relaxed">{tagline}</p>
+          <address className="albayan-footer__muted mt-4 text-xs not-italic leading-relaxed">
+            <a href={owner.url} className="albayan-footer__link text-xs">
+              {owner.name}
+            </a>
             <br />
-            {owner.address}
-            <br />
-            CIF {owner.taxId}
+            {owner.address} · CIF {owner.taxId}
           </address>
-          <div className="mt-4 flex flex-col gap-1 text-sm">
+          <div className="mt-5 flex flex-col gap-1">
             {contact.email && (
               <a href={`mailto:${contact.email}`} className="albayan-footer__link">
                 {contact.email}
@@ -54,14 +42,17 @@ export function Footer({ copyRight }: FooterProps) {
               </a>
             )}
           </div>
+          <a href={`${AULA_URL}register`} className="albayan-btn mt-6">
+            Inscríbete <span className="arrow" aria-hidden="true">→</span>
+          </a>
         </div>
         {footerLinks.map((column) => (
           <div key={column.title}>
-            <h3 className="albayan-footer__title">{column.title}</h3>
-            <ul className="mt-3 space-y-2 text-sm">
+            <h3 className="albayan-footer__title mb-4">{column.title}</h3>
+            <ul className="space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="albayan-footer__link">
+                  <a href={link.href} className="albayan-footer__link inline-block py-1">
                     {link.label}
                   </a>
                 </li>
@@ -84,10 +75,21 @@ export function Footer({ copyRight }: FooterProps) {
           {
             component: {
               default: (
-                <div className="page-width flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
-                  <PaymentBadges />
-                  <div className="albayan-footer__muted text-center text-sm md:text-right">
-                    {copyRight}
+                <div className="page-width flex flex-col gap-4 py-6 text-xs md:flex-row md:items-center md:justify-between">
+                  <div className="albayan-footer__muted">
+                    © {year} Instituto Al-Bayān · {copyRight}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                    {legalPages.slice(0, 3).map((l) => (
+                      <a key={l.urlKey} href={`/${l.urlKey}`} className="albayan-footer__link text-xs">
+                        {l.label}
+                      </a>
+                    ))}
+                    <span className="flex items-center gap-1.5" aria-label="Pago seguro con Redsys">
+                      <span className="albayan-badge">VISA</span>
+                      <span className="albayan-badge">Mastercard</span>
+                      <span className="albayan-badge">Bizum</span>
+                    </span>
                   </div>
                 </div>
               )

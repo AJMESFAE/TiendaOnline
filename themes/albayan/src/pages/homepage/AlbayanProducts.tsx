@@ -13,8 +13,11 @@ export default function AlbayanProducts({ products }: AlbayanProductsProps) {
   const items = products?.items || [];
   return (
     <section id="productos" className="albayan-products my-12 scroll-mt-8">
-      <div className="mb-8 flex items-end justify-between gap-4 border-b border-border pb-3">
-        <h2 className="text-3xl font-bold">Productos</h2>
+      <div className="mb-10 flex items-end justify-between gap-4 border-b border-border pb-4">
+        <div>
+          <p className="albayan-eyebrow">Tienda online</p>
+          <h2 className="mt-3 text-3xl md:text-4xl">Libros y materiales</h2>
+        </div>
         {items.length > 0 && (
           <span className="text-sm text-muted-foreground">
             {items.length} {items.length === 1 ? 'producto' : 'productos'}
