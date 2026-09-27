@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import * as api from './api';
+import { unregisterOrderNotifications } from './notifications';
 
 type AuthState = {
   ready: boolean;
@@ -32,7 +33,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(await api.signIn(baseUrl, email, password));
   }, []);
 
-  const signOut = useCallback(() => api.signOut(), []);
+  const signOut = useCallback(async () => {
+    await unregisterOrderNotifications();
+    await api.signOut();
+  }, []);
 
   const value = useMemo(() => ({ ready, session, signIn, signOut }), [ready, session, signIn, signOut]);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

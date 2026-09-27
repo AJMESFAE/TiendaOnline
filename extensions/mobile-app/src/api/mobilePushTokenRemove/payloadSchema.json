@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "token": { "type": "string", "pattern": "^Expo(nent)?PushToken\\[[^\\]]+\\]$" },
+    "platform": { "type": "string", "enum": ["ios", "android"] }
+  },
+  "required": ["token"],
+  "additionalProperties": false,
+  "errorMessage": { "properties": { "token": "Token de Expo Push no válido" } }
+}

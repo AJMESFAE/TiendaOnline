@@ -31,6 +31,14 @@ web `/admin`), así que no necesita ningún servidor adicional.
   en Azure). La primera es la principal: toque otra para cambiarla.
 - Borrar artículos.
 
+**Avisos de pedido nuevo**
+- Cada móvil con la sesión abierta recibe una notificación cuando se confirma un pedido:
+  *«Nuevo pedido #10023 — María López · 34,90 € · 2 artículos»*. Al tocarla se abre el pedido.
+- Con Redsys, el aviso llega **cuando el pago se confirma** (no por carritos abandonados);
+  con contra reembolso, al hacerse el pedido.
+- El estado se ve en *Ajustes → Avisos*. Al cerrar sesión, el móvil deja de recibirlos; también
+  un móvil que no abre la app con la sesión iniciada en 30 días.
+
 Lo demás (clientes, cupones, zonas de envío, impuestos, diseño) sigue en el panel web;
 la pestaña *Ajustes* tiene un botón para abrirlo.
 
@@ -110,6 +118,47 @@ npx eas-cli@latest submit --platform ios
 Identificador de la app en las dos plataformas: `org.fundacionandalusi.tienda.gestion`
 (`app.json`). Cámbielo antes de la primera compilación si la Fundación usa otro.
 
+## Configurar los avisos de pedido nuevo
+
+Los avisos **solo funcionan en la app compilada** (EAS Build), no en Expo Go. El servidor
+los envía con el servicio gratuito Expo Push, que los reenvía a Apple y a Google. Hay que
+darle a Expo las credenciales de cada plataforma una sola vez y **volver a compilar**.
+
+**Requisito:** `mobile/app.json` debe tener `expo.extra.eas.projectId` (lo añade
+`eas init`). Súbalo al repositorio; sin él la app muestra «Falta el projectId de EAS».
+
+**iOS** (clave de APNs de la cuenta de Apple de la Fundación):
+
+```bash
+npx eas-cli@latest credentials --platform ios
+```
+
+Elija el perfil *production* → *Push Notifications: Manage your Apple Push Notifications
+Key* → *Set up Push Notifications for your project* → genere una clave nueva. Después,
+`eas build --platform ios --profile production` y `eas submit`.
+
+**Android** (Firebase Cloud Messaging, gratuito):
+
+1. En [console.firebase.google.com](https://console.firebase.google.com) cree un proyecto
+   (por ejemplo «Tienda Fundación») y añada una app **Android** con el paquete
+   `org.fundacionandalusi.tienda.gestion`.
+2. Descargue `google-services.json`, cópielo en `mobile/` y añada en `app.json`, dentro de
+   `expo.android`: `"googleServicesFile": "./google-services.json"`. Súbalo al repositorio
+   (no es secreto).
+3. En Firebase → *Configuración del proyecto* → *Cuentas de servicio* → *Generar nueva clave
+   privada*: descarga un JSON. **Ese sí es secreto**: no lo suba al repositorio.
+4. `npx eas-cli@latest credentials --platform android` → *production* → *Google Service
+   Account* → *Manage your Google Service Account Key for Push Notifications (FCM V1)* →
+   súbalo.
+5. Vuelva a compilar: `eas build --platform android --profile preview`.
+
+**Probar:** abra la app compilada, inicie sesión y acepte el permiso de notificaciones
+(*Ajustes → Avisos* debe decir «Activados»). Haga un pedido de prueba en la tienda.
+
+Si en expo.dev se activa *Enhanced security for push notifications*, defina en Azure la
+variable `EXPO_ACCESS_TOKEN` con un token de acceso de Expo; si no, no hace falta nada en el
+servidor.
+
 ## Estructura
 
 ```
@@ -126,6 +175,7 @@ src/components/          Formulario de artículo, filas, hoja inferior, controle
 src/lib/api.ts           Cliente de la API: tokens, renovación, subida de fotos
 src/lib/queries.ts       Consultas GraphQL y acciones REST de EverShop
 src/lib/description.ts   Descripción de EverShop (bloques del editor) ⇄ texto
+src/lib/notifications.ts Permiso y registro del móvil para los avisos de pedido nuevo
 tests/                   Pruebas (npm test)
 ```
 

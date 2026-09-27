@@ -239,6 +239,7 @@ entorno*; al guardar, Azure reinicia la app.
 | `ODOO_*` | Facturación en Odoo (ver §4) |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
 | `JWT_ADMIN_SECRET`, `JWT_ADMIN_REFRESH_SECRET` | Opcionales. Firman los tokens de la app móvil; si no están, `scripts/start.mjs` los deriva de `DB_PASSWORD` |
+| `EXPO_ACCESS_TOKEN` | Opcional. Solo si se activa la seguridad reforzada de Expo Push para los avisos de pedido nuevo de la app móvil |
 
 *Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
 
@@ -467,7 +468,8 @@ Después de cualquier cambio: `npm run build` (o `npm run dev` mientras desarrol
 
 La carpeta `mobile/` contiene una app para Android e iOS con la que se gestionan los
 pedidos (enviar, entregar, cancelar, devolver por Redsys) y los artículos (crear, editar,
-stock y fotos con la cámara). Entra con el mismo usuario que el panel web. Instrucciones
+stock y fotos con la cámara) y avisa en el móvil de cada pedido nuevo
+(`extensions/mobile-app`). Entra con el mismo usuario que el panel web. Instrucciones
 para probarla con Expo Go y para compilarla con EAS en [`mobile/README.md`](mobile/README.md).
 
 No forma parte del paquete que se despliega en Azure (`scripts/build-package.sh` la excluye).
