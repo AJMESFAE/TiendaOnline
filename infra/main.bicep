@@ -44,7 +44,7 @@ param smtpPort string = '587'
 param smtpUser string = ''
 @secure()
 param smtpPassword string = ''
-param mailFrom string = 'Instituto Al-Bayān <tienda@institutoalbayan.com>'
+param mailFrom string = 'Fundación Andalusí <tienda@institutoalbayan.com>'
 
 var suffix = uniqueString(resourceGroup().id)
 var pgName = '${prefix}-pg-${suffix}'
@@ -150,7 +150,7 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'REDSYS_TERMINAL', value: redsysTerminal }
         { name: 'REDSYS_SECRET_KEY', value: redsysSecretKey }
         { name: 'REDSYS_CURRENCY', value: '978' }
-        { name: 'REDSYS_MERCHANT_NAME', value: 'Instituto Al-Bayan' }
+        { name: 'REDSYS_MERCHANT_NAME', value: 'Fundacion Andalusi' }
         { name: 'ADMIN_EMAIL', value: adminEmail }
         { name: 'ADMIN_PASSWORD', value: adminPassword }
         { name: 'ADMIN_FULLNAME', value: 'Administrador' }

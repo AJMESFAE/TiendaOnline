@@ -1,5 +1,5 @@
 import React from 'react';
-import { LOGO_SRC } from '../../components/frontStore/brand.js';
+import { LOGO_SRC, STORE_NAME } from '../../components/frontStore/brand.js';
 
 interface LogoProps {
   setting?: {
@@ -11,7 +11,7 @@ interface LogoProps {
 }
 
 /**
- * Logotipo de la tienda: el de Instituto Al-Bayān (public/brand). Si se sube
+ * Logotipo de la tienda: el de la Fundación Andalusí (public/brand). Si se sube
  * otro en Admin → Configuración → Tienda → Marca, se usa ese.
  */
 export default function Logo({ setting }: LogoProps) {
@@ -23,13 +23,13 @@ export default function Logo({ setting }: LogoProps) {
     : LOGO_SRC;
   return (
     <div className="logo flex items-center">
-      <a href="/" className="logo-icon flex items-center" aria-label="Tienda de Instituto Al-Bayān – inicio">
+      <a href="/" className="logo-icon flex items-center" aria-label={`${STORE_NAME} – inicio`}>
         <img
           src={src}
-          alt="Instituto Al-Bayān"
-          width={custom ? width : 119}
-          height={custom ? height : 60}
-          className="h-12 w-auto md:h-[60px]"
+          alt="Fundación Andalusí de España"
+          width={custom ? width : 151}
+          height={custom ? height : 56}
+          className="h-11 w-auto md:h-14"
         />
       </a>
     </div>

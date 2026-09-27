@@ -1,10 +1,10 @@
-# Tienda online · Instituto Al-Bayān
+# Tienda online · Fundación Andalusí de España
 
-Tienda de **tienda.institutoalbayan.com**, construida sobre [EverShop](https://evershop.io) 2.2.1
+Tienda de la **Fundación Andalusí de España** (tienda.institutoalbayan.com), construida sobre [EverShop](https://evershop.io) 2.2.1
 (Node.js + React + PostgreSQL), con:
 
 - **Tema `albayan`** (`themes/albayan`): cabecera, pie, logo, portada y paleta de colores
-  alineados con institutoalbayan.com.
+  alineados con fundacionandalusi.org.
 - **Pasarela Redsys** (`extensions/redsys`): TPV Virtual por redirección (tarjeta y Bizum),
   firma HMAC_SHA256_V1, notificación online, devoluciones desde el panel y cancelación
   automática de pedidos abandonados.
@@ -24,7 +24,7 @@ config/            Configuración (default.json, production.json)
 extensions/redsys  Pasarela de pago Redsys
 extensions/smtp-mail  Servicio de email SMTP
 extensions/odoo    Facturación en Odoo
-themes/albayan     Tema visual del instituto
+themes/albayan     Tema visual de la Fundación
 translations/es    Textos en español
 infra/             Bicep de Azure
 Dockerfile         Imagen de producción
@@ -332,11 +332,11 @@ debe estar marcado como *Incluido en el precio*. Sin `ODOO_URL`, `ODOO_API_KEY` 
 ## 5. Personalización del tema
 
 - **Colores y tipografías**: `themes/albayan/src/pages/all/albayan.css`, sección
-  *Paleta de marca*. Todas las pantallas (botones, enlaces, cabecera, pie y checkout) se
+  *Paleta de fundacionandalusi.org*. Todas las pantallas (botones, enlaces, cabecera, pie y checkout) se
   alimentan de esas variables.
 - **Menú, enlaces del pie y contacto**: `themes/albayan/src/components/frontStore/brand.ts`.
-- **Logo**: súbalo en *Admin → Configuración → Tienda*. Mientras no haya logo se muestra el
-  logotipo tipográfico «البيان Al-Bayān».
+- **Logo**: el de la Fundación (`themes/albayan/public/brand/`). Si se sube otro en
+  *Admin → Configuración → Tienda*, se usa ese.
 - **Fuentes** (Google Fonts): `themeConfig.headTags` en `config/default.json`.
 - **Portada**: `themes/albayan/src/pages/homepage/AlbayanHero.tsx`. Se pueden añadir bloques
   con el editor visual del panel.

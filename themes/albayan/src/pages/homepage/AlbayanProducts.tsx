@@ -12,14 +12,16 @@ interface AlbayanProductsProps {
 export default function AlbayanProducts({ products }: AlbayanProductsProps) {
   const items = products?.items || [];
   return (
-    <section id="productos" className="albayan-products my-12 scroll-mt-8">
-      <div className="mb-10 flex items-end justify-between gap-4 border-b border-border pb-4">
+    <section id="productos" className="albayan-products my-16 scroll-mt-24">
+      <div className="mb-10 flex items-end justify-between gap-4">
         <div>
-          <p className="albayan-eyebrow">Tienda online</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">Libros y materiales</h2>
+          <h2 className="albayan-section-title">Nuestros productos</h2>
+          <p className="mt-3 max-w-xl text-muted-foreground">
+            Libros, láminas y material didáctico para aprender árabe y conocer la cultura islámica.
+          </p>
         </div>
         {items.length > 0 && (
-          <span className="text-sm text-muted-foreground">
+          <span className="hidden shrink-0 text-sm text-muted-foreground sm:inline">
             {items.length} {items.length === 1 ? 'producto' : 'productos'}
           </span>
         )}
@@ -28,7 +30,7 @@ export default function AlbayanProducts({ products }: AlbayanProductsProps) {
         products={items}
         gridColumns={3}
         showAddToCart
-        emptyMessage="Muy pronto encontrarás aquí los libros y materiales del instituto."
+        emptyMessage="Muy pronto encontrarás aquí los libros y materiales de la Fundación."
       />
     </section>
   );

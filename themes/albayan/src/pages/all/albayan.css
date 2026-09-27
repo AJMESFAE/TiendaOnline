@@ -1,26 +1,31 @@
 /*
- * Identidad visual de Instituto Al-Bayān, tomada de www.institutoalbayan.com
- * (variables --color-* y tipografías de su hoja de estilos).
+ * Identidad visual de la Fundación Andalusí de España, tomada de
+ * fundacionandalusi.org (colores globales y tipografías de su kit de Elementor).
  *
  * `:root:root` sube la especificidad para imponerse a las variables por
  * defecto de EverShop (tailwind.css / shadcn.css) sin depender del orden de
  * carga de las hojas de estilo.
  */
 :root:root {
-  /* ---------- Paleta de www.institutoalbayan.com ---------- */
-  --albayan-brand: #009240; /* verde de marca: botones, acentos */
-  --albayan-brand-ink: #007a36; /* verde oscuro: hover, enlaces */
-  --albayan-ink: #3a3b3a; /* texto y títulos */
-  --albayan-ink-soft: #5b5c5e; /* texto secundario */
-  --albayan-line: #e2e3e1; /* bordes */
-  --albayan-sage: #77bb88; /* verde salvia (sombra del arco) */
-  --albayan-smoke: #f5f5f5; /* fondos suaves, pie */
+  /* ---------- Paleta de fundacionandalusi.org ---------- */
+  --albayan-brand: #009240; /* verde principal: botones, acentos, pie */
+  --albayan-brand-ink: #065927; /* verde oscuro: hover, enlaces */
+  --albayan-brand-soft: #176c3d; /* verde del degradado del boletín */
+  --albayan-sage: #77bb88; /* verde salvia (color secundario) */
+  --albayan-ink: #3c3c3b; /* texto y títulos */
+  --albayan-ink-soft: #4a5568; /* texto secundario */
+  --albayan-ink-mute: #718096;
+  --albayan-line: #e2e2e2; /* bordes */
+  --albayan-smoke: #f5f5f5; /* fondos de sección y tarjetas */
+  --albayan-mist: #f4f8fa; /* fondo claro de «Nuestros proyectos» */
   --albayan-white: #ffffff;
 
-  /* Tajawal (latín) + Noto Naskh Arabic para el árabe. La web principal usa
-     además «Tanseek», una fuente propia que no se distribuye con la tienda. */
-  --albayan-font: 'Tajawal', system-ui, sans-serif;
+  /* Tajawal para títulos e Inter para el texto, como en fundacionandalusi.org;
+     Noto Naskh Arabic para el árabe. */
+  --albayan-font-heading: 'Tajawal', system-ui, sans-serif;
+  --albayan-font: 'Inter', system-ui, sans-serif;
   --albayan-font-arabic: 'Noto Naskh Arabic', 'Amiri', serif;
+  --albayan-radius: 10px;
 
   /* ---------- Mapeo a los tokens de EverShop (shadcn/tailwind) ---------- */
   --font-sans: var(--albayan-font);
@@ -42,16 +47,17 @@
   --divider: var(--albayan-line);
   --input: var(--albayan-line);
   --ring: var(--albayan-brand);
-  --radius: 0.75rem;
+  --radius: 0.625rem;
 }
 
 html {
-  font-size: 17px;
+  font-size: 16px;
 }
 body {
   font-family: var(--albayan-font);
   color: var(--albayan-ink);
   background: var(--albayan-white);
+  line-height: 1.6;
 }
 h1,
 h2,
@@ -59,10 +65,9 @@ h3,
 .product-single-name,
 .page-heading,
 .category-name {
-  font-family: var(--albayan-font);
+  font-family: var(--albayan-font-heading);
   color: var(--albayan-ink);
   font-weight: 400;
-  letter-spacing: -0.02em;
 }
 a {
   text-underline-offset: 4px;
@@ -71,120 +76,113 @@ a {
   font-family: var(--albayan-font-arabic);
 }
 .page-width {
-  max-width: 1320px;
+  max-width: 1200px;
 }
 
-/* ---------- Botones en píldora, como en la web del instituto ---------- */
+/* ---------- Botones: verde con esquinas redondeadas y flecha ---------- */
 button[data-slot='button'],
 .button {
-  border-radius: 9999px;
+  border-radius: var(--albayan-radius);
   font-weight: 500;
 }
 .albayan-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
+  gap: 0.6rem;
+  border: 1px solid var(--albayan-brand);
+  border-radius: var(--albayan-radius);
   background: var(--albayan-brand);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.85rem 1.75rem;
-  transition: background 0.15s, transform 0.15s;
+  padding: 0.75rem 1.4rem;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
 }
 .albayan-btn:hover {
   background: var(--albayan-brand-ink);
+  border-color: var(--albayan-brand-ink);
 }
 .albayan-btn:active {
   transform: scale(0.98);
 }
-.albayan-btn--outline {
+/* Botón blanco con borde, sobre fotografía («Ver actividad») */
+.albayan-btn--ghost {
   background: transparent;
-  color: var(--albayan-ink-soft);
-  border: 1px solid rgb(58 59 58 / 0.15);
-  padding: 0.45rem 1rem;
+  border-color: rgb(255 255 255 / 0.85);
 }
-.albayan-btn--outline:hover {
-  background: transparent;
-  color: var(--albayan-ink);
-  border-color: rgb(58 59 58 / 0.4);
+.albayan-btn--ghost:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: #fff;
 }
-.albayan-link-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--albayan-ink);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: rgb(58 59 58 / 0.3);
-  text-underline-offset: 6px;
-}
-.albayan-link-arrow:hover {
-  color: var(--albayan-brand);
-  text-decoration-color: var(--albayan-brand);
-}
-.albayan-link-arrow .arrow,
 .albayan-btn .arrow {
   transition: transform 0.2s;
 }
-.albayan-link-arrow:hover .arrow,
 .albayan-btn:hover .arrow {
   transform: translateX(3px);
 }
 
-/* Rótulo pequeño en mayúsculas espaciadas */
-.albayan-eyebrow {
-  color: var(--albayan-brand-ink);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-/* Etiqueta en píldora con punto verde */
+/* Etiqueta en píldora con punto («Preservando nuestro legado») */
 .albayan-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border: 1px solid rgb(0 146 64 / 0.25);
-  background: rgb(0 146 64 / 0.05);
+  gap: 0.45rem;
   border-radius: 9999px;
+  background: rgb(0 146 64 / 0.08);
   color: var(--albayan-brand-ink);
   font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.025em;
-  padding: 0.35rem 1rem;
+  padding: 0.3rem 0.85rem;
 }
 .albayan-badge-pill::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 9999px;
+  background: currentColor;
+}
+.albayan-badge-pill--solid {
   background: var(--albayan-brand);
+  color: #fff;
+}
+.albayan-badge-pill--light {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+.albayan-section-title {
+  font-family: var(--albayan-font-heading);
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 /* ---------- Cabecera ---------- */
 .albayan-header {
-  background: rgb(255 255 255 / 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--albayan-line);
+  background: #fff;
+  box-shadow: 0 1px 0 var(--albayan-line);
   position: sticky;
   top: 0;
   z-index: 40;
 }
 .albayan-nav {
-  gap: 1.75rem;
+  gap: 1.5rem;
   align-items: center;
 }
-.albayan-nav__link,
-.albayan-nav-mobile__link {
-  color: var(--albayan-ink-soft);
-  font-size: 0.9rem;
+.albayan-nav__link {
+  color: var(--albayan-ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   transition: color 0.15s;
+}
+.albayan-nav-mobile__link {
+  color: var(--albayan-ink);
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 .albayan-nav__link:hover,
 .albayan-nav-mobile__link:hover {
-  color: var(--albayan-brand-ink);
+  color: var(--albayan-brand);
 }
 .albayan-nav-mobile {
   display: flex;
@@ -195,110 +193,157 @@ button[data-slot='button'],
   color: var(--albayan-ink);
   padding: 0.25rem;
 }
+.albayan-header__donar {
+  display: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+}
+@media (min-width: 768px) {
+  .albayan-header__donar {
+    display: inline-flex;
+  }
+}
 
 /* ---------- Portada ---------- */
 .albayan-hero-section {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  color: #fff;
 }
-.albayan-trama {
-  pointer-events: none;
+.albayan-hero__bg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url('/brand/trama-andalusi.webp') center / cover;
-  opacity: 0.7;
+  background:
+    linear-gradient(rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.28)),
+    url('/brand/hero-alminar.webp') 20% center / cover;
 }
 .albayan-hero-title {
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-size: 2.6rem;
+  font-family: var(--albayan-font-heading);
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.15;
+  font-size: 2.5rem;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.15);
 }
 @media (min-width: 768px) {
   .albayan-hero-title {
     font-size: 3.6rem;
   }
 }
-.albayan-underline {
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
+.albayan-hero-lead {
+  color: rgb(255 255 255 / 0.95);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+/* Franja verde de datos destacados */
+.albayan-band {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--albayan-brand) url('/brand/banda-verde.webp') center / cover;
+  color: #fff;
+}
+.albayan-band__value {
+  font-family: var(--albayan-font-heading);
+  font-size: 1.9rem;
   font-weight: 500;
+  line-height: 1.2;
 }
-.albayan-underline svg {
-  position: absolute;
-  bottom: -0.45rem;
-  left: 0;
-  width: 100%;
-}
-/* Imagen con forma de arco andalusí y sombra verde salvia */
-.albayan-arch {
-  position: relative;
-  aspect-ratio: 4 / 5;
-}
-.albayan-arch__shadow,
-.albayan-arch__img {
-  position: absolute;
-  inset: 0;
-  clip-path: url(#albayan-arco);
-}
-.albayan-arch__shadow {
-  background: rgb(119 187 136 / 0.45);
-  transform: translate(1rem, 1rem);
-}
-.albayan-arch__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.albayan-band__label {
+  font-size: 0.9rem;
+  opacity: 0.95;
 }
 
-/* ---------- Listado de productos ---------- */
-.albayan-products .product__grid .product__list__item__inner,
+/* ---------- Listado de productos (tarjetas como «Nuestros proyectos») ---------- */
+.albayan-products .product__list__item__inner,
 .albayan-products .listing-tem {
-  border-radius: 1rem;
+  border-radius: 12px;
 }
 .albayan-products img {
-  border-radius: 1rem;
+  border-radius: 12px;
 }
 .albayan-products h3 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
-/* ---------- Pie ---------- */
+/* ---------- Pie verde ---------- */
 .albayan-footer {
-  background: var(--albayan-smoke);
-  border-top: 1px solid var(--albayan-line);
-  color: var(--albayan-ink);
+  background: var(--albayan-brand);
+  color: #fff;
+}
+.albayan-footer__lead {
+  font-size: 1rem;
+  line-height: 1.45;
 }
 .albayan-footer__title {
-  color: var(--albayan-ink-soft);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 .albayan-footer__link {
-  color: var(--albayan-ink-soft);
+  color: rgb(255 255 255 / 0.92);
   font-size: 0.9rem;
   transition: color 0.15s;
 }
 .albayan-footer__link:hover {
-  color: var(--albayan-brand-ink);
+  color: #fff;
+  text-decoration: underline;
 }
-.albayan-footer__muted {
-  color: var(--albayan-ink-soft);
+.albayan-footer__contact {
+  font-size: 0.9rem;
+}
+.albayan-footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.albayan-footer__contact svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.albayan-footer__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+.albayan-footer__social:hover {
+  background: rgb(255 255 255 / 0.28);
+}
+.albayan-footer__social svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
 }
 .albayan-footer__bottom {
-  border-top: 1px solid var(--albayan-line);
+  border-top: 1px solid rgb(255 255 255 / 0.22);
+  color: rgb(255 255 255 / 0.92);
+}
+.albayan-footer__bottom .albayan-footer__link {
+  font-size: 0.78rem;
 }
 .albayan-badge {
-  border: 1px solid var(--albayan-line);
-  background: #fff;
+  border: 1px solid rgb(255 255 255 / 0.4);
   border-radius: 9999px;
-  color: var(--albayan-ink-soft);
+  color: #fff;
   padding: 0.15rem 0.65rem;
   font-size: 0.7rem;
   font-weight: 700;
@@ -309,22 +354,25 @@ button[data-slot='button'],
 .albayan-page__hero {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--albayan-line);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  background: var(--albayan-brand) url('/brand/banda-verde.webp') center / cover;
+}
+.albayan-page__hero .albayan-hero-title {
+  font-weight: 300;
 }
 .albayan-page__nav {
   align-self: start;
   position: sticky;
   top: 6.5rem;
-  border-left: 2px solid var(--albayan-brand);
-  padding-left: 1rem;
+  border-radius: 16px;
+  background: var(--albayan-smoke);
+  padding: 1.25rem 1.25rem 1.4rem;
 }
 .albayan-page__nav-title {
-  color: var(--albayan-ink-soft);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  color: var(--albayan-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 0.9rem;
 }
@@ -335,11 +383,11 @@ button[data-slot='button'],
 }
 .albayan-page__nav-link {
   color: var(--albayan-ink-soft);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 .albayan-page__nav-link:hover,
 .albayan-page__nav-link[aria-current='page'] {
-  color: var(--albayan-brand-ink);
+  color: var(--albayan-brand);
   font-weight: 500;
 }
 .albayan-page__content {
@@ -348,11 +396,11 @@ button[data-slot='button'],
 .albayan-page__content .prose {
   --tw-prose-body: var(--albayan-ink);
   --tw-prose-headings: var(--albayan-ink);
-  --tw-prose-links: var(--albayan-brand-ink);
+  --tw-prose-links: var(--albayan-brand);
   --tw-prose-bold: var(--albayan-ink);
   --tw-prose-bullets: var(--albayan-brand);
   --tw-prose-counters: var(--albayan-brand);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 .albayan-page__content h2 {
   font-size: 1.6rem;
@@ -370,23 +418,7 @@ button[data-slot='button'],
     position: static;
   }
 }
-.albayan-hero-section,
-.albayan-page__hero {
-  isolation: isolate;
-}
-/* El acceso al aula virtual solo cabe en pantallas medianas o mayores. */
-.albayan-header__aula {
-  display: none;
-}
-@media (min-width: 768px) {
-  .albayan-header__aula {
-    display: inline-flex;
-  }
-}
-.albayan-footer__bottom .albayan-footer__link,
-.albayan-footer address .albayan-footer__link {
-  font-size: 0.78rem;
-}
+
 html,
 body {
   overflow-x: clip;

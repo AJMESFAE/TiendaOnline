@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Tema de EverShop con la identidad visual de institutoalbayan.com",
+  "description": "Tema de EverShop con la identidad visual de fundacionandalusi.org",
   "license": "GPL-3.0",
   "scripts": {
     "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && copyfiles -u 1 \"src/**/*.{css,scss,json}\" dist"

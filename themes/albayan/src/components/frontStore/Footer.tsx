@@ -1,50 +1,29 @@
 import Area from '@components/common/Area.js';
 import React from 'react';
-import { AULA_URL, contact, footerLinks, legalPages, LOGO_SRC, owner, tagline } from './brand.js';
+import { contact, footerLinks, legalPages, LOGO_WHITE_SRC, owner, STORE_NAME, tagline } from './brand.js';
 
 interface FooterProps {
   copyRight: string;
 }
 
-/** Pie con el mismo esquema que www.institutoalbayan.com (fondo gris claro, 4 columnas). */
+/** Pie con el mismo esquema que fundacionandalusi.org (fondo verde, logotipo en blanco, 4 columnas). */
 export function Footer({ copyRight }: FooterProps) {
   const year = new Date().getFullYear();
   return (
     <footer className="footer albayan-footer mt-24">
       <Area id="footerTop" className="footer__top" isGlobal editableInPageBuilder />
-      <div className="page-width grid gap-12 pb-10 pt-16 md:grid-cols-2 md:pt-20 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
+      <div className="page-width grid gap-12 pb-10 pt-16 md:grid-cols-2 md:pt-20 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <a href="/" aria-label="Tienda de Instituto Al-Bayān – inicio">
-            <img src={LOGO_SRC} alt="Instituto Al-Bayān" className="h-20 w-auto" width={158} height={80} />
+          <a href="/" aria-label={`${STORE_NAME} – inicio`}>
+            <img
+              src={LOGO_WHITE_SRC}
+              alt="Fundación Andalusí de España"
+              className="h-16 w-auto"
+              width={172}
+              height={64}
+            />
           </a>
-          <p className="albayan-footer__muted mt-5 max-w-xs text-sm leading-relaxed">{tagline}</p>
-          <address className="albayan-footer__muted mt-4 text-xs not-italic leading-relaxed">
-            <a href={owner.url} className="albayan-footer__link text-xs">
-              {owner.name}
-            </a>
-            <br />
-            {owner.address} · CIF {owner.taxId}
-          </address>
-          <div className="mt-5 flex flex-col gap-1">
-            {contact.email && (
-              <a href={`mailto:${contact.email}`} className="albayan-footer__link">
-                {contact.email}
-              </a>
-            )}
-            {contact.phone && (
-              <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="albayan-footer__link">
-                {contact.phone}
-              </a>
-            )}
-            {contact.instagram && (
-              <a href={contact.instagram} className="albayan-footer__link" rel="noopener" target="_blank">
-                Instagram
-              </a>
-            )}
-          </div>
-          <a href={`${AULA_URL}register`} className="albayan-btn mt-6">
-            Inscríbete <span className="arrow" aria-hidden="true">→</span>
-          </a>
+          <p className="albayan-footer__lead mt-5 max-w-xs">{tagline}</p>
         </div>
         {footerLinks.map((column) => (
           <div key={column.title}>
@@ -60,6 +39,65 @@ export function Footer({ copyRight }: FooterProps) {
             </ul>
           </div>
         ))}
+        <div>
+          <h3 className="albayan-footer__title mb-4">Info contacto</h3>
+          <ul className="albayan-footer__contact space-y-3">
+            {contact.email && (
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 6h18v12H3zM3 6l9 7 9-7" />
+                </svg>
+                <a href={`mailto:${contact.email}`} className="albayan-footer__link">
+                  {contact.email}
+                </a>
+              </li>
+            )}
+            {contact.phone && (
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" />
+                </svg>
+                <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="albayan-footer__link">
+                  {contact.phone}
+                </a>
+              </li>
+            )}
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>
+              <address className="not-italic">
+                <a href={owner.url} className="albayan-footer__link">
+                  {owner.name}
+                </a>
+                <br />
+                {owner.address}
+              </address>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 6h18v12H3zM7 10h4M7 14h6M15 10h2" />
+              </svg>
+              <span>CIF {owner.taxId}</span>
+            </li>
+          </ul>
+          {contact.instagram && (
+            <a
+              href={contact.instagram}
+              className="albayan-footer__social mt-5"
+              rel="noopener"
+              target="_blank"
+              aria-label="Instagram de la Fundación Andalusí"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="0.6" />
+              </svg>
+            </a>
+          )}
+        </div>
       </div>
       <div className="footer__middle page-width flex flex-wrap items-start justify-between gap-10">
         <Area id="footerMiddleLeft" className="footer__middle__left" isGlobal editableInPageBuilder />
@@ -76,8 +114,8 @@ export function Footer({ copyRight }: FooterProps) {
             component: {
               default: (
                 <div className="page-width flex flex-col gap-4 py-6 text-xs md:flex-row md:items-center md:justify-between">
-                  <div className="albayan-footer__muted">
-                    © {year} Instituto Al-Bayān · {copyRight}
+                  <div>
+                    © {year} Fundación Andalusí de España · {copyRight}
                   </div>
                   <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                     {legalPages.slice(0, 3).map((l) => (

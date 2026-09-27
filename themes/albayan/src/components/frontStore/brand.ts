@@ -1,11 +1,13 @@
 /**
- * Datos de marca de Instituto Al-Bayān (tomados de www.institutoalbayan.com)
- * usados por la cabecera, el pie y la portada. Colores y tipografías:
- * `src/pages/all/albayan.css`. Imágenes: `public/brand/`.
+ * Datos de marca de la Fundación Andalusí de España (tomados de
+ * fundacionandalusi.org) usados por la cabecera, el pie y la portada.
+ * Colores y tipografías: `src/pages/all/albayan.css`. Imágenes: `public/brand/`.
  */
-export const MAIN_SITE_URL = 'https://www.institutoalbayan.com';
-export const AULA_URL = 'https://aula.institutoalbayan.com/';
-export const LOGO_SRC = '/brand/lockup-horizontal.png';
+export const MAIN_SITE_URL = 'https://fundacionandalusi.org';
+export const DONATE_URL = `${MAIN_SITE_URL}/donaciones/`;
+export const LOGO_SRC = '/brand/logo-fundacion.png';
+export const LOGO_WHITE_SRC = '/brand/logo-fundacion-blanco.png';
+export const STORE_NAME = 'Tienda de la Fundación Andalusí';
 
 export interface NavLink {
   label: string;
@@ -13,36 +15,26 @@ export interface NavLink {
   external?: boolean;
 }
 
-/** Menú principal: el mismo que la web del instituto, más la tienda. */
+/** Menú principal: el mismo que fundacionandalusi.org, con la tienda en local. */
 export const mainNav: NavLink[] = [
-  { label: 'Cursos', href: `${MAIN_SITE_URL}/cursos`, external: true },
-  { label: 'El proyecto', href: `${MAIN_SITE_URL}/sobre-nosotros`, external: true },
-  { label: 'Eventos', href: `${MAIN_SITE_URL}/eventos`, external: true },
-  { label: 'Inscripción', href: `${MAIN_SITE_URL}/inscripcion`, external: true },
-  { label: 'Contacto', href: `${MAIN_SITE_URL}/contacto`, external: true },
-  { label: 'Tienda', href: '/#productos' }
+  { label: 'Conócenos', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
+  { label: 'Proyectos', href: `${MAIN_SITE_URL}/fundacion-proyectos/`, external: true },
+  { label: 'Actividad', href: `${MAIN_SITE_URL}/actividad/`, external: true },
+  { label: 'Blog', href: `${MAIN_SITE_URL}/blogs/`, external: true },
+  { label: 'Tienda online', href: '/#productos' },
+  { label: 'Contáctanos', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
 ];
 
-/** Columnas del pie (mismo esquema que el pie de la web del instituto). */
+/** Columnas del pie (mismo esquema que el pie de fundacionandalusi.org). */
 export const footerLinks: { title: string; links: NavLink[] }[] = [
   {
-    title: 'Oferta académica',
+    title: 'Accesos rápidos',
     links: [
-      { label: 'Árabe', href: `${MAIN_SITE_URL}/cursos-de-arabe`, external: true },
-      { label: 'Ciencias islámicas', href: `${MAIN_SITE_URL}/ciencias-islamicas`, external: true },
-      { label: 'Cultura islámica', href: `${MAIN_SITE_URL}/cultura-islamica`, external: true },
-      { label: 'Clubes de lectura', href: `${MAIN_SITE_URL}/clubes-de-lectura`, external: true },
-      { label: 'Todos los cursos', href: `${MAIN_SITE_URL}/cursos`, external: true }
-    ]
-  },
-  {
-    title: 'El instituto',
-    links: [
-      { label: 'El proyecto Al-Bayān', href: `${MAIN_SITE_URL}/sobre-nosotros`, external: true },
-      { label: 'Eventos', href: `${MAIN_SITE_URL}/eventos`, external: true },
-      { label: 'Proceso de inscripción', href: `${MAIN_SITE_URL}/inscripcion`, external: true },
-      { label: 'Contacto', href: `${MAIN_SITE_URL}/contacto`, external: true },
-      { label: 'Aula virtual', href: AULA_URL, external: true }
+      { label: 'Conócenos', href: `${MAIN_SITE_URL}/conocenos/`, external: true },
+      { label: 'Proyectos', href: `${MAIN_SITE_URL}/fundacion-proyectos/`, external: true },
+      { label: 'Actividad', href: `${MAIN_SITE_URL}/actividad/`, external: true },
+      { label: 'Blog', href: `${MAIN_SITE_URL}/blogs/`, external: true },
+      { label: 'Contáctanos', href: `${MAIN_SITE_URL}/contactanos/`, external: true }
     ]
   },
   {
@@ -62,14 +54,14 @@ export const owner = {
   name: 'Fundación Método Andalusí de España',
   taxId: 'G42979898',
   address: 'Calle Anastasio Herrero 5, 28020 Madrid',
-  url: 'https://fundacionandalusi.org'
+  url: MAIN_SITE_URL
 };
 
 /** Datos de contacto de la tienda. */
 export const contact = {
   email: 'tienda@institutoalbayan.com',
   phone: '',
-  instagram: 'https://www.instagram.com/institutoalbayan'
+  instagram: 'https://www.instagram.com/fundacion.andalusi/'
 };
 
 /** Páginas legales de la tienda (se crean solas al arrancar). */
@@ -82,4 +74,4 @@ export const legalPages = [
 ];
 
 export const tagline =
-  'El Instituto Al-Bayān es un proyecto de la Fundación Método Andalusí de España.';
+  'La misión de la Fundación es promover la enseñanza del árabe y preservar el patrimonio islámico en España.';

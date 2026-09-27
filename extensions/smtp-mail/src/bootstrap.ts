@@ -7,7 +7,7 @@ import nodemailer from 'nodemailer';
  * Gmail/Workspace, etc.). Se configura solo con variables de entorno:
  *
  *   SMTP_HOST, SMTP_PORT (587), SMTP_SECURE (false = STARTTLS),
- *   SMTP_USER, SMTP_PASSWORD, MAIL_FROM ("Instituto Al-Bayān <tienda@...>")
+ *   SMTP_USER, SMTP_PASSWORD, MAIL_FROM ("Fundación Andalusí <tienda@...>")
  *
  * Sin SMTP_HOST no se registra ningún servicio y EverShop omite los emails.
  */

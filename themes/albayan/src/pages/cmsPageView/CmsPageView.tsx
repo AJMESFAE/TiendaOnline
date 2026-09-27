@@ -13,18 +13,17 @@ interface CmsPageViewProps {
 
 /**
  * Páginas de contenido (aviso legal, privacidad, condiciones…) con la
- * identidad del instituto: cabecera en verde y dorado como la portada y un
- * índice lateral con el resto de páginas legales.
+ * identidad de la Fundación: cabecera en la franja verde de
+ * fundacionandalusi.org y un índice lateral con el resto de páginas legales.
  */
 export default function CmsPageView({ page }: CmsPageViewProps) {
   const isLegal = legalPages.some((l) => l.urlKey === page.urlKey);
   return (
     <div className="albayan-page mb-8">
       <header className="albayan-page__hero">
-        <div className="albayan-trama" aria-hidden="true" />
         <div className="page-width py-14 md:py-20">
-          <p className="albayan-badge-pill">
-            {isLegal ? 'Información legal' : 'Instituto Al-Bayān'}
+          <p className="albayan-badge-pill albayan-badge-pill--light">
+            {isLegal ? 'Información legal' : 'Fundación Andalusí'}
           </p>
           <h1 className="albayan-hero-title mt-5 !text-4xl md:!text-5xl">{page.name}</h1>
         </div>

@@ -1,4 +1,4 @@
-# Imagen de producción de tienda.institutoalbayan.com (EverShop + tema albayan + Redsys)
+# Imagen de producción de la tienda de la Fundación Andalusí (EverShop + tema albayan + Redsys)
 FROM node:22-alpine AS build
 WORKDIR /app
 ENV HUSKY=0

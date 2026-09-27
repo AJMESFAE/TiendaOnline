@@ -25,7 +25,7 @@ export function buildLegalPages(opts = {}) {
     phone: opts.phone || '',
     registry:
       opts.registry ||
-      todo('registro de fundaciones y número de inscripción'),
+      'inscrita en el Registro de Fundaciones de competencia estatal con el número 2469',
     storeUrl: opts.storeUrl || 'https://tienda.institutoalbayan.com',
     shippingDays: opts.shippingDays || todo('plazo de entrega, p. ej. 2 a 5 días laborables'),
     prepDays: opts.prepDays || todo('plazo de preparación, p. ej. 24-48 horas laborables'),
@@ -49,13 +49,13 @@ export function buildLegalPages(opts = {}) {
     {
       url_key: 'aviso-legal',
       name: 'Aviso legal',
-      meta_title: 'Aviso legal · Tienda Instituto Al-Bayān',
-      meta_description: `Datos identificativos del titular de la tienda online del Instituto Al-Bayān, ${o.owner}.`,
+      meta_title: 'Aviso legal · Tienda de la Fundación Andalusí',
+      meta_description: `Datos identificativos del titular de la tienda online de la Fundación Andalusí, ${o.owner}.`,
       blocks: [
         P(`En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web, <a href="${o.storeUrl}">${o.storeUrl.replace('https://', '')}</a> (en adelante, «la Tienda»).`),
         H('1. Datos identificativos'),
         UL(titular),
-        P('La Tienda es el canal de venta online del <b>Instituto Al-Bayān</b>, proyecto educativo de la Fundación dedicado a la enseñanza del árabe y la cultura islámica en español mediante el Método Andalusí.'),
+        P('La Tienda es el canal de venta online de la <b>Fundación Andalusí de España</b>, dedicada a la enseñanza del árabe y la cultura islámica en español mediante el Método Andalusí y a la preservación del patrimonio islámico en España.'),
         H('2. Objeto y aceptación'),
         P('Este aviso legal regula el acceso y el uso de la Tienda. Navegar por ella atribuye la condición de usuario e implica la aceptación de estas condiciones. Las compras se rigen además por las <a href="/condiciones-de-venta">Condiciones de venta</a>, y el tratamiento de datos personales por la <a href="/politica-de-privacidad">Política de privacidad</a>.'),
         H('3. Uso de la Tienda'),
@@ -74,8 +74,8 @@ export function buildLegalPages(opts = {}) {
     {
       url_key: 'politica-de-privacidad',
       name: 'Política de privacidad',
-      meta_title: 'Política de privacidad · Tienda Instituto Al-Bayān',
-      meta_description: 'Cómo tratamos tus datos personales en la tienda online del Instituto Al-Bayān.',
+      meta_title: 'Política de privacidad · Tienda de la Fundación Andalusí',
+      meta_description: 'Cómo tratamos tus datos personales en la tienda online de la Fundación Andalusí.',
       blocks: [
         P('Esta política explica cómo tratamos los datos personales de quienes compran o se registran en la Tienda, conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).'),
         H('1. Responsable del tratamiento'),
@@ -123,8 +123,8 @@ export function buildLegalPages(opts = {}) {
     {
       url_key: 'politica-de-cookies',
       name: 'Política de cookies',
-      meta_title: 'Política de cookies · Tienda Instituto Al-Bayān',
-      meta_description: 'Qué cookies utiliza la tienda online del Instituto Al-Bayān.',
+      meta_title: 'Política de cookies · Tienda de la Fundación Andalusí',
+      meta_description: 'Qué cookies utiliza la tienda online de la Fundación Andalusí.',
       blocks: [
         P('Una cookie es un pequeño archivo que un sitio web guarda en tu navegador para recordar información entre visitas o entre páginas. Esta política explica qué cookies usa la Tienda, conforme al artículo 22.2 de la LSSI-CE y a la guía de la Agencia Española de Protección de Datos.'),
         H('1. Cookies que utilizamos'),
@@ -147,14 +147,14 @@ export function buildLegalPages(opts = {}) {
     {
       url_key: 'condiciones-de-venta',
       name: 'Condiciones de venta',
-      meta_title: 'Condiciones de venta · Tienda Instituto Al-Bayān',
-      meta_description: 'Condiciones generales de compra de la tienda online del Instituto Al-Bayān: precios, pago, entrega, desistimiento y garantías.',
+      meta_title: 'Condiciones de venta · Tienda de la Fundación Andalusí',
+      meta_description: 'Condiciones generales de compra de la tienda online de la Fundación Andalusí: precios, pago, entrega, desistimiento y garantías.',
       blocks: [
         P('Estas condiciones generales regulan la compra de productos en la Tienda. Se rigen por el Real Decreto Legislativo 1/2007, texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios (TRLGDCU), por la LSSI-CE y por el resto de la normativa aplicable. Al realizar un pedido declaras haberlas leído y aceptado.'),
         H('1. Vendedor'),
         UL(titular),
         H('2. Productos'),
-        P('La Tienda ofrece libros, láminas y material didáctico del Método Andalusí y del Instituto Al-Bayān. Cada ficha describe las características esenciales del producto. Las imágenes son orientativas.'),
+        P('La Tienda ofrece libros, láminas y material didáctico del Método Andalusí y de la editorial de la Fundación. Cada ficha describe las características esenciales del producto. Las imágenes son orientativas.'),
         H('3. Precios'),
         P('Los precios se indican en euros e <b>incluyen el IVA</b> aplicable. Los gastos de envío se muestran por separado antes de confirmar el pedido y se suman al total, que verás siempre antes de pagar. El precio aplicable es el vigente en el momento de hacer el pedido.'),
         H('4. Cómo comprar'),
@@ -203,8 +203,8 @@ export function buildLegalPages(opts = {}) {
     {
       url_key: 'envios-y-devoluciones',
       name: 'Envíos y devoluciones',
-      meta_title: 'Envíos y devoluciones · Tienda Instituto Al-Bayān',
-      meta_description: 'Plazos, costes de envío y cómo devolver un pedido en la tienda online del Instituto Al-Bayān.',
+      meta_title: 'Envíos y devoluciones · Tienda de la Fundación Andalusí',
+      meta_description: 'Plazos, costes de envío y cómo devolver un pedido en la tienda online de la Fundación Andalusí.',
       blocks: [
         H('Envíos'),
         UL([

@@ -140,7 +140,7 @@ export default function RedsysSetting({
         {pinnedInput('merchantName', redsysMerchantName) || (
           <InputField
             name="redsysMerchantName"
-            placeholder="Instituto Al-Bayan"
+            placeholder="Fundacion Andalusi"
             defaultValue={redsysMerchantName}
           />
         )}

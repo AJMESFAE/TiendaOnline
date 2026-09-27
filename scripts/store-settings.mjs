@@ -4,7 +4,7 @@
 // Si ya se cambiaron desde el panel, no se tocan (salvo con --force).
 //
 //   node scripts/store-settings.mjs --to <url> --email <admin> --password '...' [--force]
-// Nombre: STORE_NAME (por defecto «Tienda de Instituto Al-Bayān»).
+// Nombre: STORE_NAME (por defecto «Tienda de la Fundación Andalusí»).
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => {
     if (a.startsWith('--')) {
@@ -15,7 +15,7 @@ const args = Object.fromEntries(
   }, [])
 );
 const TO = String(args.to || '').replace(/\/$/, '');
-const NAME = process.env.STORE_NAME || 'Tienda de Instituto Al-Bayān';
+const NAME = process.env.STORE_NAME || 'Tienda de la Fundación Andalusí';
 const DESCRIPTION =
   process.env.STORE_DESCRIPTION ||
   'Libros, material didáctico del Método Andalusí y recursos para aprender árabe y cultura islámica en español.';

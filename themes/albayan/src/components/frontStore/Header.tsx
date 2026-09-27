@@ -1,11 +1,11 @@
 import Area from '@components/common/Area.js';
 import React, { useState } from 'react';
-import { AULA_URL, mainNav } from './brand.js';
+import { DONATE_URL, mainNav } from './brand.js';
 
 /**
- * Cabecera con la estructura de www.institutoalbayan.com: logotipo, menú
- * del instituto y, a la derecha, búsqueda, cuenta y carrito (áreas de
- * EverShop) más el acceso al aula virtual.
+ * Cabecera con la estructura de fundacionandalusi.org: logotipo a la
+ * izquierda y, a la derecha, el menú de la Fundación, búsqueda, cuenta y
+ * carrito (áreas de EverShop) y el botón «Donar».
  */
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ export function Header() {
           isGlobal
           editableInPageBuilder
         />
-        <nav className="albayan-nav ml-4 hidden lg:flex" aria-label="Menú principal">
+        <nav className="albayan-nav ml-auto hidden lg:flex" aria-label="Menú principal">
           {mainNav.map((link) => (
             <a key={link.href} href={link.href} className="albayan-nav__link">
               {link.label}
@@ -43,15 +43,15 @@ export function Header() {
           isGlobal
           editableInPageBuilder
         />
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-3 lg:ml-0">
           <Area
             id="headerMiddleRight"
             className="header__middle__right flex items-center gap-1"
             isGlobal
             editableInPageBuilder
           />
-          <a href={AULA_URL} className="albayan-btn albayan-btn--outline albayan-header__aula">
-            Aula virtual
+          <a href={DONATE_URL} className="albayan-btn albayan-header__donar">
+            Donar <span className="arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -62,8 +62,8 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a href={AULA_URL} className="albayan-nav-mobile__link">
-            Aula virtual
+          <a href={DONATE_URL} className="albayan-nav-mobile__link">
+            Donar
           </a>
         </nav>
       )}

@@ -102,7 +102,7 @@ export async function getRedsysConfig(): Promise<RedsysConfig> {
     merchantName: await resolve(
       'merchantName',
       'redsysMerchantName',
-      await getSetting('storeName', 'Instituto Al-Bayān')
+      await getSetting('storeName', 'Fundación Andalusí')
     ),
     payMethods: await resolve('payMethods', 'redsysPayMethods', ''),
     consumerLanguage: String(redsysOption('consumerLanguage', '001')),
