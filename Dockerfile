@@ -8,6 +8,7 @@ COPY extensions/smtp-mail/package.json extensions/smtp-mail/
 COPY extensions/odoo/package.json extensions/odoo/
 COPY extensions/mobile-app/package.json extensions/mobile-app/
 COPY extensions/tienda/package.json extensions/tienda/
+COPY extensions/packlink/package.json extensions/packlink/
 COPY themes/albayan/package.json themes/albayan/
 RUN npm ci --no-audit --no-fund
 COPY . .

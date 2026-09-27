@@ -398,7 +398,34 @@ pasadas 3 horas.
 - **Teléfono con código de país**: selector de prefijo (+34 por defecto; sigue al país elegido) y
   número; se guarda completo, p. ej. `+34 600111222`.
 
-### 4.4 Correos
+### 4.4 Envíos con Packlink PRO
+
+Extensión `extensions/packlink` (API de Packlink PRO, la misma que usan sus módulos oficiales):
+
+1. **Pedido pagado** → se crea el envío en Packlink PRO como borrador, con el almacén por
+   defecto de la cuenta como remitente, la dirección y el teléfono (con prefijo) del cliente, el
+   contenido, el valor y un paquete con el peso de los artículos. En el historial del pedido
+   queda la referencia (`ES2026PRO…`).
+2. En **pro.packlink.es** se elige transportista, se paga y se imprime la etiqueta, como siempre.
+3. Packlink avisa a la tienda (webhook `/api/packlink/webhook`, que se da de alta solo al
+   arrancar) y, por si se pierde un aviso, se consulta cada 30 minutos: con el número de
+   seguimiento, el pedido pasa a **Enviado** y el cliente recibe «Tu pedido está en camino» con el
+   transportista y el enlace de seguimiento; al entregarse, pasa a **Entregado** y recibe el aviso.
+
+Configuración (App Settings):
+
+| Variable | Valor |
+|---|---|
+| `PACKLINK_API_KEY` | Packlink PRO → *Configuración* → *Packlink PRO clave de API* → *Generar clave API*. **No la comparta por chat** |
+| `PACKLINK_DEFAULT_WEIGHT` | Opcional: peso (kg) de los artículos sin peso. Por defecto 0,5 |
+| `PACKLINK_DEFAULT_PARCEL` | Opcional: medidas del paquete en cm, `largo x ancho x alto`. Por defecto `30x20x5` |
+| `PACKLINK_SERVICE_ID` | Opcional: servicio (transportista) fijo; sin él se elige en Packlink PRO |
+
+En Packlink PRO debe estar configurada la **dirección de recogida** (almacén) por defecto. El
+peso de cada producto se edita en su ficha (*Peso*, en kg). Packlink admite una sola URL de
+avisos por cuenta: la registra la última tienda que arranca (devtienda o la definitiva).
+
+### 4.5 Correos
 
 Los correos a los clientes (confirmación del pedido, bienvenida, cambio de contraseña, pedido
 enviado y entregado) están en español y con la imagen de la Fundación: plantillas

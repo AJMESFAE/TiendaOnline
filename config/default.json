@@ -38,6 +38,12 @@
         "resolve": "extensions/tienda",
         "enabled": true,
         "priority": 50
+      },
+      {
+        "name": "packlink",
+        "resolve": "extensions/packlink",
+        "enabled": true,
+        "priority": 60
       }
     ],
     "redsys": {
