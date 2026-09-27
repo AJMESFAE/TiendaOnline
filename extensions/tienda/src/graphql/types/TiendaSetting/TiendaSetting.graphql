@@ -1,0 +1,7 @@
+extend type Setting {
+  """
+  Clave de navegador de Google Maps (Places API) para autocompletar direcciones.
+  Es pública por diseño: se protege restringiéndola por dominio en Google Cloud.
+  """
+  googleMapsApiKey: String
+}

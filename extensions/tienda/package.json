@@ -6,6 +6,6 @@
   "description": "Ajustes propios de la tienda de la Fundación Andalusí (envío gratuito con IVA incluido, datos de los correos)",
   "license": "GPL-3.0",
   "scripts": {
-    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc"
+    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && copyfiles -u 1 \"src/**/*.graphql\" dist"
   }
 }

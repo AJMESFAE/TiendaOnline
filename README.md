@@ -383,7 +383,22 @@ cliente **vuelve al carrito** con sus productos y un aviso de que no se ha hecho
 Los pedidos que se quedan a medias sin que el cliente vuelva los cancela el cron cada 15 minutos
 pasadas 3 horas.
 
-### 4.3 Correos
+### 4.3 Formulario de dirección
+
+- **Autocompletado con Google**: al escribir la dirección aparecen sugerencias de Google
+  (Places API) y, al elegir una, se rellenan calle y número, ciudad, código postal, provincia y
+  país. Necesita una clave de navegador en `GOOGLE_MAPS_API_KEY` (App Settings):
+  1. [Google Cloud Console](https://console.cloud.google.com/) → proyecto de la Fundación →
+     *APIs y servicios* → habilitar **Places API (New)** y **Maps JavaScript API** (hace falta
+     una cuenta de facturación; el uso de una tienda pequeña entra en la cuota gratuita mensual).
+  2. *Credenciales* → *Crear credenciales* → *Clave de API* → **Restringir la clave**: sitios web
+     `https://devtienda.fundacionandalusi.org/*` y `https://tienda.fundacionandalusi.org/*`, y
+     solo esas dos APIs. Es una clave pública (va al navegador), por eso se restringe por dominio.
+  Sin la clave, el formulario funciona igual, sin sugerencias.
+- **Teléfono con código de país**: selector de prefijo (+34 por defecto; sigue al país elegido) y
+  número; se guarda completo, p. ej. `+34 600111222`.
+
+### 4.4 Correos
 
 Los correos a los clientes (confirmación del pedido, bienvenida, cambio de contraseña, pedido
 enviado y entregado) están en español y con la imagen de la Fundación: plantillas
