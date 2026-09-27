@@ -31,16 +31,18 @@ export default () => {
   const defaultFrom = process.env.MAIL_FROM || process.env.SMTP_USER;
 
   registerEmailService({
-    sendEmail: async ({ from, to, subject, body, cc, bcc }) => {
+    sendEmail: async ({ from, to, subject, body, cc, bcc, attachments }) => {
       await transporter.sendMail({
         from: from || defaultFrom,
         to,
         cc: cc as string[] | undefined,
         bcc: bcc as string[] | undefined,
         subject,
-        html: body
+        html: body,
+        // Adjuntos (p. ej. la factura de Odoo en la confirmación del pedido)
+        attachments: attachments as any
       });
-      info(`Email enviado a ${to}: ${subject}`);
+      info(`Email enviado a ${to}: ${subject}${Array.isArray(attachments) && attachments.length ? ` (${attachments.length} adjunto/s)` : ''}`);
     }
   });
 };

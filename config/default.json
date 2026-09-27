@@ -20,6 +20,12 @@
         "resolve": "extensions/smtp-mail",
         "enabled": true,
         "priority": 20
+      },
+      {
+        "name": "odoo",
+        "resolve": "extensions/odoo",
+        "enabled": true,
+        "priority": 30
       }
     ],
     "redsys": {

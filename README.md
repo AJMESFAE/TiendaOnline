@@ -10,6 +10,8 @@ Tienda de **tienda.institutoalbayan.com**, construida sobre [EverShop](https://e
   automática de pedidos abandonados.
 - **Email SMTP** (`extensions/smtp-mail`): confirmaciones de pedido por Microsoft 365,
   Azure Communication Services o cualquier SMTP.
+- **Facturas Odoo** (`extensions/odoo`): cada pedido pagado genera su factura en Odoo, que
+  se adjunta en PDF al email de confirmación; las devoluciones generan la factura rectificativa.
 - **Infraestructura Azure** (`infra/main.bicep`) y despliegue continuo con GitHub Actions.
 - Traducciones al español (`translations/es`).
 
@@ -21,6 +23,7 @@ aplicar actualizaciones de EverShop sin conflictos.
 config/            Configuración (default.json, production.json)
 extensions/redsys  Pasarela de pago Redsys
 extensions/smtp-mail  Servicio de email SMTP
+extensions/odoo    Facturación en Odoo
 themes/albayan     Tema visual del instituto
 translations/es    Textos en español
 infra/             Bicep de Azure
@@ -230,6 +233,7 @@ entorno*; al guardar, Azure reinicia la app.
 | `AZURE_STORAGE_CONNECTION_STRING`, `AZURE_STORAGE_CONTAINER_NAME` | Imágenes en Blob Storage |
 | `REDSYS_*` | Datos del TPV (ver §3). Prevalecen sobre el panel de administración |
 | `SMTP_*`, `MAIL_FROM` | Envío de emails |
+| `ODOO_*` | Facturación en Odoo (ver §4) |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
 
 *Comando de inicio* (*Configuración → Configuración general*): `bash startup.sh`.
@@ -285,7 +289,45 @@ En el portal del TPV (canales.redsys.es), para su comercio y terminal:
 
 ---
 
-## 4. Personalización del tema
+## 4. Facturas con Odoo
+
+Igual que en VillaDelCasar, la tienda emite las facturas en Odoo mediante su API JSON-2
+(`POST <ODOO_URL>/json/2/<modelo>/<método>` con una clave de API).
+
+**Cuándo**: al confirmarse el pago de un pedido (notificación de Redsys), justo antes de
+enviar el email de confirmación:
+
+1. Busca el cliente en Odoo por email (`res.partner`) o lo crea con la dirección de
+   facturación del pedido.
+2. Crea la factura (`account.move`, `out_invoice`) con una línea por producto, otra para el
+   envío y, si hiciera falta, una de ajuste para que el total coincida al céntimo con el pedido.
+3. La valida (`action_post`), descarga el PDF y lo **adjunta al email de confirmación**
+   (`factura-INV-2026-00001.pdf`).
+4. Guarda el número en la tabla `odoo_invoice` y en el historial del pedido
+   («Factura INV/… generada en Odoo»). Nunca se factura dos veces el mismo pedido.
+
+Si Odoo no responde, el email se envía igualmente sin factura y el error queda en el log;
+la factura se puede crear después a mano en Odoo. En una **devolución** desde el panel
+(botón Redsys) se crea la factura rectificativa (`out_refund`) por el importe devuelto.
+El cobro no se registra en Odoo (lo hace Redsys); concílielo desde el extracto bancario.
+
+**Configuración** (App Settings de la Web App, *Configuración → Variables de entorno*):
+
+| Variable | Valor |
+|---|---|
+| `ODOO_URL` | URL de Odoo, p. ej. `https://fundacion.odoo.com` |
+| `ODOO_API_KEY` | Clave de API de un usuario con permisos de facturación (*Preferencias → Seguridad de la cuenta → Nueva clave de API*). **No la comparta por chat ni la suba al repositorio** |
+| `ODOO_PRODUCT_ID` | ID del producto de Odoo con el que se facturan las ventas (p. ej. «Venta tienda online», con el impuesto *IVA 4 % incluido en el precio* para libros) |
+| `ODOO_SHIPPING_PRODUCT_ID` | Opcional: producto para la línea de envío (por defecto, `ODOO_PRODUCT_ID`) |
+| `ODOO_JOURNAL_ID` | Opcional: diario de ventas (por defecto, el de Odoo) |
+
+Los precios de la tienda llevan el IVA incluido, así que el impuesto del producto en Odoo
+debe estar marcado como *Incluido en el precio*. Sin `ODOO_URL`, `ODOO_API_KEY` y
+`ODOO_PRODUCT_ID` la extensión no hace nada.
+
+---
+
+## 5. Personalización del tema
 
 - **Colores y tipografías**: `themes/albayan/src/pages/all/albayan.css`, sección
   *Paleta de marca*. Todas las pantallas (botones, enlaces, cabecera, pie y checkout) se
@@ -301,9 +343,8 @@ Después de cualquier cambio: `npm run build` (o `npm run dev` mientras desarrol
 
 ---
 
-## 5. Antes de abrir la tienda
+## 6. Antes de abrir la tienda
 
-- [ ] Ajustar los colores y fuentes exactos de institutoalbayan.com en `albayan.css` (ver nota).
 - [ ] Subir el logo oficial y el favicon (*Admin → Configuración → Tienda*).
 - [ ] Rellenar el email y el teléfono de contacto en `brand.ts`.
 - [ ] Crear las páginas legales con `./infra/create-pages.sh` (ver §2.5), completar
@@ -312,11 +353,7 @@ Después de cualquier cambio: `npm run build` (o `npm run dev` mientras desarrol
       (IVA; los libros tienen IVA superreducido del 4 %).
 - [ ] Datos del comercio real de Redsys y `REDSYS_ENVIRONMENT=live`.
 - [ ] Buzón SMTP para los emails (`SMTP_*`).
-
-> **Nota sobre la identidad visual.** Durante el desarrollo no se pudo acceder a
-> institutoalbayan.com desde el entorno de construcción. La paleta actual (verde oscuro y
-> dorado, con Cormorant Garamond, Lato y Amiri) es provisional y está centralizada en
-> `albayan.css` para sustituirla en un solo sitio por los valores exactos de la web.
+- [ ] Variables `ODOO_*` para las facturas (ver §4).
 
 ## Licencia
 

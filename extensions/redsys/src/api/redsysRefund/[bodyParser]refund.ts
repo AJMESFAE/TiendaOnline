@@ -1,4 +1,5 @@
 import { insert, select } from '@evershop/postgres-query-builder';
+import { emit } from '@evershop/evershop/lib/event';
 import { error } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
 import {
@@ -138,6 +139,9 @@ export default async (request, response, next) => {
       false,
       pool as any
     );
+
+    // Otras extensiones (p. ej. Odoo: factura rectificativa) reaccionan a la devolución.
+    await emit('order_refunded', { order_id: order.order_id, amount: refunded });
 
     response.status(OK);
     return response.json({ data: { amount: refunded } });

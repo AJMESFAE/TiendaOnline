@@ -5,6 +5,7 @@ ENV HUSKY=0
 COPY package.json package-lock.json ./
 COPY extensions/redsys/package.json extensions/redsys/
 COPY extensions/smtp-mail/package.json extensions/smtp-mail/
+COPY extensions/odoo/package.json extensions/odoo/
 COPY themes/albayan/package.json themes/albayan/
 RUN npm ci --no-audit --no-fund
 COPY . .
