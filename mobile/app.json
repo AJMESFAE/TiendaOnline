@@ -16,6 +16,7 @@
     },
     "android": {
       "package": "org.fundacionandalusi.tienda.gestion",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
         "foregroundImage": "./assets/android-icon-foreground.png",
