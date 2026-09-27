@@ -16,7 +16,7 @@ export const mainNav: NavLink[] = [
   { label: 'Inicio', href: `${MAIN_SITE_URL}/`, external: true },
   { label: 'Sobre nosotros', href: `${MAIN_SITE_URL}/sobre-nosotros/`, external: true },
   { label: 'Inscripción', href: `${MAIN_SITE_URL}/inscripcion/`, external: true },
-  { label: 'Tienda', href: '/' }
+  { label: 'Productos', href: '/#productos' }
 ];
 
 /** Enlaces del pie de página. Las páginas legales se crean en Admin → CMS → Páginas. */

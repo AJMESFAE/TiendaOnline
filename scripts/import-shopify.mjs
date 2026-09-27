@@ -257,8 +257,12 @@ async function main() {
   const shopify = await fetchShopifyProducts();
   const items = shopify.flatMap(mapProduct);
   log(`Encontrados ${shopify.length} productos (${items.length} fichas a crear).`);
-  await writeFile('productos-shopify.json', JSON.stringify({ shopify, items }, null, 2));
-  log('Copia de los datos originales guardada en productos-shopify.json');
+  try {
+    await writeFile('productos-shopify.json', JSON.stringify({ shopify, items }, null, 2));
+    log('Copia de los datos originales guardada en productos-shopify.json');
+  } catch {
+    // Sin permiso de escritura en la carpeta actual: la copia es opcional.
+  }
   for (const it of items) {
     log(`  · ${it.name} — ${it.price.toFixed(2)} € — SKU ${it.sku} — ${it.images.length} imagen(es)${it.requiresShipping ? '' : ' — sin envío'}`);
   }

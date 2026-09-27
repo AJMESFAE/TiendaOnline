@@ -161,6 +161,12 @@ vuelven a la tienda.
 
 ### 2.4 Importar los productos de la tienda actual (Shopify)
 
+**Si la tienda arranca sin ningún producto, los importa sola** desde
+`https://tienda.institutoalbayan.com`. Se cambia el origen con `SHOPIFY_IMPORT_URL` y se
+desactiva con `SHOPIFY_IMPORT=false`, ambas en las variables de entorno de Azure. Los
+productos aparecen en la portada, en la sección *Productos*. Para importar a mano o
+volver a importar:
+
 ```bash
 ./infra/import-products.sh --dry-run   # solo lista lo que va a importar
 ./infra/import-products.sh             # los crea en la tienda nueva

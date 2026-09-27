@@ -1,0 +1,153 @@
+{
+  "shopify": [
+    {
+      "id": 1,
+      "title": "Alifato",
+      "handle": "alifato",
+      "body_html": "<p>Lámina del <strong>alifato</strong> árabe con las 28 letras.</p><ul><li>Formato A3</li><li>Plastificada</li></ul>",
+      "vendor": "Fundación Método Andalusí",
+      "product_type": "Material didáctico",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "variants": [
+        {
+          "id": 10,
+          "title": "Default Title",
+          "sku": "",
+          "price": "9.99",
+          "compare_at_price": null,
+          "grams": 120,
+          "requires_shipping": true,
+          "available": true
+        }
+      ],
+      "images": [
+        {
+          "src": "http://localhost:4455/cdn/alifato.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "El Método Andalusí - Nivel Básico",
+      "handle": "el-metodo-andalusi-nivel-basico",
+      "body_html": "<h2>Aprende árabe desde cero</h2><p>Libro del curso básico.<br><br>Incluye ejercicios.</p>",
+      "vendor": "Fundación Método Andalusí",
+      "product_type": "Libros",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "variants": [
+        {
+          "id": 20,
+          "title": "Default Title",
+          "sku": "MA-BASICO",
+          "price": "29.90",
+          "compare_at_price": null,
+          "grams": 650,
+          "requires_shipping": true,
+          "available": true
+        }
+      ],
+      "images": [
+        {
+          "src": "http://localhost:4455/cdn/el-metodo-andalusi-nivel-basico.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Luces sobre el estudio de la Sirah",
+      "handle": "luces-sobre-el-estudio-de-la-sirah",
+      "body_html": "<p>Introducción al estudio de la biografía del Profeta.</p>",
+      "vendor": "Fundación Método Andalusí",
+      "product_type": "Libros",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "variants": [
+        {
+          "id": 30,
+          "title": "Default Title",
+          "sku": "",
+          "price": "16.99",
+          "compare_at_price": null,
+          "grams": 0,
+          "requires_shipping": false,
+          "available": true
+        }
+      ],
+      "images": [
+        {
+          "src": "http://localhost:4455/cdn/luces-sobre-el-estudio-de-la-sirah.jpg"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "handle": "alifato",
+      "name": "Alifato",
+      "sku": "SHOP-ALIFATO",
+      "price": 9.99,
+      "oldPrice": null,
+      "weightKg": 0.12,
+      "requiresShipping": true,
+      "available": true,
+      "category": "Material didáctico",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "bodyHtml": "<p>Lámina del <strong>alifato</strong> árabe con las 28 letras.</p><ul><li>Formato A3</li><li>Plastificada</li></ul>",
+      "images": [
+        "http://localhost:4455/cdn/alifato.jpg"
+      ],
+      "sourceUrl": "http://localhost:4455/products/alifato"
+    },
+    {
+      "handle": "el-metodo-andalusi-nivel-basico",
+      "name": "El Método Andalusí - Nivel Básico",
+      "sku": "MA-BASICO",
+      "price": 29.9,
+      "oldPrice": null,
+      "weightKg": 0.65,
+      "requiresShipping": true,
+      "available": true,
+      "category": "Libros",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "bodyHtml": "<h2>Aprende árabe desde cero</h2><p>Libro del curso básico.<br><br>Incluye ejercicios.</p>",
+      "images": [
+        "http://localhost:4455/cdn/el-metodo-andalusi-nivel-basico.jpg"
+      ],
+      "sourceUrl": "http://localhost:4455/products/el-metodo-andalusi-nivel-basico"
+    },
+    {
+      "handle": "luces-sobre-el-estudio-de-la-sirah",
+      "name": "Luces sobre el estudio de la Sirah",
+      "sku": "SHOP-LUCES-SOBRE-EL-ESTUDIO-DE-LA-SIRAH",
+      "price": 16.99,
+      "oldPrice": null,
+      "weightKg": 0.5,
+      "requiresShipping": false,
+      "available": true,
+      "category": "Libros",
+      "tags": [
+        "árabe",
+        "método andalusí"
+      ],
+      "bodyHtml": "<p>Introducción al estudio de la biografía del Profeta.</p>",
+      "images": [
+        "http://localhost:4455/cdn/luces-sobre-el-estudio-de-la-sirah.jpg"
+      ],
+      "sourceUrl": "http://localhost:4455/products/luces-sobre-el-estudio-de-la-sirah"
+    }
+  ]
+}

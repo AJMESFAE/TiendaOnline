@@ -15,7 +15,7 @@ export default function AlbayanHero() {
           Libros, material didáctico del Método Andalusí y recursos para
           aprender árabe y cultura islámica en español.
         </p>
-        <a href="/search?keyword=" className="albayan-hero__cta mt-8">
+        <a href="#productos" className="albayan-hero__cta mt-8">
           Ver productos
         </a>
       </div>
