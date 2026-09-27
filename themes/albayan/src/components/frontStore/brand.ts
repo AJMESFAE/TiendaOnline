@@ -65,9 +65,9 @@ export const owner = {
   url: 'https://fundacionandalusi.org'
 };
 
-/** Datos de contacto (los publicados en www.institutoalbayan.com). */
+/** Datos de contacto de la tienda. */
 export const contact = {
-  email: 'secretaria@institutoalbayan.com',
+  email: 'tienda@institutoalbayan.com',
   phone: '',
   instagram: 'https://www.instagram.com/institutoalbayan'
 };
