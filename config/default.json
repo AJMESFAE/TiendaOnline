@@ -34,7 +34,27 @@
       "abandonedSchedule": "*/15 * * * *"
     },
     "notification_emails": {
-      "from": "Fundación Andalusí <tienda@fundacionandalusi.org>"
+      "from": "Fundación Andalusí <tienda@fundacionandalusi.org>",
+      "order_confirmation": {
+        "enabled": true,
+        "templatePath": "emails/order-confirmation.html"
+      },
+      "customer_welcome": {
+        "enabled": true,
+        "templatePath": "emails/customer-welcome.html"
+      },
+      "reset_password": {
+        "enabled": true,
+        "templatePath": "emails/reset-password.html"
+      },
+      "shipment_created": {
+        "enabled": true,
+        "templatePath": "emails/shipment-created.html"
+      },
+      "shipment_delivered": {
+        "enabled": true,
+        "templatePath": "emails/shipment-delivered.html"
+      }
     }
   },
   "themeConfig": {

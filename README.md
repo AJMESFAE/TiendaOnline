@@ -322,10 +322,44 @@ El cobro no se registra en Odoo (lo hace Redsys); concílielo desde el extracto 
 | `ODOO_PRODUCT_ID` | ID del producto de Odoo con el que se facturan las ventas (p. ej. «Venta tienda online», con el impuesto *IVA 4 % incluido en el precio* para libros) |
 | `ODOO_SHIPPING_PRODUCT_ID` | Opcional: producto para la línea de envío (por defecto, `ODOO_PRODUCT_ID`) |
 | `ODOO_JOURNAL_ID` | Opcional: diario de ventas (por defecto, el de Odoo) |
+| `ODOO_TAX_IDS` | Impuesto de Odoo para cada tipo de IVA de la tienda, p. ej. `4:12,21:1` (IVA 4 % → impuesto con id 12; IVA 21 % → id 1). Los ids se ven en *Contabilidad → Configuración → Impuestos* (abra el impuesto: el número está en la URL). Deben ser impuestos «incluidos en el precio». Con esta variable cada línea lleva su IVA y el envío se reparte por tipo; sin ella, todas las líneas usan el impuesto del producto de Odoo |
 
-Los precios de la tienda llevan el IVA incluido, así que el impuesto del producto en Odoo
-debe estar marcado como *Incluido en el precio*. Sin `ODOO_URL`, `ODOO_API_KEY` y
+Los precios de la tienda llevan el IVA incluido, así que los impuestos de Odoo deben estar
+marcados como *Incluido en el precio*. Como la tienda vende con dos tipos de IVA (4 % y 21 %),
+configure `ODOO_TAX_IDS` para que cada línea de la factura lleve el suyo. Sin `ODOO_URL`, `ODOO_API_KEY` y
 `ODOO_PRODUCT_ID` la extensión no hace nada.
+
+### 4.1 IVA
+
+El IVA depende de cada producto:
+
+| Clase de IVA | Tipo | Productos |
+|---|---|---|
+| IVA superreducido 4 % (libros) | 4 % | Libros (*El Método Andalusí - Nivel Básico*, *Luces sobre el estudio de la Sirah*) |
+| IVA general 21 % (juguetes y otros) | 21 % | Juguetes, láminas y el resto (*Alifato*) |
+
+- Los precios publicados y el envío **llevan el IVA incluido**.
+- El envío tributa en proporción al IVA de los productos del carrito (4 % si solo hay libros).
+- Se calcula con la dirección de envío. Canarias, Ceuta y Melilla no llevan IVA.
+- Los productos nuevos se crean con el 21 %: al dar de alta un **libro**, elija
+  *IVA superreducido 4 % (libros)* en *Clase de impuestos* de su ficha.
+
+Lo configura `scripts/tax-settings.mjs` (idempotente; `--dry-run` para ver qué haría):
+
+```bash
+node scripts/tax-settings.mjs --to https://devtienda.fundacionandalusi.org \
+  --email admin@fundacionandalusi.org --password '...'
+```
+
+Se revisa en *Admin → Configuración → Impuestos*.
+
+### 4.2 Correos
+
+Los correos a los clientes (confirmación del pedido, bienvenida, cambio de contraseña, pedido
+enviado y entregado) están en español y con la imagen de la Fundación: plantillas
+`emails/*.html`, activadas en `config/default.json` (`system.notification_emails`). Se generan
+con `node scripts/build-emails.mjs`; para cambiar un texto, edite ese script y vuelva a
+ejecutarlo. La confirmación incluye la factura de Odoo en PDF cuando está configurado.
 
 ---
 

@@ -36,6 +36,11 @@ import { addOrderActivityLog } from '@evershop/evershop/oms/services';
  *   ODOO_SHIPPING_PRODUCT_ID producto para los gastos de envío (opcional;
  *                            por defecto, el mismo ODOO_PRODUCT_ID)
  *   ODOO_JOURNAL_ID          diario de ventas (opcional; por defecto el de Odoo)
+ *   ODOO_TAX_IDS             impuesto de Odoo para cada tipo de IVA de la tienda,
+ *                            p. ej. "4:12,21:1" (IVA 4 % → impuesto 12, IVA 21 %
+ *                            → impuesto 1). Deben ser impuestos «incluidos en el
+ *                            precio». Opcional: sin él, cada línea lleva el
+ *                            impuesto del producto de Odoo.
  */
 
 type OdooConfig = {
@@ -44,7 +49,19 @@ type OdooConfig = {
   productId: number;
   shippingProductId: number;
   journalId: number | null;
+  /** Tipo de IVA de la tienda (4, 21…) → id del impuesto en Odoo. */
+  taxIds: Map<number, number>;
 };
+
+/** "4:12,21:1" → {4 → 12, 21 → 1}. */
+function parseTaxIds(value: string | undefined): Map<number, number> {
+  const map = new Map<number, number>();
+  for (const pair of (value || '').split(',')) {
+    const [rate, id] = pair.split(':').map((x) => Number(x.trim()));
+    if (Number.isFinite(rate) && rate >= 0 && Number.isInteger(id) && id > 0) map.set(rate, id);
+  }
+  return map;
+}
 
 const num = (v: string | undefined) => {
   const n = Number(v);
@@ -67,7 +84,8 @@ export function getOdooConfig(): OdooConfig | null {
     apiKey,
     productId,
     shippingProductId: num(process.env.ODOO_SHIPPING_PRODUCT_ID) ?? productId,
-    journalId: num(process.env.ODOO_JOURNAL_ID)
+    journalId: num(process.env.ODOO_JOURNAL_ID),
+    taxIds: parseTaxIds(process.env.ODOO_TAX_IDS)
   };
 }
 
@@ -160,43 +178,118 @@ async function findOrCreatePartner(config: OdooConfig, order: any, address: Addr
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
-/** Líneas de la factura: artículos, envío y un ajuste final para cuadrar con lo cobrado. */
+/**
+ * Impuestos de una línea. Con ODOO_TAX_IDS se fija el impuesto que corresponde al
+ * tipo de IVA de la tienda; un tipo 0 (Canarias, Ceuta, Melilla) va sin impuesto.
+ * Sin correspondencia, la línea usa el impuesto del producto de Odoo.
+ */
+function taxFields(config: OdooConfig, rate: number): Record<string, unknown> {
+  if (config.taxIds.size === 0) return {};
+  const key = round2(rate);
+  const id = config.taxIds.get(key);
+  if (id) return { tax_ids: [[6, 0, [id]]] };
+  if (key === 0) return { tax_ids: [[6, 0, []]] };
+  warning(`[odoo] ODOO_TAX_IDS no tiene impuesto para el IVA del ${key} %: se usa el del producto de Odoo`);
+  return {};
+}
+
+/**
+ * Líneas de la factura: artículos (cada uno con su IVA), envío repartido por tipo
+ * de IVA en la misma proporción que la tienda (base imponible de los artículos) y
+ * un ajuste final para cuadrar con lo cobrado.
+ */
 export function buildInvoiceLines(order: any, items: any[], config: OdooConfig) {
   const lines: Array<Record<string, unknown>> = [];
   let sum = 0;
+  const baseByRate = new Map<number, number>();
   for (const item of items) {
     const qty = Number(item.qty) || 1;
+    const rate = round2(Number(item.tax_percent) || 0);
     const lineTotal = Number(
       item.line_total_with_discount_incl_tax ?? item.line_total_incl_tax ?? Number(item.final_price_incl_tax) * qty
     );
     sum += lineTotal;
+    baseByRate.set(rate, (baseByRate.get(rate) || 0) + lineTotal / (1 + rate / 100));
     lines.push({
       product_id: config.productId,
       name: `${item.product_name}${item.product_sku ? ` (${item.product_sku})` : ''}`,
       quantity: qty,
-      price_unit: round2(lineTotal / qty)
+      price_unit: round2(lineTotal / qty),
+      ...taxFields(config, rate)
     });
   }
-  const shipping = Number(order.shipping_fee_incl_tax || 0);
+  const shipping = round2(Number(order.shipping_fee_incl_tax || 0));
   if (shipping > 0) {
     sum += shipping;
-    lines.push({
-      product_id: config.shippingProductId,
-      name: 'Gastos de envío',
-      quantity: 1,
-      price_unit: round2(shipping)
-    });
+    const rates = [...baseByRate.keys()].sort((x, y) => y - x);
+    const totalBase = [...baseByRate.values()].reduce((x, y) => x + y, 0);
+    if (config.taxIds.size === 0 || rates.length <= 1 || !(totalBase > 0)) {
+      lines.push({
+        product_id: config.shippingProductId,
+        name: 'Gastos de envío',
+        quantity: 1,
+        price_unit: shipping,
+        ...taxFields(config, rates[0] ?? 0)
+      });
+    } else {
+      // Envío con varios tipos de IVA: la base del envío (sin IVA, como la calcula la
+      // tienda) se reparte en proporción a la base de los artículos y cada parte
+      // lleva su IVA; la última línea se lleva el redondeo.
+      const shippingBase = Number(order.shipping_fee_excl_tax ?? shipping / (1 + Number(order.shipping_tax_amount || 0) / shipping));
+      let assigned = 0;
+      rates.forEach((rate, i) => {
+        const part =
+          i === rates.length - 1
+            ? round2(shipping - assigned)
+            : round2(((shippingBase * baseByRate.get(rate)!) / totalBase) * (1 + rate / 100));
+        assigned = round2(assigned + part);
+        if (part === 0) return;
+        lines.push({
+          product_id: config.shippingProductId,
+          name: `Gastos de envío (IVA ${rate} %)`,
+          quantity: 1,
+          price_unit: part,
+          ...taxFields(config, rate)
+        });
+      });
+    }
   }
   // Descuentos de pedido o redondeos: la factura debe sumar lo cobrado.
   const diff = round2(Number(order.grand_total) - sum);
   if (Math.abs(diff) >= 0.01) {
+    const mainRate = [...baseByRate.entries()].sort((x, y) => y[1] - x[1])[0]?.[0] ?? 0;
     lines.push({
       product_id: config.productId,
       name: diff < 0 ? 'Descuento' : 'Ajuste',
       quantity: 1,
-      price_unit: diff
+      price_unit: diff,
+      ...taxFields(config, mainRate)
     });
   }
+  return lines;
+}
+
+/**
+ * Líneas de una rectificativa por `amount`: las de la factura original a escala
+ * (devolución total = mismas líneas; parcial = cada línea en proporción), para que
+ * cada tipo de IVA se rectifique en la parte que le toca.
+ */
+function buildRefundLines(order: any, items: any[], config: OdooConfig, amount: number, invoiceName: string) {
+  const original = buildInvoiceLines(order, items, config);
+  const total = original.reduce((x, l) => x + Number(l.price_unit) * Number(l.quantity), 0);
+  const factor = total > 0 ? Math.min(1, amount / total) : 0;
+  const lines: Array<Record<string, unknown>> = [];
+  let assigned = 0;
+  original.forEach((l, i) => {
+    const lineTotal =
+      i === original.length - 1
+        ? round2(amount - assigned)
+        : round2(Number(l.price_unit) * Number(l.quantity) * factor);
+    assigned = round2(assigned + lineTotal);
+    if (lineTotal === 0) return;
+    const { quantity, price_unit, ...rest } = l;
+    lines.push({ ...rest, name: `Devolución · ${l.name}${invoiceName ? ` · ${invoiceName}` : ''}`, quantity: 1, price_unit: lineTotal });
+  });
   return lines;
 }
 
@@ -327,6 +420,8 @@ export async function createRectifyingInvoice(orderId: number, amount: number): 
       warning(`[odoo] El pedido ${orderId} no tiene factura original: no se emite rectificativa`);
       return null;
     }
+    const order = await select().from('order').where('order_id', '=', orderId).load(pool);
+    const items = await select().from('order_item').where('order_item_order_id', '=', orderId).execute(pool);
     const [move] = await callOdoo<{ partner_id: [number, string] }[]>(config, 'account.move', 'read', {
       ids: [original.invoice_id],
       fields: ['partner_id']
@@ -339,9 +434,7 @@ export async function createRectifyingInvoice(orderId: number, amount: number): 
           invoice_date: new Date().toISOString().slice(0, 10),
           reversed_entry_id: original.invoice_id,
           ref: `Devolución de ${original.invoice_name ?? original.invoice_id}`,
-          invoice_line_ids: [
-            [0, 0, { product_id: config.productId, name: `Devolución · factura ${original.invoice_name ?? ''}`.trim(), quantity: 1, price_unit: round2(amount) }]
-          ]
+          invoice_line_ids: buildRefundLines(order, items, config, amount, original.invoice_name ?? '').map((l) => [0, 0, l])
         }
       ]
     });

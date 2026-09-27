@@ -23,6 +23,8 @@ export default () => {
     if (!invoice) return args;
     return {
       ...args,
+      // El correo menciona la factura adjunta (plantilla emails/order-confirmation.html).
+      data: { ...((args.data as object) || {}), invoiceName: invoice.invoiceName },
       attachments: [
         ...((args.attachments as unknown[]) || []),
         { filename: invoice.filename, content: invoice.content, contentType: 'application/pdf' }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Tu pedido ha sido entregado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    @media (max-width: 620px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 22px !important; padding-right: 22px !important; }
+      .hero-title { font-size: 26px !important; }
+      .col { display: block !important; width: 100% !important; padding: 0 0 18px !important; }
+    }
+    a { color: #009240; }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;-webkit-text-size-adjust:100%;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">Tu pedido ha sido entregado.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f5f5f5" style="background:#f5f5f5;">
+    <tr>
+      <td align="center" style="padding:28px 12px;">
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#ffffff;border-radius:18px;overflow:hidden;">
+          <!-- Cabecera: logotipo de la Fundación -->
+          <tr>
+            <td align="left" class="px" style="padding:22px 36px;border-bottom:1px solid #f5f5f5;">
+              <a href="{{storeInfo.homeUrl}}" target="_blank" style="text-decoration:none;">
+                <img src="{{storeInfo.homeUrl}}/brand/logo-fundacion.png" width="150" alt="Fundación Andalusí de España" style="display:block;width:150px;height:auto;border:0;" />
+              </a>
+            </td>
+          </tr>
+          <!-- Franja verde con el título -->
+          <tr>
+            <td class="px" bgcolor="#009240" style="padding:34px 36px 32px;background:#009240;">
+              <div style="display:inline-block;margin-bottom:14px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,0.16);font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:12px;font-weight:600;color:#ffffff;">&#9679;&nbsp; Pedido n.º {{order.order_number}}</div>
+              <h1 class="hero-title" style="margin:0;font-family:Tajawal, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:30px;line-height:1.2;font-weight:400;color:#ffffff;">Tu pedido ha sido entregado</h1>
+            </td>
+          </tr>
+          <!-- Contenido -->
+          <tr>
+            <td class="px" style="padding:32px 36px 36px;">
+              
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.65;color:#3c3c3b;">Hola,</p>
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.65;color:#3c3c3b;">Tu pedido se entregó el {{date deliveredOn}}. Esperamos que disfrutes de tus libros y materiales.</p>
+<h2 style="margin:28px 0 12px;font-family:Tajawal, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:19px;font-weight:500;color:#3c3c3b;">Artículos entregados</h2>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+  {{#each items}}
+  <tr>
+    
+    <td valign="middle" style="padding:14px 0;border-bottom:1px solid #e2e2e2;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+      <div style="font-size:15px;font-weight:600;color:#3c3c3b;">{{this.product_name}}</div>
+      <div style="margin-top:4px;font-size:13px;color:#5b6573;">Cantidad: {{this.qty}}</div>
+    </td>
+    
+  </tr>
+  {{/each}}
+</table>
+{{#if trackOrderUrl}}<p style="margin:20px 0 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;"><a href="{{trackOrderUrl}}" style="color:#009240;font-weight:600;text-decoration:none;">Ver los detalles del pedido &rarr;</a></p>{{/if}}
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.65;color:#3c3c3b;margin-top:22px;">Si algo no ha llegado bien, tienes 14 días naturales para devolverlo. Escríbenos y te explicamos cómo hacerlo.</p>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px auto 4px;">
+  <tr>
+    <td align="center" bgcolor="#009240" style="border-radius:16px;">
+      <a href="{{storeInfo.homeUrl}}" target="_blank" style="display:inline-block;padding:15px 28px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:16px;">Volver a la tienda&nbsp;&rarr;</a>
+    </td>
+  </tr>
+</table>
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.65;color:#3c3c3b;margin-top:26px;font-size:14px;color:#5b6573;">¿Tienes alguna duda? Escríbenos a <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;font-weight:600;text-decoration:none;">tienda@fundacionandalusi.org</a> y te ayudaremos encantados.</p>
+            </td>
+          </tr>
+          <!-- Pie -->
+          <tr>
+            <td class="px" bgcolor="#009240" style="padding:28px 36px;background:#009240;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="top" style="font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                    <img src="{{storeInfo.homeUrl}}/brand/logo-fundacion-blanco.png" width="120" alt="Fundación Andalusí" style="display:block;width:120px;height:auto;border:0;" />
+                    <p style="margin:14px 0 0;font-size:13px;line-height:1.55;color:#ffffff;">La misión de la Fundación es promover la enseñanza del árabe y preservar el patrimonio islámico en España.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top:18px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,0.9);">
+                    Fundación Método Andalusí de España · CIF G42979898<br />
+                    Calle Anastasio Herrero 5, 28020 Madrid · <a href="mailto:tienda@fundacionandalusi.org" style="color:#ffffff;">tienda@fundacionandalusi.org</a><br />
+                    <a href="{{storeInfo.homeUrl}}" style="color:#ffffff;">Tienda online</a> &nbsp;·&nbsp;
+                    <a href="https://fundacionandalusi.org" style="color:#ffffff;">fundacionandalusi.org</a> &nbsp;·&nbsp;
+                    <a href="{{storeInfo.homeUrl}}/condiciones-de-venta" style="color:#ffffff;">Condiciones de venta</a> &nbsp;·&nbsp;
+                    <a href="{{storeInfo.homeUrl}}/politica-de-privacidad" style="color:#ffffff;">Privacidad</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:16px 0 0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:11px;color:#9a9a9a;">Has recibido este correo por tu relación con la tienda de la Fundación Andalusí.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

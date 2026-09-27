@@ -27,9 +27,9 @@ export function buildLegalPages(opts = {}) {
       opts.registry ||
       'inscrita en el Registro de Fundaciones de competencia estatal con el número 2469',
     storeUrl: opts.storeUrl || 'https://tienda.fundacionandalusi.org',
-    shippingDays: opts.shippingDays || todo('plazo de entrega, p. ej. 2 a 5 días laborables'),
-    prepDays: opts.prepDays || todo('plazo de preparación, p. ej. 24-48 horas laborables'),
-    shippingCost: opts.shippingCost || todo('coste de envío, p. ej. 4,95 € IVA incluido'),
+    shippingDays: opts.shippingDays || '2 a 5 días laborables',
+    prepDays: opts.prepDays || '24-48 horas laborables',
+    shippingCost: opts.shippingCost || '4,95 € (IVA incluido)',
     freeShippingFrom: opts.freeShippingFrom || '',
     updated: opts.updated || new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
   };
@@ -156,7 +156,7 @@ export function buildLegalPages(opts = {}) {
         H('2. Productos'),
         P('La Tienda ofrece libros, láminas y material didáctico del Método Andalusí y de la editorial de la Fundación. Cada ficha describe las características esenciales del producto. Las imágenes son orientativas.'),
         H('3. Precios'),
-        P('Los precios se indican en euros e <b>incluyen el IVA</b> aplicable. Los gastos de envío se muestran por separado antes de confirmar el pedido y se suman al total, que verás siempre antes de pagar. El precio aplicable es el vigente en el momento de hacer el pedido.'),
+        P('Los precios se indican en euros e <b>incluyen el IVA</b> aplicable: 4 % en los libros y 21 % en el resto de productos (juguetes, láminas y otros materiales). Los gastos de envío se muestran por separado antes de confirmar el pedido y se suman al total, que verás siempre antes de pagar. El precio aplicable es el vigente en el momento de hacer el pedido.'),
         H('4. Cómo comprar'),
         OL([
           'Añade los productos al carrito y pulsa <i>Finalizar compra</i>.',
