@@ -306,6 +306,8 @@ enviar el email de confirmación:
 4. Guarda el número en la tabla `odoo_invoice` y en el historial del pedido
    («Factura INV/… generada en Odoo»). Nunca se factura dos veces el mismo pedido.
 
+Los pedidos de **0 €** no se facturan: se envía el email de confirmación sin adjunto.
+
 Si Odoo no responde, el email se envía igualmente sin factura y el error queda en el log;
 la factura se puede crear después a mano en Odoo. En una **devolución** desde el panel
 (botón Redsys) se crea la factura rectificativa (`out_refund`) por el importe devuelto.

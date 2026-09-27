@@ -242,6 +242,11 @@ export async function getOrCreateOrderInvoice(orderId: number): Promise<InvoiceP
   try {
     const order = await select().from('order').where('order_id', '=', orderId).load(pool);
     if (!order) return null;
+    // Los pedidos gratuitos (0 €) no se facturan.
+    if (!(round2(Number(order.grand_total)) > 0)) {
+      info(`[odoo] Pedido ${order.order_number} de 0 €: no se emite factura`);
+      return null;
+    }
 
     const existing = await select()
       .from('odoo_invoice')
