@@ -4,4 +4,8 @@ extend type Setting {
   Es pública por diseño: se protege restringiéndola por dominio en Google Cloud.
   """
   googleMapsApiKey: String
+  """
+  Si está configurado el inicio de sesión con Google (GOOGLE_CLIENT_ID y GOOGLE_CLIENT_SECRET).
+  """
+  googleLoginEnabled: Boolean
 }

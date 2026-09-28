@@ -17,6 +17,8 @@ const YEAR = 365 * 24 * 60 * 60 * 1000;
 export default async (request, response, next) => {
   try {
     if (request.method !== 'GET') return next();
+    // La vuelta de Google (/auth/google/callback) tiene una URL fija.
+    if (/^\/auth\/google(\/|$)/.test(String(request.localePath || request.path))) return next();
     const enabled: string[] = await getEnabledLanguages();
     if (enabled.length < 2) return next();
     const def: string = await getStoreLanguage();

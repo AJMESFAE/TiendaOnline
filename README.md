@@ -237,6 +237,9 @@ entorno*; al guardar, Azure reinicia la app.
 | `REDSYS_*` | Datos del TPV (ver §3). Prevalecen sobre el panel de administración |
 | `SMTP_*`, `MAIL_FROM` | Envío de emails |
 | `ODOO_*` | Facturación en Odoo (ver §4) |
+| `GOOGLE_MAPS_API_KEY` | Opcional. Autocompletar la dirección (ver §4.3) |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Opcionales. Iniciar sesión con Google (ver §4.7) |
+| `PACKLINK_API_KEY` | Opcional. Envíos con Packlink PRO (ver §4.4) |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
 | `JWT_ADMIN_SECRET`, `JWT_ADMIN_REFRESH_SECRET` | Opcionales. Firman los tokens de la app móvil; si no están, `scripts/start.mjs` los deriva de `DB_PASSWORD` |
 
@@ -449,6 +452,30 @@ La confirmación incluye la factura de Odoo en PDF cuando está configurado.
   (`scripts/legal/legal-en.json`, `legal-ar.json`), con la clave `<clave>-en` / `<clave>-ar`.
 - Los idiomas se activan con `node scripts/store-settings.mjs` (`STORE_LANGUAGES`, por
   defecto `ar,en`). El panel de administración sigue en español.
+
+### 4.7 Iniciar sesión con Google
+
+En *Iniciar sesión* y *Crear una cuenta* aparece **Continuar con Google** (en los tres idiomas).
+Si el correo de Google ya es de un cliente, entra en su cuenta; si no, se crea una cuenta nueva
+(recibe el correo de bienvenida en su idioma y puede ponerse una contraseña con *¿Olvidaste tu
+contraseña?*). Las cuentas desactivadas no pueden entrar. El botón solo se muestra cuando está
+configurado:
+
+1. En [Google Cloud Console](https://console.cloud.google.com/) → *APIs y servicios* →
+   *Pantalla de consentimiento de OAuth*: tipo **Externo**, nombre «Tienda de la Fundación
+   Andalusí», correo de asistencia y dominio `fundacionandalusi.org`; permisos `openid`,
+   `email` y `profile`. Publíquela (*En producción*) para que pueda entrar cualquier cliente.
+2. *Credenciales* → *Crear credenciales* → *ID de cliente de OAuth* → **Aplicación web**, con
+   estos *URI de redirección autorizados*:
+   - `https://devtienda.fundacionandalusi.org/auth/google/callback`
+   - `https://tienda.fundacionandalusi.org/auth/google/callback`
+3. Copie el ID y el secreto del cliente en las App Settings de Azure: `GOOGLE_CLIENT_ID` y
+   `GOOGLE_CLIENT_SECRET` (nunca en el repositorio). La dirección de vuelta se forma con
+   `EVERSHOP_HOME_URL`, que debe coincidir con uno de los URI anteriores.
+
+El flujo es OAuth 2.0 / OpenID Connect con código, PKCE, `state` y `nonce`
+(`extensions/tienda/src/services/googleAuth.ts`); las cuentas vinculadas se guardan en la tabla
+`tienda_google_account`. No afecta a la app móvil.
 
 ---
 
