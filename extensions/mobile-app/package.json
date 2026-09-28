@@ -6,6 +6,6 @@
   "description": "Ajustes de la API de administración para la app móvil de gestión (mobile/)",
   "license": "GPL-3.0",
   "scripts": {
-    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc"
+    "compile": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && copyfiles -u 1 \"src/**/*.json\" dist"
   }
 }

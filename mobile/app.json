@@ -16,6 +16,7 @@
     },
     "android": {
       "package": "org.fundacionandalusi.tienda.gestion",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -35,16 +36,30 @@
         "expo-image-picker",
         {
           "photosPermission": "La app necesita acceder a sus fotos para añadir imágenes a los artículos.",
-          "cameraPermission": "La app necesita la cámara para fotografiar los artículos."
+          "cameraPermission": "La app necesita la cámara para fotografiar los artículos.",
+          "microphonePermission": false
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#009240",
+          "defaultChannel": "pedidos"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
-      "defaultStoreUrl": "https://tienda.fundacionandalusi.org"
-    }
+      "defaultStoreUrl": "https://tienda.fundacionandalusi.org",
+      "router": {},
+      "eas": {
+        "projectId": "8b6cc3ec-d8ce-497f-81c1-45d8e1c716e0"
+      }
+    },
+    "owner": "sinanod"
   }
 }
