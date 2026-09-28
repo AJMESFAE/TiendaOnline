@@ -23,6 +23,8 @@ import { Button, Card, Chip, Field, SectionTitle, SwitchRow } from './ui';
 type Photo = { kind: 'remote'; url: string } | ({ kind: 'local' } & LocalImage);
 
 const decimalText = (n: number | null | undefined) => (n || n === 0 ? String(n).replace('.', ',') : '');
+// Los precios, siempre con dos decimales: 29,90 y no 29,9.
+const priceText = (n: number | null | undefined) => (n || n === 0 ? n.toFixed(2).replace('.', ',') : '');
 
 function initialPhotos(p?: ProductDetail): Photo[] {
   if (!p) return [];
@@ -50,7 +52,7 @@ export function ProductForm({ product }: { product?: ProductDetail }) {
   const initialDescription = descriptionToText(product?.description);
   const [name, setName] = useState(product?.name ?? '');
   const [sku, setSku] = useState(product?.sku ?? '');
-  const [price, setPrice] = useState(decimalText(product?.price.regular.value));
+  const [price, setPrice] = useState(priceText(product?.price.regular.value));
   const [manageStock, setManageStock] = useState(product ? product.inventory.manageStock === 1 : true);
   const [qty, setQty] = useState(product ? String(product.inventory.qty ?? 0) : '1');
   const [available, setAvailable] = useState(product ? product.inventory.isInStock : true);
