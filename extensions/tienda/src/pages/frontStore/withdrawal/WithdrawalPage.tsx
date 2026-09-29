@@ -8,6 +8,8 @@ import React from 'react';
 
 interface Props {
   currentCustomer?: { email?: string; fullName?: string } | null;
+  /** Pedido del enlace firmado de los correos: el cliente solo tiene que confirmar. */
+  withdrawalOrder?: { orderNumber: string; email: string; fullName?: string | null; token: string } | null;
   homeUrl: string;
 }
 
@@ -22,12 +24,12 @@ interface Result {
  * Función de desistimiento (Directiva (UE) 2023/2673): el cliente indica su nombre,
  * el pedido y el correo del acuse, y lo confirma con «Confirmar desistimiento».
  */
-export default function WithdrawalPage({ currentCustomer, homeUrl }: Props) {
+export default function WithdrawalPage({ currentCustomer, withdrawalOrder, homeUrl }: Props) {
   const termsUrl = `${String(homeUrl || '').replace(/\/+$/, '')}/condiciones-de-venta`;
   const [form, setForm] = React.useState({
-    orderNumber: '',
-    email: currentCustomer?.email || '',
-    fullName: currentCustomer?.fullName || '',
+    orderNumber: withdrawalOrder?.orderNumber || '',
+    email: withdrawalOrder?.email || currentCustomer?.email || '',
+    fullName: withdrawalOrder?.fullName || currentCustomer?.fullName || '',
     items: '',
     comment: ''
   });
@@ -48,11 +50,9 @@ export default function WithdrawalPage({ currentCustomer, homeUrl }: Props) {
     setSending(true);
     setMessage(null);
     try {
-      const payload: Record<string, string> = {
-        orderNumber: form.orderNumber.trim(),
-        email: form.email.trim(),
-        fullName: form.fullName.trim()
-      };
+      const payload: Record<string, string> = withdrawalOrder
+        ? { token: withdrawalOrder.token, fullName: form.fullName.trim() }
+        : { orderNumber: form.orderNumber.trim(), email: form.email.trim(), fullName: form.fullName.trim() };
       if (form.items.trim()) payload.items = form.items.trim();
       if (form.comment.trim()) payload.comment = form.comment.trim();
       const res = await fetch('/api/tienda/withdrawals', {
@@ -105,19 +105,33 @@ export default function WithdrawalPage({ currentCustomer, homeUrl }: Props) {
                   </a>
                 </p>
                 <div className="space-y-4">
-                  <div className="space-y-1.5">
-                    <Label htmlFor="w-order">{_('Order number')} *</Label>
-                    <Input id="w-order" required maxLength={40} value={form.orderNumber} onChange={set('orderNumber')} placeholder="10001" dir="ltr" />
-                  </div>
+                  {withdrawalOrder ? (
+                    <div className="rounded-md bg-muted px-4 py-3 text-sm">
+                      <div>
+                        <strong>{_('Order number')}:</strong> <span dir="ltr">{withdrawalOrder.orderNumber}</span>
+                      </div>
+                      <div>
+                        <strong>{_('Email used for the order')}:</strong> <span dir="ltr">{withdrawalOrder.email}</span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">{_('We will send the acknowledgement of receipt to this address.')}</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-1.5">
+                      <Label htmlFor="w-order">{_('Order number')} *</Label>
+                      <Input id="w-order" required maxLength={40} value={form.orderNumber} onChange={set('orderNumber')} placeholder="10001" dir="ltr" />
+                    </div>
+                  )}
                   <div className="space-y-1.5">
                     <Label htmlFor="w-name">{_('Full name')} *</Label>
                     <Input id="w-name" required maxLength={255} autoComplete="name" value={form.fullName} onChange={set('fullName')} />
                   </div>
-                  <div className="space-y-1.5">
-                    <Label htmlFor="w-email">{_('Email used for the order')} *</Label>
-                    <Input id="w-email" type="email" required maxLength={255} autoComplete="email" value={form.email} onChange={set('email')} dir="ltr" />
-                    <p className="text-xs text-muted-foreground">{_('We will send the acknowledgement of receipt to this address.')}</p>
-                  </div>
+                  {!withdrawalOrder && (
+                    <div className="space-y-1.5">
+                      <Label htmlFor="w-email">{_('Email used for the order')} *</Label>
+                      <Input id="w-email" type="email" required maxLength={255} autoComplete="email" value={form.email} onChange={set('email')} dir="ltr" />
+                      <p className="text-xs text-muted-foreground">{_('We will send the acknowledgement of receipt to this address.')}</p>
+                    </div>
+                  )}
                   <div className="space-y-1.5">
                     <Label htmlFor="w-items">{_('Products you are returning (leave empty for the whole order)')}</Label>
                     <Textarea id="w-items" maxLength={2000} rows={2} value={form.items} onChange={set('items')} />
@@ -154,6 +168,12 @@ export const query = `
     currentCustomer {
       email
       fullName
+    }
+    withdrawalOrder: tiendaWithdrawalOrder(token: getContextValue("withdrawalToken", "")) {
+      orderNumber
+      email
+      fullName
+      token
     }
     homeUrl: url(routeId: "homepage")
   }

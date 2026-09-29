@@ -4,9 +4,9 @@ import { OrderNotFoundError, registerWithdrawal } from '../../services/withdrawa
 
 /** POST /api/tienda/withdrawals — confirma el desistimiento (ver services/withdrawal). */
 export default async (request, response) => {
-  const { orderNumber, email, fullName, items, comment } = request.body || {};
+  const { token, orderNumber, email, fullName, items, comment } = request.body || {};
   try {
-    const result = await registerWithdrawal({ orderNumber, email, fullName, items, comment, locale: request.locale });
+    const result = await registerWithdrawal({ token, orderNumber, email, fullName, items, comment, locale: request.locale });
     response.status(200).json({ data: result });
   } catch (e) {
     if (e instanceof OrderNotFoundError) {

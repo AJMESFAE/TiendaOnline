@@ -127,7 +127,21 @@
 <p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">لديك 14 يومًا تقويميًا من تاريخ استلام طلبك للعدول عن الشراء دون الحاجة إلى تقديم أي سبب. يمكنك ذلك عبر رابط «العدول عن العقد من هنا»، أو بمراسلتنا على <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> أو برسالة بريدية، باستخدام نموذج الاستمارة أدناه (استخدامه غير إلزامي).</p>
 <p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">سنردّ إليك جميع المبالغ المدفوعة، بما فيها تكاليف الشحن العادي، خلال 14 يومًا تقويميًا كحدّ أقصى من إبلاغنا، وبوسيلة الدفع نفسها. ويجوز لنا الانتظار حتى نستلم المنتجات أو ما يثبت إرسالها. وتتحمّل تكاليف الإرجاع، إلا إذا كان المنتج معيبًا أو غير مطابق لما طلبته.</p>
 <p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">تتمتّع جميع المنتجات بضمان قانوني للمطابقة مدّته ثلاث سنوات. <a href="{{storeInfo.homeUrl}}/ar/condiciones-de-venta" style="color:#009240;">اطّلع على شروط البيع كاملة</a>.</p>
-<p style="margin:0 0 18px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:14px;text-align:right;"><a href="{{storeInfo.homeUrl}}/ar/desistimiento?order={{order.order_number}}" style="color:#009240;font-weight:700;">العدول عن العقد من هنا &larr;</a></p>
+{{#if withdrawalUrl}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{{withdrawalUrl}}}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">العدول عن العقد من هنا&nbsp;&larr;</a>
+    </td>
+  </tr>
+</table>{{else}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{storeInfo.homeUrl}}/ar/desistimiento?order={{order.order_number}}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">العدول عن العقد من هنا&nbsp;&larr;</a>
+    </td>
+  </tr>
+</table>{{/if}}
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="margin-top:8px;background:#f5f5f5;border-radius:14px;">
   <tr><td style="padding:18px 20px;text-align:right;">

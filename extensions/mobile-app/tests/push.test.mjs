@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { buildNewOrderMessages, sendPushMessages } from '../dist/services/pushMessages.js';
+import { buildNewOrderMessages, buildWithdrawalMessages, sendPushMessages } from '../dist/services/pushMessages.js';
 
 const order = {
   uuid: 'u-1',
@@ -21,6 +21,17 @@ test('aviso de pedido nuevo: título, texto y pedido que abre', () => {
   assert.equal(m.channelId, 'pedidos');
   const [anon] = buildNewOrderMessages({ ...order, customer_full_name: null, total_qty: 1 }, ['t']);
   assert.match(anon.body, /^maria@example\.com · 34,90\s€ · 1 artículo$/);
+});
+
+test('aviso de desistimiento: título, texto y pedido que abre', () => {
+  const w = { order_uuid: 'u-2', order_number: '10024', full_name: 'Ana Pérez', email: 'ana@example.com', items: null };
+  const [m] = buildWithdrawalMessages(w, ['ExponentPushToken[b]']);
+  assert.equal(m.title, 'Desistimiento del pedido #10024');
+  assert.equal(m.body, 'Ana Pérez · todo el pedido');
+  assert.deepEqual(m.data, { orderUuid: 'u-2' });
+  assert.equal(m.channelId, 'pedidos');
+  const [part] = buildWithdrawalMessages({ ...w, full_name: null, items: 'Alifato\n x1' }, ['t']);
+  assert.equal(part.body, 'ana@example.com · Alifato x1');
 });
 
 test('envío: lotes de 100 y tokens caducados', async () => {

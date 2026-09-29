@@ -127,7 +127,21 @@
 <p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> o por carta, con el modelo de formulario de abajo (su uso no es obligatorio).</p>
 <p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde que nos lo comuniques, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.</p>
 <p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">Todos los productos tienen una garantía legal de conformidad de tres años. <a href="{{storeInfo.homeUrl}}/condiciones-de-venta" style="color:#009240;">Consulta las condiciones de venta completas</a>.</p>
-<p style="margin:0 0 18px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;text-align:left;"><a href="{{storeInfo.homeUrl}}/desistimiento?order={{order.order_number}}" style="color:#009240;font-weight:700;">Desistir del contrato aquí &rarr;</a></p>
+{{#if withdrawalUrl}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{{withdrawalUrl}}}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">Desistir del contrato aquí&nbsp;&rarr;</a>
+    </td>
+  </tr>
+</table>{{else}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{storeInfo.homeUrl}}/desistimiento?order={{order.order_number}}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">Desistir del contrato aquí&nbsp;&rarr;</a>
+    </td>
+  </tr>
+</table>{{/if}}
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="ltr" style="margin-top:8px;background:#f5f5f5;border-radius:14px;">
   <tr><td style="padding:18px 20px;text-align:left;">

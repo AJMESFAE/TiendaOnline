@@ -3,6 +3,9 @@ import { getContextValue, setContextValue } from '@evershop/evershop/graphql/ser
 
 /** Página «Desistir del contrato» (ver services/withdrawal). */
 export default (request, response, next) => {
+  // Enlace firmado de los correos del pedido (?t=…): lo valida la consulta tiendaWithdrawalOrder.
+  const token = typeof request.query?.t === 'string' ? request.query.t.slice(0, 100) : '';
+  setContextValue(request, 'withdrawalToken', token);
   const current = getContextValue(request, 'pageInfo', {}) as Record<string, unknown>;
   setContextValue(request, 'pageInfo', {
     ...current,

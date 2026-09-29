@@ -3,6 +3,7 @@ import path from 'path';
 import { translate } from '@evershop/evershop/lib/locale/translate/translate';
 import { productName } from './content.js';
 import { customerLocale, orderLocale, requestLocale } from './customerLocale.js';
+import { withdrawalUrl } from './withdrawalLink.js';
 
 /**
  * Correos en el idioma del cliente: el del carrito con que compró (pedido, envío,
@@ -38,13 +39,17 @@ async function localize(args: Args, locale: string, file: string, subject: strin
   };
 }
 
+/** Enlace «Desistir del contrato aquí» del pedido (firmado: el cliente solo confirma). */
+const withWithdrawalUrl = (args: Args, order: any, locale: string): Args =>
+  order?.uuid ? { ...args, data: { ...(args.data || {}), withdrawalUrl: withdrawalUrl(order.uuid, locale) } } : args;
+
 const translateItems = (items: any[] | undefined, locale: string) =>
   (items || []).map((i) => ({ ...i, product_name: productName(i.product_sku, i.product_name, locale) }));
 
 export async function orderConfirmationArgs(args: Args, order: any) {
   const locale = await orderLocale(order);
-  const out = await localize(args, locale, 'order-confirmation.html', 'Your order has been confirmed!');
-  if (out !== args && out.data?.order) {
+  const out = withWithdrawalUrl(await localize(args, locale, 'order-confirmation.html', 'Your order has been confirmed!'), order, locale);
+  if (locale !== 'es' && out.data?.order) {
     const o = out.data.order;
     out.data = {
       ...out.data,
@@ -60,14 +65,18 @@ export async function orderConfirmationArgs(args: Args, order: any) {
 
 export async function shipmentArgs(args: Args, order: any, kind: 'created' | 'delivered') {
   const locale = await orderLocale(order);
-  const out = await localize(
-    args,
-    locale,
-    kind === 'created' ? 'shipment-created.html' : 'shipment-delivered.html',
-    kind === 'created' ? 'Your order #${number} is on the way' : 'Your order #${number} has been delivered',
-    { number: String(order?.order_number ?? '') }
+  const out = withWithdrawalUrl(
+    await localize(
+      args,
+      locale,
+      kind === 'created' ? 'shipment-created.html' : 'shipment-delivered.html',
+      kind === 'created' ? 'Your order #${number} is on the way' : 'Your order #${number} has been delivered',
+      { number: String(order?.order_number ?? '') }
+    ),
+    order,
+    locale
   );
-  if (out !== args && out.data?.items) out.data = { ...out.data, items: translateItems(out.data.items, locale) };
+  if (locale !== 'es' && out.data?.items) out.data = { ...out.data, items: translateItems(out.data.items, locale) };
   return out;
 }
 

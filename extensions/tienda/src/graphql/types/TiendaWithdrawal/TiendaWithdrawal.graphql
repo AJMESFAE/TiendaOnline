@@ -1,0 +1,13 @@
+"""
+Pedido identificado por el enlace firmado de los correos (desistimiento en un paso).
+"""
+type TiendaWithdrawalOrder {
+  orderNumber: String!
+  email: String!
+  fullName: String
+  token: String!
+}
+
+extend type Query {
+  tiendaWithdrawalOrder(token: String): TiendaWithdrawalOrder
+}

@@ -486,10 +486,13 @@ Lo que la tienda hace para cumplir la normativa europea y española de venta onl
 - **Desistimiento en línea** (Directiva (UE) 2023/2673, aplicable desde el 19-6-2026):
   página `/desistimiento`, enlazada como *Desistir del contrato aquí* en el pie de todas las
   páginas, en el detalle de cada pedido de la cuenta y en el correo de confirmación. El cliente
-  indica nombre, pedido y email y pulsa *Confirmar desistimiento*; recibe al momento un acuse
-  de recibo con fecha y hora, la tienda recibe un aviso (a `MAIL_FROM` o a
-  `TIENDA_WITHDRAWAL_EMAIL`) y queda anotado en el historial del pedido (tabla
-  `tienda_withdrawal`). El reembolso se sigue haciendo a mano, en un máximo de 14 días.
+  indica nombre, pedido y email y pulsa *Confirmar desistimiento*. Desde los correos del pedido
+  (confirmación, envío y entrega) el botón lleva un enlace firmado con el pedido, así que el
+  cliente solo tiene que confirmar. Al confirmar: el cliente recibe un acuse de recibo con fecha
+  y hora; la tienda recibe un correo (a `MAIL_FROM` o a `TIENDA_WITHDRAWAL_EMAIL`) y un aviso en
+  la app móvil que abre el pedido; y queda anotado en el historial del pedido (tabla
+  `tienda_withdrawal`). El reembolso se sigue haciendo a mano, en un máximo de 14 días. La firma
+  de los enlaces usa `TIENDA_LINK_SECRET` (opcional; si no está, se deriva de `DB_PASSWORD`).
 - **Información precontractual**: aviso junto a *Pagar ahora* (pedido con obligación de pago,
   enlaces a condiciones, desistimiento y privacidad); «IVA incluido» y gastos de envío junto al
   precio; el correo de confirmación incluye la información de desistimiento y el formulario

@@ -32,6 +32,10 @@ const EMAIL = 'tienda@fundacionandalusi.org';
 /** Traducciones de los textos (clave = texto en español). */
 const TRANSLATIONS = {
   en: {
+    "Si cambias de opinión, tienes 14 días naturales desde que lo recibas para desistir de la compra:":
+      "If you change your mind, you have 14 calendar days from receiving it to withdraw from the purchase:",
+    "Tienes 14 días naturales desde hoy para desistir de la compra sin dar explicaciones. Pulsa el botón, confirma y recibirás el acuse de recibo; después nos envías los productos y te devolvemos el importe, incluidos los gastos del envío estándar.":
+      "You have 14 calendar days from today to withdraw from the purchase without giving any reason. Click the button, confirm and you will receive the acknowledgement of receipt; then send us the products and we will refund you, including the standard shipping costs.",
     "Tu derecho de desistimiento":
       "Your right of withdrawal",
     "Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a":
@@ -157,6 +161,10 @@ const TRANSLATIONS = {
     'Fundación Andalusí de España': 'Fundación Andalusí de España'
   },
   ar: {
+    "Si cambias de opinión, tienes 14 días naturales desde que lo recibas para desistir de la compra:":
+      "إذا غيّرت رأيك، فلديك 14 يومًا تقويميًا من تاريخ الاستلام للعدول عن الشراء:",
+    "Tienes 14 días naturales desde hoy para desistir de la compra sin dar explicaciones. Pulsa el botón, confirma y recibirás el acuse de recibo; después nos envías los productos y te devolvemos el importe, incluidos los gastos del envío estándar.":
+      "لديك 14 يومًا تقويميًا من اليوم للعدول عن الشراء دون تقديم أي سبب. اضغط على الزر ثم أكّد، وسيصلك إشعار الاستلام؛ بعد ذلك ترسل إلينا المنتجات ونردّ إليك المبلغ، بما فيه تكاليف الشحن العادي.",
     "Tu derecho de desistimiento":
       "حقّك في العدول عن الشراء",
     "Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a":
@@ -312,6 +320,16 @@ function build(lang) {
   </tr>
 </table>`;
 
+  /** Botón con borde (secundario). */
+  const buttonOutline = (href, label) => `
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid ${C.brand};border-radius:16px;">
+      <a href="${href}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:${FONT};font-size:15px;font-weight:700;color:${C.brand};text-decoration:none;border-radius:16px;">${label}&nbsp;${arrow}</a>
+    </td>
+  </tr>
+</table>`;
+
   const p = (html, extra = '') =>
     `<p style="margin:0 0 14px;font-family:${FONT};font-size:15px;line-height:1.7;color:${C.ink};text-align:${start};${extra}">${html}</p>`;
 
@@ -373,13 +391,15 @@ function build(lang) {
   const OWNER = 'Fundación Método Andalusí de España';
   const OWNER_ADDRESS = 'Calle Anastasio Herrero 5, 28020 Madrid';
   const small = (html) => p(html, `font-size:13px;color:${C.soft};`);
+  /** «Desistir del contrato aquí»: enlace firmado del pedido (withdrawalUrl) o, si falta, la página general. */
+  const withdrawalButton = `{{#if withdrawalUrl}}${buttonOutline('{{{withdrawalUrl}}}', t('Desistir del contrato aquí'))}{{else}}${buttonOutline(`${home}/desistimiento?order={{order.order_number}}`, t('Desistir del contrato aquí'))}{{/if}}`;
   /** Información de desistimiento y formulario modelo (art. 97 y 98.7 TRLGDCU, anexo B). */
   const withdrawalInfo = `
 ${h2(t('Tu derecho de desistimiento'))}
 ${p(`${t('Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a')} <a href="mailto:${EMAIL}" style="color:${C.brand};"><span dir="ltr">${EMAIL}</span></a> ${t('o por carta, con el modelo de formulario de abajo (su uso no es obligatorio).')}`, 'font-size:14px;')}
 ${p(t('Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde que nos lo comuniques, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.'), 'font-size:14px;')}
 ${p(`${t('Todos los productos tienen una garantía legal de conformidad de tres años.')} <a href="${home}/condiciones-de-venta" style="color:${C.brand};">${t('Consulta las condiciones de venta completas')}</a>.`, 'font-size:14px;')}
-<p style="margin:0 0 18px;font-family:${FONT};font-size:14px;text-align:${start};"><a href="${home}/desistimiento?order={{order.order_number}}" style="color:${C.brand};font-weight:700;">${t('Desistir del contrato aquí')} ${arrow}</a></p>
+${withdrawalButton}
 ${card(`
 <div style="font-family:${FONT};font-size:13px;line-height:1.7;color:${C.ink};">
   <strong>${t('Modelo de formulario de desistimiento')}</strong><br />
@@ -578,6 +598,7 @@ ${card(`
 ${h2(t('Artículos enviados'))}
 ${itemsTable('items', false)}
 ${detailsLink}
+{{#if withdrawalUrl}}${p(`${t('Si cambias de opinión, tienes 14 días naturales desde que lo recibas para desistir de la compra:')} <a href="{{{withdrawalUrl}}}" style="color:${C.brand};font-weight:700;">${t('Desistir del contrato aquí')}</a>`, `margin-top:22px;font-size:14px;color:${C.soft};`)}{{/if}}
 ${help}`
     }),
 
@@ -591,8 +612,10 @@ ${p(`${t('Tu pedido se entregó el')} {{date deliveredOn}}. ${t('Esperamos que d
 ${h2(t('Artículos entregados'))}
 ${itemsTable('items', false)}
 ${detailsLink}
-${p(t('Si algo no ha llegado bien, tienes 14 días naturales para devolverlo. Escríbenos y te explicamos cómo hacerlo.'), 'margin-top:22px;')}
 ${button(home, t('Volver a la tienda'))}
+${h2(t('Tu derecho de desistimiento'))}
+${p(t('Tienes 14 días naturales desde hoy para desistir de la compra sin dar explicaciones. Pulsa el botón, confirma y recibirás el acuse de recibo; después nos envías los productos y te devolvemos el importe, incluidos los gastos del envío estándar.'), 'font-size:14px;')}
+{{#if withdrawalUrl}}${buttonOutline('{{{withdrawalUrl}}}', t('Desistir del contrato aquí'))}{{else}}${buttonOutline(`${home}/desistimiento`, t('Desistir del contrato aquí'))}{{/if}}
 ${help}`
     })
   };

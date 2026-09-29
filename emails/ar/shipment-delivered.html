@@ -59,7 +59,6 @@
   {{/each}}
 </table>
 {{#if trackOrderUrl}}<p style="margin:20px 0 0;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:14px;text-align:right;"><a href="{{trackOrderUrl}}" style="color:#009240;font-weight:600;text-decoration:none;">عرض تفاصيل الطلب &larr;</a></p>{{/if}}
-<p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;margin-top:22px;">إذا وصلك أي شيء بحالة غير سليمة، فلديك 14 يومًا تقويميًا لإرجاعه. راسلنا وسنشرح لك الطريقة.</p>
 
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px auto 4px;">
   <tr>
@@ -68,6 +67,23 @@
     </td>
   </tr>
 </table>
+<h2 style="margin:28px 0 12px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:19px;font-weight:500;color:#3c3c3b;text-align:right;">حقّك في العدول عن الشراء</h2>
+<p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">لديك 14 يومًا تقويميًا من اليوم للعدول عن الشراء دون تقديم أي سبب. اضغط على الزر ثم أكّد، وسيصلك إشعار الاستلام؛ بعد ذلك ترسل إلينا المنتجات ونردّ إليك المبلغ، بما فيه تكاليف الشحن العادي.</p>
+{{#if withdrawalUrl}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{{withdrawalUrl}}}" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">العدول عن العقد من هنا&nbsp;&larr;</a>
+    </td>
+  </tr>
+</table>{{else}}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 22px;">
+  <tr>
+    <td align="center" style="border:2px solid #009240;border-radius:16px;">
+      <a href="{{storeInfo.homeUrl}}/ar/desistimiento" target="_blank" style="display:inline-block;padding:12px 24px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;font-weight:700;color:#009240;text-decoration:none;border-radius:16px;">العدول عن العقد من هنا&nbsp;&larr;</a>
+    </td>
+  </tr>
+</table>{{/if}}
 <p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;margin-top:26px;font-size:14px;color:#5b6573;">هل لديك أي استفسار؟ راسلنا على <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;font-weight:600;text-decoration:none;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> ويسعدنا مساعدتك.</p>
             </td>
           </tr>

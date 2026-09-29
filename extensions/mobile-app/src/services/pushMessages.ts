@@ -42,6 +42,23 @@ export function buildNewOrderMessages(
   }));
 }
 
+/** Aviso de desistimiento (función «Desistir del contrato aquí» de la tienda): abre el pedido en la app. */
+export function buildWithdrawalMessages(
+  w: { order_uuid: string; order_number: string; full_name?: string | null; email?: string | null; items?: string | null },
+  tokens: string[]
+): PushMessage[] {
+  const who = w.full_name || w.email || 'Cliente';
+  const what = w.items ? w.items.replace(/\s+/g, ' ').slice(0, 80) : 'todo el pedido';
+  return tokens.map((to) => ({
+    to,
+    title: `Desistimiento del pedido #${w.order_number}`,
+    body: `${who} · ${what}`,
+    sound: 'default',
+    channelId: 'pedidos',
+    data: { orderUuid: w.order_uuid }
+  }));
+}
+
 /** Envía los mensajes y devuelve los tokens que Expo da por caducados (app desinstalada o sin permiso). */
 export async function sendPushMessages(
   messages: PushMessage[],

@@ -1,11 +1,13 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { emit } from '@evershop/evershop/lib/event';
 import { error } from '@evershop/evershop/lib/log';
 import { translate } from '@evershop/evershop/lib/locale/translate/translate';
 import { sendEmail } from '@evershop/evershop/lib/mail/emailHelper';
 import { pool } from '@evershop/evershop/lib/postgres';
 import { getConfig } from '@evershop/evershop/lib/util/getConfig';
 import { productName } from './content.js';
+import { orderFromToken } from './withdrawalLink.js';
 
 /**
  * Desistimiento en línea (Directiva (UE) 2023/2673, art. 11 bis de la Directiva
@@ -15,8 +17,10 @@ import { productName } from './content.js';
  * reembolsa nada por sí solo: la devolución y el reembolso se gestionan como hasta ahora.
  */
 export interface WithdrawalInput {
-  orderNumber: string;
-  email: string;
+  /** Enlace firmado de los correos del pedido; si no, número de pedido y email. */
+  token?: string;
+  orderNumber?: string;
+  email?: string;
   fullName: string;
   items?: string;
   comment?: string;
@@ -29,12 +33,17 @@ const SUPPORTED = ['es', 'en', 'ar'];
 
 export async function registerWithdrawal(input: WithdrawalInput) {
   const locale = SUPPORTED.includes(input.locale) ? input.locale : 'es';
-  const { rows } = await pool.query(
-    `SELECT order_id, order_number, customer_email FROM "order"
-     WHERE order_number = $1 AND lower(customer_email) = lower($2) LIMIT 1`,
-    [input.orderNumber.trim().replace(/^#/, ''), input.email.trim()]
-  );
-  const order = rows[0];
+  let order: any = null;
+  if (input.token) {
+    order = await orderFromToken(input.token);
+  } else if (input.orderNumber && input.email) {
+    const { rows } = await pool.query(
+      `SELECT order_id, uuid, order_number, customer_email FROM "order"
+       WHERE order_number = $1 AND lower(customer_email) = lower($2) LIMIT 1`,
+      [input.orderNumber.trim().replace(/^#/, ''), input.email.trim()]
+    );
+    order = rows[0];
+  }
   if (!order) throw new OrderNotFoundError('Pedido no encontrado');
   const items = input.items?.trim() || null;
   const comment = input.comment?.trim() || null;
@@ -61,6 +70,16 @@ export async function registerWithdrawal(input: WithdrawalInput) {
   };
   await sendAcknowledgement(data, locale).catch((e) => error(e));
   await notifyShop(data).catch((e) => error(e));
+  // Aviso en la app de gestión (extensions/mobile-app, suscriptor tienda_withdrawal_registered).
+  await emit('tienda_withdrawal_registered', {
+    withdrawal_id: id,
+    order_id: order.order_id,
+    order_uuid: order.uuid,
+    order_number: order.order_number,
+    full_name: input.fullName.trim(),
+    email: order.customer_email,
+    items
+  }).catch((e) => error(e));
   return { id, orderNumber: order.order_number, receivedAt, email: order.customer_email };
 }
 

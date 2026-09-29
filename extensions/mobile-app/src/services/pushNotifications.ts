@@ -1,6 +1,6 @@
 import { info, warning } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
-import { buildNewOrderMessages, sendPushMessages } from './pushMessages.js';
+import { buildNewOrderMessages, buildWithdrawalMessages, sendPushMessages } from './pushMessages.js';
 
 /**
  * Avisos de pedido nuevo en la app de gestión (mobile/), con el servicio
@@ -40,4 +40,13 @@ export async function notifyNewOrder(orderId: number) {
   // La app se desinstaló o se revocó el permiso: el token ya no sirve.
   for (const token of invalid) await removePushToken(pool, token);
   info(`[mobile-app] Aviso del pedido #${order.order_number} enviado a ${rows.length - invalid.length} móvil(es)`);
+}
+
+/** Desistimiento recibido en la tienda (evento tienda_withdrawal_registered de la extensión tienda). */
+export async function notifyWithdrawal(w: Parameters<typeof buildWithdrawalMessages>[0]) {
+  const { rows } = await pool.query('SELECT token FROM mobile_push_token');
+  if (rows.length === 0) return;
+  const invalid = await sendPushMessages(buildWithdrawalMessages(w, rows.map((r) => r.token)), fetch, warning);
+  for (const token of invalid) await removePushToken(pool, token);
+  info(`[mobile-app] Aviso del desistimiento del pedido #${w.order_number} enviado a ${rows.length - invalid.length} móvil(es)`);
 }
