@@ -86,12 +86,17 @@ export function buildLegalPages(opts = {}) {
           '<b>Direcciones</b> de envío y de facturación.',
           '<b>Datos del pedido:</b> productos, importes, historial de compras y comunicaciones relacionadas.',
           '<b>Cuenta de cliente</b>, si decides crearla: email y contraseña (guardada cifrada).',
+          '<b>Si inicias sesión con Google:</b> tu nombre, tu email y un identificador de tu cuenta de Google, que nos facilita Google cuando lo autorizas. No recibimos tu contraseña de Google.',
+          '<b>Idioma</b> en que usas la Tienda (español, inglés o árabe), para mostrártela y escribirte en ese idioma.',
+          '<b>Desistimientos y devoluciones:</b> los datos que nos envías con la función de desistimiento o por email.',
           '<b>Datos de pago:</b> no conocemos ni guardamos los datos de tu tarjeta. El pago se realiza directamente en la pasarela segura de Redsys y de tu entidad bancaria; solo recibimos la confirmación del resultado y un código de autorización.'
         ]),
         H('3. Para qué los usamos y con qué base legal'),
         UL([
           '<b>Gestionar tu pedido</b> (cobro, preparación, envío, atención y devoluciones). Base legal: ejecución del contrato de compraventa (art. 6.1.b RGPD).',
-          '<b>Gestionar tu cuenta de cliente</b>, si la creas. Base legal: ejecución del contrato.',
+          '<b>Gestionar tu cuenta de cliente</b>, si la creas, también cuando inicias sesión con Google. Base legal: ejecución del contrato.',
+          '<b>Tramitar tu desistimiento</b>, enviarte el acuse de recibo y hacer el reembolso. Base legal: obligación legal (art. 102 y ss. TRLGDCU) y ejecución del contrato.',
+          '<b>Sugerirte direcciones</b> mientras escribes la tuya en el formulario de envío, para que el pedido llegue a una dirección correcta. Base legal: interés legítimo (art. 6.1.f RGPD). Puedes escribir la dirección completa sin elegir ninguna sugerencia.',
           '<b>Cumplir obligaciones legales</b> contables, fiscales y de consumo (facturación, conservación de documentos, atención de reclamaciones). Base legal: obligación legal (art. 6.1.c RGPD).',
           '<b>Responder a tus consultas.</b> Base legal: tu solicitud y nuestro interés legítimo en atenderla (art. 6.1.f RGPD).',
           '<b>Enviarte información sobre cursos, actividades o novedades</b> solo si lo aceptas expresamente. Base legal: consentimiento (art. 6.1.a RGPD), que puedes retirar en cualquier momento.'
@@ -104,10 +109,12 @@ export function buildLegalPages(opts = {}) {
         UL([
           '<b>Entidad bancaria y Redsys</b> (Servicios de Pago, S.L.), para procesar el pago.',
           '<b>Empresas de transporte y mensajería</b>, para entregarte el pedido.',
-          '<b>Proveedores tecnológicos</b> que actúan como encargados del tratamiento con contrato conforme al art. 28 RGPD: alojamiento de la Tienda en Microsoft Azure (centro de datos en España) y el servicio de correo electrónico con el que te enviamos las confirmaciones.',
+          '<b>Packlink</b> (Packlink Shipping, S.L.), plataforma con la que preparamos los envíos: recibe tu nombre, dirección, teléfono y email para gestionar la entrega con el transportista.',
+          '<b>Proveedores tecnológicos</b> que actúan como encargados del tratamiento con contrato conforme al art. 28 RGPD: alojamiento de la Tienda en Microsoft Azure (centro de datos en España); Odoo S.A., programa de facturación y contabilidad con el que emitimos tus facturas; Google (Google Workspace), servicio de correo electrónico con el que te escribimos; Google Maps Platform, que recibe el texto que escribes en el campo «Dirección» para sugerirte direcciones; y Expo (650 Industries, Inc.), junto con los servicios de notificaciones de Google y Apple, que avisan en el móvil al personal de la Fundación de cada pedido nuevo (número de pedido, nombre del cliente e importe).',
+          '<b>Google</b>, si eliges «Continuar con Google»: el inicio de sesión se hace en Google, que aplica su propia <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.',
           '<b>Administraciones públicas y juzgados</b>, cuando exista obligación legal.'
         ]),
-        P('Nuestros proveedores tratan los datos dentro del Espacio Económico Europeo. Si alguno realizara una transferencia fuera de él, se haría con las garantías del capítulo V del RGPD (decisión de adecuación, como el Marco de Privacidad de Datos UE-EE. UU., o cláusulas contractuales tipo).'),
+        P('La mayoría de nuestros proveedores tratan los datos dentro del Espacio Económico Europeo. Google y Expo pueden tratarlos también en Estados Unidos; esas transferencias se hacen con las garantías del capítulo V del RGPD (decisión de adecuación del Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo de la Comisión Europea).'),
         H('6. Tus derechos'),
         P(`Puedes ejercer en cualquier momento tus derechos de <b>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</b>, así como retirar tu consentimiento, escribiendo a ${emailLink} o por correo postal a ${o.address}, indicando el derecho que ejerces y acreditando tu identidad.`),
         P('Si consideras que no hemos atendido correctamente tu solicitud, puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a>.'),
@@ -128,13 +135,20 @@ export function buildLegalPages(opts = {}) {
       blocks: [
         P('Una cookie es un pequeño archivo que un sitio web guarda en tu navegador para recordar información entre visitas o entre páginas. Esta política explica qué cookies usa la Tienda, conforme al artículo 22.2 de la LSSI-CE y a la guía de la Agencia Española de Protección de Datos.'),
         H('1. Cookies que utilizamos'),
-        P('La Tienda <b>solo utiliza cookies técnicas</b>, imprescindibles para que funcione. No usamos cookies de análisis, de publicidad ni de redes sociales. Por eso no te pedimos consentimiento: las cookies técnicas están exentas (art. 22.2 LSSI-CE).'),
+        P('La Tienda <b>solo utiliza cookies técnicas</b>, imprescindibles para que funcione, y una <b>cookie de personalización</b> que recuerda el idioma que eliges. No usamos cookies de análisis, de publicidad ni de redes sociales. Por eso no te pedimos consentimiento: estas cookies están exentas (art. 22.2 LSSI-CE y guía de la AEPD).'),
         UL([
           '<b>sid</b> (propia, técnica): mantiene tu sesión de compra, es decir, tu carrito, el proceso de pago y el acceso a tu cuenta. Caduca a las 24 horas o al cerrar la sesión.',
+          '<b>tienda_lang</b> (propia, de personalización): recuerda el idioma en que usas la Tienda (español, inglés o árabe). Caduca al año.',
+          '<b>tienda_google_oauth</b> (propia, técnica): solo si pulsas «Continuar con Google»; protege el inicio de sesión frente a suplantaciones. Caduca a los 10 minutos.',
           '<b>asid</b> (propia, técnica): mantiene la sesión del personal de la Fundación en el panel de gestión. Solo se instala a quien accede a ese panel.'
         ]),
         H('2. Servicios de terceros'),
-        P('Para mostrar las tipografías de la web se cargan fuentes desde Google Fonts. Este servicio no instala cookies, pero tu navegador se conecta a los servidores de Google, que reciben tu dirección IP. Durante el pago eres redirigido a la pasarela de Redsys, que aplica su propia política de cookies.'),
+        P('Las tipografías de la web se sirven desde la propia Tienda, sin conectar con servidores de terceros.'),
+        UL([
+          '<b>Google Maps Platform:</b> cuando escribes tu dirección en el formulario de envío, tu navegador se conecta a Google para mostrarte sugerencias; Google recibe tu dirección IP y el texto que escribes. La Tienda no instala cookies de Google.',
+          '<b>Inicio de sesión con Google:</b> si eliges «Continuar con Google», se te redirige a Google, que aplica su propia política de cookies.',
+          '<b>Redsys:</b> durante el pago se te redirige a la pasarela de Redsys, que aplica su propia política de cookies.'
+        ]),
         H('3. Cómo gestionar o eliminar las cookies'),
         P('Puedes consultar, bloquear o eliminar las cookies desde la configuración de tu navegador (<a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome</a>, <a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank" rel="noopener">Firefox</a>, <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a>, <a href="https://support.microsoft.com/es-es/microsoft-edge" target="_blank" rel="noopener">Edge</a>). Si bloqueas las cookies técnicas, no podrás usar el carrito ni completar compras.'),
         H('4. Cambios'),
@@ -161,18 +175,18 @@ export function buildLegalPages(opts = {}) {
         OL([
           'Añade los productos al carrito y pulsa <i>Finalizar compra</i>.',
           'Indica tu email y tus direcciones de envío y facturación, y elige el método de envío.',
-          'Revisa el resumen del pedido (productos, gastos de envío y total) y pulsa <i>Pagar ahora</i>.',
+          'Revisa el resumen del pedido (productos, gastos de envío y total) y pulsa <i>Pagar ahora</i>. Este botón supone un pedido con obligación de pago.',
           'Completa el pago en la pasarela segura de Redsys.',
           'Recibirás un email con la confirmación del pedido, que sirve como justificante de la compra.'
         ]),
-        P('El contrato se formaliza en español. La Fundación archiva el documento electrónico del pedido, al que puedes acceder desde tu cuenta de cliente o solicitándolo por email. Antes de pagar puedes corregir cualquier dato volviendo a los pasos anteriores.'),
+        P('La Tienda está disponible en español, inglés y árabe, y el contrato puede formalizarse en cualquiera de estos idiomas; si hubiera diferencias entre las versiones, prevalece la española. La Fundación archiva el documento electrónico del pedido, al que puedes acceder desde tu cuenta de cliente o solicitándolo por email. Antes de pagar puedes corregir cualquier dato volviendo a los pasos anteriores.'),
         H('5. Pago'),
         P('Se aceptan <b>tarjetas de débito y crédito</b> (Visa, Mastercard) y <b>Bizum</b>, a través de la pasarela segura Redsys. El cargo se realiza en el momento de la compra. La Fundación no tiene acceso a los datos de tu tarjeta. El pedido se considera confirmado cuando la entidad bancaria autoriza el pago.'),
         H('6. Envío y entrega'),
         P('Los plazos, zonas y costes de envío se detallan en <a href="/envios-y-devoluciones">Envíos y devoluciones</a>. Salvo que se indique otro plazo, la entrega se realizará como máximo en 30 días naturales desde la confirmación del pedido (art. 66 bis TRLGDCU).'),
         H('7. Derecho de desistimiento'),
         P('Si eres consumidor, puedes <b>desistir de la compra en un plazo de 14 días naturales</b> sin necesidad de justificación. El plazo empieza el día en que tú, o un tercero que indiques y que no sea el transportista, recibís el producto.'),
-        P(`Para ejercerlo, comunícanoslo antes de que venza el plazo mediante una declaración inequívoca: un email a ${emailLink}, una carta a ${o.address} o el formulario modelo que encontrarás al final de estas condiciones (su uso no es obligatorio).`),
+        P(`Para ejercerlo, comunícanoslo antes de que venza el plazo mediante una declaración inequívoca. La forma más sencilla es la función <a href="/desistimiento"><b>Desistir del contrato aquí</b></a>, disponible en el pie de todas las páginas de la Tienda y en el detalle de cada pedido de tu cuenta: indicas tu nombre, el número de pedido y tu email, confirmas, y recibes al momento un acuse de recibo por email con la fecha y la hora. También puedes enviar un email a ${emailLink}, una carta a ${o.address} o el formulario modelo que encontrarás al final de estas condiciones (su uso no es obligatorio).`),
         UL([
           '<b>Devolución del producto:</b> envíalo a la dirección anterior sin demora indebida y, como máximo, en los 14 días naturales siguientes a comunicarnos tu decisión. Los costes directos de la devolución corren a tu cargo, salvo que el producto sea defectuoso o no corresponda con lo pedido.',
           '<b>Reembolso:</b> te devolvemos todos los pagos recibidos, incluidos los gastos del envío estándar inicial, en un plazo máximo de 14 días naturales desde que nos comuniques el desistimiento, por el mismo medio de pago que usaste. Podemos retener el reembolso hasta recibir el producto o hasta que acredites su envío.',
@@ -182,7 +196,8 @@ export function buildLegalPages(opts = {}) {
         H('8. Garantía legal'),
         P('Todos los productos cuentan con la garantía legal de conformidad: la Fundación responde de las faltas de conformidad que se manifiesten en un plazo de <b>tres años</b> desde la entrega (art. 120 TRLGDCU). Si recibes un producto defectuoso o dañado, escríbenos y lo repararemos, sustituiremos o, si no es posible, te devolveremos su importe, sin coste para ti.'),
         H('9. Atención al cliente y reclamaciones'),
-        P(`Para cualquier consulta, incidencia o reclamación, escríbenos a ${emailLink}. Respondemos en el menor plazo posible y, en todo caso, en un máximo de un mes. Tienes a tu disposición hojas oficiales de reclamación. También puedes acudir al sistema arbitral de consumo a través de la Junta Arbitral de Consumo de tu comunidad autónoma.`),
+        P(`Para cualquier consulta, incidencia o reclamación, escríbenos a ${emailLink}. Respondemos en el menor plazo posible y, en todo caso, en un máximo de un mes. Tienes a tu disposición hojas oficiales de reclamación: pídenoslas por email y te las enviaremos.`),
+        P('Si no quedas satisfecho con nuestra respuesta, puedes acudir a los servicios de consumo de tu comunidad autónoma o a la <a href="https://consumo.gob.es/es/consumo/sistema-arbitral-consumo" target="_blank" rel="noopener">Junta Arbitral de Consumo</a> que corresponda.'),
         H('10. Legislación aplicable'),
         P('Estas condiciones se rigen por la legislación española. Las controversias con consumidores se someterán a los juzgados y tribunales de su domicilio.'),
         H('Formulario de desistimiento', 3),
@@ -220,7 +235,7 @@ export function buildLegalPages(opts = {}) {
         H('Devoluciones'),
         P('Tienes <b>14 días naturales</b> desde la recepción para devolver cualquier producto sin dar explicaciones, conforme al derecho de desistimiento (ver <a href="/condiciones-de-venta">Condiciones de venta</a>, apartado 7).'),
         OL([
-          `Escríbenos a ${emailLink} indicando el número de pedido y los productos que devuelves, o usa el formulario de desistimiento.`,
+          `Usa la función <a href="/desistimiento"><b>Desistir del contrato aquí</b></a> (en el pie de todas las páginas), escríbenos a ${emailLink} indicando el número de pedido y los productos que devuelves, o envíanos el formulario de desistimiento.`,
           `Envía el producto, bien protegido, a: <b>${o.owner} · ${o.address}</b>.`,
           'Cuando lo recibamos, o cuando acredites que lo has enviado, te reembolsaremos el importe por el mismo medio de pago en un máximo de 14 días naturales.'
         ]),

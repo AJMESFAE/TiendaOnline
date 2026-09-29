@@ -240,6 +240,7 @@ entorno*; al guardar, Azure reinicia la app.
 | `GOOGLE_MAPS_API_KEY` | Opcional. Autocompletar la dirección (ver §4.3) |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Opcionales. Iniciar sesión con Google (ver §4.7) |
 | `PACKLINK_API_KEY` | Opcional. Envíos con Packlink PRO (ver §4.4) |
+| `TIENDA_WITHDRAWAL_EMAIL` | Opcional. Dónde se avisa de cada desistimiento (por defecto, la dirección de `MAIL_FROM`) |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Administrador creado en el primer arranque (después no se vuelve a tocar) |
 | `JWT_ADMIN_SECRET`, `JWT_ADMIN_REFRESH_SECRET` | Opcionales. Firman los tokens de la app móvil; si no están, `scripts/start.mjs` los deriva de `DB_PASSWORD` |
 | `EXPO_ACCESS_TOKEN` | Opcional. Solo si se activa la seguridad reforzada de Expo Push para los avisos de pedido nuevo de la app móvil |
@@ -477,6 +478,31 @@ configurado:
 El flujo es OAuth 2.0 / OpenID Connect con código, PKCE, `state` y `nonce`
 (`extensions/tienda/src/services/googleAuth.ts`); las cuentas vinculadas se guardan en la tabla
 `tienda_google_account`. No afecta a la app móvil.
+
+### 4.8 Normativa de consumo y privacidad
+
+Lo que la tienda hace para cumplir la normativa europea y española de venta online:
+
+- **Desistimiento en línea** (Directiva (UE) 2023/2673, aplicable desde el 19-6-2026):
+  página `/desistimiento`, enlazada como *Desistir del contrato aquí* en el pie de todas las
+  páginas, en el detalle de cada pedido de la cuenta y en el correo de confirmación. El cliente
+  indica nombre, pedido y email y pulsa *Confirmar desistimiento*; recibe al momento un acuse
+  de recibo con fecha y hora, la tienda recibe un aviso (a `MAIL_FROM` o a
+  `TIENDA_WITHDRAWAL_EMAIL`) y queda anotado en el historial del pedido (tabla
+  `tienda_withdrawal`). El reembolso se sigue haciendo a mano, en un máximo de 14 días.
+- **Información precontractual**: aviso junto a *Pagar ahora* (pedido con obligación de pago,
+  enlaces a condiciones, desistimiento y privacidad); «IVA incluido» y gastos de envío junto al
+  precio; el correo de confirmación incluye la información de desistimiento y el formulario
+  modelo (soporte duradero).
+- **Seguridad de los productos** (Reglamento (UE) 2023/988, art. 19): cada ficha muestra el
+  fabricante con dirección postal y email, y la referencia. Se configura en
+  `extensions/tienda/content/product-safety.json`; si un producto necesita advertencias (por
+  ejemplo, un juguete), se añaden ahí por SKU y en cada idioma.
+- **Sin terceros al navegar**: las tipografías se sirven desde la tienda (`themes/albayan/public/fonts`)
+  y el script de Stripe ya no se carga (`scripts/patch-evershop.mjs`, se aplica en `npm run build`).
+  Google solo interviene si el cliente escribe su dirección (sugerencias) o elige *Continuar con Google*.
+- **Cookies**: solo técnicas y la de idioma, exentas de consentimiento; por eso no hay banner.
+  Si se añade analítica o publicidad, hará falta un banner de consentimiento.
 
 ---
 

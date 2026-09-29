@@ -32,6 +32,60 @@ const EMAIL = 'tienda@fundacionandalusi.org';
 /** Traducciones de los textos (clave = texto en español). */
 const TRANSLATIONS = {
   en: {
+    "Tu derecho de desistimiento":
+      "Your right of withdrawal",
+    "Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a":
+      "You have 14 calendar days from receiving your order to withdraw from the purchase without giving any reason. You can do so with the “Withdraw from contract here” link, by writing to us at",
+    "o por carta, con el modelo de formulario de abajo (su uso no es obligatorio).":
+      "or by letter, using the model form below (its use is not mandatory).",
+    "Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde que nos lo comuniques, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.":
+      "We will refund all payments, including standard shipping costs, within 14 calendar days of being informed, using the same payment method. We may wait until we receive the products or proof that they have been sent. You bear the cost of returning them, unless the product is defective or is not what you ordered.",
+    "Todos los productos tienen una garantía legal de conformidad de tres años.":
+      "All products have a three-year legal guarantee of conformity.",
+    "Consulta las condiciones de venta completas":
+      "Read the full terms of sale",
+    "Desistir del contrato aquí":
+      "Withdraw from contract here",
+    "Modelo de formulario de desistimiento":
+      "Model withdrawal form",
+    "A la atención de":
+      "To",
+    "Por la presente le comunico que desisto de mi contrato de venta del siguiente bien:":
+      "I hereby give notice that I withdraw from my contract of sale of the following goods:",
+    "Pedido el":
+      "Ordered on",
+    "Recibido el":
+      "Received on",
+    "Nombre y domicilio del consumidor:":
+      "Name and address of the consumer:",
+    "Firma (solo si se presenta en papel) y fecha:":
+      "Signature (only if submitted on paper) and date:",
+    "Hemos recibido tu desistimiento.":
+      "We have received your withdrawal.",
+    "Hemos recibido tu desistimiento":
+      "We have received your withdrawal",
+    "Este es el acuse de recibo de tu desistimiento. Estos son los datos que nos has enviado:":
+      "This is the acknowledgement of receipt of your withdrawal. These are the details you sent us:",
+    "Referencia":
+      "Reference",
+    "Correo electrónico":
+      "Email",
+    "Nombre":
+      "Name",
+    "Productos":
+      "Products",
+    "Todo el pedido":
+      "The whole order",
+    "Comentarios":
+      "Comments",
+    "Productos del pedido":
+      "Products in the order",
+    "Próximos pasos":
+      "Next steps",
+    "Envíanos los productos en un plazo de 14 días naturales a esta dirección, indicando el número de pedido:":
+      "Please send us the products within 14 calendar days to this address, stating the order number:",
+    "Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde hoy, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.":
+      "We will refund all payments, including standard shipping costs, within 14 calendar days from today, using the same payment method. We may wait until we receive the products or proof that they have been sent. You bear the cost of returning them, unless the product is defective or is not what you ordered.",
     'Cantidad': 'Quantity',
     '¿Tienes alguna duda? Escríbenos a': 'Any questions? Write to us at',
     'y te ayudaremos encantados.': 'and we will be happy to help.',
@@ -103,6 +157,60 @@ const TRANSLATIONS = {
     'Fundación Andalusí de España': 'Fundación Andalusí de España'
   },
   ar: {
+    "Tu derecho de desistimiento":
+      "حقّك في العدول عن الشراء",
+    "Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a":
+      "لديك 14 يومًا تقويميًا من تاريخ استلام طلبك للعدول عن الشراء دون الحاجة إلى تقديم أي سبب. يمكنك ذلك عبر رابط «العدول عن العقد من هنا»، أو بمراسلتنا على",
+    "o por carta, con el modelo de formulario de abajo (su uso no es obligatorio).":
+      "أو برسالة بريدية، باستخدام نموذج الاستمارة أدناه (استخدامه غير إلزامي).",
+    "Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde que nos lo comuniques, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.":
+      "سنردّ إليك جميع المبالغ المدفوعة، بما فيها تكاليف الشحن العادي، خلال 14 يومًا تقويميًا كحدّ أقصى من إبلاغنا، وبوسيلة الدفع نفسها. ويجوز لنا الانتظار حتى نستلم المنتجات أو ما يثبت إرسالها. وتتحمّل تكاليف الإرجاع، إلا إذا كان المنتج معيبًا أو غير مطابق لما طلبته.",
+    "Todos los productos tienen una garantía legal de conformidad de tres años.":
+      "تتمتّع جميع المنتجات بضمان قانوني للمطابقة مدّته ثلاث سنوات.",
+    "Consulta las condiciones de venta completas":
+      "اطّلع على شروط البيع كاملة",
+    "Desistir del contrato aquí":
+      "العدول عن العقد من هنا",
+    "Modelo de formulario de desistimiento":
+      "نموذج استمارة العدول",
+    "A la atención de":
+      "إلى عناية",
+    "Por la presente le comunico que desisto de mi contrato de venta del siguiente bien:":
+      "أُبلغكم بموجب هذا بعدولي عن عقد بيع السلعة التالية:",
+    "Pedido el":
+      "تاريخ الطلب",
+    "Recibido el":
+      "تاريخ الاستلام",
+    "Nombre y domicilio del consumidor:":
+      "اسم المستهلك وعنوانه:",
+    "Firma (solo si se presenta en papel) y fecha:":
+      "التوقيع (فقط إذا قُدّمت الاستمارة ورقيًا) والتاريخ:",
+    "Hemos recibido tu desistimiento.":
+      "تلقّينا طلب العدول الخاص بك.",
+    "Hemos recibido tu desistimiento":
+      "تلقّينا طلب العدول الخاص بك",
+    "Este es el acuse de recibo de tu desistimiento. Estos son los datos que nos has enviado:":
+      "هذا إشعار باستلام طلب العدول الخاص بك. وهذه هي البيانات التي أرسلتها إلينا:",
+    "Referencia":
+      "المرجع",
+    "Correo electrónico":
+      "البريد الإلكتروني",
+    "Nombre":
+      "الاسم",
+    "Productos":
+      "المنتجات",
+    "Todo el pedido":
+      "الطلب بالكامل",
+    "Comentarios":
+      "ملاحظات",
+    "Productos del pedido":
+      "منتجات الطلب",
+    "Próximos pasos":
+      "الخطوات التالية",
+    "Envíanos los productos en un plazo de 14 días naturales a esta dirección, indicando el número de pedido:":
+      "أرسل إلينا المنتجات خلال 14 يومًا تقويميًا إلى هذا العنوان، مع ذكر رقم الطلب:",
+    "Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde hoy, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.":
+      "سنردّ إليك جميع المبالغ المدفوعة، بما فيها تكاليف الشحن العادي، خلال 14 يومًا تقويميًا كحدّ أقصى من اليوم، وبوسيلة الدفع نفسها. ويجوز لنا الانتظار حتى نستلم المنتجات أو ما يثبت إرسالها. وتتحمّل تكاليف الإرجاع، إلا إذا كان المنتج معيبًا أو غير مطابق لما طلبته.",
     'Cantidad': 'الكمية',
     '¿Tienes alguna duda? Escríbenos a': 'هل لديك أي استفسار؟ راسلنا على',
     'y te ayudaremos encantados.': 'ويسعدنا مساعدتك.',
@@ -261,6 +369,27 @@ function build(lang) {
 </div>
 {{/if}}`;
 
+
+  const OWNER = 'Fundación Método Andalusí de España';
+  const OWNER_ADDRESS = 'Calle Anastasio Herrero 5, 28020 Madrid';
+  const small = (html) => p(html, `font-size:13px;color:${C.soft};`);
+  /** Información de desistimiento y formulario modelo (art. 97 y 98.7 TRLGDCU, anexo B). */
+  const withdrawalInfo = `
+${h2(t('Tu derecho de desistimiento'))}
+${p(`${t('Tienes 14 días naturales desde que recibes el pedido para desistir de la compra sin dar explicaciones. Puedes hacerlo con el enlace «Desistir del contrato aquí», escribiéndonos a')} <a href="mailto:${EMAIL}" style="color:${C.brand};"><span dir="ltr">${EMAIL}</span></a> ${t('o por carta, con el modelo de formulario de abajo (su uso no es obligatorio).')}`, 'font-size:14px;')}
+${p(t('Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde que nos lo comuniques, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.'), 'font-size:14px;')}
+${p(`${t('Todos los productos tienen una garantía legal de conformidad de tres años.')} <a href="${home}/condiciones-de-venta" style="color:${C.brand};">${t('Consulta las condiciones de venta completas')}</a>.`, 'font-size:14px;')}
+<p style="margin:0 0 18px;font-family:${FONT};font-size:14px;text-align:${start};"><a href="${home}/desistimiento?order={{order.order_number}}" style="color:${C.brand};font-weight:700;">${t('Desistir del contrato aquí')} ${arrow}</a></p>
+${card(`
+<div style="font-family:${FONT};font-size:13px;line-height:1.7;color:${C.ink};">
+  <strong>${t('Modelo de formulario de desistimiento')}</strong><br />
+  ${t('A la atención de')} <span dir="ltr">${OWNER}, ${OWNER_ADDRESS}, ${EMAIL}</span>:<br />
+  ${t('Por la presente le comunico que desisto de mi contrato de venta del siguiente bien:')} ……………………<br />
+  ${t('Pedido n.º')} <span dir="ltr">{{order.order_number}}</span> · ${t('Pedido el')} {{date order.created_at}} · ${t('Recibido el')}: ………<br />
+  ${t('Nombre y domicilio del consumidor:')} ……………………<br />
+  ${t('Firma (solo si se presenta en papel) y fecha:')} ………
+</div>`)}`;
+
   const orderNo = `${t('Pedido n.º')} <span dir="ltr">{{order.order_number}}</span>`;
   const detailsLink = `{{#if trackOrderUrl}}<p style="margin:20px 0 0;font-family:${FONT};font-size:14px;text-align:${start};"><a href="{{trackOrderUrl}}" style="color:${C.brand};font-weight:600;text-decoration:none;">${t('Ver los detalles del pedido')} ${arrow}</a></p>{{/if}}`;
 
@@ -273,7 +402,7 @@ function build(lang) {
   <meta name="color-scheme" content="light" />
   <meta name="supported-color-schemes" content="light" />
   <title>${title}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="{{storeInfo.homeUrl}}/fonts/fonts.css" rel="stylesheet" />
   <style>
     @media (max-width: 620px) {
       .container { width: 100% !important; }
@@ -377,6 +506,33 @@ ${itemsTable('order.items', true)}
   </tr>
 </table>
 ${button(home, t('Seguir comprando'))}
+${withdrawalInfo}
+${help}`
+    }),
+
+    'withdrawal-received.html': layout({
+      preheader: t('Hemos recibido tu desistimiento.'),
+      eyebrow: orderNo,
+      title: t('Hemos recibido tu desistimiento'),
+      body: `
+${p(`${t('Hola')} {{withdrawal.fullName}}${rtl ? '،' : ','}`)}
+${p(t('Este es el acuse de recibo de tu desistimiento. Estos son los datos que nos has enviado:'))}
+${card(`
+<div style="font-family:${FONT};font-size:14px;line-height:1.8;color:${C.ink};">
+  <strong>${t('Pedido n.º')}:</strong> <span dir="ltr">{{order.order_number}}</span><br />
+  <strong>${t('Recibido el')}:</strong> {{withdrawal.receivedAt}}<br />
+  <strong>${t('Referencia')}:</strong> <span dir="ltr">{{withdrawal.id}}</span><br />
+  <strong>${t('Nombre')}:</strong> {{withdrawal.fullName}}<br />
+  <strong>${t('Correo electrónico')}:</strong> <span dir="ltr">{{withdrawal.email}}</span><br />
+  <strong>${t('Productos')}:</strong> {{#if withdrawal.items}}{{withdrawal.items}}{{else}}${t('Todo el pedido')}{{/if}}
+  {{#if withdrawal.comment}}<br /><strong>${t('Comentarios')}:</strong> {{withdrawal.comment}}{{/if}}
+</div>`)}
+${h2(t('Productos del pedido'))}
+${itemsTable('products', false)}
+${h2(t('Próximos pasos'))}
+${p(t('Envíanos los productos en un plazo de 14 días naturales a esta dirección, indicando el número de pedido:'))}
+${p(`<strong dir="ltr">${OWNER} · ${OWNER_ADDRESS}</strong>`)}
+${p(t('Te devolveremos todos los pagos, incluidos los gastos del envío estándar, en un máximo de 14 días naturales desde hoy, por el mismo medio de pago. Podemos esperar a recibir los productos o el justificante de su envío. Los gastos de devolución corren de tu cuenta, salvo que el producto sea defectuoso o no sea lo que pediste.'))}
 ${help}`
     }),
 

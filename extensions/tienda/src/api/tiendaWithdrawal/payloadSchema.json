@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "orderNumber": { "type": "string", "minLength": 1, "maxLength": 40, "skipEscape": true },
+    "email": { "type": "string", "format": "email", "maxLength": 255, "skipEscape": true },
+    "fullName": { "type": "string", "minLength": 1, "maxLength": 255, "skipEscape": true },
+    "items": { "type": "string", "maxLength": 2000, "skipEscape": true },
+    "comment": { "type": "string", "maxLength": 2000, "skipEscape": true }
+  },
+  "required": ["orderNumber", "email", "fullName"],
+  "additionalProperties": false
+}

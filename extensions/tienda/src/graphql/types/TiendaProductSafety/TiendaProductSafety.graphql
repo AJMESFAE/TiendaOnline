@@ -1,0 +1,13 @@
+"""
+Datos de seguridad del producto que exige el Reglamento (UE) 2023/988 en la venta en línea.
+"""
+type TiendaProductSafety {
+  manufacturer: String
+  address: String
+  email: String
+  warnings: String
+}
+
+extend type Product {
+  safetyInfo: TiendaProductSafety
+}

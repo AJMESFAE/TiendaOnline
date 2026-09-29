@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="supported-color-schemes" content="light" />
   <title>شكرًا على طلبك!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="{{storeInfo.homeUrl}}/fonts/fonts.css" rel="stylesheet" />
   <style>
     @media (max-width: 620px) {
       .container { width: 100% !important; }
@@ -121,6 +121,24 @@
       <a href="{{storeInfo.homeUrl}}/ar" target="_blank" style="display:inline-block;padding:15px 28px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:16px;">متابعة التسوّق&nbsp;&larr;</a>
     </td>
   </tr>
+</table>
+
+<h2 style="margin:28px 0 12px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:19px;font-weight:500;color:#3c3c3b;text-align:right;">حقّك في العدول عن الشراء</h2>
+<p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">لديك 14 يومًا تقويميًا من تاريخ استلام طلبك للعدول عن الشراء دون الحاجة إلى تقديم أي سبب. يمكنك ذلك عبر رابط «العدول عن العقد من هنا»، أو بمراسلتنا على <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> أو برسالة بريدية، باستخدام نموذج الاستمارة أدناه (استخدامه غير إلزامي).</p>
+<p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">سنردّ إليك جميع المبالغ المدفوعة، بما فيها تكاليف الشحن العادي، خلال 14 يومًا تقويميًا كحدّ أقصى من إبلاغنا، وبوسيلة الدفع نفسها. ويجوز لنا الانتظار حتى نستلم المنتجات أو ما يثبت إرسالها. وتتحمّل تكاليف الإرجاع، إلا إذا كان المنتج معيبًا أو غير مطابق لما طلبته.</p>
+<p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;font-size:14px;">تتمتّع جميع المنتجات بضمان قانوني للمطابقة مدّته ثلاث سنوات. <a href="{{storeInfo.homeUrl}}/ar/condiciones-de-venta" style="color:#009240;">اطّلع على شروط البيع كاملة</a>.</p>
+<p style="margin:0 0 18px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:14px;text-align:right;"><a href="{{storeInfo.homeUrl}}/ar/desistimiento?order={{order.order_number}}" style="color:#009240;font-weight:700;">العدول عن العقد من هنا &larr;</a></p>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="margin-top:8px;background:#f5f5f5;border-radius:14px;">
+  <tr><td style="padding:18px 20px;text-align:right;">
+<div style="font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:13px;line-height:1.7;color:#3c3c3b;">
+  <strong>نموذج استمارة العدول</strong><br />
+  إلى عناية <span dir="ltr">Fundación Método Andalusí de España, Calle Anastasio Herrero 5, 28020 Madrid, tienda@fundacionandalusi.org</span>:<br />
+  أُبلغكم بموجب هذا بعدولي عن عقد بيع السلعة التالية: ……………………<br />
+  رقم الطلب <span dir="ltr">{{order.order_number}}</span> · تاريخ الطلب {{date order.created_at}} · تاريخ الاستلام: ………<br />
+  اسم المستهلك وعنوانه: ……………………<br />
+  التوقيع (فقط إذا قُدّمت الاستمارة ورقيًا) والتاريخ: ………
+</div></td></tr>
 </table>
 <p style="margin:0 0 14px;font-family:Tajawal, 'Segoe UI', Tahoma, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:right;margin-top:26px;font-size:14px;color:#5b6573;">هل لديك أي استفسار؟ راسلنا على <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;font-weight:600;text-decoration:none;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> ويسعدنا مساعدتك.</p>
             </td>

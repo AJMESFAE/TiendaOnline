@@ -191,6 +191,9 @@
       "<b>Addresses</b> for delivery and billing.",
       "<b>Order details:</b> products, amounts, purchase history and related communications.",
       "<b>Customer account</b>, if you choose to create one: email address and password (stored encrypted).",
+      "<b>If you sign in with Google:</b> your name, your email address and an identifier of your Google account, which Google provides to us when you authorise it. We do not receive your Google password.",
+      "<b>Language</b> in which you use the Shop (Spanish, English or Arabic), so that we can show it and write to you in that language.",
+      "<b>Withdrawals and returns:</b> the details you send us through the withdrawal function or by email.",
       "<b>Payment details:</b> we do not see or store your card details. Payment is made directly on the secure payment gateway of Redsys and your bank; we only receive confirmation of the outcome and an authorisation code."
      ]
     }
@@ -210,7 +213,9 @@
      "style": "unordered",
      "items": [
       "<b>Managing your order</b> (payment, preparation, shipping, customer service and returns). Legal basis: performance of the sales contract (Art. 6(1)(b) GDPR).",
-      "<b>Managing your customer account</b>, if you create one. Legal basis: performance of the contract.",
+      "<b>Managing your customer account</b>, if you create one, including when you sign in with Google. Legal basis: performance of the contract.",
+      "<b>Processing your withdrawal</b>, sending you the acknowledgement of receipt and making the refund. Legal basis: legal obligation (Article 102 et seq. TRLGDCU) and performance of the contract.",
+      "<b>Suggesting addresses</b> while you type yours in the delivery form, so that your order reaches a correct address. Legal basis: legitimate interest (Article 6(1)(f) GDPR). You can type the full address without choosing any suggestion.",
       "<b>Complying with legal obligations</b> relating to accounting, tax and consumer law (invoicing, retention of documents, handling of complaints). Legal basis: legal obligation (Art. 6(1)(c) GDPR).",
       "<b>Answering your enquiries.</b> Legal basis: your request and our legitimate interest in responding to it (Art. 6(1)(f) GDPR).",
       "<b>Sending you information about courses, activities or news</b> only if you expressly agree. Legal basis: consent (Art. 6(1)(a) GDPR), which you may withdraw at any time."
@@ -262,7 +267,9 @@
      "items": [
       "<b>Your bank and Redsys</b> (Servicios de Pago, S.L.), to process the payment.",
       "<b>Transport and courier companies</b>, to deliver your order.",
-      "<b>Technology providers</b> acting as data processors under a contract in accordance with Art. 28 GDPR: hosting of the Shop on Microsoft Azure (data centre in Spain) and the email service we use to send you confirmations.",
+      "<b>Packlink</b> (Packlink Shipping, S.L.), the platform we use to prepare shipments: it receives your name, address, telephone number and email address to arrange delivery with the carrier.",
+      "<b>Technology providers</b> acting as data processors under a contract compliant with Article 28 GDPR: hosting of the Shop on Microsoft Azure (data centre in Spain); Odoo S.A., the invoicing and accounting software we use to issue your invoices; Google (Google Workspace), the email service we use to write to you; Google Maps Platform, which receives the text you type in the “Address” field to suggest addresses; and Expo (650 Industries, Inc.), together with the Google and Apple notification services, which notify Foundation staff on their mobile phones of each new order (order number, customer name and amount).",
+      "<b>Google</b>, if you choose “Continue with Google”: sign-in takes place on Google, which applies its own <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">privacy policy</a>.",
       "<b>Public authorities and courts</b>, where there is a legal obligation to do so."
      ]
     }
@@ -271,7 +278,7 @@
     "id": "politica_de_privacidad_13",
     "type": "paragraph",
     "data": {
-     "text": "Our providers process data within the European Economic Area. Should any of them transfer data outside it, this would be done with the safeguards set out in Chapter V of the GDPR (an adequacy decision, such as the EU-US Data Privacy Framework, or standard contractual clauses)."
+     "text": "Most of our providers process data within the European Economic Area. Google and Expo may also process it in the United States; these transfers are made with the safeguards of Chapter V GDPR (adequacy decision under the EU-US Data Privacy Framework or standard contractual clauses of the European Commission)."
     }
    },
    {
@@ -367,7 +374,7 @@
     "id": "politica_de_cookies_2",
     "type": "paragraph",
     "data": {
-     "text": "The Shop <b>only uses technical cookies</b>, which are essential for it to work. We do not use analytics, advertising or social media cookies. That is why we do not ask for your consent: technical cookies are exempt (Art. 22.2 LSSI-CE)."
+     "text": "The Shop <b>only uses technical cookies</b>, which are essential for it to work, and one <b>personalisation cookie</b> that remembers the language you choose. We do not use analytics, advertising or social media cookies. That is why we do not ask for your consent: these cookies are exempt (Article 22(2) LSSI-CE and the guidance of the Spanish Data Protection Agency)."
     }
    },
    {
@@ -377,6 +384,8 @@
      "style": "unordered",
      "items": [
       "<b>sid</b> (first-party, technical): keeps your shopping session, that is, your basket, the checkout process and access to your account. It expires after 24 hours or when you log out.",
+      "<b>tienda_lang</b> (first-party, personalisation): remembers the language in which you use the Shop (Spanish, English or Arabic). Expires after one year.",
+      "<b>tienda_google_oauth</b> (first-party, technical): only if you click “Continue with Google”; protects sign-in against impersonation. Expires after 10 minutes.",
       "<b>asid</b> (first-party, technical): keeps the session of Foundation staff in the management panel. It is only set for those who access that panel."
      ]
     }
@@ -393,7 +402,19 @@
     "id": "politica_de_cookies_5",
     "type": "paragraph",
     "data": {
-     "text": "To display the website’s typefaces, fonts are loaded from Google Fonts. This service does not set cookies, but your browser connects to Google’s servers, which receive your IP address. During payment you are redirected to the Redsys payment gateway, which applies its own cookie policy."
+     "text": "The website’s typefaces are served from the Shop itself, without connecting to third-party servers."
+    }
+   },
+   {
+    "id": "politica_de_cookies_third_list",
+    "type": "list",
+    "data": {
+     "style": "unordered",
+     "items": [
+      "<b>Google Maps Platform:</b> when you type your address in the delivery form, your browser connects to Google to show you suggestions; Google receives your IP address and the text you type. The Shop does not set Google cookies.",
+      "<b>Sign-in with Google:</b> if you choose “Continue with Google”, you are redirected to Google, which applies its own cookie policy.",
+      "<b>Redsys:</b> during payment you are redirected to the Redsys payment gateway, which applies its own cookie policy."
+     ]
     }
    },
    {
@@ -523,7 +544,7 @@
      "items": [
       "Add the products to your basket and click <i>Checkout</i>.",
       "Enter your email address and your delivery and billing addresses, and choose the shipping method.",
-      "Review the order summary (products, shipping costs and total) and click <i>Pagar ahora</i> (Pay now).",
+      "Review the order summary (products, shipping costs and total) and click <i>Pay now</i>. This button means placing an order with an obligation to pay.",
       "Complete the payment on the secure Redsys payment gateway.",
       "You will receive an email confirming your order, which serves as proof of purchase."
      ]
@@ -533,7 +554,7 @@
     "id": "condiciones_de_venta_9",
     "type": "paragraph",
     "data": {
-     "text": "The contract is concluded in Spanish. The Foundation keeps the electronic order document on file, which you can access from your customer account or request by email. Before paying, you can correct any details by going back to the previous steps."
+     "text": "The Shop is available in Spanish, English and Arabic, and the contract may be concluded in any of these languages; in the event of any discrepancy between versions, the Spanish version shall prevail. The Foundation keeps the electronic order document on file, which you can access from your customer account or by requesting it by email. Before paying, you can correct any details by going back to the previous steps."
     }
    },
    {
@@ -585,7 +606,7 @@
     "id": "condiciones_de_venta_16",
     "type": "paragraph",
     "data": {
-     "text": "To exercise this right, you must inform us before the period expires by means of an unequivocal statement: an email to <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>, a letter to Calle Anastasio Herrero 5, 28020 Madrid, or the model form at the end of these terms (its use is not compulsory)."
+     "text": "To exercise this right, you must inform us before the period expires by means of an unequivocal statement. The easiest way is the <a href=\"/desistimiento\"><b>Withdraw from contract here</b></a> function, available in the footer of every page of the Shop and in the details of each order in your account: you enter your name, order number and email address, confirm, and immediately receive an acknowledgement of receipt by email with the date and time. You can also send an email to <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>, a letter to Calle Anastasio Herrero 5, 28020 Madrid, or the model form at the end of these terms (its use is not mandatory)."
     }
    },
    {
@@ -634,7 +655,14 @@
     "id": "condiciones_de_venta_22",
     "type": "paragraph",
     "data": {
-     "text": "For any enquiry, issue or complaint, write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>. We reply as quickly as possible and, in any case, within one month at most. Official complaint forms (hojas oficiales de reclamación) are available to you. You may also use the consumer arbitration system through the Consumer Arbitration Board (Junta Arbitral de Consumo) of your autonomous community."
+     "text": "For any enquiry, issue or complaint, write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a>. We reply as soon as possible and, in any case, within one month. Official complaint forms (hojas de reclamación) are available to you: ask us for them by email and we will send them to you."
+    }
+   },
+   {
+    "id": "condiciones_de_venta_adr",
+    "type": "paragraph",
+    "data": {
+     "text": "If you are not satisfied with our reply, you can contact the consumer affairs services of your autonomous community or the relevant <a href=\"https://consumo.gob.es/es/consumo/sistema-arbitral-consumo\" target=\"_blank\" rel=\"noopener\">Consumer Arbitration Board</a> (Junta Arbitral de Consumo)."
     }
    },
    {
@@ -769,7 +797,7 @@
     "data": {
      "style": "ordered",
      "items": [
-      "Write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a> stating your order number and the products you are returning, or use the withdrawal form.",
+      "Use the <a href=\"/desistimiento\"><b>Withdraw from contract here</b></a> function (in the footer of every page), write to us at <a href=\"mailto:tienda@fundacionandalusi.org\">tienda@fundacionandalusi.org</a> stating your order number and the products you are returning, or send us the withdrawal form.",
       "Send the product, well protected, to: <b>Fundación Método Andalusí de España · Calle Anastasio Herrero 5, 28020 Madrid</b>.",
       "Once we receive it, or once you provide evidence that you have sent it, we will refund the amount using the same means of payment within a maximum of 14 calendar days."
      ]

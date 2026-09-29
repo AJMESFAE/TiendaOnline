@@ -60,3 +60,34 @@ Continue with Google,المتابعة باستخدام Google
 or,أو
 We could not sign you in with Google. Please try again.,تعذّر تسجيل دخولك باستخدام Google. يُرجى المحاولة مرة أخرى.
 This account is disabled. Please contact us.,هذا الحساب معطّل. يُرجى التواصل معنا.
+Withdraw from the contract,العدول عن العقد
+Withdraw from your purchase within 14 days,اعدل عن شرائك خلال 14 يومًا
+Withdrawal received,تم استلام طلب العدول
+We have registered your withdrawal from order #${number} on ${date}.,سجّلنا عدولك عن الطلب رقم ${number} بتاريخ ${date}.
+We have sent the acknowledgement of receipt to ${email}. Reference: ${id}.,أرسلنا إشعار الاستلام إلى ${email}. المرجع: ${id}.
+"Please return the products within 14 days. We will refund you within 14 days, including the standard shipping costs.",يُرجى إرسال المنتجات إلينا خلال 14 يومًا. وسنردّ إليك المبلغ خلال 14 يومًا كحدّ أقصى، بما فيه تكاليف الشحن العادي.
+"You can withdraw from your purchase within 14 calendar days of receiving it, without giving any reason.",يمكنك العدول عن شرائك خلال 14 يومًا تقويميًا من تاريخ استلامه، دون تقديم أي سبب.
+More information,مزيد من المعلومات
+Order number,رقم الطلب
+Email used for the order,البريد الإلكتروني المستخدم في الطلب
+We will send the acknowledgement of receipt to this address.,سنرسل إشعار الاستلام إلى هذا العنوان.
+Products you are returning (leave empty for the whole order),المنتجات التي تُرجعها (اتركه فارغًا إذا كان الطلب بالكامل)
+Comments (optional),ملاحظات (اختياري)
+Confirm withdrawal,تأكيد العدول
+Something went wrong. Please try again or write to us.,حدث خطأ ما. يُرجى المحاولة مرة أخرى أو مراسلتنا.
+We could not find an order with that number and email address.,لم نعثر على طلب بهذا الرقم وهذا البريد الإلكتروني.
+Withdraw from contract here,العدول عن العقد من هنا
+within 14 days of receiving your order,خلال 14 يومًا من استلام طلبك
+Withdrawal received · Order #${number},تم استلام طلب العدول · الطلب رقم ${number}
+By clicking “Pay now” you place an order with an obligation to pay and accept the,بالضغط على «ادفع الآن» تُقدّم طلبًا يلزمك بالدفع وتوافق على
+terms of sale,شروط البيع
+You have 14 days to withdraw,لديك 14 يومًا للعدول عن الشراء
+withdrawal,العدول
+We process your data as described in the,نعالج بياناتك وفق
+privacy policy,سياسة الخصوصية
+VAT included,شامل ضريبة القيمة المضافة
+Product safety information,معلومات سلامة المنتج
+Manufacturer,الجهة المصنِّعة
+Reference,المرجع
+Warnings,تحذيرات
+"Shipping: €4.95, free from €30",الشحن: 4.95 €، ومجاني ابتداءً من 30 €

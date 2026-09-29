@@ -1,7 +1,7 @@
 import Area from '@components/common/Area.js';
 import { _ } from '@evershop/evershop/lib/locale/translate/_';
 import React from 'react';
-import { contact, footerLinks, legalPages, LOGO_WHITE_SRC, owner, STORE_NAME, tagline } from './brand.js';
+import { contact, footerLinks, legalPages, LOGO_WHITE_SRC, owner, STORE_NAME, tagline, WITHDRAWAL_PATH } from './brand.js';
 import { useLocale } from './i18n.js';
 import { LanguageLinks } from './LanguageLinks.js';
 
@@ -127,6 +127,9 @@ export function Footer({ copyRight }: FooterProps) {
                         {_(l.label)}
                       </a>
                     ))}
+                    <a href={loc.href(WITHDRAWAL_PATH)} className="albayan-footer__link text-xs font-semibold underline">
+                      {_('Withdraw from contract here')}
+                    </a>
                     <LanguageLinks />
                     <span className="flex items-center gap-1.5" aria-label={_('Secure payment with Redsys')}>
                       <span className="albayan-badge">VISA</span>

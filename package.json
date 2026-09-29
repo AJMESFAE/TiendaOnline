@@ -15,7 +15,7 @@
   "scripts": {
     "setup": "evershop install",
     "compile": "npm run compile --workspaces --if-present",
-    "build": "npm run compile && evershop build",
+    "build": "node scripts/patch-evershop.mjs && npm run compile && evershop build",
     "start": "evershop start",
     "dev": "evershop dev",
     "test": "node --test extensions/redsys/tests/*.test.mjs extensions/mobile-app/tests/*.test.mjs",

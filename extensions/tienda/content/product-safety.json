@@ -1,0 +1,9 @@
+{
+  "_comentario": "Datos de seguridad del producto que se muestran en cada ficha (Reglamento (UE) 2023/988, art. 19). «default» vale para todos; por SKU se puede cambiar el fabricante o añadir advertencias en cada idioma (es, en, ar). Si un producto es un juguete, sus advertencias (p. ej. edad mínima) deben figurar aquí.",
+  "default": {
+    "manufacturer": "Fundación Método Andalusí de España",
+    "address": "Calle Anastasio Herrero 5, 28020 Madrid (España)",
+    "email": "tienda@fundacionandalusi.org"
+  },
+  "products": {}
+}

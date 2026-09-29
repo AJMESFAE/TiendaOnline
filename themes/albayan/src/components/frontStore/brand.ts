@@ -57,7 +57,8 @@ export const footerLinks: { title: string; links: NavLink[] }[] = [
       { label: 'My account', href: '/account' },
       { label: 'Cart', href: '/cart' },
       { label: 'Terms of sale', href: '/condiciones-de-venta' },
-      { label: 'Shipping and returns', href: '/envios-y-devoluciones' }
+      { label: 'Shipping and returns', href: '/envios-y-devoluciones' },
+      { label: 'Withdraw from contract here', href: '/desistimiento' }
     ]
   }
 ];
@@ -85,6 +86,9 @@ export const legalPages = [
   { urlKey: 'condiciones-de-venta', label: 'Terms of sale' },
   { urlKey: 'envios-y-devoluciones', label: 'Shipping and returns' }
 ];
+
+/** Función de desistimiento (Directiva (UE) 2023/2673): siempre visible en el pie. */
+export const WITHDRAWAL_PATH = '/desistimiento';
 
 export const tagline =
   'The Foundation’s mission is to promote the teaching of Arabic and to preserve the Islamic heritage of Spain.';

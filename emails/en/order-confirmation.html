@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="supported-color-schemes" content="light" />
   <title>Thank you for your order!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="{{storeInfo.homeUrl}}/fonts/fonts.css" rel="stylesheet" />
   <style>
     @media (max-width: 620px) {
       .container { width: 100% !important; }
@@ -121,6 +121,24 @@
       <a href="{{storeInfo.homeUrl}}/en" target="_blank" style="display:inline-block;padding:15px 28px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:16px;">Continue shopping&nbsp;&rarr;</a>
     </td>
   </tr>
+</table>
+
+<h2 style="margin:28px 0 12px;font-family:Tajawal, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:19px;font-weight:500;color:#3c3c3b;text-align:left;">Your right of withdrawal</h2>
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">You have 14 calendar days from receiving your order to withdraw from the purchase without giving any reason. You can do so with the “Withdraw from contract here” link, by writing to us at <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> or by letter, using the model form below (its use is not mandatory).</p>
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">We will refund all payments, including standard shipping costs, within 14 calendar days of being informed, using the same payment method. We may wait until we receive the products or proof that they have been sent. You bear the cost of returning them, unless the product is defective or is not what you ordered.</p>
+<p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;font-size:14px;">All products have a three-year legal guarantee of conformity. <a href="{{storeInfo.homeUrl}}/en/condiciones-de-venta" style="color:#009240;">Read the full terms of sale</a>.</p>
+<p style="margin:0 0 18px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:14px;text-align:left;"><a href="{{storeInfo.homeUrl}}/en/desistimiento?order={{order.order_number}}" style="color:#009240;font-weight:700;">Withdraw from contract here &rarr;</a></p>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="ltr" style="margin-top:8px;background:#f5f5f5;border-radius:14px;">
+  <tr><td style="padding:18px 20px;text-align:left;">
+<div style="font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.7;color:#3c3c3b;">
+  <strong>Model withdrawal form</strong><br />
+  To <span dir="ltr">Fundación Método Andalusí de España, Calle Anastasio Herrero 5, 28020 Madrid, tienda@fundacionandalusi.org</span>:<br />
+  I hereby give notice that I withdraw from my contract of sale of the following goods: ……………………<br />
+  Order no. <span dir="ltr">{{order.order_number}}</span> · Ordered on {{date order.created_at}} · Received on: ………<br />
+  Name and address of the consumer: ……………………<br />
+  Signature (only if submitted on paper) and date: ………
+</div></td></tr>
 </table>
 <p style="margin:0 0 14px;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.7;color:#3c3c3b;text-align:left;margin-top:26px;font-size:14px;color:#5b6573;">Any questions? Write to us at <a href="mailto:tienda@fundacionandalusi.org" style="color:#009240;font-weight:600;text-decoration:none;"><span dir="ltr">tienda@fundacionandalusi.org</span></a> and we will be happy to help.</p>
             </td>
