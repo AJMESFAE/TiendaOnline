@@ -11,6 +11,11 @@ import { orderUuidFrom, registerForOrderNotifications } from '@/lib/notification
  * refresca las listas cuando llega uno con la app abierta.
  */
 export function OrderNotifications() {
+  // En la versión web (solo para desarrollo) no hay avisos push.
+  return Platform.OS === 'web' ? null : <NativeOrderNotifications />;
+}
+
+function NativeOrderNotifications() {
   const queryClient = useQueryClient();
   const lastResponse = Notifications.useLastNotificationResponse();
   const handled = useRef<string | null>(null);
@@ -28,7 +33,6 @@ export function OrderNotifications() {
   }, [lastResponse]);
 
   useEffect(() => {
-    if (Platform.OS === 'web') return;
     const sub = Notifications.addNotificationReceivedListener(() => {
       queryClient.invalidateQueries({ queryKey: ['orders'] });
       queryClient.invalidateQueries({ queryKey: ['lifetimesales'] });
