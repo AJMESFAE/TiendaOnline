@@ -2,7 +2,7 @@ import { select } from '@evershop/postgres-query-builder';
 import { error } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
 import { addFinalProcessor, addProcessor } from '@evershop/evershop/lib/util/registry';
-import { customerGroupCouponValidator } from './services/customerGroups.js';
+import { customerGroupCouponValidator, requiredProductByPriceValidator } from './services/customerGroups.js';
 import { registerEmailCurrency } from './services/emailCurrency.js';
 import {
   orderConfirmationArgs,
@@ -29,42 +29,25 @@ import {
  *    número, 0 oculta el descuento y muestra «Gratis» en el envío.
  */
 
-type Item = { productId: number; lineTotal: number };
+type Item = { productId: number; qty: number; lineTotal: number };
 type Ctx = { items: Item[]; totalValue: number; destination?: { country?: string; province?: string; postcode?: string } };
 type Provider = { code: string; getMethods: (ctx: Ctx) => Promise<unknown[]>; [k: string]: unknown };
 
-const splitList = (v: unknown) =>
-  String(v ?? '*')
-    .split(',')
-    .map((x) => x.trim())
-    .filter(Boolean);
-
-/** % de IVA de cada clase de impuesto para la dirección de envío (misma regla que EverShop). */
-async function taxPercentByClass(classIds: number[], dest: Ctx['destination']): Promise<Map<number, number>> {
-  const result = new Map<number, number>();
-  if (!classIds.length || !dest?.country) return result;
-  const rates = await select().from('tax_rate').where('tax_class_id', 'IN', classIds).execute(pool);
-  for (const r of rates) {
-    const countries = splitList(r.country);
-    const provinces = splitList(r.province);
-    const postcodes = splitList(r.postcode);
-    const match =
-      (countries.includes('*') || countries.includes(dest.country)) &&
-      (provinces.includes('*') || !dest.province || provinces.includes(dest.province)) &&
-      (postcodes.includes('*') || !dest.postcode || postcodes.includes(dest.postcode));
-    if (match) result.set(r.tax_class_id, (result.get(r.tax_class_id) || 0) + Number(r.rate));
-  }
-  return result;
-}
-
-/** Subtotal del carrito con IVA incluido. */
+/**
+ * Subtotal del carrito con IVA incluido: precio de catálogo (ya lleva el IVA) por
+ * cantidad. No se parte de lineTotal: según el momento, EverShop lo da sin IVA o,
+ * si aún no conoce la dirección, con él, y volver a sumarle el IVA daba envío
+ * gratis a un libro de 29,90 € (29,90 × 1,04 = 31,10).
+ */
 async function subtotalWithTax(ctx: Ctx): Promise<number> {
   const ids = [...new Set(ctx.items.map((i) => i.productId).filter(Boolean))];
   if (!ids.length) return ctx.totalValue;
-  const products = await select('product_id', 'tax_class').from('product').where('product_id', 'IN', ids).execute(pool);
-  const classOf = new Map(products.map((p) => [p.product_id, Number(p.tax_class) || 0]));
-  const percent = await taxPercentByClass([...new Set([...classOf.values()].filter(Boolean))], ctx.destination);
-  const total = ctx.items.reduce((sum, i) => sum + i.lineTotal * (1 + (percent.get(classOf.get(i.productId) || 0) || 0) / 100), 0);
+  const products = await select('product_id', 'price').from('product').where('product_id', 'IN', ids).execute(pool);
+  const priceOf = new Map(products.map((p) => [p.product_id, Number(p.price)]));
+  const total = ctx.items.reduce((sum, i) => {
+    const price = priceOf.get(i.productId);
+    return sum + (price !== undefined && Number.isFinite(price) ? price * (Number(i.qty) || 0) : Number(i.lineTotal) || 0);
+  }, 0);
   return Math.round(total * 100) / 100;
 }
 
@@ -78,7 +61,13 @@ export function fixThumbnail(url: unknown): unknown {
 export default () => {
   registerEmailCurrency();
   // Cupones limitados a grupos de clientes (ver services/customerGroups).
-  addFinalProcessor('couponValidatorFunctions', (fns: any[]) => [...(fns || []), customerGroupCouponValidator]);
+  // Además, el validador de precio de EverShop invalidaba todo cupón con productos
+  // obligatorios por SKU: se cambia por uno corregido.
+  addFinalProcessor('couponValidatorFunctions', (fns: any[]) => [
+    ...(fns || []).filter((f) => f?.name !== 'requiredProductByPriceValidator'),
+    requiredProductByPriceValidator,
+    customerGroupCouponValidator
+  ]);
   // Correos en el idioma del cliente (ver services/emailLocale).
   const safe = (fn: (args: any, ctx: any) => Promise<any>) =>
     async function (this: any, args: any) {

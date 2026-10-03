@@ -32,3 +32,37 @@ export async function setCustomerGroup(customerUuid: string, groupId: number) {
   ]);
   return group.rows[0];
 }
+
+/**
+ * Sustituye a requiredProductByPriceValidator de EverShop 2.2.1, que comprueba que el
+ * valor de CADA producto obligatorio sea un número antes de mirar si la condición es
+ * de precio: con una condición por SKU (valor = lista de SKU) el cupón era siempre
+ * «no válido». Aquí solo se evalúan las condiciones de precio.
+ */
+export function requiredProductByPriceValidator(cart: any, coupon: any): boolean {
+  const required = (coupon?.condition?.required_products || []).filter((c: any) => c?.key === 'price');
+  if (required.length === 0) return true;
+  for (const condition of required) {
+    const value = parseFloat(condition.value);
+    if (!Number.isFinite(value) || value < 0) return false;
+    const minQty = parseInt(condition.qty, 10) || 1;
+    const compare: Record<string, (a: number, b: number) => boolean> = {
+      '=': (a, b) => a === b,
+      '!=': (a, b) => a !== b,
+      '>': (a, b) => a > b,
+      '>=': (a, b) => a >= b,
+      '<': (a, b) => a < b,
+      '<=': (a, b) => a <= b
+    };
+    const op = compare[condition.operator];
+    if (!op) return false;
+    let qty = 0;
+    for (const item of cart.getItems()) {
+      // La tienda trabaja con precios con IVA incluido.
+      const price = Number(item.getData('final_price_incl_tax'));
+      if (op(price, value)) qty += Number(item.getData('qty')) || 0;
+    }
+    if (qty < minQty) return false;
+  }
+  return true;
+}
