@@ -2,6 +2,7 @@ import { select } from '@evershop/postgres-query-builder';
 import { error } from '@evershop/evershop/lib/log';
 import { pool } from '@evershop/evershop/lib/postgres';
 import { addFinalProcessor, addProcessor } from '@evershop/evershop/lib/util/registry';
+import { customerGroupCouponValidator } from './services/customerGroups.js';
 import { registerEmailCurrency } from './services/emailCurrency.js';
 import {
   orderConfirmationArgs,
@@ -76,6 +77,8 @@ export function fixThumbnail(url: unknown): unknown {
 
 export default () => {
   registerEmailCurrency();
+  // Cupones limitados a grupos de clientes (ver services/customerGroups).
+  addFinalProcessor('couponValidatorFunctions', (fns: any[]) => [...(fns || []), customerGroupCouponValidator]);
   // Correos en el idioma del cliente (ver services/emailLocale).
   const safe = (fn: (args: any, ctx: any) => Promise<any>) =>
     async function (this: any, args: any) {

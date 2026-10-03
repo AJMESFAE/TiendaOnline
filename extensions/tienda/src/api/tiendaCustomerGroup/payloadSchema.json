@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "group_id": { "type": "integer", "minimum": 1 }
+  },
+  "required": ["group_id"],
+  "additionalProperties": false
+}
